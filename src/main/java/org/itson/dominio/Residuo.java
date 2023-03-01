@@ -22,7 +22,7 @@ public class Residuo {
     
     private LinkedList<Quimico> quimicos;
     private Ciudad ciudad;
-    private Empresa empresa;
+    private Organizacion organizacion;
 
    /**
     * 
@@ -35,9 +35,9 @@ public class Residuo {
      * @param ciudad
      * @param organizacion 
      */
-    public Residuo(Ciudad ciudad, Empresa empresa) {
+    public Residuo(Ciudad ciudad, Organizacion organizacion) {
         this.ciudad = ciudad;
-        this.empresa = empresa;
+        this.organizacion = organizacion;
         this.quimicos = new LinkedList<>();
     }
 
@@ -47,10 +47,10 @@ public class Residuo {
      * @param ciudad
      * @param organizacion 
      */
-    public Residuo(LinkedList<Quimico> quimicos, Ciudad ciudad, Empresa organizacion) {
+    public Residuo(LinkedList<Quimico> quimicos, Ciudad ciudad, Organizacion organizacion) {
         this.quimicos = quimicos;
         this.ciudad = ciudad;
-        this.empresa = empresa;
+        this.organizacion = organizacion;
     }
 
     /**
@@ -89,16 +89,16 @@ public class Residuo {
      * 
      * @return 
      */
-    public Empresa getOrganizacion() {
-        return empresa;
+    public Organizacion getOrganizacion() {
+        return organizacion;
     }
 
     /**
      * 
      * @param organizacion 
      */
-    public void setOrganizacion(Empresa organizacion) {
-        this.empresa = empresa;
+    public void setOrganizacion(Organizacion organizacion) {
+        this.organizacion = organizacion;
     }
 
     @Override
@@ -106,7 +106,7 @@ public class Residuo {
         int hash = 5;
         hash = 59 * hash + Objects.hashCode(this.quimicos);
         hash = 59 * hash + Objects.hashCode(this.ciudad);
-        hash = 59 * hash + Objects.hashCode(this.empresa);
+        hash = 59 * hash + Objects.hashCode(this.organizacion);
         return hash;
     }
 
@@ -128,7 +128,7 @@ public class Residuo {
         if (!Objects.equals(this.ciudad, other.ciudad)) {
             return false;
         }
-        return Objects.equals(this.empresa, other.empresa);
+        return Objects.equals(this.organizacion, other.organizacion);
     }
     
 }
