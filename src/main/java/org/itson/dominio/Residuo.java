@@ -35,9 +35,9 @@ public class Residuo {
      * @param ciudad
      * @param organizacion 
      */
-    public Residuo(Ciudad ciudad,Empresa organizacion) {
+    public Residuo(Ciudad ciudad, Empresa empresa) {
         this.ciudad = ciudad;
-        this.Empresa = empresa;
+        this.empresa = empresa;
         this.quimicos = new LinkedList<>();
     }
 
@@ -50,7 +50,7 @@ public class Residuo {
     public Residuo(LinkedList<Quimico> quimicos, Ciudad ciudad, Empresa organizacion) {
         this.quimicos = quimicos;
         this.ciudad = ciudad;
-        this.Empresa = empresa;
+        this.empresa = empresa;
     }
 
     /**
@@ -106,7 +106,7 @@ public class Residuo {
         int hash = 5;
         hash = 59 * hash + Objects.hashCode(this.quimicos);
         hash = 59 * hash + Objects.hashCode(this.ciudad);
-        hash = 59 * hash + Objects.hashCode(this.organizacion);
+        hash = 59 * hash + Objects.hashCode(this.empresa);
         return hash;
     }
 
@@ -128,7 +128,7 @@ public class Residuo {
         if (!Objects.equals(this.ciudad, other.ciudad)) {
             return false;
         }
-        return Objects.equals(this.organizacion, other.organizacion);
+        return Objects.equals(this.empresa, other.empresa);
     }
     
 }
