@@ -30,36 +30,70 @@ public class Traslado {
 
     }
 
+    /**
+     * 
+     * @param id
+     * @param destino
+     * @param residuo 
+     */
     public Traslado(Integer id, String destino, Residuo residuo) {
         this.id = id;
         this.destino = destino;
         this.residuo = residuo;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * 
+     * @param id 
+     */
     public void setId(Integer id) {
         this.id = id;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getDestino() {
         return destino;
     }
 
+    /**
+     * 
+     * @param destino 
+     */
     public void setDestino(String destino) {
         this.destino = destino;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Residuo getResiduo() {
         return residuo;
     }
 
+    /**
+     * 
+     * @param residuo 
+     */
     public void setResiduo(Residuo residuo) {
         this.residuo = residuo;
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -69,6 +103,11 @@ public class Traslado {
         return hash;
     }
 
+    /**
+     * 
+     * @param obj
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
