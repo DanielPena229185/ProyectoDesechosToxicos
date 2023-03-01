@@ -9,6 +9,8 @@ import java.util.Objects;
 public class Transporte {
     private Integer id;
     private Double kilometros;
+    private Vehiculo vehiculo;
+    EmpresaTransportista empresaTransportista;
 
     /**
      * Método constructor por omisión.
@@ -16,11 +18,20 @@ public class Transporte {
     public Transporte() {
     }
 
+    public Transporte(Vehiculo vehiculo,EmpresaTransportista empresaTransportista) {
+        this.vehiculo = vehiculo;
+        this.empresaTransportista=empresaTransportista;
+    }
+
+    
+    
     /**
      * Método constructor que sólamente recibe los kilómetros.
      * @param kilometros
      */
-    public Transporte(Double kilometros) {
+    public Transporte(Vehiculo vehiculo,EmpresaTransportista empresaTransportista, Double kilometros) {
+        this.vehiculo=vehiculo;
+        this.empresaTransportista=empresaTransportista;
         this.kilometros = kilometros;
     }
 
@@ -29,8 +40,10 @@ public class Transporte {
      * @param id
      * @param kilometros 
      */
-    public Transporte(Integer id, Double kilometros) {
+    public Transporte(Integer id, Vehiculo vehiculo,EmpresaTransportista empresaTransportista,Double kilometros) {
         this.id = id;
+        this.vehiculo=vehiculo;
+        this.empresaTransportista=empresaTransportista;
         this.kilometros = kilometros;
     }
 
@@ -49,6 +62,16 @@ public class Transporte {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+    
+    
 
     /**
      * Método que obtiene los kilómetros de trasnporte.

@@ -20,7 +20,6 @@ import java.util.Objects;
 public class Traslado {
     
     private Integer id;
-    private Direccion direccion;
     private Residuo residuo;
     
     /**
@@ -36,12 +35,17 @@ public class Traslado {
      * @param direccion
      * @param residuo 
      */
-    public Traslado(Integer id, Direccion direccion, Residuo residuo) {
+    public Traslado(Integer id, Residuo residuo) {
         this.id = id;
-        this.direccion = direccion;
         this.residuo = residuo;
     }
 
+    public Traslado(Residuo residuo) {
+        this.residuo = residuo;
+    }
+
+    
+    
     /**
      * 
      * @return 
@@ -58,21 +62,6 @@ public class Traslado {
         this.id = id;
     }
 
-    /**
-     * 
-     * @return 
-     */
-    public Direccion getDestino() {
-        return direccion;
-    }
-
-    /**
-     * 
-     * @param direccion 
-     */
-    public void setDestino(Direccion direccion) {
-        this.direccion = direccion;
-    }
 
     /**
      * 
@@ -98,7 +87,6 @@ public class Traslado {
     public int hashCode() {
         int hash = 7;
         hash = 61 * hash + Objects.hashCode(this.id);
-        hash = 61 * hash + Objects.hashCode(this.direccion);
         hash = 61 * hash + Objects.hashCode(this.residuo);
         return hash;
     }
@@ -120,9 +108,7 @@ public class Traslado {
             return false;
         }
         final Traslado other = (Traslado) obj;
-        if (!Objects.equals(this.direccion, other.direccion)) {
-            return false;
-        }
+
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

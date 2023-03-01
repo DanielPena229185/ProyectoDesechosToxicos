@@ -1,24 +1,22 @@
-
 package org.itson.dominio;
+
+import java.util.List;
+
 /**
  *
- * @author
- * @author
- * @author
- * @author
+ * @author @author @author @author
  */
-public class RegistroTotalidad extends Registro{
-    /**
-     * Crea un nuevo RegistroTotalidad con el ID especificado
-     * @param id el identificador del registro
-     */
-    public RegistroTotalidad(Integer id) {
+public class RegistroTotalidad extends Registro {
+
+    List<Completo> listaCompleto;
+
+    public RegistroTotalidad(Integer id, List<Completo> listaCompleto) {
         super(id);
+        this.listaCompleto = listaCompleto;
     }
-    /**
-     * Metodo por constructor por omision
-     */
-    public RegistroTotalidad() {
+
+    public RegistroTotalidad(List<Completo> listaCompleto) {
+        this.listaCompleto = listaCompleto;
     }
-    
+
 }

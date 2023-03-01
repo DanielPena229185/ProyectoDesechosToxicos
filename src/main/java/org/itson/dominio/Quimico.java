@@ -38,6 +38,12 @@ public class Quimico {
         this.nombre = nombre;
     }
 
+    public Quimico(String nombre) {
+        this.nombre = nombre;
+    }
+
+    
+    
     /**
      * 
      * @return 

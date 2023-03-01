@@ -22,6 +22,13 @@ public class Ciudad {
         this.id = id;
         this.nombre = nombre;
     }
+
+    public Ciudad(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
+    
     /**
      * Metodo constructor por omision 
      */
