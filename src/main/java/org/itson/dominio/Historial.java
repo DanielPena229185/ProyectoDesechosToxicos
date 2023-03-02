@@ -33,6 +33,13 @@ public class Historial {
         this.parte = parte;
     }
 
+    public Historial(Transporte transporte, EnPartes parte) {
+        this.transporte = transporte;
+        this.parte = parte;
+    }
+
+    
+    
     public Integer getId() {
         return id;
     }
