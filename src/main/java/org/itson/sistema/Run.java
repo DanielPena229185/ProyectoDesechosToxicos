@@ -19,14 +19,7 @@ public class Run {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String text = "Halo";
-        hola(text);
-        System.out.println(text);
-    }
-    
-    public static String hola(String text){
-        text = "ala";
-        return text;
+        
     }
 
 }
