@@ -117,6 +117,7 @@ public class LogInForm extends javax.swing.JFrame {
         campoContrasena.setForeground(new java.awt.Color(204, 204, 204));
         campoContrasena.setText(this.CONTRASENA_DEFAULT);
         campoContrasena.setBorder(null);
+	campoContrasena.setEchoChar('•');
         campoContrasena.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoContrasenaFocusGained(evt);
