@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
-public class RegistrarAdministrador extends javax.swing.JFrame {
+public class RegistrarAdministradorForm extends javax.swing.JFrame {
 
     private final String NOMBRE_DEFAULT = "María Fernanda";
     private final String APELLIDO_PATERNO_DEFAULT = "Fernandez";
@@ -28,7 +28,7 @@ public class RegistrarAdministrador extends javax.swing.JFrame {
     /**
      * Creates new form RegistrarAdministrador
      */
-    public RegistrarAdministrador() {
+    public RegistrarAdministradorForm() {
         initComponents();
         iniciarComponentes();
     }
@@ -519,20 +519,21 @@ public class RegistrarAdministrador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistrarAdministrador().setVisible(true);
+                new RegistrarAdministradorForm().setVisible(true);
             }
         });
     }
