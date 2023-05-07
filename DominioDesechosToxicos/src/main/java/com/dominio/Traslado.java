@@ -5,8 +5,13 @@
 package com.dominio;
 
 /**
+ * Descripción de la clase: Esta clase representa un residuo compuesto de
+ * químicos
  *
- * @author edemb
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class Traslado {
     
