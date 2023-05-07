@@ -194,5 +194,9 @@ public class Administrador {
         final Administrador other = (Administrador) obj;
         return Objects.equals(this.id, other.id);
     }
-        
+
+    @Override
+    public String toString() {
+        return "Administrador [" + "nombres: " + nombres + ", apellido_paterno: " + apellido_paterno + ", apellido_materno: " + apellido_materno + ", correo: " + cuenta.getCorreo() + ']';
+    }
 }
