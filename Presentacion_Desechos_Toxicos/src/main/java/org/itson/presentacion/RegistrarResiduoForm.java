@@ -6,8 +6,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
 /**
- * Creacion del formulario registro residuo
- * @author Aracely Campa Quintana ID:233215
+ * Descripción de la clase: Creacion de formulario para el registro de residuo
+ *
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID:
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID:229185
  */
 public class RegistrarResiduoForm extends javax.swing.JFrame {
     private static final String ID_RESIDUO_DEFAULT = "123456";
@@ -104,7 +108,7 @@ public class RegistrarResiduoForm extends javax.swing.JFrame {
                 cancelarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, -1, -1));
+        getContentPane().add(cancelarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, -1, -1));
 
         registrarBtn1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         registrarBtn1.setText("Registrar");
@@ -113,7 +117,7 @@ public class RegistrarResiduoForm extends javax.swing.JFrame {
                 registrarBtn1ActionPerformed(evt);
             }
         });
-        getContentPane().add(registrarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
+        getContentPane().add(registrarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, -1, -1));
 
         panelInformacion.setBackground(new java.awt.Color(255, 102, 0));
         panelInformacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
