@@ -8,9 +8,7 @@ package org.itson.implementacion;
 import com.dominio.Administrador;
 import java.util.List;
 import org.itson.excepciones.NegocioExcepcion;
-import org.itson.implementaciones.daos.AdministradoresDAO;
 import org.itson.interfaces.CrudInterface;
-import org.itson.interfaces.IConsultasDAO;
 
 /**
  * Descripción de la clase: 
@@ -52,4 +50,6 @@ public class AdministradorNegocio implements CrudInterface<Administrador>{
     public List<Administrador> consultar(Administrador elemento) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    
 }

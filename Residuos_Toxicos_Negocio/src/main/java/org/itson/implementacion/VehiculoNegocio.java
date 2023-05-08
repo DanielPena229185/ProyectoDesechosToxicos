@@ -48,5 +48,7 @@ public class VehiculoNegocio implements CrudInterface<Vehiculo>{
     public List<Vehiculo> consultar(Vehiculo elemento) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    
 
 }

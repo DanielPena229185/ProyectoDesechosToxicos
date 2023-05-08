@@ -28,7 +28,15 @@ public class ResiduoNegocio implements CrudInterface<Residuo> {
 
     @Override
     public Residuo insertar(Residuo elemento) throws NegocioExcepcion {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            
+            this.validarResiduo(elemento);
+            this.validarResiduoInexistente(elemento);
+            
+        } catch (ValidacionExcepcion e) {
+            throw new NegocioExcepcion(e.getMessage());
+        }
+        return elemento;
     }
 
     @Override
@@ -108,7 +116,32 @@ public class ResiduoNegocio implements CrudInterface<Residuo> {
         return mensaje;
     }
 
-    
+    private Residuo validarResiduoInexistente(Residuo residuo){
+        List<String> camposExistentes = new LinkedList<>();
+        List<Residuo> residuosMismoCodigo = validarCodigoResiduo(residuo);
+        if(!residuosMismoCodigo.isEmpty()){
+            camposExistentes.add("- Código");
+        }
+        
+        List<Residuo> residuoMismaListaQuimicos = validarListaQuimicos(residuo);
+        if(!residuoMismaListaQuimicos.isEmpty()){
+            camposExistentes.add("- Lista de químicos");
+        }
+        
+        List<Residuo> residuoMismoNombre = validarNombreResiduo(residuo);
+        if(!residuoMismoNombre.isEmpty()){
+            camposExistentes.add("- Nombre");
+        }
+        
+        if(camposExistentes.isEmpty()){
+            return residuo;
+        }
+        
+        String campos = "Campos repetidos son: \n" 
+                + this.mensajeCampos(camposExistentes);
+        
+        throw new ValidacionExcepcion(campos);
+    }
     
     private List<Residuo> validarCodigoResiduo(Residuo residuo){
         Residuo residuoCodigo = new Residuo();
@@ -120,5 +153,11 @@ public class ResiduoNegocio implements CrudInterface<Residuo> {
         Residuo residuoNombre = new Residuo();
         residuoNombre.setNombre(residuo.getNombre());
         return this.consultar(residuoNombre);
+    }
+    
+    private List<Residuo> validarListaQuimicos(Residuo residuo){
+        Residuo residuoListaQuimicos = new Residuo();
+        residuoListaQuimicos.setQuimicos(residuo.getQuimicos());
+        return this.consultar(residuoListaQuimicos);
     }
 }
