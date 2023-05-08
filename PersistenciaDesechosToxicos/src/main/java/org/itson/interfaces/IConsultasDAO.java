@@ -13,14 +13,13 @@ import org.itson.excepciones.PersistenciaException;
  * cualquier objeto de dominio que se indique.
  * 
  * @param <T> Clase de dominio a trabajar.
- * @param <Y> Clase de tipo DTO para consultas dinámicas.
  * 
  * @author Aracely Campa Quintana ID: 233215
  * @author Edgar Emir Borbon Jimenez ID: 233184
  * @author Oscar Minjarez Zavala ID: 231503
  * @author Daniel Armando Peña Garcia ID: 229185
  */
-public interface IConsultasDAO<T, Y> {
+public interface IConsultasDAO<T> {
     
     /**
      * Método que inserta un objeto en la base de datos.
@@ -74,5 +73,5 @@ public interface IConsultasDAO<T, Y> {
      * @throws PersistenciaException Si no se encuentra ninguna coincidencia
      * en la base de datos.
      */
-    List<T> consultar(Y parametros) throws PersistenciaException;
+    List<T> consultar(T parametros) throws PersistenciaException;
 }

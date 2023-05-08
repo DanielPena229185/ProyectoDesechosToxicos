@@ -14,7 +14,6 @@ import java.util.List;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
-import org.itson.implementaciones.dto.AdministradoresDTO;
 import org.itson.interfaces.IConexionBD;
 import org.itson.interfaces.IConsultasDAO;
 
@@ -27,7 +26,7 @@ import org.itson.interfaces.IConsultasDAO;
  * @author Oscar Minjarez Zavala ID: 231503
  * @author Daniel Armando Peña Garcia ID: 229185
  */
-public class AdministradoresDAO implements IConsultasDAO<Administrador, AdministradoresDTO> {
+public class AdministradoresDAO implements IConsultasDAO<Administrador> {
 
     private final IConexionBD MANEJADOR_CONEXIONES;
     private final MongoDatabase BASE_DATOS;
@@ -151,7 +150,7 @@ public class AdministradoresDAO implements IConsultasDAO<Administrador, Administ
      * en la base de datos.
      */
     @Override
-    public List<Administrador> consultar(AdministradoresDTO parametros) throws PersistenciaException {
+    public List<Administrador> consultar(Administrador parametros) throws PersistenciaException {
         List<Administrador> administradores = new ArrayList<>();
         List<Bson> filtros = new ArrayList<>();
         
@@ -159,12 +158,16 @@ public class AdministradoresDAO implements IConsultasDAO<Administrador, Administ
             filtros.add(Filters.regex("nombres", ".*" + parametros.getNombres() + ".*", "i"));
         }
         
-        if (parametros.getApellidoPaterno() != null) {
-            filtros.add(Filters.regex("apellido_paterno", ".*" + parametros.getApellidoPaterno() + ".*", "i"));
+        if (parametros.getApellido_paterno() != null) {
+            filtros.add(Filters.regex("apellido_paterno", ".*" + parametros.getApellido_paterno()+ ".*", "i"));
         }
         
-        if (parametros.getApellidoMaterno() != null) {
-            filtros.add(Filters.regex("apellido_materno", ".*" + parametros.getApellidoMaterno() + ".*", "i"));
+        if (parametros.getApellido_materno() != null) {
+            filtros.add(Filters.regex("apellido_materno", ".*" + parametros.getApellido_materno()+ ".*", "i"));
+        }
+        
+        if (parametros.getCuenta() != null) {
+            filtros.add(Filters.eq("cuenta", parametros.getCuenta()));
         }
         
         this.COLECCION.find(Filters.and(filtros)).into(administradores);
