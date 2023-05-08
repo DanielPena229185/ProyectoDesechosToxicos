@@ -40,7 +40,7 @@ public class Direccion {
     /**
      * Ciudad a la que pertenece
      */
-    private Ciudad ciudad;
+    private String ciudad;
 
     /**
      * Constructor con identificador, calle, colonia, numero de la dirección con
@@ -52,7 +52,7 @@ public class Direccion {
      * @param numero Número de la dirección
      * @param ciudad Ciudad a la que pertenece
      */
-    public Direccion(ObjectId id, String calle, String colonia, String numero, Ciudad ciudad) {
+    public Direccion(ObjectId id, String calle, String colonia, String numero, String ciudad) {
         this.id = id;
         this.calle = calle;
         this.colonia = colonia;
@@ -69,7 +69,7 @@ public class Direccion {
      * @param numero Número de la dirección
      * @param ciudad Ciudad a la que pertenece
      */
-    public Direccion(String calle, String colonia, String numero, Ciudad ciudad) {
+    public Direccion(String calle, String colonia, String numero, String ciudad) {
         this.calle = calle;
         this.colonia = colonia;
         this.numero = numero;
@@ -153,7 +153,7 @@ public class Direccion {
      *
      * @return Identificador de la ciudad a ala que pertenece la dirección
      */
-    public Ciudad getId_ciudad() {
+    public String getCiudad() {
         return ciudad;
     }
 
@@ -162,7 +162,7 @@ public class Direccion {
      *
      * @param ciudad Ciudad a la que pertenece
      */
-    public void setId_ciudad(Ciudad ciudad) {
+    public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
 
