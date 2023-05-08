@@ -18,7 +18,7 @@ import org.bson.types.ObjectId;
  * @author Oscar Minjarez Zavala ID: 231503
  * @author Daniel Armando Peña Garcia ID: 229185
  */
-public class Empresa {
+public abstract class Empresa {
 
     /**
      * Identificador de la empresa

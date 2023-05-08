@@ -4,6 +4,7 @@
  */
 package com.dominio;
 
+import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
@@ -33,33 +34,43 @@ public class Residuo {
     private String codigo;
 
     /**
+     * Lista de quimicos
+     */
+    private List<Quimico> quimicos;
+
+    /**
      * Constructor por defecto
      */
     public Residuo() {
     }
 
     /**
-     * Constructor que le asigna un id, cantidad y codigo
+     * Constructor que le asigna un id, cantidad, codigo y quimicos
      *
      * @param id Al que se le asignara
      * @param cantidad que se le asignara
      * @param codigo que se le asignara
+     * @param quimicos lista de quimicos que lo componen
      */
-    public Residuo(ObjectId id, Float cantidad, String codigo) {
+    public Residuo(ObjectId id, Float cantidad, String codigo, List<Quimico> quimicos) {
         this.id = id;
         this.cantidad = cantidad;
         this.codigo = codigo;
+        this.quimicos = quimicos;
     }
 
     /**
-     * Constructor que asigna una canditada y un codigo
+     * Constructor que asigna una canditada , un codigo y quimicos
      *
      * @param cantidad que se le asignara
      * @param codigo que se le asignara
+     * @param quimicos lista de quimicos que lo componen
+     *
      */
-    public Residuo(Float cantidad, String codigo) {
+    public Residuo(Float cantidad, String codigo, List<Quimico> quimicos) {
         this.cantidad = cantidad;
         this.codigo = codigo;
+        this.quimicos = quimicos;
     }
 
     /**
@@ -114,6 +125,24 @@ public class Residuo {
      */
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+
+    /**
+     * Regresa una lista de quimicos que lo componen
+     *
+     * @return lista de Quimicos
+     */
+    public List<Quimico> getQuimicos() {
+        return quimicos;
+    }
+
+    /**
+     * Le asignar una lista de Quimicos
+     *
+     * @param quimicos Lista de Quimicos a asignar
+     */
+    public void setQuimicos(List<Quimico> quimicos) {
+        this.quimicos = quimicos;
     }
 
 }
