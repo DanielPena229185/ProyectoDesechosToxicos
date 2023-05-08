@@ -5,6 +5,7 @@
 package org.itson.interfaces;
 
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
 
 /**
@@ -56,6 +57,14 @@ public interface IConsultasDAO<T, Y> {
      * en la base de datos.
      */
     List<T> consultar() throws PersistenciaException;
+    
+    /**
+     * Método que consulta a un Objeto por id.
+     * @param id Id del objeto a buscar.
+     * @return Objeto encontrado en la base de datos.
+     * @throws PersistenciaException Si no encuentra al Objeto.
+     */
+    T consultar(ObjectId id) throws PersistenciaException;
     
     /**
      * Método que consulta a todos los Objetos que coincidan con los

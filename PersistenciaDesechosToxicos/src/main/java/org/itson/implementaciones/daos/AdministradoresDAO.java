@@ -12,6 +12,7 @@ import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
 import java.util.List;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.implementaciones.dto.AdministradoresDTO;
 import org.itson.interfaces.IConexionBD;
@@ -72,7 +73,18 @@ public class AdministradoresDAO implements IConsultasDAO<Administrador, Administ
      */
     @Override
     public Administrador actualizar(Administrador o, Administrador s) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            Administrador administrador = this.consultar(o.getId());
+            
+            administrador.setNombres(s.getNombres());
+            administrador.setApellido_paterno(s.getApellido_paterno());
+            administrador.setApellido_materno(s.getApellido_materno());
+            administrador.setCuenta(s.getCuenta());
+            
+            return administrador;
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException("No se pudo actualizar el administrador.\n" + e.getMessage());
+        }
     }
 
     /**
@@ -84,7 +96,13 @@ public class AdministradoresDAO implements IConsultasDAO<Administrador, Administ
      */
     @Override
     public Administrador eliminar(Administrador o) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            this.COLECCION.deleteOne(Filters.eq(this.consultar(o.getId())));
+            
+            return o;
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException("No se pudo eliminar el administrador.\n" + e.getMessage());
+        }
     }
 
     /**
@@ -105,6 +123,25 @@ public class AdministradoresDAO implements IConsultasDAO<Administrador, Administ
         return administradores;
     }
 
+    /**
+     * Método que busca a un administrador por Id.
+     * @param id id a buscar.
+     * @return Administrador encontrado.
+     * @throws PersistenciaException Se genera una excepción si no existe
+     * el Administrador a buscar.
+     */
+    @Override
+    public Administrador consultar(ObjectId id) throws PersistenciaException {
+        List<Administrador> administradores = new ArrayList<>();
+        this.COLECCION.find(Filters.eq(id)).into(administradores);
+        
+        if (administradores.size() <= 0) {
+            throw new PersistenciaException("No existe el administrador a buscar.");
+        }
+        
+        return administradores.get(0);
+    }
+    
     /**
      * Método que consulta a todos los Administradores que coincidan con los
      * parámetros dados.
