@@ -33,10 +33,11 @@ public class InicioForm extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        registrarAdministradorBtn = new javax.swing.JMenuItem();
+        registrarEmpresBtn = new javax.swing.JMenuItem();
+        registrarProductorBtn = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -92,18 +93,42 @@ public class InicioForm extends javax.swing.JFrame {
         menuBar.add(fileMenu);
 
         jMenu1.setText("Iniciar Sesión");
+
+        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         menuBar.add(jMenu1);
 
         jMenu2.setText("Registrarme");
 
-        jMenuItem1.setText("Administrador");
-        jMenu2.add(jMenuItem1);
+        registrarAdministradorBtn.setText("Administrador");
+        registrarAdministradorBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarAdministradorBtnActionPerformed(evt);
+            }
+        });
+        jMenu2.add(registrarAdministradorBtn);
 
-        jMenuItem2.setText("Empresa Transportadora");
-        jMenu2.add(jMenuItem2);
+        registrarEmpresBtn.setText("Empresa Transportadora");
+        registrarEmpresBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarEmpresBtnActionPerformed(evt);
+            }
+        });
+        jMenu2.add(registrarEmpresBtn);
 
-        jMenuItem3.setText("Productor");
-        jMenu2.add(jMenuItem3);
+        registrarProductorBtn.setText("Productor");
+        registrarProductorBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarProductorBtnActionPerformed(evt);
+            }
+        });
+        jMenu2.add(registrarProductorBtn);
 
         menuBar.add(jMenu2);
 
@@ -135,6 +160,28 @@ public class InicioForm extends javax.swing.JFrame {
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
+
+    private void registrarAdministradorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarAdministradorBtnActionPerformed
+      RegistrarAdministradorForm a = new RegistrarAdministradorForm();
+      a.setVisible(true);
+      dispose();
+    }//GEN-LAST:event_registrarAdministradorBtnActionPerformed
+
+    private void registrarEmpresBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEmpresBtnActionPerformed
+    RegistrarEmpresaForm b = new RegistrarEmpresaForm();
+    b.setVisible(true);
+    dispose();
+    }//GEN-LAST:event_registrarEmpresBtnActionPerformed
+
+    private void registrarProductorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarProductorBtnActionPerformed
+    RegistrarProductorForm c = new RegistrarProductorForm();
+    c.setVisible(true);
+    dispose();
+    }//GEN-LAST:event_registrarProductorBtnActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,11 +227,12 @@ public class InicioForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem registrarAdministradorBtn;
+    private javax.swing.JMenuItem registrarEmpresBtn;
+    private javax.swing.JMenuItem registrarProductorBtn;
     // End of variables declaration//GEN-END:variables
 
 }

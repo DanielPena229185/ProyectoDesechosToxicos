@@ -34,6 +34,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         comboBoxEmpresa = new javax.swing.JComboBox<>();
         asignarBtn = new javax.swing.JButton();
         label1 = new javax.swing.JLabel();
+        regresarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,11 +86,20 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
                 asignarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(asignarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, -1, -1));
+        getContentPane().add(asignarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, -1));
 
         label1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         label1.setText("Solicitudes de traslados");
         getContentPane().add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        regresarBtn.setText("Regresar");
+        regresarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(regresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -104,6 +114,12 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
        r.setVisible(true);
        dispose();
     }//GEN-LAST:event_asignarBtnActionPerformed
+
+    private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
+      PrincipalAdministradorForm p = new PrincipalAdministradorForm();
+      p.setVisible(true);
+      dispose();
+    }//GEN-LAST:event_regresarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +164,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
+    private javax.swing.JButton regresarBtn;
     private javax.swing.JTable tableDatosEmpresa;
     // End of variables declaration//GEN-END:variables
 }
