@@ -10,12 +10,31 @@ package org.itson.excepciones;
  * 
  * @author Daniel Armando Peña Garcia ID:229185
  */
-public class ValidacionExcepcion {
+public class ValidacionExcepcion extends RuntimeException{
 
     /**
      *
      */
     public ValidacionExcepcion(){
-
+        super();
     }
+
+    /**
+     * 
+     * @param message 
+     */
+    public ValidacionExcepcion(String message) {
+        super(message);
+    }
+
+    /**
+     * 
+     * @param message
+     * @param cause 
+     */
+    public ValidacionExcepcion(String message, Throwable cause) {
+        super(message, cause);
+    }
+    
+    
 }

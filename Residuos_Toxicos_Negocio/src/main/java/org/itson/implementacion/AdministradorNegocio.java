@@ -8,7 +8,9 @@ package org.itson.implementacion;
 import com.dominio.Administrador;
 import java.util.List;
 import org.itson.excepciones.NegocioExcepcion;
+import org.itson.implementaciones.daos.AdministradoresDAO;
 import org.itson.interfaces.CrudInterface;
+import org.itson.interfaces.IConsultasDAO;
 
 /**
  * Descripción de la clase: 
@@ -16,7 +18,9 @@ import org.itson.interfaces.CrudInterface;
  * @author Daniel Armando Peña Garcia ID:229185
  */
 public class AdministradorNegocio implements CrudInterface<Administrador>{
-
+    
+    //IConsultasDAO dao = new AdministradoresDAO(MANEJADOR_CONEXIONES);
+    
     /**
      *
      */
