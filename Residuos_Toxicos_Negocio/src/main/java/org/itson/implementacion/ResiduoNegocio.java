@@ -52,11 +52,29 @@ public class ResiduoNegocio implements CrudInterface<Residuo> {
     }
 
     private Residuo validarResiduo(Residuo residuo) throws ValidacionExcepcion {
-        List<String> camposErroneos = new LinkedList();
+        List<String> camposErroneos = new LinkedList<>();
         String nombre = residuo.getNombre();
         String codigo = residuo.getCodigo();
         List<Quimico> listaQuimicos = residuo.getQuimicos();
-        return residuo;
+
+        if (this.validarFormatoCodigo(codigo) == null) {
+            camposErroneos.add("- Código inválido (Formato abc-123)");
+        }
+        if (this.validarListaVacia(listaQuimicos) == null) {
+            camposErroneos.add("- Lista de químicos vacía");
+        }
+
+        if (this.validarNombreVacio(nombre) == null) {
+            camposErroneos.add("- Nombre vacío");
+        }
+
+        if (camposErroneos.isEmpty()) {
+            return residuo;
+        }
+
+        String camposVacios = this.mensajeCampos(camposErroneos);
+
+        throw new ValidacionExcepcion(camposVacios);
     }
 
     private List<Quimico> validarListaVacia(List<Quimico> lista) {
@@ -80,5 +98,27 @@ public class ResiduoNegocio implements CrudInterface<Residuo> {
         }
 
         return nombre;
+    }
+
+    private String mensajeCampos(List<String> listaCampos) {
+        String mensaje = "";
+        for (String campo : listaCampos) {
+            mensaje += campo + "\n";
+        }
+        return mensaje;
+    }
+
+    
+    
+    private List<Residuo> validarCodigoResiduo(Residuo residuo){
+        Residuo residuoCodigo = new Residuo();
+        residuoCodigo.setCodigo(residuo.getCodigo());
+        return this.consultar(residuoCodigo);
+    }
+    
+    private List<Residuo> validarNombreResiduo(Residuo residuo){
+        Residuo residuoNombre = new Residuo();
+        residuoNombre.setNombre(residuo.getNombre());
+        return this.consultar(residuoNombre);
     }
 }

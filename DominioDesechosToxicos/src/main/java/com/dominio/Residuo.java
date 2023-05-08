@@ -22,6 +22,11 @@ public class Residuo {
      * Identificador del residuo
      */
     private ObjectId id;
+    
+    /**
+     * Nombre del Residuo
+     */
+    private String nombre;
 
     /**
      * Cantidad de residuo
@@ -48,12 +53,14 @@ public class Residuo {
      * Constructor que le asigna un id, cantidad, codigo y quimicos
      *
      * @param id Al que se le asignara
+     * @param nombre que se le asignara
      * @param cantidad que se le asignara
      * @param codigo que se le asignara
      * @param quimicos lista de quimicos que lo componen
      */
-    public Residuo(ObjectId id, Float cantidad, String codigo, List<Quimico> quimicos) {
+    public Residuo(ObjectId id,String nombre, Float cantidad, String codigo, List<Quimico> quimicos) {
         this.id = id;
+        this.nombre = nombre;
         this.cantidad = cantidad;
         this.codigo = codigo;
         this.quimicos = quimicos;
@@ -62,12 +69,14 @@ public class Residuo {
     /**
      * Constructor que asigna una canditada , un codigo y quimicos
      *
+     * @param nombre a asignar
      * @param cantidad que se le asignara
      * @param codigo que se le asignara
      * @param quimicos lista de quimicos que lo componen
      *
      */
-    public Residuo(Float cantidad, String codigo, List<Quimico> quimicos) {
+    public Residuo(String nombre,Float cantidad, String codigo, List<Quimico> quimicos) {
+        this.nombre = nombre;
         this.cantidad = cantidad;
         this.codigo = codigo;
         this.quimicos = quimicos;
@@ -144,5 +153,23 @@ public class Residuo {
     public void setQuimicos(List<Quimico> quimicos) {
         this.quimicos = quimicos;
     }
+
+    /**
+     * Regresa el nombre del Residuo
+     * @return el Nombre del Residuo
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Le asigna un nombre al Residuo
+     * @param nombre a asignar al Residuo
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
 
 }

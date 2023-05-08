@@ -1,26 +1,29 @@
 /**
-* SolicitudNegocio.java
-* 7 may. 2023 21:29:42
-*/ 
-
+ * SolicitudNegocio.java
+ * 7 may. 2023 21:29:42
+ */
 package org.itson.implementacion;
 
+import com.dominio.Productor;
+import com.dominio.Residuo;
 import com.dominio.Solicitud;
+import java.util.Date;
 import java.util.List;
 import org.itson.excepciones.NegocioExcepcion;
+import org.itson.excepciones.ValidacionExcepcion;
 import org.itson.interfaces.CrudInterface;
 
 /**
- * Descripción de la clase: 
- * 
+ * Descripción de la clase:
+ *
  * @author Daniel Armando Peña Garcia ID:229185
  */
-public class SolicitudNegocio implements CrudInterface<Solicitud>{
+public class SolicitudNegocio implements CrudInterface<Solicitud> {
 
     /**
      * Constructor por default
      */
-    public SolicitudNegocio(){
+    public SolicitudNegocio() {
 
     }
 
@@ -48,5 +51,30 @@ public class SolicitudNegocio implements CrudInterface<Solicitud>{
     public List<Solicitud> consultar(Solicitud elemento) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    private Solicitud validarSolicitud(Solicitud solicitud) throws ValidacionExcepcion {
+
+        return solicitud;
+    }
+
+    private Residuo validarResiduo(Residuo residuo) {
+        if (residuo == null) {
+            return null;
+        }
+        return residuo;
+    }
     
+    private Date validarFechaSolicitada(Date fechaSolicitada){
+        if(fechaSolicitada == null){
+            return null;
+        }
+        return fechaSolicitada;
+    }
+    
+    private Productor validarProductor(Productor productor){
+        if(productor == null){
+            return null;
+        }
+        return productor;
+    }
 }
