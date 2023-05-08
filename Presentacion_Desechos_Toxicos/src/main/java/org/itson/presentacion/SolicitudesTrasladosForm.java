@@ -1,19 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package org.itson.presentacion;
 
 /**
+ * Descripción de la clase: Solicitudes de traslados 
  *
- * @author arace
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID:
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID:229185
  */
-public class TrasladoEmpresasForm extends javax.swing.JFrame {
+public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
     /**
      * Creates new form TrasladoEmpresasForm
      */
-    public TrasladoEmpresasForm() {
+    public SolicitudesTrasladosForm() {
         initComponents();
     }
 
@@ -26,35 +27,20 @@ public class TrasladoEmpresasForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDatosEmpresa = new javax.swing.JTable();
-        buscarBtn = new javax.swing.JButton();
-        asignarBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         comboBoxEmpresa = new javax.swing.JComboBox<>();
+        asignarBtn = new javax.swing.JButton();
+        label1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 260, 510));
-
-        jLabel1.setText("Seleccione Empresa:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Empresas disponibles: ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         tableDatosEmpresa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,53 +63,47 @@ public class TrasladoEmpresasForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tableDatosEmpresa);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 420, 80));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 420, 80));
 
-        buscarBtn.setText("Buscar");
-        buscarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(buscarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Solicitudes de traslados: No atendidas");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
-        asignarBtn.setText("Asignar");
-        asignarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                asignarBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(asignarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, -1, -1));
-
-        jLabel2.setText("Datos de la Empresa");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-
-        comboBoxEmpresa.setBackground(new java.awt.Color(255, 255, 255));
         comboBoxEmpresa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        comboBoxEmpresa.setForeground(new java.awt.Color(0, 0, 0));
         comboBoxEmpresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa 1", "Empresa 2", " " }));
         comboBoxEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxEmpresaActionPerformed(evt);
             }
         });
-        getContentPane().add(comboBoxEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 200, -1));
+        getContentPane().add(comboBoxEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 200, -1));
+
+        asignarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        asignarBtn.setText("Asignar");
+        asignarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asignarBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(asignarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, -1, -1));
+
+        label1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        label1.setText("Solicitudes de traslados");
+        getContentPane().add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void asignarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_asignarBtnActionPerformed
-
-    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buscarBtnActionPerformed
 
     private void comboBoxEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEmpresaActionPerformed
         
 
     }//GEN-LAST:event_comboBoxEmpresaActionPerformed
+
+    private void asignarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarBtnActionPerformed
+       RegistrarTrasladoForm r = new RegistrarTrasladoForm();
+       r.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_asignarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,32 +122,32 @@ public class TrasladoEmpresasForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TrasladoEmpresasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TrasladoEmpresasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TrasladoEmpresasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TrasladoEmpresasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrasladoEmpresasForm().setVisible(true);
+                new SolicitudesTrasladosForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton asignarBtn;
-    private javax.swing.JButton buscarBtn;
     private javax.swing.JComboBox<String> comboBoxEmpresa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel label1;
     private javax.swing.JTable tableDatosEmpresa;
     // End of variables declaration//GEN-END:variables
 }
