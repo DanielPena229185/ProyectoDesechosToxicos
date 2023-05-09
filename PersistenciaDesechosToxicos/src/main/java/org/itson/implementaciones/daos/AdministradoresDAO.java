@@ -14,7 +14,6 @@ import java.util.List;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
-import org.itson.interfaces.IConexionBD;
 import org.itson.interfaces.IConsultasDAO;
 
 /**
@@ -28,20 +27,15 @@ import org.itson.interfaces.IConsultasDAO;
  */
 public class AdministradoresDAO implements IConsultasDAO<Administrador> {
 
-    private final IConexionBD MANEJADOR_CONEXIONES;
-    private final MongoDatabase BASE_DATOS;
     private final MongoCollection<Administrador> COLECCION; 
     
     /**
      * Método constructor que inicializa la clase para empezar con las
      * operaciones.
-     * @param MANEJADOR_CONEXIONES La conexión a la base de datos con la que
-     * va a trabajar.
+     * @param BASE_DATOS Base de datos a la que se conecta.
      */
-    public AdministradoresDAO(IConexionBD MANEJADOR_CONEXIONES) {
-        this.MANEJADOR_CONEXIONES = MANEJADOR_CONEXIONES;
-        this.BASE_DATOS = this.MANEJADOR_CONEXIONES.getBaseDatos();
-        this.COLECCION = this.BASE_DATOS.getCollection("administradores", Administrador.class);
+    public AdministradoresDAO(MongoDatabase BASE_DATOS) {
+        this.COLECCION = BASE_DATOS.getCollection("administradores", Administrador.class);
     }
     
     /**

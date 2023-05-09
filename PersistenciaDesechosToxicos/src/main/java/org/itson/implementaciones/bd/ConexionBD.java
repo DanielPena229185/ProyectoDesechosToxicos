@@ -21,15 +21,13 @@ import org.itson.interfaces.IConexionBD;
 public class ConexionBD implements IConexionBD {
 
     private final String BASE_DATOS;
-    
     private MongoDatabase baseDatos;
     
     /**
      * Método constructor que recibe una base datos como String.
-     * @param BASE_DATOS la base de datos a conectarse.
      */
-    public ConexionBD(String BASE_DATOS) {
-        this.BASE_DATOS = BASE_DATOS;
+    public ConexionBD() {
+        this.BASE_DATOS = "residuos_toxicos";
     }
     
     /**

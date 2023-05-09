@@ -4,9 +4,9 @@
  */
 package org.itson.implementaciones.bd;
 
+import com.mongodb.client.MongoDatabase;
 import org.itson.implementaciones.daos.AdministradoresDAO;
 import org.itson.implementaciones.daos.CuentasDAO;
-import org.itson.interfaces.IConexionBD;
 import org.itson.interfaces.IConsultasDAO;
 
 /**
@@ -14,10 +14,11 @@ import org.itson.interfaces.IConsultasDAO;
  * @author oscar
  */
 public class DAOFactory {
-    private final IConexionBD MANEJADOR_CONEXION;
+   
+    private final MongoDatabase MANEJADOR_CONEXION;
     
-    public DAOFactory(IConexionBD MANEJADOR_CONEXION) {
-        this.MANEJADOR_CONEXION = MANEJADOR_CONEXION;
+    public DAOFactory() {
+        this.MANEJADOR_CONEXION = new ConexionBD().getBaseDatos();
     }
     
     public IConsultasDAO getAdministradoresDAO() {
@@ -25,6 +26,10 @@ public class DAOFactory {
     }
     
     public IConsultasDAO getCuentasDAO() {
+        return new CuentasDAO(this.MANEJADOR_CONEXION);
+    }
+    
+    public IConsultasDAO getDireccionesDAO() {
         return new CuentasDAO(this.MANEJADOR_CONEXION);
     }
 }
