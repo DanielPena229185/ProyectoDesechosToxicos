@@ -7,6 +7,7 @@ package org.itson.implementaciones.bd;
 import com.mongodb.client.MongoDatabase;
 import org.itson.implementaciones.daos.AdministradoresDAO;
 import org.itson.implementaciones.daos.CuentasDAO;
+import org.itson.implementaciones.daos.EmpresasTransportistasDAO;
 import org.itson.interfaces.IConsultasDAO;
 
 /**
@@ -31,5 +32,9 @@ public class DAOFactory {
     
     public IConsultasDAO getDireccionesDAO() {
         return new CuentasDAO(this.MANEJADOR_CONEXION);
+    }
+    
+    public IConsultasDAO getEmpresaTransportistaDAO(){
+        return new EmpresasTransportistasDAO(MANEJADOR_CONEXION);
     }
 }
