@@ -26,6 +26,13 @@ public class Productor extends Empresa {
     private List<Solicitud> solicitudes;
 
     /**
+     * Constructor por default
+     */
+    public Productor() {
+        super();
+    }
+
+    /**
      * Constructor con lista de residuos, lista de solicitudes, identificador,
      * nombre, lista direcciones
      *
@@ -36,7 +43,7 @@ public class Productor extends Empresa {
      * @param nombre Nombre de la empresa
      * @param direcciones Lista de direcciones de la empresa
      */
-    public Productor(List<Residuo> residuos, List<Solicitud> solicitudes, ObjectId id,Tipo tipo, String nombre, List<Direccion> direcciones) {
+    public Productor( ObjectId id, List<Residuo> residuos, List<Solicitud> solicitudes, Tipo tipo, String nombre, List<Direccion> direcciones) {
         super(id,tipo, nombre, direcciones);
         this.residuos = residuos;
         this.solicitudes = solicitudes;

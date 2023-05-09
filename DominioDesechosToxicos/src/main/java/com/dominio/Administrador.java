@@ -39,6 +39,12 @@ public class Administrador {
     private Cuenta cuenta;
 
     /**
+     * Constructor por default
+     */
+    public Administrador() {
+    }
+
+    /**
      * Constructor con el identificador del administrador, nombres, apellido paterno y materno y su cuenta
      * 
      * @param id Identificador del administrador
