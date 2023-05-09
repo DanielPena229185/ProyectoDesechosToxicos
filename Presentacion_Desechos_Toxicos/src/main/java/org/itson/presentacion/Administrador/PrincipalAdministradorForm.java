@@ -2,18 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package org.itson.presentacion;
+package org.itson.presentacion.Administrador;
+
+import org.itson.presentacion.InicioForm;
 
 /**
  *
  * @author arace
  */
-public class PrincipalProductorForm extends javax.swing.JFrame {
+public class PrincipalAdministradorForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form PrincipalProductorForm
+     * Creates new form PrincipalAdministradorForm
      */
-    public PrincipalProductorForm() {
+    public PrincipalAdministradorForm() {
         initComponents();
     }
 
@@ -28,10 +30,10 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         registrarmeLbl = new javax.swing.JLabel();
-        residuosRegistradosBtn = new javax.swing.JButton();
+        solicitudesTrasladosBtn = new javax.swing.JButton();
         eliminarSolicitudBtn = new javax.swing.JButton();
         actualizarSolictudBtn = new javax.swing.JButton();
-        registrarSolicitarTrasladoBtn = new javax.swing.JButton();
+        solicitarTrasladosBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         regresarBtn = new javax.swing.JButton();
 
@@ -40,18 +42,18 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 231, 231));
 
         registrarmeLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        registrarmeLbl.setText("Productor");
+        registrarmeLbl.setText("Administrador");
 
-        residuosRegistradosBtn.setText("Mostrar Reisduos Registrados");
+        solicitudesTrasladosBtn.setText("Ver solitudes de traslados");
 
         eliminarSolicitudBtn.setText("Eliminar Solicitud");
 
         actualizarSolictudBtn.setText("Actualizar Solicitud");
 
-        registrarSolicitarTrasladoBtn.setText("Solicitar traslado");
-        registrarSolicitarTrasladoBtn.addActionListener(new java.awt.event.ActionListener() {
+        solicitarTrasladosBtn.setText("Solicitudes de traslados");
+        solicitarTrasladosBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarSolicitarTrasladoBtnActionPerformed(evt);
+                solicitarTrasladosBtnActionPerformed(evt);
             }
         });
 
@@ -78,17 +80,15 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(registrarSolicitarTrasladoBtn)
+                            .addComponent(solicitarTrasladosBtn)
                             .addComponent(jLabel1)
+                            .addComponent(solicitudesTrasladosBtn)
                             .addComponent(actualizarSolictudBtn)
                             .addComponent(eliminarSolicitudBtn)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(regresarBtn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(residuosRegistradosBtn)))
-                .addContainerGap(327, Short.MAX_VALUE))
+                        .addComponent(regresarBtn)))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,10 +98,10 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(registrarSolicitarTrasladoBtn)
-                .addGap(33, 33, 33)
-                .addComponent(residuosRegistradosBtn)
-                .addGap(40, 40, 40)
+                .addComponent(solicitarTrasladosBtn)
+                .addGap(32, 32, 32)
+                .addComponent(solicitudesTrasladosBtn)
+                .addGap(41, 41, 41)
                 .addComponent(actualizarSolictudBtn)
                 .addGap(28, 28, 28)
                 .addComponent(eliminarSolicitudBtn)
@@ -121,17 +121,17 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registrarSolicitarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSolicitarTrasladoBtnActionPerformed
-        
-    }//GEN-LAST:event_registrarSolicitarTrasladoBtnActionPerformed
+    private void solicitarTrasladosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarTrasladosBtnActionPerformed
+    SolicitudesTrasladosForm b = new SolicitudesTrasladosForm();
+    b.setVisible(true);
+    dispose();
+    }//GEN-LAST:event_solicitarTrasladosBtnActionPerformed
 
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
         InicioForm p = new InicioForm();
@@ -156,20 +156,20 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrincipalProductorForm().setVisible(true);
+                new PrincipalAdministradorForm().setVisible(true);
             }
         });
     }
@@ -179,9 +179,9 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     private javax.swing.JButton eliminarSolicitudBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton registrarSolicitarTrasladoBtn;
     private javax.swing.JLabel registrarmeLbl;
     private javax.swing.JButton regresarBtn;
-    private javax.swing.JButton residuosRegistradosBtn;
+    private javax.swing.JButton solicitarTrasladosBtn;
+    private javax.swing.JButton solicitudesTrasladosBtn;
     // End of variables declaration//GEN-END:variables
 }

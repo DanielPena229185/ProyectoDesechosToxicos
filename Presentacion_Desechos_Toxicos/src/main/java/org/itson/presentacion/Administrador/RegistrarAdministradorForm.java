@@ -3,13 +3,14 @@
  * 4 may. 2023 16:54:00
  *
  */
-package org.itson.presentacion;
+package org.itson.presentacion.Administrador;
 
 import java.awt.Color;
 import java.util.List;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.itson.presentacion.InicioForm;
 
 /**
  * Descripción de la clase:

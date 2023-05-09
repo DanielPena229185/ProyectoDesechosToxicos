@@ -5,6 +5,9 @@
 
 package org.itson.presentacion;
 
+import org.itson.presentacion.Productor.RegistrarProductorForm;
+import org.itson.presentacion.Administrador.RegistrarAdministradorForm;
+
 /**
  * Descripción de la clase: 
  * 

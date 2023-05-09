@@ -1,11 +1,12 @@
 
-package org.itson.presentacion;
+package org.itson.presentacion.Productor;
 
 import java.awt.Color;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.itson.presentacion.InicioForm;
 
 /**
  *

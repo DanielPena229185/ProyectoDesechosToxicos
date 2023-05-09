@@ -1,5 +1,7 @@
 
-package org.itson.presentacion;
+package org.itson.presentacion.Administrador;
+
+import org.itson.presentacion.Administrador.PrincipalAdministradorForm;
 
 /**
  * Descripción de la clase: Solicitudes de traslados 

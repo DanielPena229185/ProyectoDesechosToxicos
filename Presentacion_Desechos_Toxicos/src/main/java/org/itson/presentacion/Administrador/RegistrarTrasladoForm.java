@@ -1,5 +1,5 @@
 
-package org.itson.presentacion;
+package org.itson.presentacion.Administrador;
 
 /**
  * Descripción de la clase: Registrar traslado de residuo

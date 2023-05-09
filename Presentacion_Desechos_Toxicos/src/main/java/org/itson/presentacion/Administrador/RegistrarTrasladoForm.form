@@ -150,10 +150,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="label1">
       <Properties>
+        <Property name="text" type="java.lang.String" value="Registrar traslado"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Registrar traslado"/>
       </Properties>
     </Component>
   </SubComponents>
