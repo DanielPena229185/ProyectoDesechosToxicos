@@ -24,6 +24,11 @@ public abstract class Empresa {
      * Identificador de la empresa
      */
     private ObjectId id;
+    
+    /**
+     * Tipo de empresa
+     */
+    private Tipo tipo;
 
     /**
      * Nombre de la empresa
@@ -40,11 +45,13 @@ public abstract class Empresa {
      * empresa
      *
      * @param id Identificador de la empresa
+     * @param tipo Tipo de empresa
      * @param nombre Nombre de la empresa
      * @param direcciones direcciones de la empresa
      */
-    public Empresa(ObjectId id, String nombre, List<Direccion> direcciones) {
+    public Empresa(ObjectId id,Tipo tipo, String nombre, List<Direccion> direcciones) {
         this.id = id;
+        this.tipo = tipo;
         this.nombre = nombre;
         this.direcciones = direcciones;
     }
@@ -55,7 +62,8 @@ public abstract class Empresa {
      * @param nombre Nombre de la empresa
      * @param direcciones Direcciones de la empresa
      */
-    public Empresa(String nombre, List<Direccion> direcciones) {
+    public Empresa(Tipo tipo,String nombre, List<Direccion> direcciones) {
+        this.tipo=tipo;
         this.nombre = nombre;
         this.direcciones = direcciones;
     }
@@ -65,7 +73,8 @@ public abstract class Empresa {
      *
      * @param nombre Nombre de la empresa
      */
-    public Empresa(String nombre) {
+    public Empresa(Tipo tipo,String nombre) {
+        this.tipo=tipo;
         this.nombre = nombre;
     }
 
@@ -136,6 +145,16 @@ public abstract class Empresa {
         this.direcciones.add(direccion);
         return direcciones;
     }
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
+    
+    
 
     @Override
     public int hashCode() {

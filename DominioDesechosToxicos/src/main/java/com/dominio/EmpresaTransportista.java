@@ -32,11 +32,12 @@ public class EmpresaTransportista extends Empresa {
      * @param vehiculos Lista de vehículos
      * @param transportes Lista de transportes
      * @param id Identificador de la empresa
+     * @param tipo Tipo de empresa
      * @param nombre Nombre de la empresa
      * @param direcciones Lista de direcciones de la empresa
      */
-    public EmpresaTransportista(List<Vehiculo> vehiculos, List<Transporte> transportes, ObjectId id, String nombre, List<Direccion> direcciones) {
-        super(id, nombre, direcciones);
+    public EmpresaTransportista(List<Vehiculo> vehiculos, List<Transporte> transportes, ObjectId id, Tipo tipo, String nombre, List<Direccion> direcciones) {
+        super(id, tipo, nombre, direcciones);
         this.vehiculos = vehiculos;
         this.transportes = transportes;
     }
@@ -47,11 +48,12 @@ public class EmpresaTransportista extends Empresa {
      *
      * @param vehiculos Lista de vehículos
      * @param transportes Lista de transportes
+     * @param tipo Tipo de empresa
      * @param nombre Nombre de la empresa
      * @param direcciones Lista de direcciones de la empresa
      */
-    public EmpresaTransportista(List<Vehiculo> vehiculos, List<Transporte> transportes, String nombre, List<Direccion> direcciones) {
-        super(nombre, direcciones);
+    public EmpresaTransportista(List<Vehiculo> vehiculos, List<Transporte> transportes, Tipo tipo, String nombre, List<Direccion> direcciones) {
+        super(tipo, nombre, direcciones);
         this.vehiculos = vehiculos;
         this.transportes = transportes;
     }
@@ -62,10 +64,11 @@ public class EmpresaTransportista extends Empresa {
      *
      * @param vehiculos Lista de vehículos
      * @param transportes Lista de transportes
+     * @param tipo Tipo de empresa
      * @param nombre Nombre de la empresa
      */
-    public EmpresaTransportista(List<Vehiculo> vehiculos, List<Transporte> transportes, String nombre) {
-        super(nombre);
+    public EmpresaTransportista(List<Vehiculo> vehiculos, List<Transporte> transportes, Tipo tipo, String nombre) {
+        super(tipo, nombre);
         this.vehiculos = vehiculos;
         this.transportes = transportes;
     }

@@ -32,11 +32,12 @@ public class Productor extends Empresa {
      * @param residuos Lista de residuos
      * @param solicitudes Lista de solicitudes
      * @param id Identificador de la empresa
+     * @param tipo Tipo de empresa
      * @param nombre Nombre de la empresa
      * @param direcciones Lista de direcciones de la empresa
      */
-    public Productor(List<Residuo> residuos, List<Solicitud> solicitudes, ObjectId id, String nombre, List<Direccion> direcciones) {
-        super(id, nombre, direcciones);
+    public Productor(List<Residuo> residuos, List<Solicitud> solicitudes, ObjectId id,Tipo tipo, String nombre, List<Direccion> direcciones) {
+        super(id,tipo, nombre, direcciones);
         this.residuos = residuos;
         this.solicitudes = solicitudes;
     }
@@ -47,11 +48,12 @@ public class Productor extends Empresa {
      *
      * @param residuos Lista de residuos
      * @param solicitudes Lista de solicitudes
+     * @param tipo Tipo de empresa
      * @param nombre Nombre de la empresa
      * @param direcciones Lista de direcciones de la empresa
      */
-    public Productor(List<Residuo> residuos, List<Solicitud> solicitudes, String nombre, List<Direccion> direcciones) {
-        super(nombre, direcciones);
+    public Productor(List<Residuo> residuos, List<Solicitud> solicitudes,Tipo tipo, String nombre, List<Direccion> direcciones) {
+        super(tipo,nombre, direcciones);
         this.residuos = residuos;
         this.solicitudes = solicitudes;
     }
@@ -61,10 +63,11 @@ public class Productor extends Empresa {
      *
      * @param residuos Lista de residuos
      * @param solicitudes Lista de solicitudes
+     * @param tipo Tipo de empresa
      * @param nombre Nombre de la empresa
      */
-    public Productor(List<Residuo> residuos, List<Solicitud> solicitudes, String nombre) {
-        super(nombre);
+    public Productor(List<Residuo> residuos, List<Solicitud> solicitudes,Tipo tipo, String nombre) {
+        super(tipo,nombre);
         this.residuos = residuos;
         this.solicitudes = solicitudes;
     }
