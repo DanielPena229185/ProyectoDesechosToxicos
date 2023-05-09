@@ -68,7 +68,7 @@ public class CuentasDAO implements IConsultasDAO<Cuenta>{
     @Override
     public Cuenta actualizar(Cuenta o, Cuenta s) throws PersistenciaException {
         try {
-            this.COLECCION.updateOne((Bson) this.consultar(o.getId()), new Document("$set", s));
+            this.COLECCION.updateOne(Filters.eq(o.getId()), new Document("$set", s));
             
             return o;
         } catch (PersistenciaException e) {
@@ -86,7 +86,7 @@ public class CuentasDAO implements IConsultasDAO<Cuenta>{
     @Override
     public Cuenta eliminar(Cuenta o) throws PersistenciaException {
         try {
-            this.COLECCION.deleteOne(Filters.eq(this.consultar(o.getId())));
+            this.COLECCION.deleteOne(Filters.eq(o.getId()));
         } catch(PersistenciaException e) {
             throw new PersistenciaException("No se pudo eliminar la cuenta.\n" + e.getMessage());
         }

@@ -68,12 +68,12 @@ public class EmpresasTransportistasDAO implements IConsultasDAO<EmpresaTransport
     @Override
     public EmpresaTransportista actualizar(EmpresaTransportista o, EmpresaTransportista s) throws PersistenciaException {
         try {            
-            this.COLECCION.updateOne((Bson) this.consultar(o.getId()), new Document("$set", s));
-            
-            return o;
+            this.COLECCION.updateOne(Filters.eq(o.getId()), new Document("$set", s));
         } catch (PersistenciaException e) {
             throw new PersistenciaException("No se pudo actualizar la empresa transportista.\n" + e.getMessage());
         }
+        
+        return o;
     }
 
     /**
@@ -86,7 +86,7 @@ public class EmpresasTransportistasDAO implements IConsultasDAO<EmpresaTransport
     @Override
     public EmpresaTransportista eliminar(EmpresaTransportista o) throws PersistenciaException {
         try {
-            this.COLECCION.deleteOne(Filters.eq(this.consultar(o.getId())));
+            this.COLECCION.deleteOne(Filters.eq(o.getId()));
         } catch(PersistenciaException e) {
             throw new PersistenciaException("No se pudo eliminar la empresa transportista." + e.getMessage());
         }

@@ -68,12 +68,12 @@ public class DireccionesDAO implements IConsultasDAO<Direccion> {
     @Override
     public Direccion actualizar(Direccion o, Direccion s) throws PersistenciaException {
         try {
-            this.COLECCION.updateOne((Bson) this.consultar(o.getId()), new Document("$set", s));
-            
-            return o;
+            this.COLECCION.updateOne(Filters.eq(o.getId()), new Document("$set", s));
         } catch (PersistenciaException e) {
             throw new PersistenciaException("No se pudo actualizar la dirección.\n" + e.getMessage());
         }
+        
+        return o;
     }
 
     /**
@@ -86,7 +86,7 @@ public class DireccionesDAO implements IConsultasDAO<Direccion> {
     @Override
     public Direccion eliminar(Direccion o) throws PersistenciaException {
         try {
-            this.COLECCION.deleteOne(Filters.eq(this.consultar(o.getId())));
+            this.COLECCION.deleteOne(Filters.eq(o.getId()));
         } catch (PersistenciaException e) {
             throw new PersistenciaException("No se pudo eliminar la dirección.\n" + e.getMessage());
         }
