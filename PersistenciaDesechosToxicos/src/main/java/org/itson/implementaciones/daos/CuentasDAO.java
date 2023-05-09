@@ -50,7 +50,7 @@ public class CuentasDAO implements IConsultasDAO<Cuenta>{
         try {
             this.COLECCION.insertOne(o);
         } catch (MongoException e) {
-            throw new PersistenciaException("No se pudo insertar la cuenta en la base de datos.", e.getCause());
+            throw new PersistenciaException("No se pudo insertar la cuenta en la base de datos.\n", e.getCause());
         }
         
         return o;
