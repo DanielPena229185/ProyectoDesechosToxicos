@@ -29,9 +29,9 @@ public class Traslado {
     private Residuo residuo;
     
     /**
-     * Aminisitrador que registro el Traslado
+     * id del Aminisitrador que registro el Traslado
      */
-    private Administrador administrador;
+    private ObjectId id_administrador;
     /**
      * Direccion a la que se dirige el Traslado
      */
@@ -52,15 +52,15 @@ public class Traslado {
      * @param id identificador a asignar
      * @param cantidadResiduo cantidad de residuos a asignar
      * @param residuo Residuo a asignar
-     * @param administrador Administrador a asignar
+     * @param id_administrador id de Administrador a asignar
      * @param direccion Direccion a asignar
      * @param transporte Trasnporte a asignar
      */
-    public Traslado(ObjectId id, Integer cantidad_residuo, Residuo residuo, Administrador administrador, Direccion direccion, Transporte transporte) {
+    public Traslado(ObjectId id, Integer cantidad_residuo, Residuo residuo, ObjectId id_administrador, Direccion direccion, Transporte transporte) {
         this.id = id;
         this.cantidad_residuo = cantidad_residuo;
         this.residuo = residuo;
-        this.administrador = administrador;
+        this.id_administrador = id_administrador;
         this.direccion = direccion;
         this.transporte = transporte;
     }
@@ -73,10 +73,10 @@ public class Traslado {
      * @param direccion Direccion a asignar
      * @param transporte Trasnporte a asignar
      */
-    public Traslado(Integer cantidad_residuo, Residuo residuo, Administrador administrador, Direccion direccion, Transporte transporte) {
+    public Traslado(Integer cantidad_residuo, Residuo residuo, ObjectId id_administrador, Direccion direccion, Transporte transporte) {
         this.cantidad_residuo = cantidad_residuo;
         this.residuo = residuo;
-        this.administrador = administrador;
+        this.id_administrador = id_administrador;
         this.direccion = direccion;
         this.transporte = transporte;
     }
@@ -130,19 +130,19 @@ public class Traslado {
     }
 
     /**
-     * Regresa el Administrador del Traslado
+     * Regresa id de el Administrador del Traslado
      * @return el Administrador del Traslado
      */
-    public Administrador getAdministrador() {
-        return administrador;
+    public ObjectId getId_Administrador() {
+        return id_administrador;
     }
 
     /**
-     * Le asigna un Administrador al Traslado
+     * Le asigna un id al Administrador al Traslado
      * @param administrador a asignar
      */
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
+    public void setId_Administrador(ObjectId id_administrador) {
+        this.id_administrador = id_administrador;
     }
 
     /**
