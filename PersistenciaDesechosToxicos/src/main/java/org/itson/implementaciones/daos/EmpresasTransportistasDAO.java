@@ -11,6 +11,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
@@ -66,16 +67,10 @@ public class EmpresasTransportistasDAO implements IConsultasDAO<EmpresaTransport
      */
     @Override
     public EmpresaTransportista actualizar(EmpresaTransportista o, EmpresaTransportista s) throws PersistenciaException {
-        try {
-            EmpresaTransportista empresaTransportista = this.consultar(o.getId());
+        try {            
+            this.COLECCION.updateOne((Bson) this.consultar(o.getId()), new Document("$set", s));
             
-            empresaTransportista.setVehiculos(s.getVehiculos());
-            empresaTransportista.setTransportes(s.getTransportes());
-            empresaTransportista.setTipo(s.getTipo());
-            empresaTransportista.setNombre(s.getNombre());
-            empresaTransportista.setDirecciones(s.getDirecciones());
-            
-            return empresaTransportista;
+            return o;
         } catch (PersistenciaException e) {
             throw new PersistenciaException("No se pudo actualizar la empresa transportista.\n" + e.getMessage());
         }

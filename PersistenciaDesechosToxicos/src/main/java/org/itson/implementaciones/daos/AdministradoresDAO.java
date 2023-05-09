@@ -11,6 +11,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
@@ -67,14 +68,9 @@ public class AdministradoresDAO implements IConsultasDAO<Administrador> {
     @Override
     public Administrador actualizar(Administrador o, Administrador s) throws PersistenciaException {
         try {
-            Administrador administrador = this.consultar(o.getId());
+            this.COLECCION.updateOne((Bson) this.consultar(o.getId()), new Document("$set", s));
             
-            administrador.setNombres(s.getNombres());
-            administrador.setApellido_paterno(s.getApellido_paterno());
-            administrador.setApellido_materno(s.getApellido_materno());
-            administrador.setCuenta(s.getCuenta());
-            
-            return administrador;
+            return o;
         } catch (PersistenciaException e) {
             throw new PersistenciaException("No se pudo actualizar el administrador.\n" + e.getMessage());
         }

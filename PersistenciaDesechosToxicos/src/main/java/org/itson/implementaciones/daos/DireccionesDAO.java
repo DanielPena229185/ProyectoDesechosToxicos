@@ -11,6 +11,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
@@ -67,14 +68,9 @@ public class DireccionesDAO implements IConsultasDAO<Direccion> {
     @Override
     public Direccion actualizar(Direccion o, Direccion s) throws PersistenciaException {
         try {
-            Direccion direccion = this.consultar(o.getId());
+            this.COLECCION.updateOne((Bson) this.consultar(o.getId()), new Document("$set", s));
             
-            direccion.setCalle(s.getCalle());
-            direccion.setColonia(s.getColonia());
-            direccion.setNumero(s.getNumero());
-            direccion.setCiudad(s.getCiudad());
-            
-            return direccion;
+            return o;
         } catch (PersistenciaException e) {
             throw new PersistenciaException("No se pudo actualizar la dirección.\n" + e.getMessage());
         }

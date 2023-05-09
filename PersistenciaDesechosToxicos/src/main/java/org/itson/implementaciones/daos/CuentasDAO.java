@@ -11,6 +11,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
@@ -67,12 +68,9 @@ public class CuentasDAO implements IConsultasDAO<Cuenta>{
     @Override
     public Cuenta actualizar(Cuenta o, Cuenta s) throws PersistenciaException {
         try {
-            Cuenta cuenta = this.consultar(o.getId());
+            this.COLECCION.updateOne((Bson) this.consultar(o.getId()), new Document("$set", s));
             
-            cuenta.setCorreo(s.getCorreo());
-            cuenta.setContrasena(s.getContrasena());
-            
-            return cuenta;
+            return o;
         } catch (PersistenciaException e) {
             throw new PersistenciaException("No se pudo actualizar la cuenta.\n" + e.getMessage());
         }
