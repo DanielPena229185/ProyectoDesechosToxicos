@@ -4,9 +4,10 @@
 
 package org.itson;
 
-import com.dominio.Quimico;
-import org.itson.implementacion.QuimicoNegocio;
-import org.itson.implementacion.ResiduoNegocio;
+import com.dominio.Direccion;
+import javax.swing.JOptionPane;
+import org.itson.excepciones.NegocioExcepcion;
+import org.itson.implementacion.DireccionNegocio;
 import org.itson.interfaces.CrudInterface;
 
 /**
@@ -16,6 +17,12 @@ import org.itson.interfaces.CrudInterface;
 public class Residuos_Toxicos_Negocio {
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        ResiduoNegocio r = new ResiduoNegocio();
+        CrudInterface crud = new DireccionNegocio();
+        try {
+            crud.insertar(new Direccion());
+        } catch (NegocioExcepcion e) {
+            JOptionPane.showMessageDialog(null, "Datos inválidos: \n"
+                    + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

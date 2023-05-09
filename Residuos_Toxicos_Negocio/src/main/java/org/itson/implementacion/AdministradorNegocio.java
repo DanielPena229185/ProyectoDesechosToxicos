@@ -30,42 +30,80 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
         administradorDAO = new DAOFactory().getAdministradoresDAO();
     }
 
+    /**
+     *
+     * @param elemento
+     * @return
+     * @throws NegocioExcepcion
+     */
     @Override
     public Administrador insertar(Administrador elemento) throws NegocioExcepcion {
         try {
             this.validarAdministrador(elemento);
             administradorDAO.insertar(elemento);
         } catch (PersistenciaException e) {
-            throw new NegocioExcepcion(e.getMessage())
-        } catch (ValidacionExcepcion a){
+            throw new NegocioExcepcion(e.getMessage());
+        } catch (ValidacionExcepcion a) {
             throw new NegocioExcepcion(a.getMessage());
         }
         return elemento;
     }
 
+    /**
+     *
+     * @param elemento
+     * @return
+     * @throws NegocioExcepcion
+     */
     @Override
     public Administrador eliminar(Administrador elemento) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     *
+     * @param elemento
+     * @return
+     * @throws NegocioExcepcion
+     */
     @Override
     public Administrador actualizar(Administrador elemento) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     *
+     * @return @throws NegocioExcepcion
+     */
     @Override
     public List<Administrador> consultar() throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     *
+     * @param elemento
+     * @return
+     * @throws NegocioExcepcion
+     */
     @Override
     public List<Administrador> consultar(Administrador elemento) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     *
+     * @param administrador
+     * @return
+     * @throws ValidacionExcepcion
+     */
     private Administrador validarAdministrador(Administrador administrador) throws ValidacionExcepcion {
 
         List<String> camposErroneos = new LinkedList<>();
+
+        if (administrador == null) {
+            throw new ValidacionExcepcion("No hay ninguna información de administrador");
+        }
 
         //Validar nombres
         String nombres = administrador.getNombres();
@@ -85,16 +123,19 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
 
         //Validar la cuenta del administrador
         //Validar correo
-        String correoCuenta = administrador.getCuenta().getCorreo();
-        if (validarTextoVacio(correoCuenta) == null) {
-            camposErroneos.add("- Correo");
+        if (administrador.getCuenta() != null) {
+            String correoCuenta = administrador.getCuenta().getCorreo();
+            if (validarTextoVacio(correoCuenta) == null) {
+                camposErroneos.add("- Correo");
+            }
+            //Validar contraseña
+            String contrasenaCuenta = administrador.getCuenta().getCorreo();
+            if (validarTextoVacio(contrasenaCuenta) == null) {
+                camposErroneos.add("- Contraseña");
+            }
+        }else{
+            camposErroneos.add("- No contiene cuenta");
         }
-        //Validar contraseña
-        String contrasenaCuenta = administrador.getCuenta().getCorreo();
-        if (validarTextoVacio(contrasenaCuenta) == null) {
-            camposErroneos.add("- Contraseña");
-        }
-
         if (camposErroneos.isEmpty()) {
             //Si no hay elementos en la lista
             //Se regresa el administrador
@@ -107,6 +148,11 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
 
     }
 
+    /**
+     *
+     * @param listaCampos
+     * @return
+     */
     private String mensajeCampos(List<String> listaCampos) {
         String mensaje = "";
         for (String campo : listaCampos) {
@@ -115,6 +161,11 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
         return mensaje;
     }
 
+    /**
+     *
+     * @param texto
+     * @return
+     */
     private String validarTextoVacio(String texto) {
         if (texto == null || texto.isEmpty()) {
             return null;
