@@ -95,11 +95,11 @@ public class CuentasDAO implements IConsultasDAO<Cuenta>{
     public Cuenta eliminar(Cuenta o) throws PersistenciaException {
         try {
             this.COLECCION.deleteOne(Filters.eq(this.consultar(o.getId())));
-            
-            return o;
         } catch(PersistenciaException e) {
             throw new PersistenciaException("No se pudo eliminar la cuenta.\n" + e.getMessage());
         }
+        
+        return o;
     }
 
     /**
@@ -142,7 +142,7 @@ public class CuentasDAO implements IConsultasDAO<Cuenta>{
     /**
      * Método que consulta a todas las Cuentas que coincidan con los
      * parámetros dados.
-     * @param parametros Objeto con los parámetros especificados.
+     * @param parametros Cuenta con los parámetros especificados.
      * @return Lista de Cuentas que coincidan.
      * @throws PersistenciaException Si no se encuentra ninguna coincidencia
      * en la base de datos.
