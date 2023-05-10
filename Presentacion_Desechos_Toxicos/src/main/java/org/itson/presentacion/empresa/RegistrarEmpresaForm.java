@@ -4,7 +4,7 @@
 * 
 */ 
 
-package org.itson.presentacion;
+package org.itson.presentacion.empresa;
 
 import java.awt.Color;
 import java.util.LinkedList;
@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.itson.presentacion.InicioForm;
 
 /**
  * Descripción de la clase: 

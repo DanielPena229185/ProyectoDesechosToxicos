@@ -5,6 +5,7 @@
 package org.itson.presentacion.Productor;
 
 import org.itson.presentacion.InicioForm;
+import org.itson.presentacion.residuo.RegistroResiduoForm;
 
 /**
  *
@@ -28,88 +29,274 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        registrarmeLbl = new javax.swing.JLabel();
-        residuosRegistradosBtn = new javax.swing.JButton();
-        eliminarSolicitudBtn = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        solicitarTrasladosBtn = new javax.swing.JButton();
+        solicitudesTrasladosBtn = new javax.swing.JButton();
         actualizarSolictudBtn = new javax.swing.JButton();
-        registrarSolicitarTrasladoBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        eliminarSolicitudBtn = new javax.swing.JButton();
         regresarBtn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        regitstrarReisduoBtn = new javax.swing.JButton();
+        listaReisduosBtn = new javax.swing.JButton();
+        actualizarReisiduoBtn = new javax.swing.JButton();
+        eliminarReisduoBtn = new javax.swing.JButton();
+        regresarBtn1 = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 231, 231));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        registrarmeLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        registrarmeLbl.setText("Productor");
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
+        jLabel2.setText("ADMINISTRADOR");
 
-        residuosRegistradosBtn.setText("Mostrar Reisduos Registrados");
-
-        eliminarSolicitudBtn.setText("Eliminar Solicitud");
-
-        actualizarSolictudBtn.setText("Actualizar Solicitud");
-
-        registrarSolicitarTrasladoBtn.setText("Solicitar traslado");
-        registrarSolicitarTrasladoBtn.addActionListener(new java.awt.event.ActionListener() {
+        solicitarTrasladosBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        solicitarTrasladosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud.png"))); // NOI18N
+        solicitarTrasladosBtn.setText("Solicitar Traslado");
+        solicitarTrasladosBtn.setContentAreaFilled(false);
+        solicitarTrasladosBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        solicitarTrasladosBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud_G.png"))); // NOI18N
+        solicitarTrasladosBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        solicitarTrasladosBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarSolicitarTrasladoBtnActionPerformed(evt);
+                solicitarTrasladosBtnActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Seleccione la opcion a realizar:");
+        solicitudesTrasladosBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        solicitudesTrasladosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/verSolicitudes.png"))); // NOI18N
+        solicitudesTrasladosBtn.setText("Ver solicitudes");
+        solicitudesTrasladosBtn.setContentAreaFilled(false);
+        solicitudesTrasladosBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        solicitudesTrasladosBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/verSolicitudes_G.png"))); // NOI18N
+        solicitudesTrasladosBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        regresarBtn.setText("Regresar");
+        actualizarSolictudBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        actualizarSolictudBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/actualizarSolicitud.png"))); // NOI18N
+        actualizarSolictudBtn.setText("Actualizar Solicitud");
+        actualizarSolictudBtn.setContentAreaFilled(false);
+        actualizarSolictudBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        actualizarSolictudBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/actualizarSolicitud_G.png"))); // NOI18N
+        actualizarSolictudBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        eliminarSolicitudBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        eliminarSolicitudBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/eliminarSolicitud.png"))); // NOI18N
+        eliminarSolicitudBtn.setText("Eliminar Solicitud");
+        eliminarSolicitudBtn.setContentAreaFilled(false);
+        eliminarSolicitudBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        eliminarSolicitudBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/eliminarSolicitud_G.png"))); // NOI18N
+        eliminarSolicitudBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        eliminarSolicitudBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarSolicitudBtnActionPerformed(evt);
+            }
+        });
+
+        regresarBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
+        regresarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/regresar.png"))); // NOI18N
+        regresarBtn.setContentAreaFilled(false);
         regresarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarBtnActionPerformed(evt);
             }
         });
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addComponent(solicitudesTrasladosBtn))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(solicitarTrasladosBtn)))
+                        .addGap(188, 188, 188)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(eliminarSolicitudBtn)
+                            .addComponent(actualizarSolictudBtn)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(regresarBtn)))
+                .addContainerGap(87, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(209, 209, 209))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(actualizarSolictudBtn))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(solicitarTrasladosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(solicitudesTrasladosBtn, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(eliminarSolicitudBtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(regresarBtn)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
+        jLabel3.setText("PRODUCTOR");
+
+        regitstrarReisduoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        regitstrarReisduoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud.png"))); // NOI18N
+        regitstrarReisduoBtn.setText("Registrar residuo");
+        regitstrarReisduoBtn.setContentAreaFilled(false);
+        regitstrarReisduoBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        regitstrarReisduoBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud_G.png"))); // NOI18N
+        regitstrarReisduoBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        regitstrarReisduoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regitstrarReisduoBtnActionPerformed(evt);
+            }
+        });
+
+        listaReisduosBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        listaReisduosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/verSolicitudes.png"))); // NOI18N
+        listaReisduosBtn.setText("Lista de residuos");
+        listaReisduosBtn.setContentAreaFilled(false);
+        listaReisduosBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        listaReisduosBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/verSolicitudes_G.png"))); // NOI18N
+        listaReisduosBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        listaReisduosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaReisduosBtnActionPerformed(evt);
+            }
+        });
+
+        actualizarReisiduoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        actualizarReisiduoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/actualizarSolicitud.png"))); // NOI18N
+        actualizarReisiduoBtn.setText("Actualizar residuo");
+        actualizarReisiduoBtn.setContentAreaFilled(false);
+        actualizarReisiduoBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        actualizarReisiduoBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/actualizarSolicitud_G.png"))); // NOI18N
+        actualizarReisiduoBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        actualizarReisiduoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarReisiduoBtnActionPerformed(evt);
+            }
+        });
+
+        eliminarReisduoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        eliminarReisduoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/eliminarSolicitud.png"))); // NOI18N
+        eliminarReisduoBtn.setText("Eliminar Reisduo");
+        eliminarReisduoBtn.setContentAreaFilled(false);
+        eliminarReisduoBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        eliminarReisduoBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/eliminarSolicitud_G.png"))); // NOI18N
+        eliminarReisduoBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        eliminarReisduoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarReisduoBtnActionPerformed(evt);
+            }
+        });
+
+        regresarBtn1.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
+        regresarBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/regresar.png"))); // NOI18N
+        regresarBtn1.setContentAreaFilled(false);
+        regresarBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarBtn1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(416, 416, 416)
+                            .addComponent(actualizarReisiduoBtn))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(58, 58, 58)
+                            .addComponent(regresarBtn1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(listaReisduosBtn)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(regitstrarReisduoBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(eliminarReisduoBtn)))))
+                .addContainerGap(87, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(218, 218, 218))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(listaReisduosBtn)
+                    .addComponent(actualizarReisiduoBtn))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(eliminarReisduoBtn)
+                    .addComponent(regitstrarReisduoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(regresarBtn1)
+                .addGap(14, 14, 14))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addComponent(registrarmeLbl))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(registrarSolicitarTrasladoBtn)
-                            .addComponent(jLabel1)
-                            .addComponent(actualizarSolictudBtn)
-                            .addComponent(eliminarSolicitudBtn)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(regresarBtn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(residuosRegistradosBtn)))
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(registrarmeLbl)
-                .addGap(70, 70, 70)
-                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(registrarSolicitarTrasladoBtn)
-                .addGap(33, 33, 33)
-                .addComponent(residuosRegistradosBtn)
-                .addGap(40, 40, 40)
-                .addComponent(actualizarSolictudBtn)
-                .addGap(28, 28, 28)
-                .addComponent(eliminarSolicitudBtn)
-                .addGap(66, 66, 66)
-                .addComponent(regresarBtn)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,29 +304,67 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+                .addGap(38, 38, 38)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registrarSolicitarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSolicitarTrasladoBtnActionPerformed
-        
-    }//GEN-LAST:event_registrarSolicitarTrasladoBtnActionPerformed
+    private void solicitarTrasladosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarTrasladosBtnActionPerformed
+      
+    }//GEN-LAST:event_solicitarTrasladosBtnActionPerformed
+
+    private void eliminarSolicitudBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarSolicitudBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarSolicitudBtnActionPerformed
 
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
         InicioForm p = new InicioForm();
         p.setVisible(true);
         dispose();
     }//GEN-LAST:event_regresarBtnActionPerformed
+
+    private void regitstrarReisduoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regitstrarReisduoBtnActionPerformed
+        RegistroResiduoForm r = new RegistroResiduoForm();
+        r.setVisible(true);
+    }//GEN-LAST:event_regitstrarReisduoBtnActionPerformed
+
+    private void eliminarReisduoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarReisduoBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarReisduoBtnActionPerformed
+
+    private void regresarBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtn1ActionPerformed
+        InicioForm p = new InicioForm();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_regresarBtn1ActionPerformed
+
+    private void actualizarReisiduoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarReisiduoBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actualizarReisiduoBtnActionPerformed
+
+    private void listaReisduosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaReisduosBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaReisduosBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,13 +402,22 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizarReisiduoBtn;
     private javax.swing.JButton actualizarSolictudBtn;
+    private javax.swing.JButton eliminarReisduoBtn;
     private javax.swing.JButton eliminarSolicitudBtn;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton registrarSolicitarTrasladoBtn;
-    private javax.swing.JLabel registrarmeLbl;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton listaReisduosBtn;
+    private javax.swing.JButton regitstrarReisduoBtn;
     private javax.swing.JButton regresarBtn;
-    private javax.swing.JButton residuosRegistradosBtn;
+    private javax.swing.JButton regresarBtn1;
+    private javax.swing.JButton solicitarTrasladosBtn;
+    private javax.swing.JButton solicitudesTrasladosBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package org.itson.presentacion.Administrador;
 
 import org.itson.presentacion.InicioForm;
@@ -29,100 +26,151 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        registrarmeLbl = new javax.swing.JLabel();
-        solicitudesTrasladosBtn = new javax.swing.JButton();
-        eliminarSolicitudBtn = new javax.swing.JButton();
-        actualizarSolictudBtn = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         solicitarTrasladosBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        solicitudesTrasladosBtn = new javax.swing.JButton();
+        actualizarSolictudBtn = new javax.swing.JButton();
+        eliminarSolicitudBtn = new javax.swing.JButton();
         regresarBtn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(720, 531));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 231, 231));
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
-        registrarmeLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        registrarmeLbl.setText("Administrador");
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        solicitudesTrasladosBtn.setText("Ver solitudes de traslados");
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
+        jLabel2.setText("ADMINISTRADOR");
 
-        eliminarSolicitudBtn.setText("Eliminar Solicitud");
-
-        actualizarSolictudBtn.setText("Actualizar Solicitud");
-
-        solicitarTrasladosBtn.setText("Solicitudes de traslados");
+        solicitarTrasladosBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        solicitarTrasladosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud.png"))); // NOI18N
+        solicitarTrasladosBtn.setText("Solicitar Traslado");
+        solicitarTrasladosBtn.setContentAreaFilled(false);
+        solicitarTrasladosBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        solicitarTrasladosBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud_G.png"))); // NOI18N
+        solicitarTrasladosBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         solicitarTrasladosBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 solicitarTrasladosBtnActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Seleccione la opcion a realizar:");
+        solicitudesTrasladosBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        solicitudesTrasladosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/verSolicitudes.png"))); // NOI18N
+        solicitudesTrasladosBtn.setText("Ver solicitudes");
+        solicitudesTrasladosBtn.setContentAreaFilled(false);
+        solicitudesTrasladosBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        solicitudesTrasladosBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/verSolicitudes_G.png"))); // NOI18N
+        solicitudesTrasladosBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        regresarBtn.setText("Regresar");
+        actualizarSolictudBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        actualizarSolictudBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/actualizarSolicitud.png"))); // NOI18N
+        actualizarSolictudBtn.setText("Actualizar Solicitud");
+        actualizarSolictudBtn.setContentAreaFilled(false);
+        actualizarSolictudBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        actualizarSolictudBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/actualizarSolicitud_G.png"))); // NOI18N
+        actualizarSolictudBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        eliminarSolicitudBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        eliminarSolicitudBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/eliminarSolicitud.png"))); // NOI18N
+        eliminarSolicitudBtn.setText("Eliminar Solicitud");
+        eliminarSolicitudBtn.setContentAreaFilled(false);
+        eliminarSolicitudBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        eliminarSolicitudBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/eliminarSolicitud_G.png"))); // NOI18N
+        eliminarSolicitudBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        eliminarSolicitudBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarSolicitudBtnActionPerformed(evt);
+            }
+        });
+
+        regresarBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
+        regresarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/regresar.png"))); // NOI18N
+        regresarBtn.setContentAreaFilled(false);
         regresarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarBtnActionPerformed(evt);
             }
         });
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addComponent(solicitudesTrasladosBtn))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(solicitarTrasladosBtn)))
+                        .addGap(188, 188, 188)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(eliminarSolicitudBtn)
+                            .addComponent(actualizarSolictudBtn)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(regresarBtn)))
+                .addContainerGap(87, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(209, 209, 209))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(actualizarSolictudBtn))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(solicitarTrasladosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(solicitudesTrasladosBtn, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(eliminarSolicitudBtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(regresarBtn)
+                .addGap(14, 14, 14))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addComponent(registrarmeLbl))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(solicitarTrasladosBtn)
-                            .addComponent(jLabel1)
-                            .addComponent(solicitudesTrasladosBtn)
-                            .addComponent(actualizarSolictudBtn)
-                            .addComponent(eliminarSolicitudBtn)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(regresarBtn)))
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(registrarmeLbl)
-                .addGap(70, 70, 70)
-                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(solicitarTrasladosBtn)
-                .addGap(32, 32, 32)
-                .addComponent(solicitudesTrasladosBtn)
-                .addGap(41, 41, 41)
-                .addComponent(actualizarSolictudBtn)
-                .addGap(28, 28, 28)
-                .addComponent(eliminarSolicitudBtn)
-                .addGap(66, 66, 66)
-                .addComponent(regresarBtn)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,34 +187,15 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_regresarBtnActionPerformed
 
+    private void eliminarSolicitudBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarSolicitudBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarSolicitudBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalAdministradorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+       
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PrincipalAdministradorForm().setVisible(true);
@@ -177,9 +206,10 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizarSolictudBtn;
     private javax.swing.JButton eliminarSolicitudBtn;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel registrarmeLbl;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton regresarBtn;
     private javax.swing.JButton solicitarTrasladosBtn;
     private javax.swing.JButton solicitudesTrasladosBtn;

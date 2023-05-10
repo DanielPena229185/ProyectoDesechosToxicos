@@ -76,13 +76,16 @@ public class RegistrarAdministradorForm extends javax.swing.JFrame {
         contrasenaValidaLbl = new javax.swing.JLabel();
         correoValidoLbl = new javax.swing.JLabel();
         regresarBtn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelInfo.setBackground(new Color(51, 162, 255));
+        panelInfo.setBackground(new Color(255,209,153));
+        panelInfo.setForeground(new java.awt.Color(102, 153, 255));
+        panelInfo.setPreferredSize(new java.awt.Dimension(260, 510));
 
         javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
         panelInfo.setLayout(panelInfoLayout);
@@ -97,11 +100,11 @@ public class RegistrarAdministradorForm extends javax.swing.JFrame {
 
         panelFondo.add(panelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 280, 530));
 
-        registrarmeLbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        registrarmeLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 30)); // NOI18N
         registrarmeLbl.setText("Registrarme");
         panelFondo.add(registrarmeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lblConfirmarContrasenaLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblConfirmarContrasenaLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
         lblConfirmarContrasenaLbl.setText("Confirmar contraseña:");
         panelFondo.add(lblConfirmarContrasenaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, -1, -1));
         panelFondo.add(renglonPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 140, 10));
@@ -125,7 +128,7 @@ public class RegistrarAdministradorForm extends javax.swing.JFrame {
         });
         panelFondo.add(campoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 140, -1));
 
-        nombresLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        nombresLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         nombresLbl.setText("Nombres:");
         panelFondo.add(nombresLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
         panelFondo.add(renglonContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 300, 10));
@@ -177,7 +180,7 @@ public class RegistrarAdministradorForm extends javax.swing.JFrame {
         maternoLbl.setText("Materno");
         panelFondo.add(maternoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
-        apellidosLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        apellidosLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         apellidosLbl.setText("Apellidos:");
         panelFondo.add(apellidosLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
         panelFondo.add(renglonNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 200, 10));
@@ -201,7 +204,7 @@ public class RegistrarAdministradorForm extends javax.swing.JFrame {
         });
         panelFondo.add(campoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 300, -1));
 
-        correoLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        correoLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         correoLbl.setText("Correo:");
         panelFondo.add(correoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
         panelFondo.add(renglonCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 300, 10));
@@ -261,33 +264,37 @@ public class RegistrarAdministradorForm extends javax.swing.JFrame {
         });
         panelFondo.add(checkVisibleContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, -1));
 
-        contrasenaLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        contrasenaLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 18)); // NOI18N
         contrasenaLbl.setText("Contraseña:");
         panelFondo.add(contrasenaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
         registrarmeBtn.setBackground(new java.awt.Color(0, 0, 0));
         registrarmeBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         registrarmeBtn.setForeground(new java.awt.Color(255, 255, 255));
-        registrarmeBtn.setText("Registrarme");
+        registrarmeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/registrar.png"))); // NOI18N
+        registrarmeBtn.setContentAreaFilled(false);
         registrarmeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarmeBtnActionPerformed(evt);
             }
         });
-        panelFondo.add(registrarmeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, -1, -1));
+        panelFondo.add(registrarmeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 470, -1, -1));
         panelFondo.add(contrasenaValidaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, -1));
         panelFondo.add(correoValidoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         regresarBtn.setBackground(new java.awt.Color(0, 0, 0));
         regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         regresarBtn.setForeground(new java.awt.Color(255, 255, 255));
-        regresarBtn.setLabel("Regresar");
+        regresarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/regresar.png"))); // NOI18N
+        regresarBtn.setText("");
+        regresarBtn.setContentAreaFilled(false);
         regresarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarBtnActionPerformed(evt);
             }
         });
-        panelFondo.add(regresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, -1, -1));
+        panelFondo.add(regresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
+        panelFondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 170, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -615,6 +622,7 @@ public class RegistrarAdministradorForm extends javax.swing.JFrame {
     private javax.swing.JLabel contrasenaValidaLbl;
     private javax.swing.JLabel correoLbl;
     private javax.swing.JLabel correoValidoLbl;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblConfirmarContrasenaLbl;
     private javax.swing.JLabel maternoLbl;
     private javax.swing.JLabel nombresLbl;

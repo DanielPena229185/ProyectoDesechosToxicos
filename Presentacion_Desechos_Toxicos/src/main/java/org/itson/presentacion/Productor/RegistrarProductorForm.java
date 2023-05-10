@@ -56,56 +56,74 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
         campoNombreProductor = new javax.swing.JTextField();
         checkVisibleContrasena = new javax.swing.JCheckBox();
         checkVisibleContrasena1 = new javax.swing.JCheckBox();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        registroProductorlbl.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        registroProductorlbl.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
         registroProductorlbl.setText("Registro Productor");
+        jPanel1.add(registroProductorlbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        nombreLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        nombreLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         nombreLbl.setText("Nombre:");
+        jPanel1.add(nombreLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
-        correoElectronicoLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        correoElectronicoLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         correoElectronicoLbl.setText("Correo electronico: ");
+        jPanel1.add(correoElectronicoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
-        contrasenaLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        contrasenaLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         contrasenaLbl.setText("Contraseña: ");
+        jPanel1.add(contrasenaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 116, -1));
 
-        confirmarContrasenaLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        confirmarContrasenaLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         confirmarContrasenaLbl.setText("Confirmar contraseña: ");
+        jPanel1.add(confirmarContrasenaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 205, -1));
 
         campoClaveProductor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoClaveProductor.setForeground(Color.GRAY);
         campoClaveProductor.setText(this.CONTRASENA_DEFAULT);
         campoClaveProductor.setBorder(null);
+        jPanel1.add(campoClaveProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 251, -1));
 
         campoConfirmarClaveProductor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoConfirmarClaveProductor.setForeground(Color.GRAY);
         campoConfirmarClaveProductor.setText(CONTRASENA_DEFAULT);
         campoConfirmarClaveProductor.setBorder(null);
+        jPanel1.add(campoConfirmarClaveProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 260, -1));
+        jPanel1.add(separador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 251, 15));
+        jPanel1.add(separado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 251, 10));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 260, 10));
 
         registrarProductorBtn.setBackground(new java.awt.Color(0, 0, 0));
         registrarProductorBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         registrarProductorBtn.setForeground(new java.awt.Color(255, 255, 255));
-        registrarProductorBtn.setText("Registrarme");
+        registrarProductorBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/registrar.png"))); // NOI18N
+        registrarProductorBtn.setContentAreaFilled(false);
         registrarProductorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarProductorBtnActionPerformed(evt);
             }
         });
+        jPanel1.add(registrarProductorBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 464, -1, -1));
 
         regresarBtn.setBackground(new java.awt.Color(0, 0, 0));
         regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         regresarBtn.setForeground(new java.awt.Color(255, 255, 255));
-        regresarBtn.setLabel("Regresar");
+        regresarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/regresar.png"))); // NOI18N
+        regresarBtn.setText("");
+        regresarBtn.setContentAreaFilled(false);
         regresarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarBtnActionPerformed(evt);
             }
         });
+        jPanel1.add(regresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, -1));
 
         campoCorreoProductor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoCorreoProductor.setForeground(Color.GRAY);
@@ -124,6 +142,10 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
                 campoCorreoProductorMouseClicked(evt);
             }
         });
+        jPanel1.add(campoCorreoProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 251, -1));
+        jPanel1.add(separador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 258, 10));
+        jPanel1.add(correoValidoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 199, 16));
+        jPanel1.add(contrasenaValidaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 406, 251, 19));
 
         campoNombreProductor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoNombreProductor.setForeground(Color.GRAY);
@@ -147,6 +169,7 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
                 campoNombreProductorActionPerformed(evt);
             }
         });
+        jPanel1.add(campoNombreProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 350, -1));
 
         checkVisibleContrasena.setText("Visible");
         checkVisibleContrasena.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +177,7 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
                 checkVisibleContrasenaActionPerformed(evt);
             }
         });
+        jPanel1.add(checkVisibleContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 65, -1));
 
         checkVisibleContrasena1.setText("Visible");
         checkVisibleContrasena1.addActionListener(new java.awt.event.ActionListener() {
@@ -161,97 +185,25 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
                 checkVisibleContrasena1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoNombreProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(registroProductorlbl)
-                    .addComponent(nombreLbl)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(campoConfirmarClaveProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(checkVisibleContrasena1))
-                            .addComponent(confirmarContrasenaLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(registrarProductorBtn)
-                                .addGap(56, 56, 56)
-                                .addComponent(regresarBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(contrasenaValidaLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(correoElectronicoLbl)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(campoCorreoProductor, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(separado2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(contrasenaLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(83, 83, 83)
-                                .addComponent(correoValidoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoClaveProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(separador1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(checkVisibleContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(separador3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(registroProductorlbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nombreLbl)
-                .addGap(12, 12, 12)
-                .addComponent(campoNombreProductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separador3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(correoElectronicoLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoCorreoProductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(separado2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(correoValidoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(contrasenaLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(campoClaveProductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(checkVisibleContrasena))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(separador1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(confirmarContrasenaLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoConfirmarClaveProductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkVisibleContrasena1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contrasenaValidaLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(registrarProductorBtn)
-                        .addComponent(regresarBtn)))
-                .addGap(264, 264, 264))
-        );
+        jPanel1.add(checkVisibleContrasena1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 270, 10));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 670));
+
+        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 290, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 530, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 290, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -471,6 +423,8 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
     private javax.swing.JLabel correoElectronicoLbl;
     private javax.swing.JLabel correoValidoLbl;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel nombreLbl;

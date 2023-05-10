@@ -1,6 +1,23 @@
 
 package org.itson.presentacion.Administrador;
 
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import org.itson.presentacion.InicioForm;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.logging.Level;
+import javax.swing.table.DefaultTableModel;
+
 /**
  * Descripción de la clase: Registrar traslado de residuo
  *
@@ -10,7 +27,7 @@ package org.itson.presentacion.Administrador;
  * @author Daniel Armando Peña Garcia ID:229185
  */
 public class RegistrarTrasladoForm extends javax.swing.JFrame {
-
+private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
     /**
      * Creates new form RegistrarTrasladoForm
      */
@@ -27,16 +44,49 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        productorLbl = new javax.swing.JLabel();
+        fechaLbl = new javax.swing.JLabel();
+        fechaSolicitada = new com.github.lgooddatepicker.components.DatePicker();
+        registrarTrasladoLbl = new javax.swing.JLabel();
+        campoProductor = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaRegistrarTraslado = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        jPanel2 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
         seleccionarBtn = new javax.swing.JButton();
-        label1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        productorLbl.setText("Productor:");
+        productorLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+
+        fechaLbl.setText("Fecha Solicitada");
+        fechaLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+
+        registrarTrasladoLbl.setText("Solicitud Traslado");
+        registrarTrasladoLbl.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 30)); // NOI18N
+
+        campoProductor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campoProductor.setForeground(Color.GRAY);
+        campoProductor.setText(NOMBRE_PRODUCTOR_DEFAULT);
+        campoProductor.setBorder(null);
+        campoProductor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoProductorFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoProductorFocusLost(evt);
+            }
+        });
+        campoProductor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoProductorMouseClicked(evt);
+            }
+        });
 
         tablaRegistrarTraslado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,15 +109,11 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaRegistrarTraslado);
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Productor");
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
-        jLabel2.setText("Fecha Solicitada");
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
-        seleccionarBtn.setText("Seleccionar");
+        seleccionarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/siguiente.png"))); // NOI18N
+        seleccionarBtn.setContentAreaFilled(false);
         seleccionarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         seleccionarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,64 +121,182 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
             }
         });
 
-        label1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        label1.setText("Registrar traslado");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(20, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(seleccionarBtn)
+                        .addGap(23, 23, 23))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(productorLbl)
+                            .addComponent(registrarTrasladoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(campoProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaLbl)
+                            .addComponent(fechaSolicitada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(registrarTrasladoLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(productorLbl)
+                .addGap(18, 18, 18)
+                .addComponent(campoProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(fechaLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fechaSolicitada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(seleccionarBtn)
+                        .addGap(59, 59, 59))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(111, Short.MAX_VALUE))))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addComponent(seleccionarBtn)
-                        .addGap(33, 33, 33))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label1)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(label1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(132, 132, 132))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(seleccionarBtn)
-                        .addGap(156, 156, 156))))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void seleccionarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarBtnActionPerformed
-       InformacionSolicitudTrasladoForm r = new InformacionSolicitudTrasladoForm();
+        int i = 0;
+        if(!validarFecha()) {
+                JOptionPane.showMessageDialog(this, "Fecha ocupada", "Seleccione otra fecha", JOptionPane.ERROR_MESSAGE);
+                i++;
+            } else {
+            List<String> camposVacios = this.validarCampoVacio();
+            if (!camposVacios.isEmpty()) {
+                String mensaje = "Los siguientes campos se encuentran vacíos \n";
+                for (String campos : camposVacios) {
+                    mensaje += campos + "\n";
+                }
+                JOptionPane.showMessageDialog(this, mensaje, "No se puede registrar traslado", JOptionPane.ERROR_MESSAGE);
+                i++;
+            }
+        }
+        if (i == 0) {
+          
+            JOptionPane.showMessageDialog(this, "Registro exitoso", "Nuevo Registro de traslado", JOptionPane.INFORMATION_MESSAGE);
+        }
+       SolictudTrasladoForm r = new SolictudTrasladoForm();
        r.setVisible(true);
        dispose();
     }//GEN-LAST:event_seleccionarBtnActionPerformed
 
+    private void campoProductorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoProductorFocusGained
+        if (validarCampoTextoVacio()) {
+            this.campoProductor.setForeground(Color.BLACK);
+            this.campoProductor.setText("");
+        }
+    }//GEN-LAST:event_campoProductorFocusGained
+
+    private void campoProductorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoProductorFocusLost
+        if (validarCampoTextoVacio()) {
+            this.campoProductor.setForeground(Color.GRAY);
+            this.campoProductor.setText(NOMBRE_PRODUCTOR_DEFAULT);
+        }
+    }//GEN-LAST:event_campoProductorFocusLost
+
+    private void campoProductorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoProductorMouseClicked
+        if (validarCampoTextoVacio()) {
+            this.campoProductor.setForeground(Color.BLACK);
+            this.campoProductor.setText("");
+        }
+    }//GEN-LAST:event_campoProductorMouseClicked
+
+    private List<String> validarCampoVacio() {
+    List<String> campos = new ArrayList<>();
+    if (this.validarCampoTextoVacio()) {
+        campos.add("- Productor");
+    }
+    return campos;
+}
+    private boolean validarCampoTextoVacio() {
+        return campoTexto.getText().isEmpty() || campoTexto.getText().equals(textoDefault);
+    }
+    private LocalDate solicitarFecha() {
+        LocalDate fecha = this.fechaSolicitada.getDate();
+        while (fechaSolicitada.getDate() == null) {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    return fecha;
+    }
+    
+
+    private boolean validarFecha() {
+       String fechaString = this.fechaSolicitada.getText(); 
+       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        try {
+            LocalDate fecha = LocalDate.parse(fechaString, formatter); 
+        return true;
+        } catch (DateTimeParseException e) {
+        return false;
+        }
+    
+    }
+    //Metodo incompleto debido a que se requieren metodos de las otras capas
+    private void cargarTablaResiduoATransportar(){
+        Residuo residuo = a.buscarResiduo(id); //es temporal la estructura de este objeto 
+        try {
+            List<Residuo> listaRegistroResiduo = b.buscarRegistroRegistro(configPaginado, residuo, this.cantidad, this.solicitarFecha());
+            DefaultTableModel modeloTabla = (DefaultTableModel) this.tablaRegistrarTraslado.getModel();
+            modeloTabla.setRowCount(0);
+            for (RegistroTraslado registroTraslado : registro) {
+                Calendar fechaRegistroReisduo = residuo.getFechaEmision();
+                Date date = fechaRegistroReisduo.getTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String fechaE = sdf.format(date);
+                Object[] solicitud = {
+                    residuo.getNombreResiduo(),
+                    residuo.getCantidad(),
+                    fechaE
+                };
+                modeloTabla.addRow(solicitud);
+            }
+        } catch (Exception e) {
+            LOG.log(Level.SEVERE, e.getMessage());
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -169,13 +333,19 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.github.lgooddatepicker.components.DatePicker datePicker1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField campoProductor;
+    private javax.swing.JLabel fechaLbl;
+    private com.github.lgooddatepicker.components.DatePicker fechaSolicitada;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel label1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel productorLbl;
+    private javax.swing.JLabel registrarTrasladoLbl;
     private javax.swing.JButton seleccionarBtn;
     private javax.swing.JTable tablaRegistrarTraslado;
     // End of variables declaration//GEN-END:variables
+
+    
 }

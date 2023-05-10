@@ -5,6 +5,7 @@
 
 package org.itson.presentacion;
 
+import org.itson.presentacion.empresa.RegistrarEmpresaForm;
 import org.itson.presentacion.Productor.RegistrarProductorForm;
 import org.itson.presentacion.Administrador.RegistrarAdministradorForm;
 
