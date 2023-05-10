@@ -38,9 +38,9 @@ public class Solicitud {
     private Residuo residuo;
 
     /**
-     * Productor que registro la Solicitud
+     * ID del Productor que registro la Solicitud
      */
-    private Productor productor;
+    private ObjectId id_productor;
 
     /**
      * Constructor por defecto
@@ -54,13 +54,13 @@ public class Solicitud {
      * @param id Identificador de la solicitud
      * @param fechaSolicitada Fecha solicitada
      * @param residuo Residuo que tiene la solicitud
-     * @param productor Productor que realizó la solicitud
+     * @param id_productor id del Productor que realizó la solicitud
      */
-    public Solicitud(ObjectId id, Date fechaSolicitada, Residuo residuo, Productor productor) {
+    public Solicitud(ObjectId id, Date fechaSolicitada, Residuo residuo, ObjectId id_productor) {
         this.id = id;
         this.fecha_solicitada = fechaSolicitada;
         this.residuo = residuo;
-        this.productor = productor;
+        this.id_productor = id_productor;
     }
 
     /**
@@ -69,12 +69,12 @@ public class Solicitud {
      *
      * @param fechaSolicitada Fecha en la que se solicitó
      * @param residuo Residuo de la solicitó
-     * @param productor Productor que solicitó
+     * @param id_productor id del Productor que solicitó
      */
-    public Solicitud(Date fechaSolicitada, Residuo residuo, Productor productor) {
+    public Solicitud(Date fechaSolicitada, Residuo residuo, ObjectId id_productor) {
         this.fecha_solicitada = fechaSolicitada;
         this.residuo = residuo;
-        this.productor = productor;
+        this.id_productor = id_productor;
     }
 
     /**
@@ -150,12 +150,12 @@ public class Solicitud {
     }
 
     /**
-     * Obtener el productor
+     * Obtener el id  delproductor
      *
-     * @return Productor
+     * @return id del Productor
      */
-    public Productor getProductor() {
-        return productor;
+    public ObjectId getId_Productor() {
+        return id_productor;
     }
 
     /**
@@ -163,8 +163,8 @@ public class Solicitud {
      *
      * @param productor Productor
      */
-    public void setProductor(Productor productor) {
-        this.productor = productor;
+    public void setId_Productor(ObjectId id_productor) {
+        this.id_productor = id_productor;
     }
 
 }

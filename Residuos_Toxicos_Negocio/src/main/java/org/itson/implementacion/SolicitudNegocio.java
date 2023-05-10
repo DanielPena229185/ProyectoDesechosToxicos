@@ -9,6 +9,7 @@ import com.dominio.Residuo;
 import com.dominio.Solicitud;
 import java.util.Date;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.itson.excepciones.NegocioExcepcion;
 import org.itson.excepciones.ValidacionExcepcion;
 import org.itson.interfaces.CrudInterface;
@@ -34,11 +35,6 @@ public class SolicitudNegocio implements CrudInterface<Solicitud> {
 
     @Override
     public Solicitud eliminar(Solicitud elemento) throws NegocioExcepcion {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Solicitud actualizar(Solicitud elemento) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -76,5 +72,15 @@ public class SolicitudNegocio implements CrudInterface<Solicitud> {
             return null;
         }
         return productor;
+    }
+
+    @Override
+    public List<Solicitud> consultar(ObjectId id) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Solicitud actualizar(Solicitud elemento, Solicitud elementoE) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

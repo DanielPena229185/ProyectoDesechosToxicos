@@ -11,6 +11,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
 import java.util.List;
+import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
@@ -50,7 +51,7 @@ public class CuentasDAO implements IConsultasDAO<Cuenta>{
         try {
             this.COLECCION.insertOne(o);
         } catch (MongoException e) {
-            throw new PersistenciaException("No se pudo insertar la cuenta en la base de datos.", e.getCause());
+            throw new PersistenciaException("No se pudo insertar la cuenta en la base de datos.\n", e.getCause());
         }
         
         return o;
@@ -67,12 +68,9 @@ public class CuentasDAO implements IConsultasDAO<Cuenta>{
     @Override
     public Cuenta actualizar(Cuenta o, Cuenta s) throws PersistenciaException {
         try {
-            Cuenta cuenta = this.consultar(o.getId());
+            this.COLECCION.updateOne(Filters.eq(o.getId()), new Document("$set", s));
             
-            cuenta.setCorreo(s.getCorreo());
-            cuenta.setContrasena(s.getContrasena());
-            
-            return cuenta;
+            return o;
         } catch (PersistenciaException e) {
             throw new PersistenciaException("No se pudo actualizar la cuenta.\n" + e.getMessage());
         }
@@ -88,7 +86,7 @@ public class CuentasDAO implements IConsultasDAO<Cuenta>{
     @Override
     public Cuenta eliminar(Cuenta o) throws PersistenciaException {
         try {
-            this.COLECCION.deleteOne(Filters.eq(this.consultar(o.getId())));
+            this.COLECCION.deleteOne(Filters.eq(o.getId()));
         } catch(PersistenciaException e) {
             throw new PersistenciaException("No se pudo eliminar la cuenta.\n" + e.getMessage());
         }

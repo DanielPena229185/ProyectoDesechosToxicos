@@ -28,9 +28,9 @@ public class Tratamiento {
      */
     private Residuo residuo;
     /**
-     * Empresa Trasnportista que registro el Tratamiento
+     * id de la Empresa Trasnportista que registro el Tratamiento
      */
-    private EmpresaTransportista empresa_transportista;
+    private ObjectId id_empresa_transportista;
 
     /**
      * Constructor por defecto
@@ -43,13 +43,13 @@ public class Tratamiento {
      * @param id a asignar
      * @param descripcion a asignar
      * @param residuo a asignar
-     * @param empresa_transportista a asignar 
+     * @param id_empresa_transportista a asignar 
      */
-    public Tratamiento(ObjectId id, String descripcion, Residuo residuo, EmpresaTransportista empresa_transportista) {
+    public Tratamiento(ObjectId id, String descripcion, Residuo residuo, ObjectId id_empresa_transportista) {
         this.id = id;
         this.descripcion = descripcion;
         this.residuo = residuo;
-        this.empresa_transportista = empresa_transportista;
+        this.id_empresa_transportista = id_empresa_transportista;
     }
 
     /**
@@ -58,10 +58,10 @@ public class Tratamiento {
      * @param residuo a asignar
      * @param empresa_transportista a asignar 
      */
-    public Tratamiento(String descripcion, Residuo residuo, EmpresaTransportista empresa_transportista) {
+    public Tratamiento(String descripcion, Residuo residuo, ObjectId id_empresa_transportista) {
         this.descripcion = descripcion;
         this.residuo = residuo;
-        this.empresa_transportista = empresa_transportista;
+        this.id_empresa_transportista = id_empresa_transportista;
     }
 
     /**
@@ -116,16 +116,16 @@ public class Tratamiento {
      * Regresa la empresa trasnportista del Tratamiento
      * @return la empresa transportista del Tratamiento
      */
-    public EmpresaTransportista getEmpresa_transportista() {
-        return empresa_transportista;
+    public ObjectId getId_Empresa_transportista() {
+        return id_empresa_transportista;
     }
 
     /**
      * Le asigna la empresa trasnportadora al Tratamiento
      * @param empresa_transportista a asignar
      */
-    public void setEmpresa_transportista(EmpresaTransportista empresa_transportista) {
-        this.empresa_transportista = empresa_transportista;
+    public void setId_Empresa_transportista(ObjectId id_empresa_transportista) {
+        this.id_empresa_transportista = id_empresa_transportista;
     }
     
     

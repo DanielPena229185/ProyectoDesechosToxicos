@@ -4,10 +4,7 @@
 
 package org.itson;
 
-import com.dominio.Quimico;
-import org.itson.implementacion.QuimicoNegocio;
-import org.itson.implementacion.ResiduoNegocio;
-import org.itson.interfaces.CrudInterface;
+import org.itson.implementacion.AdministradorNegocio;
 
 /**
  *
@@ -16,6 +13,8 @@ import org.itson.interfaces.CrudInterface;
 public class Residuos_Toxicos_Negocio {
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        ResiduoNegocio r = new ResiduoNegocio();
+        AdministradorNegocio neg = new AdministradorNegocio();
+        String f = neg.validarCaracteresEspeciales("dsbjd");
+        System.out.println(f);
     }
 }

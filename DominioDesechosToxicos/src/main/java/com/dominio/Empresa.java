@@ -24,7 +24,7 @@ public abstract class Empresa {
      * Identificador de la empresa
      */
     private ObjectId id;
-    
+
     /**
      * Tipo de empresa
      */
@@ -39,6 +39,12 @@ public abstract class Empresa {
      * Lista de direcciones en la que se úbica esa empresa
      */
     private List<Direccion> direcciones;
+    
+    /**
+     * Constructor por default
+     */
+    public Empresa() {
+    }
 
     /**
      * Constructor con identificador, nombre y lista de direcciones de la
@@ -49,7 +55,7 @@ public abstract class Empresa {
      * @param nombre Nombre de la empresa
      * @param direcciones direcciones de la empresa
      */
-    public Empresa(ObjectId id,Tipo tipo, String nombre, List<Direccion> direcciones) {
+    public Empresa(ObjectId id, Tipo tipo, String nombre, List<Direccion> direcciones) {
         this.id = id;
         this.tipo = tipo;
         this.nombre = nombre;
@@ -59,11 +65,12 @@ public abstract class Empresa {
     /**
      * Constructor con nombre y direcciones de la empresa
      *
+     * @param tipo Tipo de la empresa
      * @param nombre Nombre de la empresa
      * @param direcciones Direcciones de la empresa
      */
-    public Empresa(Tipo tipo,String nombre, List<Direccion> direcciones) {
-        this.tipo=tipo;
+    public Empresa(Tipo tipo, String nombre, List<Direccion> direcciones) {
+        this.tipo = tipo;
         this.nombre = nombre;
         this.direcciones = direcciones;
     }
@@ -73,8 +80,8 @@ public abstract class Empresa {
      *
      * @param nombre Nombre de la empresa
      */
-    public Empresa(Tipo tipo,String nombre) {
-        this.tipo=tipo;
+    public Empresa(Tipo tipo, String nombre) {
+        this.tipo = tipo;
         this.nombre = nombre;
     }
 
@@ -153,8 +160,6 @@ public abstract class Empresa {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
-    
-    
 
     @Override
     public int hashCode() {

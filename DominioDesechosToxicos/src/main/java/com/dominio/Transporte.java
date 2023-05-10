@@ -37,9 +37,9 @@ public class Transporte {
     private Vehiculo vehiculo;
 
     /**
-     * Emopresa Trasnportista que registro el Transporte
+     * Id de Empresa Trasnportista que registro el Transporte
      */
-    private EmpresaTransportista empresa_transportista;
+    private ObjectId id_empresa_transportista;
 
     /**
      * Constructor por defecto
@@ -54,14 +54,14 @@ public class Transporte {
      * @param kilometros kilometros a asignar
      * @param coste coste a asignar
      * @param vehiculo Vehiculo a asignar
-     * @param empresaTransportista EmpresaTransportista a asignar
+     * @param id_empresaTransportista id del EmpresaTransportista a asignar
      */
-    public Transporte(ObjectId id, Float kilometros, Float coste, Vehiculo vehiculo, EmpresaTransportista empresa_transportista) {
+    public Transporte(ObjectId id, Float kilometros, Float coste, Vehiculo vehiculo, ObjectId id_empresa_transportista) {
         this.id = id;
         this.kilometros = kilometros;
         this.coste = coste;
         this.vehiculo = vehiculo;
-        this.empresa_transportista = empresa_transportista;
+        this.id_empresa_transportista = id_empresa_transportista;
     }
 
     /**
@@ -71,13 +71,13 @@ public class Transporte {
      * @param kilometros kilometros a asignar
      * @param coste coste a asignar
      * @param vehiculo Vehiculo a asignar
-     * @param empresaTransportista EmpresaTransportista a asignar
+     * @param id_empresaTransportista id de EmpresaTransportista a asignar
      */
-    public Transporte(Float kilometros, Float coste, Vehiculo vehiculo, EmpresaTransportista empresa_transportista) {
+    public Transporte(Float kilometros, Float coste, Vehiculo vehiculo, ObjectId id_empresa_transportista) {
         this.kilometros = kilometros;
         this.coste = coste;
         this.vehiculo = vehiculo;
-        this.empresa_transportista = empresa_transportista;
+        this.id_empresa_transportista = id_empresa_transportista;
     }
 
     /**
@@ -153,21 +153,21 @@ public class Transporte {
     }
 
     /**
-     * Regresa las Empresa Transportista del Transporte
+     * Regresa id de la Empresa Transportista del Transporte
      *
      * @return Empresa Trasnportista del Transporte
      */
-    public EmpresaTransportista getEmpresa_Transportista() {
-        return empresa_transportista;
+    public ObjectId getId_Empresa_Transportista() {
+        return id_empresa_transportista;
     }
 
     /**
-     * Le asigna una EmpresaTrasnportista al Transporte
+     * Le asigna una id de EmpresaTrasnportista al Transporte
      *
      * @param empresaTransportista objeto EmpresaTransportista a asignar
      */
-    public void setEmpresaTransportista(EmpresaTransportista empresa_transportista) {
-        this.empresa_transportista = empresa_transportista;
+    public void setId_EmpresaTransportista(ObjectId id_empresa_transportista) {
+        this.id_empresa_transportista = id_empresa_transportista;
     }
 
 }

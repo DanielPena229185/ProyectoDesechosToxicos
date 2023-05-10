@@ -26,6 +26,13 @@ public class EmpresaTransportista extends Empresa {
     private List<Transporte> transportes;
 
     /**
+     * Constuctor por default
+     */
+    public EmpresaTransportista() {
+        super();
+    }
+
+    /**
      * Constructor con lista de vehículos, lista de transportes, identificador
      * de la empresa, nombre de la empresa, lista de direcciones de la empresa
      *
@@ -36,7 +43,7 @@ public class EmpresaTransportista extends Empresa {
      * @param nombre Nombre de la empresa
      * @param direcciones Lista de direcciones de la empresa
      */
-    public EmpresaTransportista(List<Vehiculo> vehiculos, List<Transporte> transportes, ObjectId id, Tipo tipo, String nombre, List<Direccion> direcciones) {
+    public EmpresaTransportista( ObjectId id, List<Vehiculo> vehiculos, List<Transporte> transportes, Tipo tipo, String nombre, List<Direccion> direcciones) {
         super(id, tipo, nombre, direcciones);
         this.vehiculos = vehiculos;
         this.transportes = transportes;

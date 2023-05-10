@@ -43,6 +43,12 @@ public class Direccion {
     private String ciudad;
 
     /**
+     * Constructor por default
+     */
+    public Direccion() {
+    }
+    
+    /**
      * Constructor con identificador, calle, colonia, numero de la dirección con
      * el identificador de la ciudad a la que pertenece
      *

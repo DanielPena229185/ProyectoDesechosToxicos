@@ -7,6 +7,7 @@ package org.itson.implementacion;
 
 import com.dominio.Transporte;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.itson.excepciones.NegocioExcepcion;
 import org.itson.interfaces.CrudInterface;
 
@@ -35,17 +36,22 @@ public class TransporteNegocio implements CrudInterface<Transporte>{
     }
 
     @Override
-    public Transporte actualizar(Transporte elemento) throws NegocioExcepcion {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public List<Transporte> consultar() throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public List<Transporte> consultar(Transporte elemento) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Transporte> consultar(ObjectId id) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Transporte actualizar(Transporte elemento, Transporte elementoE) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

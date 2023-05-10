@@ -31,7 +31,13 @@ public class Cuenta {
      * Contraseña de la cuenta
      */
     private String contrasena;
-
+    
+    /**
+     * Constructor por default
+     */
+    public Cuenta() {
+    }
+    
     /**
      * Constructor con identificador de la cuenta, correo y contraseña
      * 
