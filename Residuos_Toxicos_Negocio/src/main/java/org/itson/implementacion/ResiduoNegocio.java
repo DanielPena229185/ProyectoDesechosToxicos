@@ -8,6 +8,7 @@ import com.dominio.Quimico;
 import com.dominio.Residuo;
 import java.util.LinkedList;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.itson.excepciones.NegocioExcepcion;
 import org.itson.excepciones.ValidacionExcepcion;
 import org.itson.interfaces.CrudInterface;
@@ -30,7 +31,7 @@ public class ResiduoNegocio implements CrudInterface<Residuo> {
     public Residuo insertar(Residuo elemento) throws NegocioExcepcion {
         try {
             
-            this.validarResiduo(elemento);
+            this.validarResiduoInsertar(elemento);
             this.validarResiduoInexistente(elemento);
             
         } catch (ValidacionExcepcion e) {
@@ -59,11 +60,15 @@ public class ResiduoNegocio implements CrudInterface<Residuo> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private Residuo validarResiduo(Residuo residuo) throws ValidacionExcepcion {
+    private Residuo validarResiduoInsertar(Residuo residuo) throws ValidacionExcepcion {
         List<String> camposErroneos = new LinkedList<>();
         String nombre = residuo.getNombre();
         String codigo = residuo.getCodigo();
         List<Quimico> listaQuimicos = residuo.getQuimicos();
+
+        if(residuo == null){
+            throw new ValidacionExcepcion("No hay información del residuo");
+        }
 
         if (this.validarFormatoCodigo(codigo) == null) {
             camposErroneos.add("- Código inválido (Formato abc-123)");
@@ -159,5 +164,10 @@ public class ResiduoNegocio implements CrudInterface<Residuo> {
         Residuo residuoListaQuimicos = new Residuo();
         residuoListaQuimicos.setQuimicos(residuo.getQuimicos());
         return this.consultar(residuoListaQuimicos);
+    }
+
+    @Override
+    public List<Residuo> consultar(ObjectId id) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

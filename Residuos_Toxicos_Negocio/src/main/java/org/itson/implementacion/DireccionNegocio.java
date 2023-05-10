@@ -7,6 +7,7 @@ package org.itson.implementacion;
 import com.dominio.Direccion;
 import java.util.LinkedList;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.itson.excepciones.NegocioExcepcion;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.excepciones.ValidacionExcepcion;
@@ -33,7 +34,7 @@ public class DireccionNegocio implements CrudInterface<Direccion> {
     @Override
     public Direccion insertar(Direccion elemento) throws NegocioExcepcion {
         try {
-            this.validarDireccion(elemento);
+            this.validarDireccionInsertar(elemento);
             direccionDAO.insertar(elemento);
         } catch (ValidacionExcepcion e) {
             throw new NegocioExcepcion(e.getMessage());
@@ -63,7 +64,7 @@ public class DireccionNegocio implements CrudInterface<Direccion> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private Direccion validarDireccion(Direccion direccion) throws ValidacionExcepcion {
+    private Direccion validarDireccionInsertar(Direccion direccion) throws ValidacionExcepcion {
         List<String> camposError = new LinkedList<>();
 
         if (direccion == null) {
@@ -81,6 +82,12 @@ public class DireccionNegocio implements CrudInterface<Direccion> {
         String colonia = direccion.getColonia();
         if (validarTextoVacio(colonia) == null) {
             camposError.add("- Colonia");
+        }
+        
+        //Validar número
+        String numero = direccion.getNumero();
+        if (validarTextoVacio(numero) == null) {
+            camposError.add("- Número");
         }
 
         //Validar ciudad
@@ -102,9 +109,10 @@ public class DireccionNegocio implements CrudInterface<Direccion> {
     }
 
     /**
+     * Regresa una un mensaje contatenado de una lista
      *
-     * @param listaCampos
-     * @return
+     * @param listaCampos Liusta donde los mensajes se contatenan
+     * @return Mensaje contatenado
      */
     private String mensajeCampos(List<String> listaCampos) {
         String mensaje = "";
@@ -115,14 +123,20 @@ public class DireccionNegocio implements CrudInterface<Direccion> {
     }
 
     /**
+     * Valida que un texto no esté vacío
      *
-     * @param texto
-     * @return
+     * @param texto Texto que se quiere validar
+     * @return Texto válido, de lo contrario null
      */
     private String validarTextoVacio(String texto) {
         if (texto == null || texto.isEmpty()) {
             return null;
         }
         return texto;
+    }
+
+    @Override
+    public List<Direccion> consultar(ObjectId id) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

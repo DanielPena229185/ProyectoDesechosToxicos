@@ -4,11 +4,7 @@
 
 package org.itson;
 
-import com.dominio.Direccion;
-import javax.swing.JOptionPane;
-import org.itson.excepciones.NegocioExcepcion;
-import org.itson.implementacion.DireccionNegocio;
-import org.itson.interfaces.CrudInterface;
+import org.itson.implementacion.AdministradorNegocio;
 
 /**
  *
@@ -17,12 +13,8 @@ import org.itson.interfaces.CrudInterface;
 public class Residuos_Toxicos_Negocio {
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        CrudInterface crud = new DireccionNegocio();
-        try {
-            crud.insertar(new Direccion());
-        } catch (NegocioExcepcion e) {
-            JOptionPane.showMessageDialog(null, "Datos inválidos: \n"
-                    + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        AdministradorNegocio neg = new AdministradorNegocio();
+        String f = neg.validarCaracteresEspeciales("dsbjd");
+        System.out.println(f);
     }
 }

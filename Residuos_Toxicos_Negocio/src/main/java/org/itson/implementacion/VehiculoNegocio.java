@@ -7,6 +7,7 @@ package org.itson.implementacion;
 
 import com.dominio.Vehiculo;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.itson.excepciones.NegocioExcepcion;
 import org.itson.interfaces.CrudInterface;
 
@@ -46,6 +47,11 @@ public class VehiculoNegocio implements CrudInterface<Vehiculo>{
 
     @Override
     public List<Vehiculo> consultar(Vehiculo elemento) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Vehiculo> consultar(ObjectId id) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
