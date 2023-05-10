@@ -19,7 +19,7 @@ import org.itson.interfaces.IConsultasDAO;
 
 /**
  * Clase que se encarga de realizar todas las operaciones CRUD de las
- * empresas productoras.
+ * los químicos.
  * 
  * @author Aracely Campa Quintana ID: 233215
  * @author Edgar Emir Borbon Jimenez ID: 233184
@@ -77,7 +77,7 @@ public class QuimicosDAO implements IConsultasDAO<Quimico> {
     }
 
     /**
-     * Método que elimina a una Químico de la base de datos.
+     * Método que elimina a un Químico de la base de datos.
      * @param o Químico a eliminar.
      * @return Químico eliminado.
      * @throws PersistenciaException En dado caso de que no se pueda eliminar
@@ -95,8 +95,8 @@ public class QuimicosDAO implements IConsultasDAO<Quimico> {
     }
 
     /**
-     * Método que consulta a todas los Químicos de la base de datos.
-     * @return Lista de todas las Químicos.
+     * Método que consulta a todos los Químicos de la base de datos.
+     * @return Lista de todos las Químicos.
      * @throws PersistenciaException Si no se encuentra a ningún químico
      * en la base de datos.
      */
@@ -113,7 +113,7 @@ public class QuimicosDAO implements IConsultasDAO<Quimico> {
     }
 
     /**
-     * Método que busca a una Químico por Id.
+     * Método que busca a un Químico por Id.
      * @param id id a buscar.
      * @return Químico encontrada.
      * @throws PersistenciaException Se genera una excepción si no existe
@@ -132,7 +132,7 @@ public class QuimicosDAO implements IConsultasDAO<Quimico> {
     }
 
     /**
-     * Método que consulta a todas las Químicos que coincidan con los
+     * Método que consulta a todos los Químicos que coincidan con los
      * parámetros dados.
      * @param parametros Químicos con los parámetros especificados.
      * @return Lista de Químicos que coincidan.
