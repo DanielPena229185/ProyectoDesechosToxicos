@@ -46,11 +46,6 @@ public class ResiduoNegocio implements CrudInterface<Residuo> {
     }
 
     @Override
-    public Residuo actualizar(Residuo elemento) throws NegocioExcepcion {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public List<Residuo> consultar() throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -168,6 +163,11 @@ public class ResiduoNegocio implements CrudInterface<Residuo> {
 
     @Override
     public List<Residuo> consultar(ObjectId id) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Residuo actualizar(Residuo elemento, Residuo elementoE) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

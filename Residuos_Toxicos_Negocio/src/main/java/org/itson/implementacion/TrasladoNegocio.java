@@ -36,11 +36,6 @@ public class TrasladoNegocio implements CrudInterface<Traslado>{
     }
 
     @Override
-    public Traslado actualizar(Traslado elemento) throws NegocioExcepcion {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public List<Traslado> consultar() throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -52,6 +47,11 @@ public class TrasladoNegocio implements CrudInterface<Traslado>{
 
     @Override
     public List<Traslado> consultar(ObjectId id) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Traslado actualizar(Traslado elemento, Traslado elementoE) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

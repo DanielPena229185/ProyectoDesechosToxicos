@@ -50,11 +50,6 @@ public class DireccionNegocio implements CrudInterface<Direccion> {
     }
 
     @Override
-    public Direccion actualizar(Direccion elemento) throws NegocioExcepcion {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public List<Direccion> consultar() throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -137,6 +132,11 @@ public class DireccionNegocio implements CrudInterface<Direccion> {
 
     @Override
     public List<Direccion> consultar(ObjectId id) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Direccion actualizar(Direccion elemento, Direccion elementoE) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

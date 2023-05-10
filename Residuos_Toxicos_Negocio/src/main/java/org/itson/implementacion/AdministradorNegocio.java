@@ -63,17 +63,6 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
 
     /**
      *
-     * @param elemento
-     * @return
-     * @throws NegocioExcepcion
-     */
-    @Override
-    public Administrador actualizar(Administrador elemento) throws NegocioExcepcion {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    /**
-     *
      * @return @throws NegocioExcepcion
      */
     @Override
@@ -174,8 +163,8 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
 
     private Administrador validarAdministradorEliminar(Administrador administrador) throws ValidacionExcepcion {
         List<String> camposErroneos = new LinkedList<>();
-        if(administrador == null){
-            throw new ValidacionExcepcion("");
+        if (administrador == null) {
+            throw new ValidacionExcepcion("Datos del administrador inválidos");
         }
         return administrador;
     }
@@ -209,9 +198,9 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
 
     /**
      * Valida que un texto no tenga carácteres especiales
-     * 
+     *
      * @param texto
-     * @return 
+     * @return
      */
     public static String validarCaracteresEspeciales(String texto) {
         String patron = "^[a-zA-Z]*$"; // Expresión regular que solo permite letras y números
@@ -219,6 +208,11 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
             return texto; // El texto es válido, se devuelve el mismo texto
         }
         return null;
+    }
+
+    @Override
+    public Administrador actualizar(Administrador elemento, Administrador elementoE) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

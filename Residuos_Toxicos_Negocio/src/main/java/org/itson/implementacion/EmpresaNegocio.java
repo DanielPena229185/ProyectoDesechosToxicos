@@ -35,11 +35,6 @@ public class EmpresaNegocio implements CrudInterface<Empresa> {
     }
 
     @Override
-    public Empresa actualizar(Empresa elemento) throws NegocioExcepcion {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public List<Empresa> consultar() throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -79,6 +74,11 @@ public class EmpresaNegocio implements CrudInterface<Empresa> {
             return null;
         }
         return texto;
+    }
+
+    @Override
+    public Empresa actualizar(Empresa elemento, Empresa elementoE) throws NegocioExcepcion {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
