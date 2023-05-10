@@ -1,6 +1,7 @@
 
 package org.itson.presentacion.Administrador;
 
+import org.itson.presentacion.empresa.SolictudTrasladoForm;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -112,7 +113,7 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        seleccionarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/siguiente.png"))); // NOI18N
+        seleccionarBtn.setText("siguiente");
         seleccionarBtn.setContentAreaFilled(false);
         seleccionarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         seleccionarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +129,7 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(20, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(seleccionarBtn)
@@ -248,7 +249,7 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
     return campos;
 }
     private boolean validarCampoTextoVacio() {
-        return campoTexto.getText().isEmpty() || campoTexto.getText().equals(textoDefault);
+        return campoProductor.getText().isEmpty() || campoProductor.getText().equals(ERROR);
     }
     private LocalDate solicitarFecha() {
         LocalDate fecha = this.fechaSolicitada.getDate();

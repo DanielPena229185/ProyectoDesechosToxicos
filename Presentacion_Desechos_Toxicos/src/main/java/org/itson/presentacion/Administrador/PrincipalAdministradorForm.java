@@ -48,11 +48,9 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         jLabel2.setText("ADMINISTRADOR");
 
         solicitarTrasladosBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        solicitarTrasladosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud.png"))); // NOI18N
         solicitarTrasladosBtn.setText("Solicitar Traslado");
-        solicitarTrasladosBtn.setContentAreaFilled(false);
+        solicitarTrasladosBtn.setDefaultCapable(false);
         solicitarTrasladosBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        solicitarTrasladosBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud_G.png"))); // NOI18N
         solicitarTrasladosBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         solicitarTrasladosBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,27 +59,21 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         });
 
         solicitudesTrasladosBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        solicitudesTrasladosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/verSolicitudes.png"))); // NOI18N
         solicitudesTrasladosBtn.setText("Ver solicitudes");
         solicitudesTrasladosBtn.setContentAreaFilled(false);
         solicitudesTrasladosBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        solicitudesTrasladosBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/verSolicitudes_G.png"))); // NOI18N
         solicitudesTrasladosBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         actualizarSolictudBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        actualizarSolictudBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/actualizarSolicitud.png"))); // NOI18N
         actualizarSolictudBtn.setText("Actualizar Solicitud");
         actualizarSolictudBtn.setContentAreaFilled(false);
         actualizarSolictudBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        actualizarSolictudBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/actualizarSolicitud_G.png"))); // NOI18N
         actualizarSolictudBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         eliminarSolicitudBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        eliminarSolicitudBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/eliminarSolicitud.png"))); // NOI18N
         eliminarSolicitudBtn.setText("Eliminar Solicitud");
         eliminarSolicitudBtn.setContentAreaFilled(false);
         eliminarSolicitudBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        eliminarSolicitudBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/eliminarSolicitud_G.png"))); // NOI18N
         eliminarSolicitudBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         eliminarSolicitudBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +82,7 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         });
 
         regresarBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
-        regresarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/regresar.png"))); // NOI18N
+        regresarBtn.setText("Regresar");
         regresarBtn.setContentAreaFilled(false);
         regresarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,8 +135,8 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
                         .addComponent(actualizarSolictudBtn))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(solicitarTrasladosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42)
+                        .addComponent(solicitarTrasladosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(75, 75, 75)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(solicitudesTrasladosBtn, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(eliminarSolicitudBtn, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -167,7 +159,7 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 540));

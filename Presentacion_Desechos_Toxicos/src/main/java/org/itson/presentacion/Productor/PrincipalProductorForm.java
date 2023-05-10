@@ -5,6 +5,7 @@
 package org.itson.presentacion.Productor;
 
 import org.itson.presentacion.InicioForm;
+import org.itson.presentacion.empresa.RegistrarEmpresaForm;
 import org.itson.presentacion.residuo.RegistroResiduoForm;
 
 /**
@@ -40,7 +41,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        regitstrarReisduoBtn = new javax.swing.JButton();
+        solicitarTrasladoBtn = new javax.swing.JButton();
         listaReisduosBtn = new javax.swing.JButton();
         actualizarReisiduoBtn = new javax.swing.JButton();
         eliminarReisduoBtn = new javax.swing.JButton();
@@ -169,16 +170,16 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
         jLabel3.setText("PRODUCTOR");
 
-        regitstrarReisduoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        regitstrarReisduoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud.png"))); // NOI18N
-        regitstrarReisduoBtn.setText("Registrar residuo");
-        regitstrarReisduoBtn.setContentAreaFilled(false);
-        regitstrarReisduoBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        regitstrarReisduoBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud_G.png"))); // NOI18N
-        regitstrarReisduoBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        regitstrarReisduoBtn.addActionListener(new java.awt.event.ActionListener() {
+        solicitarTrasladoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        solicitarTrasladoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud.png"))); // NOI18N
+        solicitarTrasladoBtn.setText("Solicitar Traslado");
+        solicitarTrasladoBtn.setContentAreaFilled(false);
+        solicitarTrasladoBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        solicitarTrasladoBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud_G.png"))); // NOI18N
+        solicitarTrasladoBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        solicitarTrasladoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regitstrarReisduoBtnActionPerformed(evt);
+                solicitarTrasladoBtnActionPerformed(evt);
             }
         });
 
@@ -248,7 +249,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(listaReisduosBtn)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(regitstrarReisduoBtn)
+                                .addComponent(solicitarTrasladoBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(eliminarReisduoBtn)))))
                 .addContainerGap(87, Short.MAX_VALUE))
@@ -276,7 +277,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(eliminarReisduoBtn)
-                    .addComponent(regitstrarReisduoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(solicitarTrasladoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(regresarBtn1)
                 .addGap(14, 14, 14))
@@ -343,10 +344,11 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_regresarBtnActionPerformed
 
-    private void regitstrarReisduoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regitstrarReisduoBtnActionPerformed
-        RegistroResiduoForm r = new RegistroResiduoForm();
-        r.setVisible(true);
-    }//GEN-LAST:event_regitstrarReisduoBtnActionPerformed
+    private void solicitarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarTrasladoBtnActionPerformed
+        e = new RegistrarEmpresaForm();
+       e.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_solicitarTrasladoBtnActionPerformed
 
     private void eliminarReisduoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarReisduoBtnActionPerformed
         // TODO add your handling code here:
@@ -359,7 +361,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     }//GEN-LAST:event_regresarBtn1ActionPerformed
 
     private void actualizarReisiduoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarReisiduoBtnActionPerformed
-        // TODO add your handling code here:
+       //Boton que inserta 10 residuos automaticamente
     }//GEN-LAST:event_actualizarReisiduoBtnActionPerformed
 
     private void listaReisduosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaReisduosBtnActionPerformed
@@ -414,9 +416,9 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton listaReisduosBtn;
-    private javax.swing.JButton regitstrarReisduoBtn;
     private javax.swing.JButton regresarBtn;
     private javax.swing.JButton regresarBtn1;
+    private javax.swing.JButton solicitarTrasladoBtn;
     private javax.swing.JButton solicitarTrasladosBtn;
     private javax.swing.JButton solicitudesTrasladosBtn;
     // End of variables declaration//GEN-END:variables

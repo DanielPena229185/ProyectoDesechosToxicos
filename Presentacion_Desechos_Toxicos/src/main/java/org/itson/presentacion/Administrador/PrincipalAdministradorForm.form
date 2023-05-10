@@ -55,7 +55,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace pref="149" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -131,10 +131,10 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="solicitarTrasladosBtn" min="-2" pref="115" max="-2" attributes="0"/>
+                              <Component id="solicitarTrasladosBtn" min="-2" pref="82" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="solicitudesTrasladosBtn" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="eliminarSolicitudBtn" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -160,15 +160,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Microsoft JhengHei UI" size="12" style="0"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/org/itson/imagenes/agregarSolicitud.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Solicitar Traslado"/>
-                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="defaultCapable" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/org/itson/imagenes/agregarSolicitud_G.png"/>
-                </Property>
                 <Property name="verticalTextPosition" type="int" value="1"/>
               </Properties>
               <Events>
@@ -180,15 +174,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Microsoft JhengHei UI" size="12" style="0"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/org/itson/imagenes/verSolicitudes.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Ver solicitudes"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/org/itson/imagenes/verSolicitudes_G.png"/>
-                </Property>
                 <Property name="verticalTextPosition" type="int" value="1"/>
               </Properties>
             </Component>
@@ -197,15 +185,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Microsoft JhengHei UI" size="12" style="0"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/org/itson/imagenes/actualizarSolicitud.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Actualizar Solicitud"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/org/itson/imagenes/actualizarSolicitud_G.png"/>
-                </Property>
                 <Property name="verticalTextPosition" type="int" value="1"/>
               </Properties>
             </Component>
@@ -214,15 +196,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Microsoft JhengHei UI" size="12" style="0"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/org/itson/imagenes/eliminarSolicitud.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar Solicitud"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
-                <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/org/itson/imagenes/eliminarSolicitud_G.png"/>
-                </Property>
                 <Property name="verticalTextPosition" type="int" value="1"/>
               </Properties>
               <Events>
@@ -234,9 +210,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Microsoft JhengHei UI" size="12" style="1"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/org/itson/imagenes/regresar.png"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Regresar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
               </Properties>
               <Events>

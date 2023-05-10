@@ -36,18 +36,18 @@ private final String NOMBRE_RESIDUO = "Residuo";
         jPanel1 = new javax.swing.JPanel();
         registroResiduoLbl = new javax.swing.JLabel();
         separadorRegistroResiduo = new javax.swing.JSeparator();
-        nombreLbl = new javax.swing.JLabel();
         campoNombreResiduo = new javax.swing.JTextField();
         separadorNombre = new javax.swing.JSeparator();
         tipoLbl = new javax.swing.JLabel();
         comboTipoResiduo = new javax.swing.JComboBox<>();
         separadorTipo = new javax.swing.JSeparator();
-        cantidadLbl = new javax.swing.JLabel();
-        campoCantidad = new javax.swing.JTextField();
-        separadorCantidad = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaRegistroRegistrados = new javax.swing.JTable();
+        nombreLbl = new javax.swing.JLabel();
         guardarResiduoBtn = new javax.swing.JButton();
         regresarBtn = new javax.swing.JButton();
+        nombreLbl1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -68,9 +68,6 @@ private final String NOMBRE_RESIDUO = "Residuo";
         registroResiduoLbl.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 30)); // NOI18N
         registroResiduoLbl.setText("Registro Residuo");
 
-        nombreLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
-        nombreLbl.setText("Nombre:");
-
         campoNombreResiduo.setText(this.NOMBRE_RESIDUO);
         campoNombreResiduo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -87,38 +84,49 @@ private final String NOMBRE_RESIDUO = "Residuo";
         });
 
         tipoLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
-        tipoLbl.setText("Tipo:");
+        tipoLbl.setText("Composicion quimica:");
 
         comboTipoResiduo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cantidadLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        cantidadLbl.setText("Cantidad:");
-
-        campoCantidad.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                campoCantidadFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campoCantidadFocusLost(evt);
-            }
-        });
-        campoCantidad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                campoCantidadMouseClicked(evt);
-            }
-        });
-
         jPanel3.setBackground(new java.awt.Color(0, 51, 255));
+
+        tablaRegistroRegistrados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaRegistroRegistrados);
+
+        nombreLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        nombreLbl.setText("Residuos registrados");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 257, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(nombreLbl)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(65, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 613, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(nombreLbl)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(320, Short.MAX_VALUE))
         );
 
         guardarResiduoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/registrar.png"))); // NOI18N
@@ -137,6 +145,9 @@ private final String NOMBRE_RESIDUO = "Residuo";
             }
         });
 
+        nombreLbl1.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        nombreLbl1.setText("Nombre:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -146,12 +157,7 @@ private final String NOMBRE_RESIDUO = "Residuo";
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cantidadLbl)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(separadorCantidad, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(campoCantidad, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(tipoLbl)
-                            .addComponent(nombreLbl)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(registroResiduoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(separadorRegistroResiduo))
@@ -160,14 +166,19 @@ private final String NOMBRE_RESIDUO = "Residuo";
                                 .addComponent(comboTipoResiduo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(separadorNombre, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(campoNombreResiduo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(regresarBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                         .addComponent(guardarResiduoBtn)
-                        .addGap(42, 42, 42)))
+                        .addGap(173, 173, 173)))
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(42, 42, 42)
+                    .addComponent(nombreLbl1)
+                    .addContainerGap(618, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,9 +187,7 @@ private final String NOMBRE_RESIDUO = "Residuo";
                 .addComponent(registroResiduoLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separadorRegistroResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(nombreLbl)
-                .addGap(18, 18, 18)
+                .addGap(96, 96, 96)
                 .addComponent(campoNombreResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,13 +197,7 @@ private final String NOMBRE_RESIDUO = "Residuo";
                 .addComponent(comboTipoResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separadorTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cantidadLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(campoCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separadorCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(136, 136, 136)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(guardarResiduoBtn)
                     .addComponent(regresarBtn))
@@ -202,6 +205,11 @@ private final String NOMBRE_RESIDUO = "Residuo";
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(151, 151, 151)
+                    .addComponent(nombreLbl1)
+                    .addContainerGap(463, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -261,18 +269,6 @@ private final String NOMBRE_RESIDUO = "Residuo";
     return true;
 }
 
-    private void campoCantidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCantidadFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCantidadFocusGained
-
-    private void campoCantidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCantidadFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCantidadFocusLost
-
-    private void campoCantidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCantidadMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCantidadMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -309,21 +305,21 @@ private final String NOMBRE_RESIDUO = "Residuo";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField campoCantidad;
     private javax.swing.JTextField campoNombreResiduo;
-    private javax.swing.JLabel cantidadLbl;
     private javax.swing.JComboBox<String> comboTipoResiduo;
     private javax.swing.JButton guardarResiduoBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreLbl;
+    private javax.swing.JLabel nombreLbl1;
     private javax.swing.JLabel registroResiduoLbl;
     private javax.swing.JButton regresarBtn;
-    private javax.swing.JSeparator separadorCantidad;
     private javax.swing.JSeparator separadorNombre;
     private javax.swing.JSeparator separadorRegistroResiduo;
     private javax.swing.JSeparator separadorTipo;
+    private javax.swing.JTable tablaRegistroRegistrados;
     private javax.swing.JLabel tipoLbl;
     // End of variables declaration//GEN-END:variables
 }

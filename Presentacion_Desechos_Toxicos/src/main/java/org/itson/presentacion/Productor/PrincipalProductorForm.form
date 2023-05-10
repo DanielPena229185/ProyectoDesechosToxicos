@@ -301,7 +301,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="listaReisduosBtn" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="regitstrarReisduoBtn" min="-2" max="-2" attributes="0"/>
+                                      <Component id="solicitarTrasladoBtn" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="eliminarReisduoBtn" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -340,7 +340,7 @@
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="eliminarReisduoBtn" min="-2" max="-2" attributes="0"/>
-                          <Component id="regitstrarReisduoBtn" min="-2" pref="115" max="-2" attributes="0"/>
+                          <Component id="solicitarTrasladoBtn" min="-2" pref="115" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="regresarBtn1" min="-2" max="-2" attributes="0"/>
@@ -358,7 +358,7 @@
                 <Property name="text" type="java.lang.String" value="PRODUCTOR"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="regitstrarReisduoBtn">
+            <Component class="javax.swing.JButton" name="solicitarTrasladoBtn">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Microsoft JhengHei UI" size="12" style="0"/>
@@ -366,7 +366,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/org/itson/imagenes/agregarSolicitud.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Registrar residuo"/>
+                <Property name="text" type="java.lang.String" value="Solicitar Traslado"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -375,7 +375,7 @@
                 <Property name="verticalTextPosition" type="int" value="1"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regitstrarReisduoBtnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="solicitarTrasladoBtnActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="listaReisduosBtn">

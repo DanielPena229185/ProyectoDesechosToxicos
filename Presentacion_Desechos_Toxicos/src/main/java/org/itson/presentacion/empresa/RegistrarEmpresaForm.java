@@ -67,6 +67,7 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
         correoValidoLbl = new javax.swing.JLabel();
         contrasenaValidaLbl = new javax.swing.JLabel();
         campoConfirmarContrasena = new javax.swing.JPasswordField();
+        jSeparator5 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,8 +87,8 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
 
         jPanel1.add(panelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 290, 750));
 
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 30)); // NOI18N
         jLabel1.setText("Registro Empresa");
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         comboTipoEmpresa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -204,6 +205,7 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(campoConfirmarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 300, -1));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 250, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -433,6 +435,7 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JPanel panelInfo;
     private javax.swing.JButton registrarEmpresBtn;
     private javax.swing.JButton regresarBtn;

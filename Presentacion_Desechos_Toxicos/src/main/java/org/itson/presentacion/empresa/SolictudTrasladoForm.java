@@ -1,5 +1,5 @@
 
-package org.itson.presentacion.Administrador;
+package org.itson.presentacion.empresa;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -42,17 +42,16 @@ public class SolictudTrasladoForm extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(720, 531));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel2.setText("Sesion: Administrador");
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
 
-        cerrarSesionBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
         cerrarSesionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/sesion.png"))); // NOI18N
         cerrarSesionBtn.setContentAreaFilled(false);
+        cerrarSesionBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
         cerrarSesionBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cerrarSesionBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/sesion_G.png"))); // NOI18N
         cerrarSesionBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -83,12 +82,12 @@ public class SolictudTrasladoForm extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
         jLabel1.setText("Solicitud de traslado");
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
 
-        cancelarBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
-        cancelarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/regresar.png"))); // NOI18N
+        cancelarBtn.setText("regresar");
         cancelarBtn.setContentAreaFilled(false);
+        cancelarBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
         cancelarBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cancelarBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/cancelar.png"))); // NOI18N
         cancelarBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -116,12 +115,12 @@ public class SolictudTrasladoForm extends javax.swing.JFrame {
 
         empresasComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa" }));
 
-        seleccioneEmpresaLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         seleccioneEmpresaLbl.setText("Seleccione empresa:");
+        seleccioneEmpresaLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
 
-        guardarBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
-        guardarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/guardar (2).png"))); // NOI18N
+        guardarBtn.setText("guardar");
         guardarBtn.setContentAreaFilled(false);
+        guardarBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
         guardarBtn.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         guardarBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         guardarBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/guardar_G.png"))); // NOI18N
@@ -131,6 +130,12 @@ public class SolictudTrasladoForm extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cancelarBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(guardarBtn)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -144,18 +149,10 @@ public class SolictudTrasladoForm extends javax.swing.JFrame {
                                 .addComponent(seleccioneEmpresaLbl)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                                 .addComponent(jSeparator1))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(23, 23, 23))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cancelarBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(guardarBtn)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(

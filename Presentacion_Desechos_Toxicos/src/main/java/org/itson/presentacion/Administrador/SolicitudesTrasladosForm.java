@@ -54,14 +54,14 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         jLabel2.setText("Solicitudes de traslados: No atendidas");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
+        comboBoxEmpresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa transportadoras" }));
         comboBoxEmpresa.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 14)); // NOI18N
-        comboBoxEmpresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa 1", "Empresa 2", "" }));
         comboBoxEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxEmpresaActionPerformed(evt);
             }
         });
-        getContentPane().add(comboBoxEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 200, -1));
+        getContentPane().add(comboBoxEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 240, -1));
 
         label1.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
         label1.setText("Solicitudes de traslados");
@@ -94,9 +94,9 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 420, 80));
 
-        asignarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        asignarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/siguiente.png"))); // NOI18N
+        asignarBtn.setText("siguiente");
         asignarBtn.setContentAreaFilled(false);
+        asignarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         asignarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 asignarBtnActionPerformed(evt);
@@ -104,9 +104,9 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         });
         jPanel1.add(asignarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, -1, -1));
 
-        regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        regresarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/regresar.png"))); // NOI18N
+        regresarBtn.setText("Regresar");
         regresarBtn.setContentAreaFilled(false);
+        regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         regresarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarBtnActionPerformed(evt);
@@ -118,12 +118,12 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel3.setText("Sesion: Administrador");
+        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
 
-        cerrarSesionBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
-        cerrarSesionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/sesion.png"))); // NOI18N
+        cerrarSesionBtn.setText("Cerrar Sesion");
         cerrarSesionBtn.setContentAreaFilled(false);
+        cerrarSesionBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
         cerrarSesionBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cerrarSesionBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/sesion_G.png"))); // NOI18N
         cerrarSesionBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -136,8 +136,8 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(cerrarSesionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 48, Short.MAX_VALUE))
+                .addComponent(cerrarSesionBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
