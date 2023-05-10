@@ -125,7 +125,7 @@ public class ProductoresDAO implements IConsultasDAO<Productor> {
         this.COLECCION.find(Filters.eq(id)).into(productores);
         
         if (productores.size() <= 0) {
-            throw new PersistenciaException("No existe el productor transportista a buscar.");
+            throw new PersistenciaException("No existe el productor a buscar.");
         }
         
         return productores.get(0);
