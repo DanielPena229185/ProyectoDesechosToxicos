@@ -8,6 +8,8 @@ import com.mongodb.client.MongoDatabase;
 import org.itson.implementaciones.daos.AdministradoresDAO;
 import org.itson.implementaciones.daos.CuentasDAO;
 import org.itson.implementaciones.daos.EmpresasTransportistasDAO;
+import org.itson.implementaciones.daos.ProductoresDAO;
+import org.itson.implementaciones.daos.QuimicosDAO;
 import org.itson.interfaces.IConsultasDAO;
 
 /**
@@ -34,7 +36,15 @@ public class DAOFactory {
         return new CuentasDAO(this.MANEJADOR_CONEXION);
     }
     
-    public IConsultasDAO getEmpresaTransportistaDAO(){
-        return new EmpresasTransportistasDAO(MANEJADOR_CONEXION);
+    public IConsultasDAO getEmpresaTransportistaDAO() {
+        return new EmpresasTransportistasDAO(this.MANEJADOR_CONEXION);
+    }
+    
+    public IConsultasDAO getProductoresDAO() {
+        return new ProductoresDAO(this.MANEJADOR_CONEXION);
+    }
+    
+    public IConsultasDAO getQuimicosDAO() {
+        return new QuimicosDAO(this.MANEJADOR_CONEXION);
     }
 }
