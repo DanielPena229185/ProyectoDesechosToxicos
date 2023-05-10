@@ -4,7 +4,14 @@
 
 package org.itson;
 
-import org.itson.implementacion.AdministradorNegocio;
+import com.dominio.Quimico;
+import com.dominio.Residuo;
+import java.util.LinkedList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import org.itson.excepciones.NegocioExcepcion;
+import org.itson.implementacion.NegocioResiduo;
+import org.itson.interfaces.INegocioResiduo;
 
 /**
  *
@@ -13,8 +20,17 @@ import org.itson.implementacion.AdministradorNegocio;
 public class Residuos_Toxicos_Negocio {
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        AdministradorNegocio neg = new AdministradorNegocio();
-        String f = neg.validarCaracteresEspeciales("dsbjd");
-        System.out.println(f);
+        Residuo residuo = new Residuo();
+        //residuo.setNombre("Daniel");
+        //residuo.setCodigo("abc-123");
+        //List<Quimico> quimicos = new LinkedList<>();
+        //quimicos.add(new Quimico("Popo"));
+        //residuo.setQuimicos(quimicos);
+        INegocioResiduo negocio = new NegocioResiduo();
+        try {
+            negocio.insertarResiduo(residuo);
+        } catch (NegocioExcepcion e) {
+            JOptionPane.showMessageDialog(null, "Algo salió mal: \n"+ e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
