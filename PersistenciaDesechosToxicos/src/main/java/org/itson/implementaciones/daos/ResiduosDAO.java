@@ -4,165 +4,119 @@
  */
 package org.itson.implementaciones.daos;
 
+import com.dominio.Quimico;
 import com.dominio.Residuo;
-import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
+import org.itson.DTO.ResiduoDTO;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.interfaces.IConsultasDAO;
 
 /**
- * Clase que se encarga de realizar todas las operaciones CRUD de los residuos.
- * 
+ * Clase que implementa todas las operaciones de Residuo
+ *
  * @author Aracely Campa Quintana ID: 233215
  * @author Edgar Emir Borbon Jimenez ID: 233184
  * @author Oscar Minjarez Zavala ID: 231503
  * @author Daniel Armando Peña Garcia ID: 229185
  */
-public class ResiduosDAO implements IConsultasDAO<Residuo> {
+public class ResiduosDAO {
 
-    private final MongoCollection<Residuo> COLECCION; 
-    
     /**
-     * Método constructor que inicializa la clase para empezar con las
-     * operaciones.
-     * @param BASE_DATOS Base de datos a la que se conecta.
+     * Coleccion de los residuos
      */
-    public ResiduosDAO(MongoDatabase BASE_DATOS) {
-        this.COLECCION = BASE_DATOS.getCollection("residuos", Residuo.class);
+    private final MongoCollection<Residuo> COLECCION;
+
+    /**
+     * Costructor que consulta la coleccion de los residuos
+     *
+     * @param DATA_BASE Base de datos que se utilizara
+     */
+    public ResiduosDAO(MongoDatabase DATA_BASE) {
+        this.COLECCION = DATA_BASE.getCollection("residuos", Residuo.class);
     }
-    
+
     /**
-     * Método que inserta un Residuo en la base de datos.
-     * @param o Residuo a insertar.
-     * @return Residuo insertada.
-     * @throws PersistenciaException En dado caso de que no se pueda
-     * insertar correctamente.
+     * Ingresa un Residuo a la base de datos
+     *
+     * @param o Objeto Residuo a ingresar
+     * @return El Residuo ingresado
+     * @throws PersistenciaException en caso
      */
-    @Override
     public Residuo insertar(Residuo o) throws PersistenciaException {
         try {
-            this.COLECCION.insertOne(o);
-        } catch (MongoException e) {
-            throw new PersistenciaException("No se pudo insertar el residuo en la base de datos.\n", e.getCause());
-        }
-        
-        return o;
-    }
-
-    /**
-     * Método que actualiza un Residuo de la base de datos.
-     * @param o Residuo a actualizar.
-     * @param s Residuo con los datos actualizados.
-     * @return Residuo actualizado.
-     * @throws PersistenciaException En dado caso de que no se pueda
-     * actualizar el Residuo en la base de datos.
-     */
-    @Override
-    public Residuo actualizar(Residuo o, Residuo s) throws PersistenciaException {
-        try {            
-            this.COLECCION.updateOne(Filters.eq(o.getId()), new Document("$set", s));
+            COLECCION.insertOne(o);
+            return o;
         } catch (PersistenciaException e) {
-            throw new PersistenciaException("No se pudo actualizar el residuo.\n" + e.getMessage());
+            throw new PersistenciaException("Error no se pudo insertar el residuo: " + e.getMessage());
         }
-        
-        return o;
     }
 
-    /**
-     * Método que elimina a un Residuo de la base de datos.
-     * @param o Residuo a eliminar.
-     * @return Residuo eliminado.
-     * @throws PersistenciaException En dado caso de que no se pueda eliminar
-     * el Residuo de la base de datos.
-     */
-    @Override
+    /*
+    public Residuo actualizar(Residuo o, Residuo s) throws PersistenciaException {
+        try {
+            COLECCION.updateOne(Filters.eq(o.getId()), new Document("$set", s));
+            return s;
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException("Error no se pudo actualizar el Residuo: " + e.getMessage());
+        }
+    }
+
     public Residuo eliminar(Residuo o) throws PersistenciaException {
         try {
-            this.COLECCION.deleteOne(Filters.eq(o.getId()));
-        } catch(PersistenciaException e) {
-            throw new PersistenciaException("No se pudo eliminar el residuo." + e.getMessage());
+            COLECCION.deleteOne(new Document("id", o.getId()));
+            return o;
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException("Error no se pudo eliminar el residuo: " + e.getMessage());
         }
-        
-        return o;
     }
 
-    /**
-     * Método que consulta a todos los Residuos de la base de datos.
-     * @return Lista de todos los Residuos.
-     * @throws PersistenciaException Si no se encuentra a ningún Residuo
-     * en la base de datos.
-     */
-    @Override
     public List<Residuo> consultar() throws PersistenciaException {
-        List<Residuo> residuos = new ArrayList<>();
-        this.COLECCION.find().into(residuos);
-        
-        if (residuos.size() <= 0) {
-            throw new PersistenciaException("No hay residuos registrados.");
+        try {
+            List<Residuo> residuos = new ArrayList<>();
+            COLECCION.find().into(residuos);
+            return residuos;
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException("Error no se pudieron consultar los quimicos: " + e.getMessage());
         }
-        
-        return residuos;
     }
 
-    /**
-     * Método que busca a un Residuo por Id.
-     * @param id id a buscar.
-     * @return Residuo encontrada.
-     * @throws PersistenciaException Se genera una excepción si no existe
-     * lo Residuo a buscar.
-     */
-    @Override
     public Residuo consultar(ObjectId id) throws PersistenciaException {
-        List<Residuo> residuos = new ArrayList<>();
-        this.COLECCION.find(Filters.eq(id)).into(residuos);
-        
-        if (residuos.size() <= 0) {
-            throw new PersistenciaException("No existe el residuo a buscar.");
+        try {
+            Residuo residuo = COLECCION.find(Filters.eq("id", id)).first();
+            return residuo;
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException("Error no se pudo consultar el Residuo: " + e.getMessage());
         }
-        
-        return residuos.get(0);
+    }
+     */
+    /**
+     * Consulta si existen Reiduos con esos datos
+     *
+     * @param residuo Redisuo a buscar similitudes de informacion
+     * @return Una lista de Residuos
+     * @throws PersistenciaException en caso de que haya un error
+     */
+    public List<Residuo> consultar(ResiduoDTO residuo) throws PersistenciaException {
+        try {
+            List<Document> filter = new ArrayList<>();
+            List<Residuo> residuos = new ArrayList<>();
+
+            filter.add(new Document("nombre", residuo.getNombre()));
+            filter.add(new Document("clave", residuo.getClave()));
+            filter.add(new Document("quimicos", residuo.getQuimicos()));
+
+            COLECCION.find(new Document("$or", filter)).into(residuos);
+            return residuos;
+
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException("Error no se pudo consultar los quimicos: " + e.getMessage());
+        }
     }
 
-    /**
-     * Método que consulta a todos los Residuos que coincidan con los
-     * parámetros dados.
-     * @param parametros Residuos con los parámetros especificados.
-     * @return Lista de Residuos que coincidan.
-     * @throws PersistenciaException Si no se encuentra ninguna coincidencia
-     * en la base de datos.
-     */
-    @Override
-    public List<Residuo> consultar(Residuo parametros) throws PersistenciaException {
-        List<Residuo> residuos = new ArrayList<>();
-        List<Bson> filtros = new ArrayList<>();
-        
-        this.COLECCION.find(Filters.and(filtros)).into(residuos);
-        
-        if (parametros.getNombre() != null) {
-            filtros.add(Filters.regex("nombre", ".*" + parametros.getNombre() + ".*", "i"));
-        }
-        
-        if (parametros.getCantidad() != null) {
-            filtros.add(Filters.eq("cantidad", parametros.getCantidad()));
-        }
-        
-        if (parametros.getCodigo() != null) {
-            filtros.add(Filters.eq("codigo", parametros.getCodigo()));
-        }
-        
-        this.COLECCION.find(Filters.and(filtros)).into(residuos);
-        
-        if (residuos.size() <= 0) {
-            throw new PersistenciaException("No se pudieron encontrar residuos con los parámetros dados.");
-        }
-        
-        return residuos;
-    }
 }

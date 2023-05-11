@@ -110,19 +110,17 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
         String nombres = administrador.getNombres();
         if (validarTextoVacio(nombres) == null) {
             camposErroneos.add("- Nombres");
-        } else {
-            if (validarCaracteresEspeciales(nombres) == null) {
-                camposErroneos.add("- Nombre con carácteres especiales");
-            }
+        } else if (validarCaracteresEspeciales(nombres) == null) {
+            camposErroneos.add("- Nombre con carácteres especiales");
+
         }
         //Validar apellido paterno
         String apellidoPaterno = administrador.getApellido_paterno();
         if (validarTextoVacio(apellidoPaterno) == null) {
             camposErroneos.add("- Apellido Paterno");
-        } else {
-            if (validarCaracteresEspeciales(apellidoPaterno) == null) {
+        } else if (validarCaracteresEspeciales(apellidoPaterno) == null) {
                 camposErroneos.add("- Apellido Paterno con carácteres especiales");
-            }
+            
         }
         //Validar apellido materno  
         String apellidoMaterno = administrador.getApellido_materno();
