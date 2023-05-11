@@ -22,13 +22,11 @@ import org.itson.interfaces.IConsultasDAO;
  */
 public class AdministradorNegocio implements CrudInterface<Administrador> {
 
-    private final IConsultasDAO administradorDAO;
 
     /**
      *
      */
     public AdministradorNegocio() {
-        administradorDAO = new DAOFactory().getAdministradoresDAO();
     }
 
     /**
@@ -41,7 +39,6 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
     public Administrador insertar(Administrador elemento) throws NegocioExcepcion {
         try {
             this.validarAdministradorInsertar(elemento);
-            administradorDAO.insertar(elemento);
         } catch (PersistenciaException e) {
             throw new NegocioExcepcion(e.getMessage());
         } catch (ValidacionExcepcion a) {

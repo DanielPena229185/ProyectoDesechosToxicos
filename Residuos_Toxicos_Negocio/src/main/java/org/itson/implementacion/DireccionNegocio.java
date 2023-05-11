@@ -22,20 +22,17 @@ import org.itson.interfaces.IConsultasDAO;
  */
 public class DireccionNegocio implements CrudInterface<Direccion> {
 
-    private final IConsultasDAO direccionDAO;
 
     /**
      *
      */
     public DireccionNegocio() {
-        direccionDAO = new DAOFactory().getDireccionesDAO();
     }
 
     @Override
     public Direccion insertar(Direccion elemento) throws NegocioExcepcion {
         try {
             this.validarDireccionInsertar(elemento);
-            direccionDAO.insertar(elemento);
         } catch (ValidacionExcepcion e) {
             throw new NegocioExcepcion(e.getMessage());
         } catch (PersistenciaException a) {

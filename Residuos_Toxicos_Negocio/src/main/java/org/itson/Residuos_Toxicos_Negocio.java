@@ -4,13 +4,11 @@
 
 package org.itson;
 
-import com.dominio.Quimico;
 import com.dominio.Residuo;
-import java.util.LinkedList;
-import java.util.List;
 import javax.swing.JOptionPane;
 import org.itson.excepciones.NegocioExcepcion;
-import org.itson.implementacion.NegocioResiduo;
+import org.itson.implementacion.NegocioFactory;
+import org.itson.interfaces.INegocio;
 import org.itson.interfaces.INegocioResiduo;
 
 /**
@@ -26,9 +24,10 @@ public class Residuos_Toxicos_Negocio {
         //List<Quimico> quimicos = new LinkedList<>();
         //quimicos.add(new Quimico("Popo"));
         //residuo.setQuimicos(quimicos);
-        INegocioResiduo negocio = new NegocioResiduo();
+        INegocio negocio = new NegocioFactory();
+        INegocioResiduo negocioResiduo = negocio.getNegocioResiduo();
         try {
-            negocio.insertarResiduo(residuo);
+            negocioResiduo.insertarResiduo(residuo);
         } catch (NegocioExcepcion e) {
             JOptionPane.showMessageDialog(null, "Algo salió mal: \n"+ e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         }

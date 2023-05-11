@@ -11,7 +11,9 @@ import java.util.List;
 import org.itson.excepciones.NegocioExcepcion;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.excepciones.ValidacionExcepcion;
+import org.itson.implementaciones.bd.DAOFactory;
 import org.itson.interfaces.INegocioResiduo;
+import org.itson.interfaces.IResiduosDAO;
 
 /**
  * Descripción de la clase:
@@ -20,11 +22,13 @@ import org.itson.interfaces.INegocioResiduo;
  */
 public class NegocioResiduo implements INegocioResiduo {
 
+    IResiduosDAO residuoDAO;
+    
     /**
      * Constructor por default
      */
     public NegocioResiduo() {
-
+        residuoDAO = DAOFactory.getResiduoDAO();
     }
 
     @Override
