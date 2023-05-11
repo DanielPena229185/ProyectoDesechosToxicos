@@ -131,10 +131,12 @@ public class ProductoresDAO implements IProductoresDAO {
     /**
      * Consuta al Productor por medio de correro y contrasena
      *
-     * @param productor Productor a buscar
+     * @param correo Productor a buscar
+     * @param contrasena Contraseña a buscar
      * @return Productor buscado, null en caso de no encontrar nada
      * @throws PersistenciaException en caso de algun error
      */
+    @Override
     public Productor consultarLogin(String correo, String contrasena) throws PersistenciaException {
         try {
             Document filtro = new Document("contrasena", contrasena).append("correo", correo);
