@@ -34,47 +34,51 @@ public class Productor extends Empresa {
 
     /**
      * Constructor con lista de residuos, lista de solicitudes, identificador,
-     * nombre, lista direcciones
+     * nombre,cuenta,tipo, lista direcciones
      *
      * @param residuos Lista de residuos
      * @param solicitudes Lista de solicitudes
      * @param id Identificador de la empresa
      * @param tipo Tipo de empresa
      * @param nombre Nombre de la empresa
+     * @param cuenta Cuenta de la empresa
      * @param direcciones Lista de direcciones de la empresa
      */
-    public Productor( ObjectId id, List<Residuo> residuos, List<Solicitud> solicitudes, Tipo tipo, String nombre, List<Direccion> direcciones) {
-        super(id,tipo, nombre, direcciones);
+    public Productor(ObjectId id, List<Residuo> residuos, List<Solicitud> solicitudes, Tipo tipo, String nombre, Cuenta cuenta, List<Direccion> direcciones) {
+        super(id, tipo, nombre, cuenta, direcciones);
         this.residuos = residuos;
         this.solicitudes = solicitudes;
     }
 
     /**
-     * Constructor con lista de residuos, lista de solicitudes, nombre y lista
-     * de direcciones
+     * Constructor con lista de residuos, lista de solicitudes,
+     * nombre,cuenta,tipo y lista de direcciones
      *
      * @param residuos Lista de residuos
      * @param solicitudes Lista de solicitudes
      * @param tipo Tipo de empresa
      * @param nombre Nombre de la empresa
+     * @param cuenta Cuenta de la empresa
      * @param direcciones Lista de direcciones de la empresa
      */
-    public Productor(List<Residuo> residuos, List<Solicitud> solicitudes,Tipo tipo, String nombre, List<Direccion> direcciones) {
-        super(tipo,nombre, direcciones);
+    public Productor(List<Residuo> residuos, List<Solicitud> solicitudes, Tipo tipo, String nombre, Cuenta cuenta, List<Direccion> direcciones) {
+        super(tipo, nombre, cuenta, direcciones);
         this.residuos = residuos;
         this.solicitudes = solicitudes;
     }
 
     /**
-     * Constructor con la lista de residuos, lista solicitudes y nombre
+     * Constructor con la lista de residuos, lista solicitudes,cuenta,tipo y
+     * nombre
      *
      * @param residuos Lista de residuos
      * @param solicitudes Lista de solicitudes
      * @param tipo Tipo de empresa
      * @param nombre Nombre de la empresa
+     * @param cuenta Cuenta de la empresa
      */
-    public Productor(List<Residuo> residuos, List<Solicitud> solicitudes,Tipo tipo, String nombre) {
-        super(tipo,nombre);
+    public Productor(List<Residuo> residuos, List<Solicitud> solicitudes, Tipo tipo, String nombre, Cuenta cuenta) {
+        super(tipo, nombre, cuenta);
         this.residuos = residuos;
         this.solicitudes = solicitudes;
     }

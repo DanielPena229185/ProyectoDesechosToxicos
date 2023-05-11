@@ -36,10 +36,15 @@ public abstract class Empresa {
     private String nombre;
 
     /**
+     * Cuenta de la empresa
+     */
+    private Cuenta cuenta;
+
+    /**
      * Lista de direcciones en la que se úbica esa empresa
      */
     private List<Direccion> direcciones;
-    
+
     /**
      * Constructor por default
      */
@@ -47,42 +52,48 @@ public abstract class Empresa {
     }
 
     /**
-     * Constructor con identificador, nombre y lista de direcciones de la
-     * empresa
+     * Constructor con identificador, nombre,tipo,cuenta y lista de direcciones
+     * de la empresa
      *
      * @param id Identificador de la empresa
      * @param tipo Tipo de empresa
      * @param nombre Nombre de la empresa
+     * @param cuenta Cuenta de la empresa
      * @param direcciones direcciones de la empresa
      */
-    public Empresa(ObjectId id, Tipo tipo, String nombre, List<Direccion> direcciones) {
+    public Empresa(ObjectId id, Tipo tipo, String nombre, Cuenta cuenta, List<Direccion> direcciones) {
         this.id = id;
         this.tipo = tipo;
         this.nombre = nombre;
+        this.cuenta = cuenta;
         this.direcciones = direcciones;
     }
 
     /**
-     * Constructor con nombre y direcciones de la empresa
+     * Constructor con nombre,tipo y cuenta y direcciones de la empresa
      *
      * @param tipo Tipo de la empresa
      * @param nombre Nombre de la empresa
+     * @param cuenta Cuenta de la empresa
      * @param direcciones Direcciones de la empresa
      */
-    public Empresa(Tipo tipo, String nombre, List<Direccion> direcciones) {
+    public Empresa(Tipo tipo, String nombre, Cuenta cuenta, List<Direccion> direcciones) {
         this.tipo = tipo;
         this.nombre = nombre;
+        this.cuenta = cuenta;
         this.direcciones = direcciones;
     }
 
     /**
-     * Constructor con el nombre de la empresa
+     * Constructor con el nombre, tipo y cuenta de la empresa
      *
      * @param nombre Nombre de la empresa
+     * @param cuenta Cuenta de la empresa
      */
-    public Empresa(Tipo tipo, String nombre) {
+    public Empresa(Tipo tipo, String nombre, Cuenta cuenta) {
         this.tipo = tipo;
         this.nombre = nombre;
+        this.cuenta = cuenta;
     }
 
     /**
@@ -153,14 +164,47 @@ public abstract class Empresa {
         return direcciones;
     }
 
+    /**
+     * Regresa la cuenta de la Empresa
+     *
+     * @return Cuenta de la Empresa
+     */
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    /**
+     * Le asigna una Cuenta a la Empresa
+     *
+     * @param cuenta a asignar
+     */
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    /**
+     * Regresa el tipo de Empresa
+     *
+     * @return El tipo de Empresa
+     */
     public Tipo getTipo() {
         return tipo;
     }
 
+    /**
+     * Le asigna el tipo de Empresa
+     *
+     * @param tipo de empresa a asignar
+     */
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
 
+    /**
+     * Metodo hashcode
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -168,6 +212,12 @@ public abstract class Empresa {
         return hash;
     }
 
+    /**
+     * Metodo equals
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

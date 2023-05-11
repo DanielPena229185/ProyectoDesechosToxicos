@@ -12,6 +12,7 @@ import org.itson.implementaciones.daos.ProductoresDAO;
 import org.itson.implementaciones.daos.QuimicosDAO;
 import org.itson.implementaciones.daos.ResiduosDAO;
 import org.itson.interfaces.IConsultasDAO;
+import org.itson.interfaces.IProductoresDAO;
 import org.itson.interfaces.IQuimicosDAO;
 import org.itson.interfaces.IResiduosDAO;
 
@@ -21,7 +22,7 @@ import org.itson.interfaces.IResiduosDAO;
  */
 public class DAOFactory {
 
-    private DAOFactory() {
+    public DAOFactory() {
     }
 
     /*
@@ -40,19 +41,18 @@ public class DAOFactory {
     public IConsultasDAO getEmpresaTransportistaDAO() {
         return new EmpresasTransportistasDAO(this.MANEJADOR_CONEXION);
     }
-
-    public IConsultasDAO getProductoresDAO() {
-        return new ProductoresDAO(this.MANEJADOR_CONEXION);
-    }
      */
+    public IProductoresDAO getProductoresDAO() {
+        return ProductoresDAO.getInstanceProductoresDAO();
+    }
+
     /**
      * Regresa una instancia de QuimicosDAO
      *
      * @return Una IQuimicosDAO con una instancia de QuimicosDAO
      */
     public static IQuimicosDAO getQuimicosDAO() {
-        IQuimicosDAO quimicoDAO = QuimicosDAO.getInstanceQuimicosDAO();
-        return quimicoDAO;
+        return QuimicosDAO.getInstanceQuimicosDAO();
     }
 
     /**
@@ -61,7 +61,6 @@ public class DAOFactory {
      * @return Una IResiduoDAO con una instancia de ResiduosDAO
      */
     public static IResiduosDAO getResiduoDAO() {
-        IResiduosDAO residuoDAO = ResiduosDAO.getInstanceResiduosDAO();
-        return residuoDAO;
+        return ResiduosDAO.getInstanceResiduosDAO();
     }
 }

@@ -37,10 +37,10 @@ public class QuimicosDAO implements IQuimicosDAO {
     }
 
     public static QuimicosDAO getInstanceQuimicosDAO() {
-        if (QuimicosDAO.instanceQuimicosDAO == null) {
-            QuimicosDAO.instanceQuimicosDAO = new QuimicosDAO();
+        if (instanceQuimicosDAO == null) {
+            instanceQuimicosDAO = new QuimicosDAO();
         }
-        return QuimicosDAO.instanceQuimicosDAO;
+        return instanceQuimicosDAO;
     }
 
     public Quimico insertar(Quimico o) throws PersistenciaException {
