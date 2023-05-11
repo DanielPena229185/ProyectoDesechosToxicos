@@ -98,7 +98,7 @@ public class InicioForm extends javax.swing.JFrame {
 
         jMenu1.setText("Iniciar Sesión");
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setText("Iniciar Sesion");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -184,7 +184,9 @@ public class InicioForm extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarProductorBtnActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+   LogInForm d = new LogInForm();
+   d.setVisible(true);
+   dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
@@ -216,6 +218,7 @@ public class InicioForm extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new InicioForm().setVisible(true);
             }

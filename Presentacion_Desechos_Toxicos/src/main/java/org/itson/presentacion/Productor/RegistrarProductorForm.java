@@ -141,8 +141,8 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
         });
         jPanel1.add(campoCorreoProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 251, -1));
         jPanel1.add(separador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 258, 10));
-        jPanel1.add(correoValidoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 199, 16));
-        jPanel1.add(contrasenaValidaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 406, 251, 19));
+        jPanel1.add(correoValidoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 199, 16));
+        jPanel1.add(contrasenaValidaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 251, 19));
 
         campoNombreProductor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoNombreProductor.setForeground(Color.GRAY);
@@ -286,10 +286,11 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
         if (i == 0) {
             //Método registrar
             JOptionPane.showMessageDialog(this, "Registro exitoso", "Nuevo Registro", JOptionPane.INFORMATION_MESSAGE);
-            InicioForm b =new InicioForm();
+            
+        }
+        InicioForm b =new InicioForm();
             b.setVisible(true);
             dispose();
-        }
     }//GEN-LAST:event_registrarProductorBtnActionPerformed
 
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
@@ -401,6 +402,7 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new RegistrarProductorForm().setVisible(true);
             }

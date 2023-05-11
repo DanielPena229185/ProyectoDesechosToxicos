@@ -270,6 +270,9 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
             //Método registrar
             JOptionPane.showMessageDialog(this, "Registro exitoso", "Nuevo Registro", JOptionPane.INFORMATION_MESSAGE);
         }
+        InicioForm b =new InicioForm();
+            b.setVisible(true);
+            dispose();
     }//GEN-LAST:event_registrarEmpresBtnActionPerformed
 
     private void comboTipoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoEmpresaActionPerformed
@@ -408,6 +411,7 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new RegistrarEmpresaForm().setVisible(true);
             }

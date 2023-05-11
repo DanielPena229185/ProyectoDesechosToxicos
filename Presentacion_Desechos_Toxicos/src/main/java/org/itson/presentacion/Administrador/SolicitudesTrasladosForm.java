@@ -94,19 +94,19 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 420, 80));
 
+        asignarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         asignarBtn.setText("siguiente");
         asignarBtn.setContentAreaFilled(false);
-        asignarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         asignarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 asignarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(asignarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, -1, -1));
+        jPanel1.add(asignarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, -1, -1));
 
+        regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         regresarBtn.setText("Regresar");
         regresarBtn.setContentAreaFilled(false);
-        regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         regresarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarBtnActionPerformed(evt);
@@ -118,14 +118,13 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel3.setText("Sesion: Administrador");
         jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+        jLabel3.setText("Sesion: Administrador");
 
+        cerrarSesionBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
         cerrarSesionBtn.setText("Cerrar Sesion");
         cerrarSesionBtn.setContentAreaFilled(false);
-        cerrarSesionBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
         cerrarSesionBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        cerrarSesionBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/sesion_G.png"))); // NOI18N
         cerrarSesionBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -202,6 +201,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new SolicitudesTrasladosForm().setVisible(true);
             }

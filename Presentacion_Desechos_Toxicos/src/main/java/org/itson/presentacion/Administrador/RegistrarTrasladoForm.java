@@ -71,10 +71,10 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
         registrarTrasladoLbl.setText("Solicitud Traslado");
         registrarTrasladoLbl.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 30)); // NOI18N
 
-        campoProductor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoProductor.setForeground(Color.GRAY);
         campoProductor.setText(NOMBRE_PRODUCTOR_DEFAULT);
         campoProductor.setBorder(null);
+        campoProductor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campoProductor.setForeground(Color.GRAY);
         campoProductor.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoProductorFocusGained(evt);
@@ -129,7 +129,7 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(12, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(seleccionarBtn)
@@ -181,8 +181,7 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -197,10 +196,12 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
 
     private void seleccionarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarBtnActionPerformed
         int i = 0;
-        if(!validarFecha()) {
-                JOptionPane.showMessageDialog(this, "Fecha ocupada", "Seleccione otra fecha", JOptionPane.ERROR_MESSAGE);
+        if(!validarCampoTextoVacio()){
+            JOptionPane.showMessageDialog(this, "Ingrese productor", "Fecha ocupada", JOptionPane.ERROR_MESSAGE);
                 i++;
-            } else {
+        }
+        
+         else {
             List<String> camposVacios = this.validarCampoVacio();
             if (!camposVacios.isEmpty()) {
                 String mensaje = "Los siguientes campos se encuentran vacíos \n";
@@ -264,17 +265,7 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
     }
     
 
-    private boolean validarFecha() {
-       String fechaString = this.fechaSolicitada.getText(); 
-       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        try {
-            LocalDate fecha = LocalDate.parse(fechaString, formatter); 
-        return true;
-        } catch (DateTimeParseException e) {
-        return false;
-        }
     
-    }
     //Metodo incompleto debido a que se requieren metodos de las otras capas
     private void cargarTablaResiduoATransportar(){
         Residuo residuo = a.buscarResiduo(id); //es temporal la estructura de este objeto 
@@ -302,31 +293,9 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTrasladoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTrasladoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTrasladoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTrasladoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new RegistrarTrasladoForm().setVisible(true);
             }

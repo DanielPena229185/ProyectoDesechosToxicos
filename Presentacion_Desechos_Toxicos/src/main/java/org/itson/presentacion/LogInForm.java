@@ -6,6 +6,10 @@
 package org.itson.presentacion;
 
 import java.awt.Color;
+import javax.swing.JComboBox;
+import org.itson.presentacion.Administrador.PrincipalAdministradorForm;
+import org.itson.presentacion.Productor.PrincipalProductorForm;
+import org.itson.presentacion.empresa.PrincipalEmpresaForm;
 
 /**
  * Descripción de la clase:
@@ -17,9 +21,10 @@ public class LogInForm extends javax.swing.JFrame {
     private static final String ADMINISTRADOR = "Administrador";
     private static final String PRODUCTOR = "Productor";
     private static final String EMPRESA_TRANSPORTADORA = "Empresa Transportadora";
-
     private static final String CORREO_DEFAULT = "info@ejemplo.com";
     private static final String CONTRASENA_DEFAULT = "123456789112345";
+    JComboBox<String> comboBox = new JComboBox<String>();
+
 
     /**
      * Creates new form LogInForm
@@ -61,13 +66,10 @@ public class LogInForm extends javax.swing.JFrame {
         panelFondo.add(panelInformacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 320, 530));
 
         iniciarSesionComoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        iniciarSesionComoLabel.setForeground(new java.awt.Color(0, 0, 0));
         iniciarSesionComoLabel.setText("Iniciar Sesión como:");
         panelFondo.add(iniciarSesionComoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        comboBoxOpcionLogin.setBackground(new java.awt.Color(255, 255, 255));
         comboBoxOpcionLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        comboBoxOpcionLogin.setForeground(new java.awt.Color(0, 0, 0));
         comboBoxOpcionLogin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", this.ADMINISTRADOR, this.PRODUCTOR, this.EMPRESA_TRANSPORTADORA }));
         comboBoxOpcionLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,14 +79,12 @@ public class LogInForm extends javax.swing.JFrame {
         panelFondo.add(comboBoxOpcionLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 200, -1));
 
         usuarioLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        usuarioLbl.setForeground(new java.awt.Color(0, 0, 0));
         usuarioLbl.setText("Usuario");
         panelFondo.add(usuarioLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         renglonUsuario.setForeground(new java.awt.Color(0, 0, 0));
         panelFondo.add(renglonUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 280, 10));
 
-        campoUsuario.setBackground(new java.awt.Color(255, 255, 255));
         campoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoUsuario.setForeground(new java.awt.Color(204, 204, 204));
         campoUsuario.setText(this.CORREO_DEFAULT);
@@ -105,19 +105,16 @@ public class LogInForm extends javax.swing.JFrame {
         panelFondo.add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 280, -1));
 
         contrasenaLbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        contrasenaLbl.setForeground(new java.awt.Color(0, 0, 0));
         contrasenaLbl.setText("Contraseña");
         panelFondo.add(contrasenaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         renglonContrasena.setForeground(new java.awt.Color(0, 0, 0));
         panelFondo.add(renglonContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 280, 10));
 
-        campoContrasena.setBackground(new java.awt.Color(255, 255, 255));
         campoContrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoContrasena.setForeground(new java.awt.Color(204, 204, 204));
         campoContrasena.setText(this.CONTRASENA_DEFAULT);
         campoContrasena.setBorder(null);
-	campoContrasena.setEchoChar('•');
         campoContrasena.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoContrasenaFocusGained(evt);
@@ -146,6 +143,11 @@ public class LogInForm extends javax.swing.JFrame {
         iniciarSesionBtn.setForeground(new java.awt.Color(255, 255, 255));
         iniciarSesionBtn.setText("Iniciar Sesión");
         iniciarSesionBtn.setEnabled(false);
+        iniciarSesionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarSesionBtnActionPerformed(evt);
+            }
+        });
         panelFondo.add(iniciarSesionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,6 +229,34 @@ public class LogInForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_campoContrasenaFocusLost
 
+    private void iniciarSesionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSesionBtnActionPerformed
+        String selectedItem = comboBoxOpcionLogin.getSelectedItem().toString();
+        switch (selectedItem) {
+            case ADMINISTRADOR:
+                PrincipalAdministradorForm a = new PrincipalAdministradorForm();
+                a.setVisible(true);
+                dispose();
+                break;
+            case EMPRESA_TRANSPORTADORA:
+                PrincipalEmpresaForm b = new PrincipalEmpresaForm();
+                b.setVisible(true);
+                dispose();
+                break;
+            case PRODUCTOR:
+                PrincipalProductorForm c = new PrincipalProductorForm();
+                c.setVisible(true);
+                dispose();
+                break;
+            default:
+                break;
+        }
+    
+            
+        
+    
+                
+    }//GEN-LAST:event_iniciarSesionBtnActionPerformed
+
     private void alternarVisibilidadContrasena() {
         if (this.checkVisible.isSelected()) {
             this.campoContrasena.setEchoChar((char) 0);
@@ -267,7 +297,7 @@ public class LogInForm extends javax.swing.JFrame {
             this.iniciarSesionBtn.setEnabled(false);
         }
     }
-
+    
     private boolean verificarCampoContrasenaVacio() {
         return this.campoContrasena.getText().isEmpty() || this.campoContrasena.getText().equals(this.CONTRASENA_DEFAULT);
     }
@@ -276,28 +306,8 @@ public class LogInForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LogInForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LogInForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LogInForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogInForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        
+      
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
