@@ -135,8 +135,8 @@ public class ProductoresDAO implements IProductoresDAO {
      * @return Productor buscado
      * @throws PersistenciaException en caso de algun error
      */
-    public Productor consultar(ProductorDTO productor) throws PersistenciaException {
-        Document filtro = new Document("email", productor.getEmail()).append("contrasena", productor.getContrasena());
+    public Productor consultarProductor(ProductorDTO productor) throws PersistenciaException {
+        Document filtro = new Document("contrasena", productor.getContrasena()).append("correo", productor.getEmail());
         Productor p = this.COLECCION.find(Filters.eq("cuenta", filtro)).first();
         return p;
     }

@@ -5,6 +5,7 @@
 package org.itson.interfaces;
 
 import com.dominio.Productor;
+import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.PersistenciaException;
 
 /**
@@ -13,5 +14,5 @@ import org.itson.excepciones.PersistenciaException;
  */
 public interface IProductoresDAO {
     Productor insertar(Productor o) throws PersistenciaException;
-    
+    Productor consultarProductor(ProductorDTO productor) throws PersistenciaException;
 }
