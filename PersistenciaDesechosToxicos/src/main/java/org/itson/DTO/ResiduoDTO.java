@@ -6,6 +6,7 @@ package org.itson.DTO;
 
 import com.dominio.Quimico;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  * Clase DTO del Residuo
@@ -17,12 +18,32 @@ import java.util.List;
  */
 public class ResiduoDTO {
 
+    private ObjectId id_EmpresaProductora;
+    private String nombreEmpresaProductora;
     private String clave;
     private String nombre;
     private List<Quimico> quimicos;
 
     public ResiduoDTO() {
     }
+
+    public ObjectId getId_EmpresaProductora() {
+        return id_EmpresaProductora;
+    }
+
+    public void setId_EmpresaProductora(ObjectId id_EmpresaProductora) {
+        this.id_EmpresaProductora = id_EmpresaProductora;
+    }
+
+    public String getNombreEmpresaProductora() {
+        return nombreEmpresaProductora;
+    }
+
+    public void setNombreEmpresaProductora(String nombreEmpresaProductora) {
+        this.nombreEmpresaProductora = nombreEmpresaProductora;
+    }
+    
+    
 
     public String getClave() {
         return clave;

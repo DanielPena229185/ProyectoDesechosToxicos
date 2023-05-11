@@ -129,16 +129,20 @@ public class ProductoresDAO implements IProductoresDAO {
 //    }
 
     /**
-     * Consuta al Productor por medio de un ProductorDTO
+     * Consuta al Productor por medio de correro y contrasena
      *
      * @param productor Productor a buscar
-     * @return Productor buscado
+     * @return Productor buscado, null en caso de no encontrar nada
      * @throws PersistenciaException en caso de algun error
      */
-    public Productor consultarProductor(ProductorDTO productor) throws PersistenciaException {
-        Document filtro = new Document("contrasena", productor.getContrasena()).append("correo", productor.getEmail());
-        Productor p = this.COLECCION.find(Filters.eq("cuenta", filtro)).first();
-        return p;
+    public Productor consultarLogin(String correo, String contrasena) throws PersistenciaException {
+        try {
+            Document filtro = new Document("contrasena", contrasena).append("correo", correo);
+            Productor p = this.COLECCION.find(Filters.eq("cuenta", filtro)).first();
+            return p;
+        } catch (MongoException e) {
+            throw new PersistenciaException("Error no se pudo consultar los datos:" + e.getMessage());
+        }
     }
 
 //    /**

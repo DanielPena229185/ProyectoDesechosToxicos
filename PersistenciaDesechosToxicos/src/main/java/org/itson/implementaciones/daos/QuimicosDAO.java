@@ -77,7 +77,7 @@ public class QuimicosDAO implements IQuimicosDAO {
      * @return Una lista de Quimicos
      * @throws PersistenciaException En caso de que no se pudo consultar
      */
-    public List<Quimico> consultar() throws PersistenciaException {
+    public List<Quimico> consultarTodosLosQuimicos() throws PersistenciaException {
         try {
             List<Quimico> quimicos = new ArrayList<>();
             COLECCION.find().into(quimicos);

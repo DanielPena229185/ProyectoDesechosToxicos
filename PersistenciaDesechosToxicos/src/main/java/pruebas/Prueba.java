@@ -6,14 +6,20 @@ package pruebas;
 import com.dominio.Cuenta;
 import com.dominio.Productor;
 import com.dominio.Quimico;
+import com.dominio.Residuo;
 import com.dominio.Tipo;
+import java.util.Arrays;
+import java.util.List;
+import org.bson.types.ObjectId;
 import org.itson.DTO.ProductorDTO;
+import org.itson.DTO.ResiduoDTO;
 import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.implementaciones.bd.DAOFactory;
 import org.itson.implementaciones.daos.QuimicosDAO;
 import org.itson.implementaciones.daos.ResiduosDAO;
 import org.itson.interfaces.IProductoresDAO;
 import org.itson.interfaces.IQuimicosDAO;
+import org.itson.interfaces.IResiduosDAO;
 
 /**
  *
@@ -37,19 +43,18 @@ public class Prueba {
 //        quimicosDAO.insertar(q2);
 //        quimicosDAO.insertar(q1);
 
-        IProductoresDAO productoresDAO = DAOFactory.getProductoresDAO();
-        ProductorDTO o = new ProductorDTO();
-        o.setContrasena("eebj031002");
-        o.setEmail("edemboji@gmail.com");
-        
-        Productor consulta = productoresDAO.consultarProductor(o);
-        System.out.println(consulta);
-        System.out.println(consulta.getId());
-        System.out.println(consulta.getNombre());
-        System.out.println(consulta.getTipo());
-        System.out.println(consulta.getCuenta().getCorreo());
-        System.out.println(consulta.getCuenta().getContrasena());
-        
+//        IProductoresDAO productoresDAO = DAOFactory.getProductoresDAO();
+//        ProductorDTO o = new ProductorDTO();
+//        o.setContrasena("eebj031002");
+//        o.setEmail("edemboji@gmail.com");
+//        
+//        Productor consulta = productoresDAO.consultarProductor(o);
+//        System.out.println(consulta);
+//        System.out.println(consulta.getId());
+//        System.out.println(consulta.getNombre());
+//        System.out.println(consulta.getTipo());
+//        System.out.println(consulta.getCuenta().getCorreo());
+//        System.out.println(consulta.getCuenta().getContrasena());
 //        Cuenta c0 = new Cuenta("edemboji@gmail.com", "eebj031002");
 //        Cuenta c = new Cuenta("edmoji@gmail.com", "eej03102");
 //        Cuenta c1 = new Cuenta("edemoji@gmail.com", "eeb03102");
@@ -93,6 +98,42 @@ public class Prueba {
 //        productoresDAO.insertar(p2);
 //        productoresDAO.insertar(p3);
 //        productoresDAO.insertar(p4);
+        IQuimicosDAO quimicosDAO = DAOFactory.getQuimicosDAO();
+
+        List<Quimico> listaQuimicos = quimicosDAO.consultarTodosLosQuimicos();
+//        for (Quimico o : listaQuimicos) {
+//            System.out.println(o.getId() + ", " + o.getNombre());
+//        }
+
+        IProductoresDAO productoresDAO = DAOFactory.getProductoresDAO();
+        Productor productor = productoresDAO.consultarLogin("edemboji@gmail.com", "eebj031002");
+
+        IResiduosDAO residuosDAO = DAOFactory.getResiduoDAO();
+        Residuo r1 = new Residuo();
+        r1.setNombre("Residuo1");
+        r1.setCodigo("123456");
+        r1.setProductor(productor);
+        r1.setQuimicos(Arrays.asList(listaQuimicos.get(0), listaQuimicos.get(1)));
+
+//        residuosDAO.insertar(r1);
+        ResiduoDTO dTO = new ResiduoDTO();
+//        dTO.setQuimicos(Arrays.asList(listaQuimicos.get(1), listaQuimicos.get(0)));
+//        dTO.setClave("123456");
+//        dTO.setNombre("residuo1");
+          dTO.setId_EmpresaProductora(new ObjectId("645d15751bd7a54f08dfa048"));
+//        dTO.setNombreEmpresaProductora("EmpresaEmir");
+
+        List<Residuo> listaResiduos = residuosDAO.consultar(dTO);
+
+        for (Residuo o : listaResiduos) {
+            System.out.println(o.getId());
+            System.out.println(o.getNombre());
+            System.out.println(o.getCodigo());
+            System.out.println(o.getProductor().getId() + ", " + o.getProductor().getNombre());
+            for (Quimico i : o.getQuimicos()) {
+                System.out.println(i.getId() + ", " + i.getNombre());
+            }
+        }
 
     }
 }
