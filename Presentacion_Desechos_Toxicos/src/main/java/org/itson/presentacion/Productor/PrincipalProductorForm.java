@@ -171,11 +171,9 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         jLabel3.setText("PRODUCTOR");
 
         solicitarTrasladoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        solicitarTrasladoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud.png"))); // NOI18N
         solicitarTrasladoBtn.setText("Solicitar Traslado");
         solicitarTrasladoBtn.setContentAreaFilled(false);
         solicitarTrasladoBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        solicitarTrasladoBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/agregarSolicitud_G.png"))); // NOI18N
         solicitarTrasladoBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         solicitarTrasladoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,11 +182,9 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         });
 
         listaReisduosBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        listaReisduosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/verSolicitudes.png"))); // NOI18N
         listaReisduosBtn.setText("Lista de residuos");
         listaReisduosBtn.setContentAreaFilled(false);
         listaReisduosBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        listaReisduosBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/verSolicitudes_G.png"))); // NOI18N
         listaReisduosBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         listaReisduosBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,11 +193,9 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         });
 
         actualizarReisiduoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        actualizarReisiduoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/actualizarSolicitud.png"))); // NOI18N
         actualizarReisiduoBtn.setText("Actualizar residuo");
         actualizarReisiduoBtn.setContentAreaFilled(false);
         actualizarReisiduoBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        actualizarReisiduoBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/actualizarSolicitud_G.png"))); // NOI18N
         actualizarReisiduoBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         actualizarReisiduoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,11 +204,9 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         });
 
         eliminarReisduoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        eliminarReisduoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/eliminarSolicitud.png"))); // NOI18N
         eliminarReisduoBtn.setText("Eliminar Reisduo");
         eliminarReisduoBtn.setContentAreaFilled(false);
         eliminarReisduoBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        eliminarReisduoBtn.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/eliminarSolicitud_G.png"))); // NOI18N
         eliminarReisduoBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         eliminarReisduoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,7 +337,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     }//GEN-LAST:event_regresarBtnActionPerformed
 
     private void solicitarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarTrasladoBtnActionPerformed
-        e = new RegistrarEmpresaForm();
+       SolicitarTrasladoForm e = new SolicitarTrasladoForm();
        e.setVisible(true);
        dispose();
     }//GEN-LAST:event_solicitarTrasladoBtnActionPerformed

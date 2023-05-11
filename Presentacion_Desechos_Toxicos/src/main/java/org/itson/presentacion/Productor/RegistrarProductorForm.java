@@ -102,8 +102,7 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
 
         registrarProductorBtn.setBackground(new java.awt.Color(0, 0, 0));
         registrarProductorBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        registrarProductorBtn.setForeground(new java.awt.Color(255, 255, 255));
-        registrarProductorBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/registrar.png"))); // NOI18N
+        registrarProductorBtn.setText("Registrar");
         registrarProductorBtn.setContentAreaFilled(false);
         registrarProductorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,9 +113,7 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
 
         regresarBtn.setBackground(new java.awt.Color(0, 0, 0));
         regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        regresarBtn.setForeground(new java.awt.Color(255, 255, 255));
-        regresarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itson/imagenes/regresar.png"))); // NOI18N
-        regresarBtn.setText("");
+        regresarBtn.setText("Regresar");
         regresarBtn.setContentAreaFilled(false);
         regresarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

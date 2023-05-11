@@ -28,36 +28,51 @@ public class Verificacion extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        campoKilometros = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        campoCosto = new javax.swing.JTextField();
+        fechaLlegada = new com.github.lgooddatepicker.components.DatePicker();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        campoTratamiento = new javax.swing.JTextField();
+        registrarBtn = new javax.swing.JButton();
+        regresarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 97, -1, -1));
 
         jLabel1.setText("Vehiculos disponibles");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 52, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel1)))
-                .addContainerGap(234, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
-        );
+        jLabel2.setText("Verificacion de solicitud");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 24, -1, -1));
+        getContentPane().add(campoKilometros, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 149, -1, -1));
+
+        jLabel3.setText("Indica Kilometros:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 121, -1, -1));
+
+        jLabel4.setText("Costo:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 189, -1, -1));
+        getContentPane().add(campoCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 217, -1, -1));
+        getContentPane().add(fechaLlegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 280, -1, -1));
+
+        jLabel5.setText("Fecha de llegada:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 257, -1, -1));
+
+        jLabel6.setText("Tratamiento");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 319, -1, -1));
+        getContentPane().add(campoTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 341, -1, -1));
+
+        registrarBtn.setText("Registrar");
+        getContentPane().add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, -1, -1));
+
+        regresarBtn.setText("Regresar");
+        getContentPane().add(regresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 454, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -98,7 +113,18 @@ public class Verificacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField campoCosto;
+    private javax.swing.JTextField campoKilometros;
+    private javax.swing.JTextField campoTratamiento;
+    private com.github.lgooddatepicker.components.DatePicker fechaLlegada;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton registrarBtn;
+    private javax.swing.JButton regresarBtn;
     // End of variables declaration//GEN-END:variables
 }
