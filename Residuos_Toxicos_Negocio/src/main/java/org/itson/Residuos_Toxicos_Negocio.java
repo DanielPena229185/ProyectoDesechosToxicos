@@ -27,7 +27,7 @@ public class Residuos_Toxicos_Negocio {
         INegocio negocio = new NegocioFactory();
         INegocioResiduo negocioResiduo = negocio.getNegocioResiduo();
         try {
-            negocioResiduo.insertarResiduo(residuo);
+            negocioResiduo.insertarResiduo(null);
         } catch (NegocioExcepcion e) {
             JOptionPane.showMessageDialog(null, "Algo salió mal: \n"+ e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         }
