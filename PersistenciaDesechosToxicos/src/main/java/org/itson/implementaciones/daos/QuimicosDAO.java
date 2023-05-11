@@ -13,18 +13,34 @@ import java.util.List;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
+import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.interfaces.IConsultasDAO;
+import org.itson.interfaces.IQuimicosDAO;
 
 /**
+ * Implementa todas la operaciones para Quimicos
  *
- * @author edemb
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
-public class QuimicosDAO {
+public class QuimicosDAO implements IQuimicosDAO {
 
-    private final MongoCollection<Quimico> COLECCION;
+    private static MongoCollection<Quimico> COLECCION;
+    private static QuimicosDAO instanceQuimicosDAO;
 
-    public QuimicosDAO(MongoDatabase DATA_BASE) {
-        this.COLECCION = DATA_BASE.getCollection("quimicos", Quimico.class);
+    private QuimicosDAO() {
+        if (COLECCION == null) {
+            COLECCION = ConexionBD.getBaseDatos().getCollection("quimicos", Quimico.class);
+        }
+    }
+
+    public static QuimicosDAO getInstanceQuimicosDAO() {
+        if (QuimicosDAO.instanceQuimicosDAO == null) {
+            QuimicosDAO.instanceQuimicosDAO = new QuimicosDAO();
+        }
+        return QuimicosDAO.instanceQuimicosDAO;
     }
 
     public Quimico insertar(Quimico o) throws PersistenciaException {
@@ -36,6 +52,7 @@ public class QuimicosDAO {
         }
     }
 
+    /*
     public Quimico actualizar(Quimico o, Quimico s) throws PersistenciaException {
         try {
             COLECCION.updateOne(Filters.eq(o.getId()), new Document("$set", s));
@@ -53,11 +70,12 @@ public class QuimicosDAO {
             throw new PersistenciaException("Error no se pudo eliminar el quimico: " + e.getMessage());
         }
     }
-
+     */
     /**
      * Consulta todos los Quimicos
+     *
      * @return Una lista de Quimicos
-     * @throws PersistenciaException En caso de que no se pudo consultar 
+     * @throws PersistenciaException En caso de que no se pudo consultar
      */
     public List<Quimico> consultar() throws PersistenciaException {
         try {
@@ -68,7 +86,7 @@ public class QuimicosDAO {
             throw new PersistenciaException("Error no se pudieron consultar los quimicos: " + e.getMessage());
         }
     }
-
+    /*
     public Quimico consultar(ObjectId id) throws PersistenciaException {
         try {
             Quimico quimico = COLECCION.find(new Document("id", id)).first();
@@ -94,5 +112,6 @@ public class QuimicosDAO {
             throw new PersistenciaException("Error no se pudo consultar los quimicos: " + e.getMessage());
         }
     }
+     */
 
 }

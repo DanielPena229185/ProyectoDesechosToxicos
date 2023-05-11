@@ -16,39 +16,41 @@ import org.itson.interfaces.IConexionBD;
 
 /**
  * Clase que se va a encargar de conectar el sistema a la base de datos.
+ *
  * @author oscar
  */
-public class ConexionBD implements IConexionBD {
+public class ConexionBD {
 
-    private final String BASE_DATOS;
-    private MongoDatabase baseDatos;
-    
+    //private static String BASE_DATOS;
+    private static MongoDatabase baseDatos;
+
     /**
-     * Método constructor que recibe una base datos como String.
+     * Método constructor.
      */
-    public ConexionBD() {
-        this.BASE_DATOS = "residuos_toxicos";
+    private ConexionBD() {
+        //this.BASE_DATOS = "residuos_toxicos";
     }
-    
+
     /**
-     * Método que obtiene la base de datos que recibió especificado como
-     * atributo.
+     * Se utiliza el singleton
+     *
      * @return la base de datos conectada.
      */
-    @Override
-    public MongoDatabase getBaseDatos() {
-        if (this.baseDatos == null) {
+    public static MongoDatabase getBaseDatos() {
+        //ConexionBD.BASE_DATOS = "residuos_toxicos";
+
+        if (ConexionBD.baseDatos == null) {
             CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
-                fromProviders(PojoCodecProvider.builder().automatic(true).build()));
-        
+                    fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+
             MongoClientSettings configuraciones = MongoClientSettings.builder()
                     .codecRegistry(pojoCodecRegistry)
                     .build();
 
             MongoClient conexion = MongoClients.create(configuraciones);
-            this.baseDatos = conexion.getDatabase(this.BASE_DATOS);
+            ConexionBD.baseDatos = conexion.getDatabase("residuos_toxicos");
         }
-        
-        return this.baseDatos;
+
+        return ConexionBD.baseDatos;
     }
 }

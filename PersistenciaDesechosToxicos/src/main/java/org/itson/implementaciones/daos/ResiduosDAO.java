@@ -15,7 +15,9 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.itson.DTO.ResiduoDTO;
 import org.itson.excepciones.PersistenciaException;
+import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.interfaces.IConsultasDAO;
+import org.itson.interfaces.IResiduosDAO;
 
 /**
  * Clase que implementa todas las operaciones de Residuo
@@ -25,20 +27,36 @@ import org.itson.interfaces.IConsultasDAO;
  * @author Oscar Minjarez Zavala ID: 231503
  * @author Daniel Armando Peña Garcia ID: 229185
  */
-public class ResiduosDAO {
+public class ResiduosDAO implements IResiduosDAO{
 
     /**
      * Coleccion de los residuos
      */
-    private final MongoCollection<Residuo> COLECCION;
+    private static MongoCollection<Residuo> COLECCION;
+    /**
+     * Instancia de ResiduoDAO
+     */
+    private static ResiduosDAO residuosDAO;
 
     /**
      * Costructor que consulta la coleccion de los residuos
      *
-     * @param DATA_BASE Base de datos que se utilizara
      */
-    public ResiduosDAO(MongoDatabase DATA_BASE) {
-        this.COLECCION = DATA_BASE.getCollection("residuos", Residuo.class);
+    private ResiduosDAO() {
+        if (COLECCION == null) {
+            COLECCION = ConexionBD.getBaseDatos().getCollection("residuos", Residuo.class);
+        }
+    }
+
+    /**
+     * Regresa una instancia de ResiduoDAO
+     * @return instancia de ResiduoDAO
+     */
+    public static ResiduosDAO getInstanceResiduosDAO() {
+        if (residuosDAO == null) {
+            residuosDAO = new ResiduosDAO();
+        }
+        return residuosDAO;
     }
 
     /**
