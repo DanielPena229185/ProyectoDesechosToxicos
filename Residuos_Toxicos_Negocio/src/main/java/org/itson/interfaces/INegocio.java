@@ -13,5 +13,5 @@ package org.itson.interfaces;
 public interface INegocio {
     
     
-    public static INegocioResiduo getNegocioResiduo();
+    public INegocioResiduo getNegocioResiduo();
 }

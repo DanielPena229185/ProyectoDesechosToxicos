@@ -22,7 +22,7 @@ public class Residuo {
      * Identificador del residuo
      */
     private ObjectId id;
-    
+
     /**
      * Nombre del Residuo
      */
@@ -44,6 +44,11 @@ public class Residuo {
     private List<Quimico> quimicos;
 
     /**
+     * Productor que registro este residuo
+     */
+    private Productor productor;
+
+    /**
      * Constructor por defecto
      */
     public Residuo() {
@@ -57,13 +62,15 @@ public class Residuo {
      * @param cantidad que se le asignara
      * @param codigo que se le asignara
      * @param quimicos lista de quimicos que lo componen
+     * @param productor Productor que registró el residuo
      */
-    public Residuo(ObjectId id,String nombre, Float cantidad, String codigo, List<Quimico> quimicos) {
+    public Residuo(ObjectId id, String nombre, Float cantidad, String codigo, List<Quimico> quimicos, Productor productor) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.codigo = codigo;
         this.quimicos = quimicos;
+        this.productor = productor;
     }
 
     /**
@@ -73,13 +80,15 @@ public class Residuo {
      * @param cantidad que se le asignara
      * @param codigo que se le asignara
      * @param quimicos lista de quimicos que lo componen
+     * @param productor Productor que registró el residuo
      *
      */
-    public Residuo(String nombre,Float cantidad, String codigo, List<Quimico> quimicos) {
+    public Residuo(String nombre, Float cantidad, String codigo, List<Quimico> quimicos, Productor productor) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.codigo = codigo;
         this.quimicos = quimicos;
+        this.productor = productor;
     }
 
     /**
@@ -156,6 +165,7 @@ public class Residuo {
 
     /**
      * Regresa el nombre del Residuo
+     *
      * @return el Nombre del Residuo
      */
     public String getNombre() {
@@ -164,12 +174,29 @@ public class Residuo {
 
     /**
      * Le asigna un nombre al Residuo
+     *
      * @param nombre a asignar al Residuo
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
+    /**
+     * Obtiene el productor que registró el residuo
+     *
+     * @return productor que registró el residuo
+     */
+    public Productor getProductor() {
+        return productor;
+    }
+
+    /**
+     * Establece el productor que lo registró
+     *
+     * @param productor Productor que lo registó
+     */
+    public void setProductor(Productor productor) {
+        this.productor = productor;
+    }
 
 }

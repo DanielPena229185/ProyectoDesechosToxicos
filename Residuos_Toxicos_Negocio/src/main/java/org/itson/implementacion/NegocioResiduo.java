@@ -4,6 +4,7 @@
  */
 package org.itson.implementacion;
 
+import com.dominio.Productor;
 import com.dominio.Quimico;
 import com.dominio.Residuo;
 import java.util.LinkedList;
@@ -23,7 +24,7 @@ import org.itson.interfaces.IResiduosDAO;
 public class NegocioResiduo implements INegocioResiduo {
 
     IResiduosDAO residuoDAO;
-    
+
     /**
      * Constructor por default
      */
@@ -34,14 +35,26 @@ public class NegocioResiduo implements INegocioResiduo {
     @Override
     public Residuo insertarResiduo(Residuo residuo) throws NegocioExcepcion {
         try {
-            //this.limpiarDatosResiduo(residuo);
+            //Realiza las particiones para solo guardar lo importante del
+            //productor
+            this.realizarParticiones(residuo);
+            //Valida si el residuo cumple las validaciones para guardarse en la
+            //Base de datos
             this.validarResiduo(residuo);
+            //Se inserta el residuo a la base de datos
+            residuoDAO.insertar(residuo);
+            //Regresa el residuo guardado
+            return residuo;
         } catch (ValidacionExcepcion validacionExcepcion) {
+            //Si ocurre un error en las validaciones
             throw new NegocioExcepcion(validacionExcepcion.getMessage());
+
         } catch (PersistenciaException persistencia) {
+            //Si ocurre un error en la capa de persistencia
             throw new NegocioExcepcion(persistencia.getMessage());
+
         }
-        return residuo;
+
     }
 
     @Override
@@ -123,7 +136,21 @@ public class NegocioResiduo implements INegocioResiduo {
         return mensaje;
     }
 
-//    private Residuo limpiarDatosResiduo(Residuo residuo){
-//        
-//    }
+    private Residuo realizarParticiones(Residuo residuo) throws ValidacionExcepcion {
+
+        if (residuo == null) {
+            //Residuo es nulo
+            throw new ValidacionExcepcion("No hay información del residuo");
+        }
+
+        //Solo permitimos el acceso a los datos del productor necesario
+        Productor productor = residuo.getProductor();
+        //Limpiar lista de residuos
+        productor.setResiduos(null);
+        //Limpiar lista de solicitudes
+        productor.setSolicitudes(null);
+
+        residuo.setProductor(productor);
+        return residuo;
+    }
 }
