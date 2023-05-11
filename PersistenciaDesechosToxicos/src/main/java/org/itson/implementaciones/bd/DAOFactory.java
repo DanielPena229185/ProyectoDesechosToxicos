@@ -42,7 +42,7 @@ public class DAOFactory {
         return new EmpresasTransportistasDAO(this.MANEJADOR_CONEXION);
     }
      */
-    public IProductoresDAO getProductoresDAO() {
+    public static IProductoresDAO getProductoresDAO() {
         return ProductoresDAO.getInstanceProductoresDAO();
     }
 
