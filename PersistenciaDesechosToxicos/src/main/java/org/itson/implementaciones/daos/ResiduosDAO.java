@@ -25,7 +25,7 @@ import org.itson.interfaces.IConsultasDAO;
  * @author Oscar Minjarez Zavala ID: 231503
  * @author Daniel Armando Peña Garcia ID: 229185
  */
-public class ResiduoDAO {
+public class ResiduosDAO {
 
     /**
      * Coleccion de los residuos
@@ -37,7 +37,7 @@ public class ResiduoDAO {
      *
      * @param DATA_BASE Base de datos que se utilizara
      */
-    public ResiduoDAO(MongoDatabase DATA_BASE) {
+    public ResiduosDAO(MongoDatabase DATA_BASE) {
         this.COLECCION = DATA_BASE.getCollection("residuos", Residuo.class);
     }
 

@@ -19,11 +19,11 @@ import org.itson.interfaces.IConsultasDAO;
  *
  * @author edemb
  */
-public class QuimicoDAO {
+public class QuimicosDAO {
 
     private final MongoCollection<Quimico> COLECCION;
 
-    public QuimicoDAO(MongoDatabase DATA_BASE) {
+    public QuimicosDAO(MongoDatabase DATA_BASE) {
         this.COLECCION = DATA_BASE.getCollection("quimicos", Quimico.class);
     }
 
