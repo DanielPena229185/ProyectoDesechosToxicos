@@ -31,5 +31,5 @@ public interface IQuimicosDAO {
      * @return Una lista de Quimicos
      * @throws PersistenciaException en caso de algun error; 
      */
-    List<Quimico> consultar() throws PersistenciaException;
+    List<Quimico> consultarTodosLosQuimicos() throws PersistenciaException;
 }

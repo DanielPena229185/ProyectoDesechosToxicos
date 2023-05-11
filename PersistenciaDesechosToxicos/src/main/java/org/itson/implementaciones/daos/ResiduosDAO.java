@@ -6,6 +6,8 @@ package org.itson.implementaciones.daos;
 
 import com.dominio.Quimico;
 import com.dominio.Residuo;
+import com.dominio.Tipo;
+import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
@@ -27,7 +29,7 @@ import org.itson.interfaces.IResiduosDAO;
  * @author Oscar Minjarez Zavala ID: 231503
  * @author Daniel Armando Peña Garcia ID: 229185
  */
-public class ResiduosDAO implements IResiduosDAO{
+public class ResiduosDAO implements IResiduosDAO {
 
     /**
      * Coleccion de los residuos
@@ -50,6 +52,7 @@ public class ResiduosDAO implements IResiduosDAO{
 
     /**
      * Regresa una instancia de ResiduoDAO
+     *
      * @return instancia de ResiduoDAO
      */
     public static ResiduosDAO getInstanceResiduosDAO() {
@@ -114,25 +117,47 @@ public class ResiduosDAO implements IResiduosDAO{
     }
      */
     /**
-     * Consulta si existen Reiduos con esos datos
+     * Consulta si existen Reiduos con esos datos del filtro
      *
      * @param residuo Redisuo a buscar similitudes de informacion
      * @return Una lista de Residuos
      * @throws PersistenciaException en caso de que haya un error
      */
-    public List<Residuo> consultar(ResiduoDTO residuo) throws PersistenciaException {
+    public List<Residuo> consultar(ResiduoDTO filtro) throws PersistenciaException {
+        if (filtro == null) {
+            return null;
+        }
         try {
             List<Document> filter = new ArrayList<>();
             List<Residuo> residuos = new ArrayList<>();
 
-            filter.add(new Document("nombre", residuo.getNombre()));
-            filter.add(new Document("clave", residuo.getClave()));
-            filter.add(new Document("quimicos", residuo.getQuimicos()));
+            if (filtro.getId_EmpresaProductora()!= null || filtro.getNombreEmpresaProductora()!=null) {
+                filter.add(new Document("productor.tipo", Tipo.PRODUCTO));
+            }
+            
+            if (filtro.getId_EmpresaProductora() != null) {
+                filter.add(new Document("productor._id",filtro.getId_EmpresaProductora()));
+            }
 
-            COLECCION.find(new Document("$or", filter)).into(residuos);
+            if (filtro.getNombreEmpresaProductora() != null) {
+                filter.add(new Document("productor.nombre", filtro.getNombreEmpresaProductora()));
+            }
+
+            if (filtro.getNombre() != null) {
+                filter.add(new Document("nombre", filtro.getNombre()));
+
+            }
+            if (filtro.getClave() != null) {
+                filter.add(new Document("codigo", filtro.getClave()));
+            }
+            if (filtro.getQuimicos() != null) {
+                filter.add(new Document("quimicos", filtro.getQuimicos()));
+            }
+
+            COLECCION.find(new Document("$and", filter)).into(residuos);
             return residuos;
 
-        } catch (PersistenciaException e) {
+        } catch (MongoException e) {
             throw new PersistenciaException("Error no se pudo consultar los quimicos: " + e.getMessage());
         }
     }

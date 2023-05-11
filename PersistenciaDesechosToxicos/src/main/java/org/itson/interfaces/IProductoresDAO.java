@@ -14,5 +14,5 @@ import org.itson.excepciones.PersistenciaException;
  */
 public interface IProductoresDAO {
     Productor insertar(Productor o) throws PersistenciaException;
-    Productor consultarProductor(ProductorDTO productor) throws PersistenciaException;
+    Productor consultarLogin(String correo,String contrasena) throws PersistenciaException;
 }
