@@ -20,7 +20,8 @@ import java.util.logging.Level;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Descripción de la clase: Registrar traslado de residuo
+ * Descripción de la clase: Se encarga de hacer el proceso de registro de los traslados
+ * 
  *
  * @author Aracely Campa Quintana ID: 233215
  * @author Edgar Emir Borbon Jimenez ID:
