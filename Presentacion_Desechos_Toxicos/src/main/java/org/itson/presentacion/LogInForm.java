@@ -10,7 +10,7 @@ import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import org.itson.DTO.ProductorDTO;
-import org.itson.excepciones.NegocioExcepcion;
+import org.itson.excepciones.NegocioException;
 import org.itson.implementacion.NegocioFactory;
 import org.itson.interfaces.INegocio;
 import org.itson.interfaces.INegocioProductor;
@@ -263,7 +263,7 @@ public class LogInForm extends javax.swing.JFrame {
                     pro = negocioProductor.login(productor);
                     PrincipalProductorForm.getInstance(pro);
                     this.setVisible(false);
-                } catch (NegocioExcepcion e) {
+                } catch (NegocioException e) {
                     JOptionPane.showMessageDialog(this, e.getMessage());
                 }
                 break;

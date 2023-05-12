@@ -15,6 +15,6 @@ import org.itson.excepciones.PersistenciaException;
  */
 public interface ITrasladosDAO {
 
-    Traslado insertar(Traslado traslado) throws PersistenciaException;
+    Traslado insertarTraslado(Traslado traslado) throws PersistenciaException;
     List<Traslado> consultaTrasladosAsingados(EmpresaTransportista empresaTransportista)throws PersistenciaException;
 }

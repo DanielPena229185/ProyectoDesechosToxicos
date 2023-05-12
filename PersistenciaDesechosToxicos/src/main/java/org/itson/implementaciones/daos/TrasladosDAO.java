@@ -52,12 +52,12 @@ public class TrasladosDAO implements ITrasladosDAO {
     /**
      * Ingresa un Traslado
      *
-     * @param traslado Traslado a insertar
+     * @param traslado Traslado a insertarTraslado
      * @return el Traslado insertado
      * @throws PersistenciaException en caso de algun error
      */
     @Override
-    public Traslado insertar(Traslado traslado) throws PersistenciaException {
+    public Traslado insertarTraslado(Traslado traslado) throws PersistenciaException {
         if (traslado == null) {
             throw new PersistenciaException("El traslado era null");
         }

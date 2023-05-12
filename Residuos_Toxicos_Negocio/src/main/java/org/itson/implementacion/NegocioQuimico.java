@@ -6,9 +6,9 @@ package org.itson.implementacion;
 
 import com.dominio.Quimico;
 import java.util.List;
-import org.itson.excepciones.NegocioExcepcion;
+import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PersistenciaException;
-import org.itson.excepciones.ValidacionExcepcion;
+import org.itson.excepciones.ValidacionException;
 import org.itson.implementaciones.bd.DAOFactory;
 import org.itson.interfaces.INegocioQuimico;
 import org.itson.interfaces.IQuimicosDAO;
@@ -30,25 +30,25 @@ public class NegocioQuimico implements INegocioQuimico {
     }
 
     @Override
-    public Quimico insertarQuimico(Quimico quimico) throws NegocioExcepcion {
+    public Quimico insertarQuimico(Quimico quimico) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Quimico> consultarQuimicos() throws NegocioExcepcion {
+    public List<Quimico> consultarQuimicos() throws NegocioException {
         try {
             List lista = quimicoDAO.consultarTodosLosQuimicos();
             
             return lista;
         } catch (PersistenciaException e) {
-            throw new NegocioExcepcion(e.getMessage());
+            throw new NegocioException(e.getMessage());
         }
     }
     
-    private Quimico validarQuimico(Quimico quimico) throws ValidacionExcepcion{
+    private Quimico validarQuimico(Quimico quimico) throws ValidacionException{
         
         if(quimico == null){
-            throw new ValidacionExcepcion("No hay información del químico");
+            throw new ValidacionException("No hay información del químico");
         }
         return quimico;
         

@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.itson.DTO.ProductorDTO;
-import org.itson.excepciones.NegocioExcepcion;
+import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PersistenciaException;
-import org.itson.excepciones.ValidacionExcepcion;
+import org.itson.excepciones.ValidacionException;
 import org.itson.implementaciones.bd.DAOFactory;
 import org.itson.interfaces.INegocioProductor;
 import org.itson.interfaces.IProductoresDAO;
@@ -34,11 +34,11 @@ public class NegocioProductor implements INegocioProductor {
     }
 
     @Override
-    public Productor login(ProductorDTO productorDTO) throws NegocioExcepcion {
+    public Productor login(ProductorDTO productorDTO) throws NegocioException {
         try {
 
             if (productorDTO == null) {
-                throw new ValidacionExcepcion("No hay ningún dato del productor");
+                throw new ValidacionException("No hay ningún dato del productor");
             }
 
             String correo = validarCorreo(productorDTO.getEmail());
@@ -47,19 +47,19 @@ public class NegocioProductor implements INegocioProductor {
 
             return productor;
         } catch (PersistenciaException e) {
-            throw new NegocioExcepcion(e.getMessage());
-        } catch (ValidacionExcepcion a) {
-            throw new NegocioExcepcion("Errores inválidos: " + a.getMessage());
+            throw new NegocioException(e.getMessage());
+        } catch (ValidacionException a) {
+            throw new NegocioException("Errores inválidos: " + a.getMessage());
         }
 
     }
 
-    private String validarCorreo(String correo) throws ValidacionExcepcion {
+    private String validarCorreo(String correo) throws ValidacionException {
 
         List<String> camposError = new LinkedList<>();
 
         if (correo == null) {
-            throw new ValidacionExcepcion("No hay ningún dato del correo");
+            throw new ValidacionException("No hay ningún dato del correo");
         }
 
         if (validarTextoVacio(correo)) {
@@ -75,7 +75,7 @@ public class NegocioProductor implements INegocioProductor {
 
         String mensaje = mensajeCampos(camposError);
 
-        throw new ValidacionExcepcion(mensaje);
+        throw new ValidacionException(mensaje);
     }
 
     /**
@@ -118,12 +118,12 @@ public class NegocioProductor implements INegocioProductor {
         return !matcher.matches();
     }
 
-    public String validarContrasena(String contrasena) throws ValidacionExcepcion {
+    public String validarContrasena(String contrasena) throws ValidacionException {
 
         List<String> camposError = new LinkedList<>();
 
         if (contrasena == null) {
-            throw new ValidacionExcepcion("No hay ninguna información de la contraseña");
+            throw new ValidacionException("No hay ninguna información de la contraseña");
         }
 
         if (validarTextoVacio(contrasena)) {
@@ -136,17 +136,17 @@ public class NegocioProductor implements INegocioProductor {
 
         String mensaje = mensajeCampos(camposError);
 
-        throw new ValidacionExcepcion(mensaje);
+        throw new ValidacionException(mensaje);
     }
 
     @Override
-    public Productor insertarProductor(Productor productor) throws NegocioExcepcion {
+    public Productor insertarProductor(Productor productor) throws NegocioException {
         try {
             productoresDAO.insertar(productor);
             return productor;
         } catch (PersistenciaException e) {
             System.out.println("jdibidbibipn");
-            throw new NegocioExcepcion(e.getMessage());
+            throw new NegocioException(e.getMessage());
         }
 
     }

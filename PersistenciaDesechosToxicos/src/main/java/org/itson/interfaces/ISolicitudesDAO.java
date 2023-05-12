@@ -17,5 +17,5 @@ public interface ISolicitudesDAO {
 
     Solicitud insertarSolicitud(Solicitud solicitud) throws PersistenciaException;
     List<Solicitud> consultaSolicitudesNoAtendidas() throws PersistenciaException;
-    List<Solicitud> consultar(SolicitudDTO filtro) throws PersistenciaException;
+    List<Solicitud> consultarSolicitudFiltro(SolicitudDTO filtro) throws PersistenciaException;
 }

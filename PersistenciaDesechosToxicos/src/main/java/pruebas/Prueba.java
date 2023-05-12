@@ -55,7 +55,7 @@ public class Prueba {
         ITrasladosDAO trasladosDAO = DAOFactory.getTrasladosDAO();
 //        Traslado traslado = new Traslado();
 //        traslado.setEmpresas_transportistas(Arrays.asList(empresa));
-//        trasladosDAO.insertar(traslado);
+//        trasladosDAO.insertarTraslado(traslado);
         List<Traslado> lista = trasladosDAO.consultaTrasladosAsingados(empresa);
         for (Traslado o : lista) {
             System.out.println(o.getId());
