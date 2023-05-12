@@ -29,9 +29,9 @@ public class Vehiculo {
      */
     private String marca;
     /**
-     * id de la empresa trasnportista que le pertenece el Vehiculo
+     * empresa trasnportista que le pertenece el Vehiculo
      */
-    private ObjectId id_empresa_trasnportista;
+    private EmpresaTransportista empresa_trasnportista;
 
     /**
      * Constructor por defecto
@@ -45,13 +45,13 @@ public class Vehiculo {
      * @param id a asignar
      * @param modelo a asignar
      * @param marca a asignar
-     * @param id_empresa_trasnportista a asignar
+     * @param empresa_trasnportista a asignar
      */
-    public Vehiculo(ObjectId id, String modelo, String marca, ObjectId id_empresa_trasnportista) {
+    public Vehiculo(ObjectId id, String modelo, String marca, EmpresaTransportista empresa_trasnportista) {
         this.id = id;
         this.modelo = modelo;
         this.marca = marca;
-        this.id_empresa_trasnportista = id_empresa_trasnportista;
+        this.empresa_trasnportista = empresa_trasnportista;
     }
 
     /**
@@ -60,12 +60,12 @@ public class Vehiculo {
      *
      * @param modelo a asignar
      * @param marca a asignar
-     * @param id_empresa_trasnportista a asignar
+     * @param empresa_trasnportista a asignar
      */
-    public Vehiculo(String modelo, String marca, ObjectId id_empresa_trasnportista) {
+    public Vehiculo(String modelo, String marca, EmpresaTransportista empresa_trasnportista) {
         this.modelo = modelo;
         this.marca = marca;
-        this.id_empresa_trasnportista = id_empresa_trasnportista;
+        this.empresa_trasnportista = empresa_trasnportista;
     }
 
     /**
@@ -127,8 +127,8 @@ public class Vehiculo {
      *
      * @return EmpresaTrasnportista del Vehiculo
      */
-    public ObjectId getId_Empresa_trasnportista() {
-        return id_empresa_trasnportista;
+    public EmpresaTransportista getEmpresa_trasnportista() {
+        return empresa_trasnportista;
     }
 
     /**
@@ -136,8 +136,8 @@ public class Vehiculo {
      *
      * @param empresa_trasnportista a asignar
      */
-    public void setId_Empresa_trasnportista(ObjectId id_empresa_trasnportista) {
-        this.id_empresa_trasnportista = id_empresa_trasnportista;
+    public void setEmpresa_trasnportista(EmpresaTransportista empresa_trasnportista) {
+        this.empresa_trasnportista = empresa_trasnportista;
     }
 
 }

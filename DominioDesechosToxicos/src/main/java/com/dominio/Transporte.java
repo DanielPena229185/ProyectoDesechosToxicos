@@ -4,6 +4,7 @@
  */
 package com.dominio;
 
+import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
@@ -32,14 +33,14 @@ public class Transporte {
     private Float coste;
 
     /**
-     * Vehiculo asignado al Transporte
+     * Vehiculos asignado al Transporte
      */
-    private Vehiculo vehiculo;
+    private List<Vehiculo> vehiculos;
 
     /**
-     * Id de Empresa Trasnportista que registro el Transporte
+     * Empresa Trasnportista que registro el Transporte
      */
-    private ObjectId id_empresa_transportista;
+    private EmpresaTransportista empresa_transportista;
 
     /**
      * Constructor por defecto
@@ -53,15 +54,15 @@ public class Transporte {
      * @param id identificador a asignar
      * @param kilometros kilometros a asignar
      * @param coste coste a asignar
-     * @param vehiculo Vehiculo a asignar
-     * @param id_empresaTransportista id del EmpresaTransportista a asignar
+     * @param vehiculos Vehiculos a asignar
+     * @param empresaTransportista EmpresaTransportista a asignar
      */
-    public Transporte(ObjectId id, Float kilometros, Float coste, Vehiculo vehiculo, ObjectId id_empresa_transportista) {
+    public Transporte(ObjectId id, Float kilometros, Float coste, List<Vehiculo> vehiculos, EmpresaTransportista empresa_transportista) {
         this.id = id;
         this.kilometros = kilometros;
         this.coste = coste;
-        this.vehiculo = vehiculo;
-        this.id_empresa_transportista = id_empresa_transportista;
+        this.vehiculos = vehiculos;
+        this.empresa_transportista = empresa_transportista;
     }
 
     /**
@@ -70,14 +71,14 @@ public class Transporte {
      *
      * @param kilometros kilometros a asignar
      * @param coste coste a asignar
-     * @param vehiculo Vehiculo a asignar
-     * @param id_empresaTransportista id de EmpresaTransportista a asignar
+     * @param vehiculos Vehiculo a asignar
+     * @param empresaTransportista EmpresaTransportista a asignar
      */
-    public Transporte(Float kilometros, Float coste, Vehiculo vehiculo, ObjectId id_empresa_transportista) {
+    public Transporte(Float kilometros, Float coste, List<Vehiculo> vehiculos, EmpresaTransportista empresa_transportista) {
         this.kilometros = kilometros;
         this.coste = coste;
-        this.vehiculo = vehiculo;
-        this.id_empresa_transportista = id_empresa_transportista;
+        this.vehiculos = vehiculos;
+        this.empresa_transportista = empresa_transportista;
     }
 
     /**
@@ -135,39 +136,39 @@ public class Transporte {
     }
 
     /**
-     * Regresa el Vehiculo del Transporte
+     * Regresa los Vehiculos del Transporte
      *
-     * @return Vehiculo del Transporte
+     * @return Lista de Vehiculos del Transporte
      */
-    public Vehiculo getVehiculo() {
-        return vehiculo;
+    public List<Vehiculo> getVehiculos() {
+        return vehiculos;
     }
 
     /**
-     * Le asigna un Vehiculo al Transporte
+     * Le asigna un Vehiculos al Transporte
      *
-     * @param vehiculo objeto Vehiculo a asignar
+     * @param vehiculos Vehiculos a asignar
      */
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
+    public void setVehiculos(List<Vehiculo> vehiculos) {
+        this.vehiculos = vehiculos;
     }
 
     /**
-     * Regresa id de la Empresa Transportista del Transporte
+     * Regresa la Empresa Transportista del Transporte
      *
      * @return Empresa Trasnportista del Transporte
      */
-    public ObjectId getId_Empresa_Transportista() {
-        return id_empresa_transportista;
+    public EmpresaTransportista getEmpresa_Transportista() {
+        return empresa_transportista;
     }
 
     /**
-     * Le asigna una id de EmpresaTrasnportista al Transporte
+     * Le asigna una EmpresaTrasnportista al Transporte
      *
      * @param empresaTransportista objeto EmpresaTransportista a asignar
      */
-    public void setId_EmpresaTransportista(ObjectId id_empresa_transportista) {
-        this.id_empresa_transportista = id_empresa_transportista;
+    public void setEmpresaTransportista(EmpresaTransportista empresa_transportista) {
+        this.empresa_transportista = empresa_transportista;
     }
 
 }

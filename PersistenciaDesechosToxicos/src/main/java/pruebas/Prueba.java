@@ -11,6 +11,7 @@ import com.dominio.Quimico;
 import com.dominio.Residuo;
 import com.dominio.Solicitud;
 import com.dominio.Traslado;
+import com.dominio.Vehiculo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -28,6 +29,7 @@ import org.itson.interfaces.IQuimicosDAO;
 import org.itson.interfaces.IResiduosDAO;
 import org.itson.interfaces.ISolicitudesDAO;
 import org.itson.interfaces.ITrasladosDAO;
+import org.itson.interfaces.IVehiculosDAO;
 
 /**
  *
@@ -41,29 +43,29 @@ public class Prueba {
         IProductoresDAO productoresDAO = DAOFactory.getProductoresDAO();
         IEmpresasTrasnportistasDAO trasnportistasDAO = DAOFactory.getEmpresasTrasnportistasDAO();
 
-//        Productor p = productoresDAO.consultarLogin("trinu_1980@hotmail.com", "bone770115");
         EmpresaTransportista t = trasnportistasDAO.loginEmpresaTrasnportista("trinu_1980@hotmail.com", "bone770115");
 
-        System.out.println("Trasnportista: "+t.getId()+" " + t.getTipo() + " " + t.getCuenta().getCorreo() + " " + t.getCuenta().getContrasena() + " " + t.getNombre());
-//        System.out.println("Productora: "+ p.getTipo()+ " "+ p.getCuenta().getCorreo()+" "+p.getCuenta().getContrasena()+" "+p.getNombre());
-    
+        System.out.println("Trasnportista: " + t.getId() + " " + t.getTipo() + " " + t.getCuenta().getCorreo() + " " + t.getCuenta().getContrasena() + " " + t.getNombre());
+
         EmpresaTransportista empresa = new EmpresaTransportista();
         empresa.setId(t.getId());
         empresa.setNombre(t.getNombre());
         empresa.setTipo(t.getTipo());
         
-        ITrasladosDAO trasladosDAO = DAOFactory.getTrasladosDAO();
-//        Traslado traslado = new Traslado();
-//        traslado.setEmpresas_transportistas(Arrays.asList(empresa));
-//        trasladosDAO.insertar(traslado);
-        List<Traslado> lista = trasladosDAO.consultaTrasladosAsingados(empresa);
-        for (Traslado o : lista) {
-            System.out.println(o.getId());
-            for (EmpresaTransportista e : o.getEmpresas_transportistas()) {
-                System.out.println("Trasnportista: " + e.getId() + " " + e.getTipo() + " " + t.getNombre());
+        Vehiculo v = new Vehiculo("modelo1", "marca1", empresa);
+        Vehiculo v1 = new Vehiculo("modelo2", "marca2", empresa);
+        Vehiculo v2 = new Vehiculo();
+        v2.setMarca("marca3");
+        v2.setModelo("modelo3");
+        IVehiculosDAO vehiculosDAO = DAOFactory.getVehiculosDAO();
+//        vehiculosDAO.insertarVehiculo(v);
+//        vehiculosDAO.insertarVehiculo(v1);
+//        vehiculosDAO.insertarVehiculo(v2);
 
-            }
-        }
+    List<Vehiculo> vehiculos = vehiculosDAO.consultarVehiculosEmpresaTrasnportadora(empresa);
+    for(Vehiculo l : vehiculos){
+        System.out.println(l.getId()+" "+ l.getMarca()+" "+l.getModelo()+" "+l.getEmpresa_trasnportista().getId()+" "+l.getEmpresa_trasnportista().getNombre());
+    }
 
     }
 }

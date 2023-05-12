@@ -12,14 +12,18 @@ import org.itson.implementaciones.daos.ProductoresDAO;
 import org.itson.implementaciones.daos.QuimicosDAO;
 import org.itson.implementaciones.daos.ResiduosDAO;
 import org.itson.implementaciones.daos.SolicitudesDAO;
+import org.itson.implementaciones.daos.TransportesDAO;
 import org.itson.implementaciones.daos.TrasladosDAO;
+import org.itson.implementaciones.daos.VehiculosDAO;
 import org.itson.interfaces.IConsultasDAO;
 import org.itson.interfaces.IEmpresasTrasnportistasDAO;
 import org.itson.interfaces.IProductoresDAO;
 import org.itson.interfaces.IQuimicosDAO;
 import org.itson.interfaces.IResiduosDAO;
 import org.itson.interfaces.ISolicitudesDAO;
+import org.itson.interfaces.ITransporteDAO;
 import org.itson.interfaces.ITrasladosDAO;
+import org.itson.interfaces.IVehiculosDAO;
 
 /**
  *
@@ -30,23 +34,6 @@ public class DAOFactory {
     public DAOFactory() {
     }
 
-    /*
-    public IConsultasDAO getAdministradoresDAO() {
-        return new AdministradoresDAO(this.MANEJADOR_CONEXION);
-    }
-
-    public IConsultasDAO getCuentasDAO() {
-        return new CuentasDAO(this.MANEJADOR_CONEXION);
-    }
-
-    public IConsultasDAO getDireccionesDAO() {
-        return new CuentasDAO(this.MANEJADOR_CONEXION);
-    }
-
-    public IConsultasDAO getEmpresaTransportistaDAO() {
-        return new EmpresasTransportistasDAO(this.MANEJADOR_CONEXION);
-    }
-     */
     /**
      * Regresa una instania de ProductoresDAO
      *
@@ -100,5 +87,23 @@ public class DAOFactory {
      */
     public static ITrasladosDAO getTrasladosDAO() {
         return TrasladosDAO.getInstanceTrasladosDAO();
+    }
+
+    /**
+     * Regresa una instancia de VehiculosDAO
+     *
+     * @return Una instancia de VehiculosDAO
+     */
+    public static IVehiculosDAO getVehiculosDAO() {
+        return VehiculosDAO.getInstanceVehiculosDAO();
+    }
+
+    /**
+     * Regresa una instancia de TransportesDAO
+     *
+     * @return Una instancia de TransporteDAO
+     */
+    public static ITransporteDAO getTransporteDAO() {
+        return TransportesDAO.getInstanceTransportesDAO();
     }
 }
