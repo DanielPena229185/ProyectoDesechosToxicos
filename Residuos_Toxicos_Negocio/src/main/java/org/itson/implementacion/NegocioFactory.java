@@ -5,6 +5,7 @@
 package org.itson.implementacion;
 
 import org.itson.interfaces.INegocio;
+import org.itson.interfaces.INegocioProductor;
 import org.itson.interfaces.INegocioResiduo;
 
 /**
@@ -24,5 +25,10 @@ public class NegocioFactory implements INegocio {
     @Override
     public INegocioResiduo getNegocioResiduo() {
         return new NegocioResiduo();
+    }
+
+    @Override
+    public INegocioProductor getNegocioProductor() {
+        return new NegocioProductor();
     }
 }

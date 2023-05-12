@@ -44,6 +44,7 @@ public class NegocioProductor implements INegocioProductor {
             String correo = validarCorreo(productorDTO.getEmail());
             String contrasena = validarContrasena(productorDTO.getContrasena());
             Productor productor = productoresDAO.consultarLogin(correo, contrasena);
+            
             return productor;
         } catch (PersistenciaException e) {
             throw new NegocioExcepcion(e.getMessage());

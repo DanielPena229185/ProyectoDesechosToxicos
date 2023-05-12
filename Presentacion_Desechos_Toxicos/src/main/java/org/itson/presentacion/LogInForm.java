@@ -5,10 +5,15 @@
  */
 package org.itson.presentacion;
 
+import com.dominio.Productor;
 import java.awt.Color;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import org.itson.DTO.ProductorDTO;
+import org.itson.excepciones.NegocioExcepcion;
+import org.itson.interfaces.INegocio;
+import org.itson.interfaces.INegocioProductor;
 import org.itson.presentacion.Administrador.PrincipalAdministradorForm;
-import org.itson.presentacion.Productor.PrincipalProductorForm;
 import org.itson.presentacion.empresa.PrincipalEmpresaForm;
 
 /**
@@ -24,12 +29,14 @@ public class LogInForm extends javax.swing.JFrame {
     private static final String CORREO_DEFAULT = "info@ejemplo.com";
     private static final String CONTRASENA_DEFAULT = "123456789112345";
     JComboBox<String> comboBox = new JComboBox<String>();
-
+    INegocio negocio;
+    INegocioProductor negocioProductor;
 
     /**
      * Creates new form LogInForm
      */
     public LogInForm() {
+        negocioProductor = negocio.getNegocioProductor();
         initComponents();
     }
 
@@ -243,18 +250,25 @@ public class LogInForm extends javax.swing.JFrame {
                 dispose();
                 break;
             case PRODUCTOR:
-                PrincipalProductorForm c = new PrincipalProductorForm();
-                c.setVisible(true);
-                dispose();
+                Productor pro;
+                try {
+                    ProductorDTO productor = new ProductorDTO();
+                    productor.setEmail(this.campoUsuario.getText());
+                    productor.setContrasena(this.campoContrasena.getText());
+                    pro = negocioProductor.login(productor);
+                } catch (NegocioExcepcion e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage());
+                }
+                JOptionPane.showMessageDialog(this, pro.getNombre());
+
+//                PrincipalProductorForm c = new PrincipalProductorForm();
+//                c.setVisible(true);
+//                dispose();
                 break;
             default:
                 break;
         }
-    
-            
-        
-    
-                
+
     }//GEN-LAST:event_iniciarSesionBtnActionPerformed
 
     private void alternarVisibilidadContrasena() {
@@ -297,7 +311,7 @@ public class LogInForm extends javax.swing.JFrame {
             this.iniciarSesionBtn.setEnabled(false);
         }
     }
-    
+
     private boolean verificarCampoContrasenaVacio() {
         return this.campoContrasena.getText().isEmpty() || this.campoContrasena.getText().equals(this.CONTRASENA_DEFAULT);
     }
@@ -306,8 +320,6 @@ public class LogInForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-      
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -316,7 +328,7 @@ public class LogInForm extends javax.swing.JFrame {
             }
         });
     }
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField campoContrasena;

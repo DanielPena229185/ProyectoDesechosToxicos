@@ -14,4 +14,5 @@ public interface INegocio {
     
     
     public INegocioResiduo getNegocioResiduo();
+    public INegocioProductor getNegocioProductor();
 }
