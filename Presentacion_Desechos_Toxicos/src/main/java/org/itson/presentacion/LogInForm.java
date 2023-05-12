@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioExcepcion;
+import org.itson.implementacion.NegocioFactory;
 import org.itson.interfaces.INegocio;
 import org.itson.interfaces.INegocioProductor;
 import org.itson.presentacion.Administrador.PrincipalAdministradorForm;
@@ -36,6 +37,7 @@ public class LogInForm extends javax.swing.JFrame {
      * Creates new form LogInForm
      */
     public LogInForm() {
+        negocio = new NegocioFactory();
         negocioProductor = negocio.getNegocioProductor();
         initComponents();
     }
@@ -250,7 +252,7 @@ public class LogInForm extends javax.swing.JFrame {
                 dispose();
                 break;
             case PRODUCTOR:
-                Productor pro;
+                Productor pro = null;
                 try {
                     ProductorDTO productor = new ProductorDTO();
                     productor.setEmail(this.campoUsuario.getText());
