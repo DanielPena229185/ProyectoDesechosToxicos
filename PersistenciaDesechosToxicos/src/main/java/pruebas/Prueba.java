@@ -117,10 +117,10 @@ public class Prueba {
 
 //        residuosDAO.insertar(r1);
         ResiduoDTO dTO = new ResiduoDTO();
-//        dTO.setQuimicos(Arrays.asList(listaQuimicos.get(1), listaQuimicos.get(0)));
+        dTO.setQuimicos(Arrays.asList(listaQuimicos.get(1), listaQuimicos.get(0)));
 //        dTO.setClave("123456");
-//        dTO.setNombre("residuo1");
-          dTO.setId_EmpresaProductora(new ObjectId("645d15751bd7a54f08dfa048"));
+//        dTO.setNombre("Residuo1");
+//          dTO.setId_EmpresaProductora(new ObjectId("645d15751bd7a54f08dfa048"));
 //        dTO.setNombreEmpresaProductora("EmpresaEmir");
 
         List<Residuo> listaResiduos = residuosDAO.consultar(dTO);

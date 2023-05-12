@@ -12,7 +12,9 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Filter;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.itson.DTO.ResiduoDTO;
@@ -117,7 +119,7 @@ public class ResiduosDAO implements IResiduosDAO {
     }
      */
     /**
-     * Consulta si existen Reiduos con esos datos del filtro
+     * Consulta si existen Reiduos coincidentes con los datos que contiene ResiduoDTO
      *
      * @param residuo Redisuo a buscar similitudes de informacion
      * @return Una lista de Residuos
@@ -151,7 +153,11 @@ public class ResiduosDAO implements IResiduosDAO {
                 filter.add(new Document("codigo", filtro.getClave()));
             }
             if (filtro.getQuimicos() != null) {
-                filter.add(new Document("quimicos", filtro.getQuimicos()));
+                List<ObjectId> lista = new ArrayList<>();
+                for(Quimico q : filtro.getQuimicos()){
+                    lista.add(q.getId());
+                }
+                filter.add(new Document("quimicos._id", new Document("$all", lista)));
             }
 
             COLECCION.find(new Document("$and", filter)).into(residuos);
