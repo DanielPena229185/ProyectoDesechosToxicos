@@ -44,7 +44,7 @@ public class NegocioProductor implements INegocioProductor {
             String correo = validarCorreo(productorDTO.getEmail());
             String contrasena = validarContrasena(productorDTO.getContrasena());
             Productor productor = productoresDAO.consultarLogin(correo, contrasena);
-            
+
             return productor;
         } catch (PersistenciaException e) {
             throw new NegocioExcepcion(e.getMessage());
@@ -135,8 +135,19 @@ public class NegocioProductor implements INegocioProductor {
         }
 
         String mensaje = mensajeCampos(camposError);
-        
+
         throw new ValidacionExcepcion(mensaje);
+    }
+
+    @Override
+    public Productor insertarProductor(Productor productor) {
+        try {
+            return productoresDAO.insertar(productor);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+
     }
 
 }

@@ -4,12 +4,15 @@
 
 package org.itson;
 
+import com.dominio.Cuenta;
+import com.dominio.Productor;
 import com.dominio.Residuo;
 import javax.swing.JOptionPane;
+import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioExcepcion;
 import org.itson.implementacion.NegocioFactory;
 import org.itson.interfaces.INegocio;
-import org.itson.interfaces.INegocioResiduo;
+import org.itson.interfaces.INegocioProductor;
 
 /**
  *
@@ -25,9 +28,18 @@ public class Residuos_Toxicos_Negocio {
         //quimicos.add(new Quimico("Popo"));
         //residuo.setQuimicos(quimicos);
         INegocio negocio = new NegocioFactory();
-        INegocioResiduo negocioResiduo = negocio.getNegocioResiduo();
+        INegocioProductor negocioProductor = negocio.getNegocioProductor();
+        Productor insertarPor = new Productor();
+        insertarPor.setNombre("Daniel");
+        Cuenta cuenta = new Cuenta("dapgpena@gmail.com", "14785");
+        insertarPor.setCuenta(cuenta);
         try {
-            negocioResiduo.insertarResiduo(null);
+            negocioProductor.insertarProductor(insertarPor);
+//            ProductorDTO pro = new ProductorDTO();
+//            pro.setEmail("dapgpena@gmail.com");
+//            pro.setContrasena("14785");
+//            Productor produc = negocioProductor.login(pro);
+//            System.out.println(produc.getNombre());
         } catch (NegocioExcepcion e) {
             JOptionPane.showMessageDialog(null, "Algo salió mal: \n"+ e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
         }
