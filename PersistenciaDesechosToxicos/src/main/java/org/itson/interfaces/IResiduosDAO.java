@@ -27,7 +27,7 @@ public interface IResiduosDAO {
      * @throws PersistenciaException en caso de algun error
      */
     Residuo insertar(Residuo o) throws PersistenciaException;
-
+    
     /**
      * Implementacion de consultar Residuos
      *

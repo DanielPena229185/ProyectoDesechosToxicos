@@ -47,6 +47,11 @@ public class Residuo {
      * Productor que registro este residuo
      */
     private Productor productor;
+    
+    /**
+     * Tipo de unidad de medida del residuo
+     */
+    private MedidaResiduo medida_residuo;
 
     /**
      * Constructor por defecto
@@ -63,14 +68,16 @@ public class Residuo {
      * @param codigo que se le asignara
      * @param quimicos lista de quimicos que lo componen
      * @param productor Productor que registró el residuo
+     * @param medidaResiduo Tipo de unidad de medida
      */
-    public Residuo(ObjectId id, String nombre, Float cantidad, String codigo, List<Quimico> quimicos, Productor productor) {
+    public Residuo(ObjectId id, String nombre, Float cantidad, String codigo, List<Quimico> quimicos, Productor productor, MedidaResiduo medidaResiduo) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.codigo = codigo;
         this.quimicos = quimicos;
         this.productor = productor;
+        this.medida_residuo = medidaResiduo;
     }
 
     /**
@@ -81,14 +88,16 @@ public class Residuo {
      * @param codigo que se le asignara
      * @param quimicos lista de quimicos que lo componen
      * @param productor Productor que registró el residuo
+     * @param medidaResiduo Tipo de unidad de medida
      *
      */
-    public Residuo(String nombre, Float cantidad, String codigo, List<Quimico> quimicos, Productor productor) {
+    public Residuo(String nombre, Float cantidad, String codigo, List<Quimico> quimicos, Productor productor, MedidaResiduo medidaResiduo) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.codigo = codigo;
         this.quimicos = quimicos;
         this.productor = productor;
+        this.medida_residuo = medidaResiduo;
     }
 
     /**
@@ -199,4 +208,19 @@ public class Residuo {
         this.productor = productor;
     }
 
+    /**
+     * Obtiene el tipo de unidad de medida del residuo.
+     * @return 
+     */
+    public MedidaResiduo getMedida_residuo() {
+        return medida_residuo;
+    }
+
+    /**
+     * Establece el tipo de unidad de medida del residuo.
+     * @param medida_residuo tipo litro o kilogramo.
+     */
+    public void setMedida_residuo(MedidaResiduo medida_residuo) {
+        this.medida_residuo = medida_residuo;
+    }
 }

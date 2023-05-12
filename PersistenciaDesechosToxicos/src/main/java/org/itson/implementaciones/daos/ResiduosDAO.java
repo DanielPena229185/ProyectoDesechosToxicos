@@ -118,17 +118,20 @@ public class ResiduosDAO implements IResiduosDAO {
         }
     }
      */
+    
     /**
      * Consulta si existen Reiduos coincidentes con los datos que contiene ResiduoDTO
      *
-     * @param residuo Redisuo a buscar similitudes de informacion
+     * @param filtro Redisuo a buscar similitudes de informacion
      * @return Una lista de Residuos
      * @throws PersistenciaException en caso de que haya un error
      */
+    @Override
     public List<Residuo> consultar(ResiduoDTO filtro) throws PersistenciaException {
         if (filtro == null) {
-            return null;
+           throw new PersistenciaException("No se obtuvieron parámetros válidos.");
         }
+        
         try {
             List<Document> filter = new ArrayList<>();
             List<Residuo> residuos = new ArrayList<>();
@@ -149,23 +152,26 @@ public class ResiduosDAO implements IResiduosDAO {
                 filter.add(new Document("nombre", filtro.getNombre()));
 
             }
+            
             if (filtro.getClave() != null) {
                 filter.add(new Document("codigo", filtro.getClave()));
             }
+            
             if (filtro.getQuimicos() != null) {
                 List<ObjectId> lista = new ArrayList<>();
+                
                 for(Quimico q : filtro.getQuimicos()){
                     lista.add(q.getId());
                 }
+                
                 filter.add(new Document("quimicos._id", new Document("$all", lista)));
             }
 
             COLECCION.find(new Document("$and", filter)).into(residuos);
+            
             return residuos;
-
         } catch (MongoException e) {
             throw new PersistenciaException("Error no se pudo consultar los quimicos: " + e.getMessage());
         }
     }
-
 }
