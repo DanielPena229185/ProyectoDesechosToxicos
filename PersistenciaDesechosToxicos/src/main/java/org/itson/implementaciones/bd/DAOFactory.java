@@ -12,12 +12,14 @@ import org.itson.implementaciones.daos.ProductoresDAO;
 import org.itson.implementaciones.daos.QuimicosDAO;
 import org.itson.implementaciones.daos.ResiduosDAO;
 import org.itson.implementaciones.daos.SolicitudesDAO;
+import org.itson.implementaciones.daos.TrasladosDAO;
 import org.itson.interfaces.IConsultasDAO;
 import org.itson.interfaces.IEmpresasTrasnportistasDAO;
 import org.itson.interfaces.IProductoresDAO;
 import org.itson.interfaces.IQuimicosDAO;
 import org.itson.interfaces.IResiduosDAO;
 import org.itson.interfaces.ISolicitudesDAO;
+import org.itson.interfaces.ITrasladosDAO;
 
 /**
  *
@@ -84,9 +86,19 @@ public class DAOFactory {
 
     /**
      * Regresa una instancia de SolicitudesDAO
+     *
      * @return Una instancia de SolicitudesDAO
      */
     public static ISolicitudesDAO getSolicitudesDAO() {
         return SolicitudesDAO.getInstanceSolicitudesDAO();
+    }
+
+    /**
+     * Regresa una instancia de TrasladosDAO
+     *
+     * @return Una instancia de TrasladosDAO
+     */
+    public static ITrasladosDAO getTrasladosDAO() {
+        return TrasladosDAO.getInstanceTrasladosDAO();
     }
 }
