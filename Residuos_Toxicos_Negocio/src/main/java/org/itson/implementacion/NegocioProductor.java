@@ -115,7 +115,7 @@ public class NegocioProductor implements INegocioProductor {
 
         // Se comprueba si el correo cumple con el patrón
         Matcher matcher = pattern.matcher(correo);
-        return matcher.matches();
+        return !matcher.matches();
     }
 
     public String validarContrasena(String contrasena) throws ValidacionExcepcion {

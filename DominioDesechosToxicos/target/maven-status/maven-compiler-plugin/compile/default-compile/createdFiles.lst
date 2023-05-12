@@ -1,5 +1,4 @@
 com\dominio\Vehiculo.class
-com\dominio\Ciudad.class
 com\dominio\Productor.class
 com\dominio\Administrador.class
 com\dominio\EmpresaTransportista.class
@@ -12,4 +11,5 @@ com\dominio\Residuo.class
 com\dominio\Empresa.class
 com\dominio\Solicitud.class
 com\dominio\Quimico.class
+com\dominio\Tipo.class
 com\dominio\Cuenta.class
