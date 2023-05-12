@@ -1,21 +1,20 @@
 /**
-* ValidacionExcepcion.java
-* 8 may. 2023 11:04:38
+* NegocioExcepcion.java
+* 7 may. 2023 18:39:27
 */ 
 
 package org.itson.excepciones;
-
 /**
  * Descripción de la clase: 
  * 
  * @author Daniel Armando Peña Garcia ID:229185
  */
-public class ValidacionExcepcion extends RuntimeException{
+public class NegocioException extends RuntimeException{
 
     /**
-     *
+     * Constructor por default
      */
-    public ValidacionExcepcion(){
+    public NegocioException(){
         super();
     }
 
@@ -23,7 +22,7 @@ public class ValidacionExcepcion extends RuntimeException{
      * 
      * @param message 
      */
-    public ValidacionExcepcion(String message) {
+    public NegocioException(String message) {
         super(message);
     }
 
@@ -32,7 +31,7 @@ public class ValidacionExcepcion extends RuntimeException{
      * @param message
      * @param cause 
      */
-    public ValidacionExcepcion(String message, Throwable cause) {
+    public NegocioException(String message, Throwable cause) {
         super(message, cause);
     }
     

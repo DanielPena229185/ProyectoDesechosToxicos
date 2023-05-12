@@ -7,7 +7,7 @@ package org.itson.interfaces;
 
 import com.dominio.Productor;
 import org.itson.DTO.ProductorDTO;
-import org.itson.excepciones.NegocioExcepcion;
+import org.itson.excepciones.NegocioException;
 
 /**
  * Descripción de la interface: 
@@ -17,6 +17,6 @@ import org.itson.excepciones.NegocioExcepcion;
 public interface INegocioProductor {
 
     public Productor insertarProductor(Productor productor);
-    public Productor login(ProductorDTO productor) throws NegocioExcepcion;
+    public Productor login(ProductorDTO productor) throws NegocioException;
     
 }

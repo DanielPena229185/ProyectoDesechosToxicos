@@ -8,9 +8,9 @@ import com.dominio.Administrador;
 import java.util.LinkedList;
 import java.util.List;
 import org.bson.types.ObjectId;
-import org.itson.excepciones.NegocioExcepcion;
+import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PersistenciaException;
-import org.itson.excepciones.ValidacionExcepcion;
+import org.itson.excepciones.ValidacionException;
 import org.itson.implementaciones.bd.DAOFactory;
 import org.itson.interfaces.IConsultasDAO;
 
@@ -32,15 +32,15 @@ public class AdministradorNegocio{
      *
      * @param elemento
      * @return
-     * @throws NegocioExcepcion
+     * @throws NegocioException
      */
-    public Administrador insertar(Administrador elemento) throws NegocioExcepcion {
+    public Administrador insertar(Administrador elemento) throws NegocioException {
         try {
             this.validarAdministradorInsertar(elemento);
         } catch (PersistenciaException e) {
-            throw new NegocioExcepcion(e.getMessage());
-        } catch (ValidacionExcepcion a) {
-            throw new NegocioExcepcion(a.getMessage());
+            throw new NegocioException(e.getMessage());
+        } catch (ValidacionException a) {
+            throw new NegocioException(a.getMessage());
         }
         return elemento;
     }
@@ -49,17 +49,17 @@ public class AdministradorNegocio{
      *
      * @param elemento
      * @return
-     * @throws NegocioExcepcion
+     * @throws NegocioException
      */
-    public Administrador eliminar(Administrador elemento) throws NegocioExcepcion {
+    public Administrador eliminar(Administrador elemento) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
      *
-     * @return @throws NegocioExcepcion
+     * @return @throws NegocioException
      */
-    public List<Administrador> consultar() throws NegocioExcepcion {
+    public List<Administrador> consultar() throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -67,9 +67,9 @@ public class AdministradorNegocio{
      *
      * @param elemento
      * @return
-     * @throws NegocioExcepcion
+     * @throws NegocioException
      */
-    public List<Administrador> consultar(Administrador elemento) throws NegocioExcepcion {
+    public List<Administrador> consultar(Administrador elemento) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -77,9 +77,9 @@ public class AdministradorNegocio{
      *
      * @param id
      * @return
-     * @throws NegocioExcepcion
+     * @throws NegocioException
      */
-    public List<Administrador> consultar(ObjectId id) throws NegocioExcepcion {
+    public List<Administrador> consultar(ObjectId id) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -87,14 +87,14 @@ public class AdministradorNegocio{
      *
      * @param administrador
      * @return
-     * @throws ValidacionExcepcion
+     * @throws ValidacionException
      */
-    private Administrador validarAdministradorInsertar(Administrador administrador) throws ValidacionExcepcion {
+    private Administrador validarAdministradorInsertar(Administrador administrador) throws ValidacionException {
 
         List<String> camposErroneos = new LinkedList<>();
 
         if (administrador == null) {
-            throw new ValidacionExcepcion("No hay ninguna información de administrador");
+            throw new ValidacionException("No hay ninguna información de administrador");
         }
 
         //Validar nombres
@@ -146,14 +146,14 @@ public class AdministradorNegocio{
 
         String campo = mensajeCampos(camposErroneos);
 
-        throw new ValidacionExcepcion(campo);
+        throw new ValidacionException(campo);
 
     }
 
-    private Administrador validarAdministradorEliminar(Administrador administrador) throws ValidacionExcepcion {
+    private Administrador validarAdministradorEliminar(Administrador administrador) throws ValidacionException {
         List<String> camposErroneos = new LinkedList<>();
         if (administrador == null) {
-            throw new ValidacionExcepcion("Datos del administrador inválidos");
+            throw new ValidacionException("Datos del administrador inválidos");
         }
         return administrador;
     }
@@ -199,7 +199,7 @@ public class AdministradorNegocio{
         return null;
     }
 
-    public Administrador actualizar(Administrador elemento, Administrador elementoE) throws NegocioExcepcion {
+    public Administrador actualizar(Administrador elemento, Administrador elementoE) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

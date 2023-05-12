@@ -7,7 +7,7 @@ package org.itson.interfaces;
 
 import com.dominio.Quimico;
 import java.util.List;
-import org.itson.excepciones.NegocioExcepcion;
+import org.itson.excepciones.NegocioException;
 
 /**
  * Descripción de la interface: 
@@ -16,8 +16,8 @@ import org.itson.excepciones.NegocioExcepcion;
  */
 public interface INegocioQuimico {
 
-    public Quimico insertarQuimico(Quimico quimico) throws NegocioExcepcion;
+    public Quimico insertarQuimico(Quimico quimico) throws NegocioException;
     
-    public List<Quimico> consultarQuimicos() throws NegocioExcepcion;
+    public List<Quimico> consultarQuimicos() throws NegocioException;
     
 }

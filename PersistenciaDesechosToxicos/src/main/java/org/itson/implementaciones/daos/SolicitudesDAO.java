@@ -75,7 +75,7 @@ public class SolicitudesDAO implements ISolicitudesDAO {
      * @throws PersistenciaException si recibe un filtro como null, si no encuentra ninguna coincidencia, por si hay un fallo con la base de datos.
      */
     @Override
-    public List<Solicitud> consultar(SolicitudDTO filtro) throws PersistenciaException {
+    public List<Solicitud> consultarSolicitudFiltro(SolicitudDTO filtro) throws PersistenciaException {
         List<Solicitud> solicitudes = new ArrayList<>();
         List<Bson> filtros = new ArrayList<>();
         

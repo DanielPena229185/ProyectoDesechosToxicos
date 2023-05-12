@@ -9,11 +9,13 @@ import com.dominio.Quimico;
 import com.dominio.Residuo;
 import java.util.LinkedList;
 import java.util.List;
-import org.itson.excepciones.NegocioExcepcion;
+import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PersistenciaException;
-import org.itson.excepciones.ValidacionExcepcion;
+import org.itson.excepciones.ValidacionException;
 import org.itson.implementaciones.bd.DAOFactory;
+import org.itson.implementaciones.fachada.FachadaPersistencia;
 import org.itson.interfaces.INegocioResiduo;
+import org.itson.interfaces.IPersistencia;
 import org.itson.interfaces.IResiduosDAO;
 
 /**
@@ -24,30 +26,32 @@ import org.itson.interfaces.IResiduosDAO;
 public class NegocioResiduo implements INegocioResiduo {
 
     IResiduosDAO residuoDAO;
+    IPersistencia persistencia;
 
     /**
      * Constructor por default
      */
     public NegocioResiduo() {
         residuoDAO = DAOFactory.getResiduoDAO();
+        persistencia = new FachadaPersistencia();
     }
 
     /**
      * Se inserta el residuo a la base de datos, por medio de la capa de
      * persistencia
      *
-     * @param residuo Residuo que se desea insertar
+     * @param residuo Residuo que se desea insertarTraslado
      * @return Residuo insertado
-     * @throws NegocioExcepcion En caso que ocurra algún error al momento de
-     * insertar o no cumpla las validaciones previas
+     * @throws NegocioException En caso que ocurra algún error al momento de
+ insertarTraslado o no cumpla las validaciones previas
      */
     @Override
-    public Residuo insertarResiduo(Residuo residuo) throws NegocioExcepcion {
+    public Residuo insertarResiduo(Residuo residuo) throws NegocioException {
         try {
             
             if (residuo == null) {
                 //Sí el residuo es nulo
-                throw new ValidacionExcepcion("No hay información del residuo");
+                throw new ValidacionException("No hay información del residuo");
             }
             
             //Realiza las particiones para solo guardar lo importante del
@@ -59,34 +63,34 @@ public class NegocioResiduo implements INegocioResiduo {
             this.validarResiduo(residuo);
             
             //Se inserta el residuo a la base de datos
-            residuoDAO.insertar(residuo);
+            persistencia.insertarResiduo(residuo);
             
             //Regresa el residuo guardado
             return residuo;
-        } catch (ValidacionExcepcion validacionExcepcion) {
+        } catch (ValidacionException validacionExcepcion) {
             //Si ocurre un error en las validaciones
-            throw new NegocioExcepcion(validacionExcepcion.getMessage());
+            throw new NegocioException(validacionExcepcion.getMessage());
 
         } catch (PersistenciaException persistencia) {
             //Si ocurre un error en la capa de persistencia
-            throw new NegocioExcepcion(persistencia.getMessage());
+            throw new NegocioException(persistencia.getMessage());
 
         }
 
     }
 
     @Override
-    public List<Residuo> consultarResiduos() throws NegocioExcepcion {
+    public List<Residuo> consultarResiduos() throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Residuo> consultarResiduo(Residuo residuo) throws NegocioExcepcion {
+    public List<Residuo> consultarResiduo(Residuo residuo) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Residuo> consultarResiduoFiltro(Residuo residuo) throws NegocioExcepcion {
+    public List<Residuo> consultarResiduoFiltro(Residuo residuo) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -95,14 +99,14 @@ public class NegocioResiduo implements INegocioResiduo {
      *
      * @param residuo Residuo que desea validar
      * @return Residuo en caso que no haya ningún error
-     * @throws ValidacionExcepcion Mensaje de que campos fueron los que no
+     * @throws ValidacionException Mensaje de que campos fueron los que no
      * cumplieron las validaciones
      */
-    private Residuo validarResiduo(Residuo residuo) throws ValidacionExcepcion {
+    private Residuo validarResiduo(Residuo residuo) throws ValidacionException {
         List<String> camposErroneos = new LinkedList<>();
         if (residuo == null) {
             //Si el residuo es nulo
-            throw new ValidacionExcepcion("No hay información del residuo");
+            throw new ValidacionException("No hay información del residuo");
         }
 
         //Validamos el nombre del residuo
@@ -146,7 +150,7 @@ public class NegocioResiduo implements INegocioResiduo {
 
         //Lanza el todos los elementos erroneos por los que no cumplieron las 
         //validaciones
-        throw new ValidacionExcepcion(camposVacios);
+        throw new ValidacionException(camposVacios);
     }
 
     /**
@@ -213,13 +217,13 @@ public class NegocioResiduo implements INegocioResiduo {
      *
      * @param residuo Residuo al que se le quiere realizar la partición
      * @return Residuo con partición
-     * @throws ValidacionExcepcion En caso que el residuo sea nulo
+     * @throws ValidacionException En caso que el residuo sea nulo
      */
-    private Residuo realizarParticiones(Residuo residuo) throws ValidacionExcepcion {
+    private Residuo realizarParticiones(Residuo residuo) throws ValidacionException {
 
         if (residuo == null) {
             //Residuo es nulo
-            throw new ValidacionExcepcion("No hay información del residuo");
+            throw new ValidacionException("No hay información del residuo");
         }
 
         //Solo permitimos el acceso a los datos del productor necesario

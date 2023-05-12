@@ -14,7 +14,7 @@ import org.itson.interfaces.INegocioResiduo;
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
-public class NegocioFactory implements INegocio {
+public class NegocioFactory{
 
     /**
      *
@@ -23,18 +23,15 @@ public class NegocioFactory implements INegocio {
 
     }
 
-    @Override
-    public INegocioResiduo getNegocioResiduo() {
+    public static INegocioResiduo getNegocioResiduo() {
         return new NegocioResiduo();
     }
 
-    @Override
-    public INegocioProductor getNegocioProductor() {
+    public static INegocioProductor getNegocioProductor() {
         return new NegocioProductor();
     }
 
-    @Override
-    public INegocioQuimico getNegocioQuimico() {
+    public static INegocioQuimico getNegocioQuimico() {
         return new NegocioQuimico();
     }
 }
