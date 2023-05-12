@@ -4,16 +4,16 @@
  */
 package org.itson.interfaces;
 
-import com.dominio.Solicitud;
+import com.dominio.EmpresaTransportista;
 import java.util.List;
 import org.itson.excepciones.PersistenciaException;
 
 /**
  *
- * @author oscar
+ * @author edemb
  */
-public interface ISolicitudesDAO {
+public interface IEmpresasTrasnportistasDAO {
 
-    Solicitud insertarSolicitud(Solicitud solicitud) throws PersistenciaException;
-    List<Solicitud> consultaSolicitudesNoAtendidas() throws PersistenciaException;
+    List<EmpresaTransportista> consultaTodasEmpresasTransportistas() throws PersistenciaException;
+    EmpresaTransportista insertar(EmpresaTransportista o) throws PersistenciaException;
 }

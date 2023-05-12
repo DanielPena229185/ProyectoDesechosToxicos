@@ -134,7 +134,7 @@ public class ResiduosDAO implements IResiduosDAO {
             List<Residuo> residuos = new ArrayList<>();
 
             if (filtro.getId_EmpresaProductora()!= null || filtro.getNombreEmpresaProductora()!=null) {
-                filter.add(new Document("productor.tipo", Tipo.PRODUCTO));
+                filter.add(new Document("productor.tipo", Tipo.PRODUCTO.toString()));
             }
             
             if (filtro.getId_EmpresaProductora() != null) {

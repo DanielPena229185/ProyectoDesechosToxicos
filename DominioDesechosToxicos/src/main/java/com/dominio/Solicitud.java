@@ -25,7 +25,7 @@ public class Solicitud {
     /**
      * Estado de la solicitud
      */
-    private String estado;
+    private Estado estado;
 
     /**
      * Fecha en la que fue solicitada
@@ -53,12 +53,14 @@ public class Solicitud {
      *
      * @param id Identificador de la solicitud
      * @param fechaSolicitada Fecha solicitada
+     * @param estado Estado de la solicitud
      * @param residuo Residuo que tiene la solicitud
      * @param id_productor id del Productor que realizó la solicitud
      */
-    public Solicitud(ObjectId id, Date fechaSolicitada, Residuo residuo, ObjectId id_productor) {
+    public Solicitud(ObjectId id, Date fechaSolicitada, Estado estado, Residuo residuo, ObjectId id_productor) {
         this.id = id;
         this.fecha_solicitada = fechaSolicitada;
+        this.estado = estado;
         this.residuo = residuo;
         this.id_productor = id_productor;
     }
@@ -68,11 +70,13 @@ public class Solicitud {
      * solicitó
      *
      * @param fechaSolicitada Fecha en la que se solicitó
+     * @param estado Estado de la solicitud
      * @param residuo Residuo de la solicitó
      * @param id_productor id del Productor que solicitó
      */
-    public Solicitud(Date fechaSolicitada, Residuo residuo, ObjectId id_productor) {
+    public Solicitud(Date fechaSolicitada, Estado estado, Residuo residuo, ObjectId id_productor) {
         this.fecha_solicitada = fechaSolicitada;
+        this.estado = estado;
         this.residuo = residuo;
         this.id_productor = id_productor;
     }
@@ -100,7 +104,7 @@ public class Solicitud {
      *
      * @return Estado de la solicitud
      */
-    public String getEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
@@ -109,7 +113,7 @@ public class Solicitud {
      *
      * @param estado Estado de la solicitud
      */
-    public void setEstado(String estado) {
+    public void setEstado(Estado estado) {
         this.estado = estado;
     }
 
@@ -150,7 +154,7 @@ public class Solicitud {
     }
 
     /**
-     * Obtener el id  delproductor
+     * Obtener el id delproductor
      *
      * @return id del Productor
      */

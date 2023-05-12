@@ -11,10 +11,13 @@ import org.itson.implementaciones.daos.EmpresasTransportistasDAO;
 import org.itson.implementaciones.daos.ProductoresDAO;
 import org.itson.implementaciones.daos.QuimicosDAO;
 import org.itson.implementaciones.daos.ResiduosDAO;
+import org.itson.implementaciones.daos.SolicitudesDAO;
 import org.itson.interfaces.IConsultasDAO;
+import org.itson.interfaces.IEmpresasTrasnportistasDAO;
 import org.itson.interfaces.IProductoresDAO;
 import org.itson.interfaces.IQuimicosDAO;
 import org.itson.interfaces.IResiduosDAO;
+import org.itson.interfaces.ISolicitudesDAO;
 
 /**
  *
@@ -42,6 +45,11 @@ public class DAOFactory {
         return new EmpresasTransportistasDAO(this.MANEJADOR_CONEXION);
     }
      */
+    /**
+     * Regresa una instania de ProductoresDAO
+     *
+     * @return Una isntancie de ProductoresDAO
+     */
     public static IProductoresDAO getProductoresDAO() {
         return ProductoresDAO.getInstanceProductoresDAO();
     }
@@ -62,5 +70,23 @@ public class DAOFactory {
      */
     public static IResiduosDAO getResiduoDAO() {
         return ResiduosDAO.getInstanceResiduosDAO();
+    }
+
+    /**
+     * Regresa una instancia de EmpresasTrasnportistasDAO
+     *
+     * @return Una IEmpresasTrasnportistasDAO con una instancia de
+     * EmpresasTrasnportsitasDAO
+     */
+    public static IEmpresasTrasnportistasDAO getEmpresasTrasnportistasDAO() {
+        return EmpresasTransportistasDAO.getInstanceEmpresasTrasnportistasDAO();
+    }
+
+    /**
+     * Regresa una instancia de SolicitudesDAO
+     * @return Una instancia de SolicitudesDAO
+     */
+    public static ISolicitudesDAO getSolicitudesDAO() {
+        return SolicitudesDAO.getInstanceSolicitudesDAO();
     }
 }
