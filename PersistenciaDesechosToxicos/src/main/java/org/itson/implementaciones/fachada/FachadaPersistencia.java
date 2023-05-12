@@ -53,12 +53,20 @@ public class FachadaPersistencia implements IPersistencia {
 
     @Override
     public Quimico insertarQuimico(Quimico o) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            return quimicoDAO.insertar(o);
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException(e.getMessage());
+        }
     }
 
     @Override
     public List<Quimico> consultarTodosLosQuimicos() throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            return quimicoDAO.consultarTodosLosQuimicos();
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException(e.getMessage());
+        }
     }
 
     @Override
