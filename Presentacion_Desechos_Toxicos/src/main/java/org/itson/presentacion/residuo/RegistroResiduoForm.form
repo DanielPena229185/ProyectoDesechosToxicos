@@ -67,6 +67,12 @@
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <Component id="regresarBtn" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="40" max="32767" attributes="0"/>
+                          <Component id="guardarResiduoBtn" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="tipoLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
@@ -79,25 +85,13 @@
                                   <Component id="separadorNombre" alignment="0" max="32767" attributes="0"/>
                                   <Component id="campoNombreResiduo" alignment="0" pref="184" max="32767" attributes="0"/>
                               </Group>
+                              <Component id="nombreLbl1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="regresarBtn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="83" max="32767" attributes="0"/>
-                          <Component id="guardarResiduoBtn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="nombreLbl1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="618" max="32767" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -108,11 +102,13 @@
                   <Component id="registroResiduoLbl" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="separadorRegistroResiduo" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                  <Component id="nombreLbl1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="campoNombreResiduo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="separadorNombre" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="tipoLbl" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="comboTipoResiduo" min="-2" max="-2" attributes="0"/>
@@ -128,13 +124,6 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
-                      <Component id="nombreLbl1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="463" max="32767" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -154,6 +143,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="this.NOMBRE_RESIDUO" type="code"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
             </Property>
           </Properties>
           <Events>
@@ -257,9 +249,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="guardarResiduoBtn">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/org/itson/imagenes/registrar.png"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="Continue"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -268,9 +258,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="regresarBtn">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/org/itson/imagenes/regresar.png"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="Back"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
           <Events>

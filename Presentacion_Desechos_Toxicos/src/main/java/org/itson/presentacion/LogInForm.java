@@ -15,6 +15,7 @@ import org.itson.implementacion.NegocioFactory;
 import org.itson.interfaces.INegocio;
 import org.itson.interfaces.INegocioProductor;
 import org.itson.presentacion.Administrador.PrincipalAdministradorForm;
+import org.itson.presentacion.Productor.PrincipalProductorForm;
 import org.itson.presentacion.empresa.PrincipalEmpresaForm;
 
 /**
@@ -32,14 +33,16 @@ public class LogInForm extends javax.swing.JFrame {
     JComboBox<String> comboBox = new JComboBox<String>();
     INegocio negocio;
     INegocioProductor negocioProductor;
+    static LogInForm login;
 
     /**
      * Creates new form LogInForm
      */
-    public LogInForm() {
+    private LogInForm() {
         negocio = new NegocioFactory();
         negocioProductor = negocio.getNegocioProductor();
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -258,14 +261,11 @@ public class LogInForm extends javax.swing.JFrame {
                     productor.setEmail(this.campoUsuario.getText());
                     productor.setContrasena(this.campoContrasena.getText());
                     pro = negocioProductor.login(productor);
+                    PrincipalProductorForm.getInstance(pro);
+                    this.setVisible(false);
                 } catch (NegocioExcepcion e) {
                     JOptionPane.showMessageDialog(this, e.getMessage());
                 }
-                JOptionPane.showMessageDialog(this, pro.getNombre());
-
-//                PrincipalProductorForm c = new PrincipalProductorForm();
-//                c.setVisible(true);
-//                dispose();
                 break;
             default:
                 break;
@@ -316,6 +316,13 @@ public class LogInForm extends javax.swing.JFrame {
 
     private boolean verificarCampoContrasenaVacio() {
         return this.campoContrasena.getText().isEmpty() || this.campoContrasena.getText().equals(this.CONTRASENA_DEFAULT);
+    }
+    
+    public static LogInForm getInstance(){
+        if(LogInForm.login == null){
+            LogInForm.login = new LogInForm();
+        }
+        return LogInForm.login;
     }
 
     /**

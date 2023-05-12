@@ -12,7 +12,6 @@ import org.itson.excepciones.NegocioExcepcion;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.excepciones.ValidacionExcepcion;
 import org.itson.implementaciones.bd.DAOFactory;
-import org.itson.interfaces.CrudInterface;
 import org.itson.interfaces.IConsultasDAO;
 
 /**
@@ -20,7 +19,7 @@ import org.itson.interfaces.IConsultasDAO;
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
-public class AdministradorNegocio implements CrudInterface<Administrador> {
+public class AdministradorNegocio{
 
 
     /**
@@ -35,7 +34,6 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
      * @return
      * @throws NegocioExcepcion
      */
-    @Override
     public Administrador insertar(Administrador elemento) throws NegocioExcepcion {
         try {
             this.validarAdministradorInsertar(elemento);
@@ -53,7 +51,6 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
      * @return
      * @throws NegocioExcepcion
      */
-    @Override
     public Administrador eliminar(Administrador elemento) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -62,7 +59,6 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
      *
      * @return @throws NegocioExcepcion
      */
-    @Override
     public List<Administrador> consultar() throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -73,7 +69,6 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
      * @return
      * @throws NegocioExcepcion
      */
-    @Override
     public List<Administrador> consultar(Administrador elemento) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -84,7 +79,6 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
      * @return
      * @throws NegocioExcepcion
      */
-    @Override
     public List<Administrador> consultar(ObjectId id) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -205,7 +199,6 @@ public class AdministradorNegocio implements CrudInterface<Administrador> {
         return null;
     }
 
-    @Override
     public Administrador actualizar(Administrador elemento, Administrador elementoE) throws NegocioExcepcion {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
