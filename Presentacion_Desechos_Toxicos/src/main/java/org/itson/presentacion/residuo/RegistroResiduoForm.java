@@ -4,9 +4,15 @@
  */
 package org.itson.presentacion.residuo;
 
+import com.dominio.Quimico;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import org.itson.implementacion.NegocioFactory;
+import org.itson.interfaces.INegocio;
+import org.itson.interfaces.INegocioQuimico;
 import org.itson.presentacion.InicioForm;
 import org.itson.presentacion.Productor.PrincipalProductorForm;
 
@@ -16,13 +22,24 @@ import org.itson.presentacion.Productor.PrincipalProductorForm;
  */
 public class RegistroResiduoForm extends javax.swing.JFrame {
 private final String NOMBRE_RESIDUO = "Residuo";
+private List<Quimico> listaQuimicosDisponibles;
+private List<String> listaQuimicosComponentesResiduo;
+INegocioQuimico negocioQuimico;
+INegocio negocio;
     /**
      * Creates new form RegistroResiduoForm
      */
     public RegistroResiduoForm() {
+        negocio = new NegocioFactory();
+        negocioQuimico = negocio.getNegocioQuimico();
+        listaQuimicosDisponibles = consultarListaQuimicos();
         initComponents();
     }
-
+    private List<Quimico> consultarListaQuimicos(){
+        List<Quimico> listaQuimicos;
+        listaQuimicos = negocioQuimico.consultarQuimicos();
+    return listaQuimicos;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,9 +59,8 @@ private final String NOMBRE_RESIDUO = "Residuo";
         comboTipoResiduo = new javax.swing.JComboBox<>();
         separadorTipo = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaRegistroRegistrados = new javax.swing.JTable();
         nombreLbl = new javax.swing.JLabel();
+        comboResiduosRegistrados = new javax.swing.JComboBox<>();
         guardarResiduoBtn = new javax.swing.JButton();
         regresarBtn = new javax.swing.JButton();
         nombreLbl1 = new javax.swing.JLabel();
@@ -91,21 +107,10 @@ private final String NOMBRE_RESIDUO = "Residuo";
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 255));
 
-        tablaRegistroRegistrados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tablaRegistroRegistrados);
-
         nombreLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         nombreLbl.setText("Residuos registrados");
+
+        comboResiduosRegistrados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -113,21 +118,19 @@ private final String NOMBRE_RESIDUO = "Residuo";
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addComponent(nombreLbl)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(comboResiduosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreLbl))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(nombreLbl)
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(320, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(comboResiduosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(405, Short.MAX_VALUE))
         );
 
         guardarResiduoBtn.setText("Continue");
@@ -262,6 +265,85 @@ private final String NOMBRE_RESIDUO = "Residuo";
     }
     return true;
 }
+    private void agregarQuimicoSeleccionadoListaComponentesResiduo(){
+        List<String> quimicos = pasarListaQuimicosString(listaQuimicosDisponibles);
+        String quimicoSeleccionado = getQuimicoSeleccionadoDisponibles();
+        eliminarQuimicoListaDisponible(quimicoSeleccionado, quimicos);
+        agregarQuimicoListaComponenteResiduo(quimicoSeleccionado, listaQuimicosComponentesResiduo);
+        cargarComboBoxResiduosDisponibles(listaQuimicosComponentesResiduo);
+    }
+    private String getQuimicoSeleccionadoDisponibles(){
+        String quimicoSeleccionado = comboResiduosRegistrados.getSelectedItem().toString();
+        return quimicoSeleccionado;
+        
+    }
+    private List<String> cargarComboBoxResiduosDisponibles(List<String> quimicos){
+        this.comboResiduosRegistrados.removeAllItems();
+        for (int i = 0; i < quimicos.size(); i++) {
+            comboResiduosRegistrados.addItem(quimicos.get(i));
+        } return quimicos;
+    }
+    private List<String> eliminarQuimicoListaDisponible(String quimicoSeleccionado, List<String> quimicos){
+        quimicos.remove(quimicoSeleccionado);
+        
+    return quimicos;
+        
+    }
+    private List<String> agregarQuimicoListaComponenteResiduo(String quimicoSeleccionado, List<String> quimicos){
+        quimicos.add(quimicoSeleccionado);
+
+        return quimicos;
+    }
+    private List<String> pasarListaQuimicosString(List<Quimico> quimicos){
+        List<String> listaQuimicoString = new LinkedList<>();
+        for (int i = 0; i < quimicos.size(); i++) {
+            listaQuimicoString.add(quimicos.get(i).getNombre());
+        }
+        return listaQuimicoString;
+    }
+    private List<String> eliminarQuimicoListaComponenteResiduo(String quimicoSeleccionado, List<String> quimicos){
+        quimicos.removeIf(quimico -> quimico.equalsIgnoreCase(quimicoSeleccionado));
+        return quimicos;
+    }
+    private String getQuimicoSeleccionadoListaComponenteResiduo(){
+        String listaComponenteResiduo = comboResiduosRegistrados.getSelectedItem().toString();
+        return listaComponenteResiduo;
+        
+    }
+    private List<String> getQuimicoSeleccionadoListaDisponibles(){
+         return listaQuimicosComponentesResiduo; 
+    }
+ 
+    private String eliminarQuimicoListaComponentesResiduo(){
+        String quimicoSeleccionado = getQuimicoSeleccionadoListaComponenteResiduo(); 
+        eliminarQuimicoListaComponenteResiduo(quimicoSeleccionado, listaQuimicosComponentesResiduo);
+        return quimicoSeleccionado;
+    }
+    private List<String> getListaQuimicosComponentesResiduo(String eliminarQuimicoListaComponente){
+        List<String> quimicos = new LinkedList<>(listaQuimicosComponentesResiduo);
+        eliminarQuimicoListaComponenteResiduo(eliminarQuimicoListaComponente, quimicos);
+        return quimicos;
+    }
+    private void agregarQuimicoListaDisponibles(String quimicoSeleccionado) {
+    listaQuimicosDisponibles.add(new Quimico(quimicoSeleccionado));
+    }
+    //listaQuimicosDisponibles: agregarQuimicoListaDisponibles()
+    private List<String> eliminarQuimicoListaDisponibles(String quimicoSeleccionado) {
+    listaQuimicosDisponibles.removeIf(quimico -> quimico.equals(quimicoSeleccionado));
+    return eliminarQuimicoListaDisponibles(quimicoSeleccionado);
+    }
+    public void cargarListaQuimicosDisponibles(List<String> listaQuimicosDisponibles) {
+    comboResiduosRegistrados.removeAllItems(); 
+    for (String quimico : listaQuimicosDisponibles) {
+        comboResiduosRegistrados.addItem(quimico); 
+    }   
+    }
+    private void cargarListaQuimicosComponentesResiduo(List<String> quimicos) {
+    comboResiduosRegistrados.removeAllItems();
+    for (String quimico : quimicos) {
+        comboResiduosRegistrados.addItem(quimico);
+    }
+    }
 
     /**
      * @param args the command line arguments
@@ -300,12 +382,12 @@ private final String NOMBRE_RESIDUO = "Residuo";
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campoNombreResiduo;
+    private javax.swing.JComboBox<String> comboResiduosRegistrados;
     private javax.swing.JComboBox<String> comboTipoResiduo;
     private javax.swing.JButton guardarResiduoBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreLbl;
     private javax.swing.JLabel nombreLbl1;
     private javax.swing.JLabel registroResiduoLbl;
@@ -313,7 +395,6 @@ private final String NOMBRE_RESIDUO = "Residuo";
     private javax.swing.JSeparator separadorNombre;
     private javax.swing.JSeparator separadorRegistroResiduo;
     private javax.swing.JSeparator separadorTipo;
-    private javax.swing.JTable tablaRegistroRegistrados;
     private javax.swing.JLabel tipoLbl;
     // End of variables declaration//GEN-END:variables
 }
