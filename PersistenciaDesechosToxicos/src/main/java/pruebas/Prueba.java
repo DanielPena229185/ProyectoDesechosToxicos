@@ -98,42 +98,50 @@ public class Prueba {
 //        productoresDAO.insertar(p2);
 //        productoresDAO.insertar(p3);
 //        productoresDAO.insertar(p4);
-        IQuimicosDAO quimicosDAO = DAOFactory.getQuimicosDAO();
-
-        List<Quimico> listaQuimicos = quimicosDAO.consultarTodosLosQuimicos();
-//        for (Quimico o : listaQuimicos) {
-//            System.out.println(o.getId() + ", " + o.getNombre());
+//        IQuimicosDAO quimicosDAO = DAOFactory.getQuimicosDAO();
+//
+//        List<Quimico> listaQuimicos = quimicosDAO.consultarTodosLosQuimicos();
+////        for (Quimico o : listaQuimicos) {
+////            System.out.println(o.getId() + ", " + o.getNombre());
+////        }
+//
+//        IProductoresDAO productoresDAO = DAOFactory.getProductoresDAO();
+//        Productor productor = productoresDAO.consultarLogin("edemboji@gmail.com", "eebj031002");
+//
+//        IResiduosDAO residuosDAO = DAOFactory.getResiduoDAO();
+//        Residuo r1 = new Residuo();
+//        r1.setNombre("Residuo1");
+//        r1.setCodigo("123456");
+//        r1.setProductor(productor);
+//        r1.setQuimicos(Arrays.asList(listaQuimicos.get(0), listaQuimicos.get(1)));
+//
+////        residuosDAO.insertar(r1);
+//        ResiduoDTO dTO = new ResiduoDTO();
+//        dTO.setQuimicos(Arrays.asList(listaQuimicos.get(1), listaQuimicos.get(0)));
+////        dTO.setClave("123456");
+////        dTO.setNombre("Residuo1");
+////          dTO.setId_EmpresaProductora(new ObjectId("645d15751bd7a54f08dfa048"));
+////        dTO.setNombreEmpresaProductora("EmpresaEmir");
+//
+//        List<Residuo> listaResiduos = residuosDAO.consultar(dTO);
+//
+//        for (Residuo o : listaResiduos) {
+//            System.out.println(o.getId());
+//            System.out.println(o.getNombre());
+//            System.out.println(o.getCodigo());
+//            System.out.println(o.getProductor().getId() + ", " + o.getProductor().getNombre());
+//            for (Quimico i : o.getQuimicos()) {
+//                System.out.println(i.getId() + ", " + i.getNombre());
+//            }
 //        }
+                IProductoresDAO productoresDAO = DAOFactory.getProductoresDAO();
 
-        IProductoresDAO productoresDAO = DAOFactory.getProductoresDAO();
-        Productor productor = productoresDAO.consultarLogin("edemboji@gmail.com", "eebj031002");
+                Productor o = new Productor();
+                o.setNombre("Emir");
+                o.setTipo(Tipo.PRODUCTO);
+                o.setCuenta(new Cuenta("trinu_1980@hotmail.com", "bone770115"));
 
-        IResiduosDAO residuosDAO = DAOFactory.getResiduoDAO();
-        Residuo r1 = new Residuo();
-        r1.setNombre("Residuo1");
-        r1.setCodigo("123456");
-        r1.setProductor(productor);
-        r1.setQuimicos(Arrays.asList(listaQuimicos.get(0), listaQuimicos.get(1)));
-
-//        residuosDAO.insertar(r1);
-        ResiduoDTO dTO = new ResiduoDTO();
-        dTO.setQuimicos(Arrays.asList(listaQuimicos.get(1), listaQuimicos.get(0)));
-//        dTO.setClave("123456");
-//        dTO.setNombre("Residuo1");
-//          dTO.setId_EmpresaProductora(new ObjectId("645d15751bd7a54f08dfa048"));
-//        dTO.setNombreEmpresaProductora("EmpresaEmir");
-
-        List<Residuo> listaResiduos = residuosDAO.consultar(dTO);
-
-        for (Residuo o : listaResiduos) {
-            System.out.println(o.getId());
-            System.out.println(o.getNombre());
-            System.out.println(o.getCodigo());
-            System.out.println(o.getProductor().getId() + ", " + o.getProductor().getNombre());
-            for (Quimico i : o.getQuimicos()) {
-                System.out.println(i.getId() + ", " + i.getNombre());
-            }
-        }
+        productoresDAO.insertar(o);
 
     }
 }
