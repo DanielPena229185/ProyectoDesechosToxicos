@@ -4,6 +4,7 @@
  */
 package com.dominio;
 
+import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
@@ -15,31 +16,28 @@ import org.bson.types.ObjectId;
  * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class Traslado {
+
     /**
      * Id del Traslado
      */
     private ObjectId id;
     /**
-     * Cantidad de Residuos
-     */
-    private Integer cantidad_residuo;
-    /**
      * Residuo que tendra el Traslado
      */
     private Residuo residuo;
-    
+
     /**
-     * id del Aminisitrador que registro el Traslado
+     * Adminisitrador que registro el Traslado
      */
-    private ObjectId id_administrador;
+    private Administrador administrador;
     /**
      * Direccion a la que se dirige el Traslado
      */
     private Direccion direccion;
     /**
-     * Tranporte que se encargara del Traslado
+     * Empresas transportadoras que se encargaran del Traslado
      */
-    private Transporte transporte;
+    private List<EmpresaTransportista> empresas_trasnportistas;
 
     /**
      * Constructor por defecto
@@ -49,40 +47,41 @@ public class Traslado {
 
     /**
      * Constructor que le asigna valores a todos los atributos del Traslado
+     *
      * @param id identificador a asignar
-     * @param cantidadResiduo cantidad de residuos a asignar
      * @param residuo Residuo a asignar
-     * @param id_administrador id de Administrador a asignar
+     * @param administrador Administrador a asignar
      * @param direccion Direccion a asignar
      * @param transporte Trasnporte a asignar
      */
-    public Traslado(ObjectId id, Integer cantidad_residuo, Residuo residuo, ObjectId id_administrador, Direccion direccion, Transporte transporte) {
+    public Traslado(ObjectId id, Residuo residuo, Administrador administrador, Direccion direccion, List<EmpresaTransportista> empresas_trasnportistas) {
         this.id = id;
-        this.cantidad_residuo = cantidad_residuo;
         this.residuo = residuo;
-        this.id_administrador = id_administrador;
+        this.administrador = administrador;
         this.direccion = direccion;
-        this.transporte = transporte;
+        this.empresas_trasnportistas = empresas_trasnportistas;
     }
 
-       /**
-     * Constructor que le asigna valores a todos los atributos del Traslado menos el Id
+    /**
+     * Constructor que le asigna valores a todos los atributos del Traslado
+     * menos el Id
+     *
      * @param cantidadResiduo cantidad de residuos a asignar
      * @param residuo Residuo a asignar
      * @param administrador Administrador a asignar
      * @param direccion Direccion a asignar
      * @param transporte Trasnporte a asignar
      */
-    public Traslado(Integer cantidad_residuo, Residuo residuo, ObjectId id_administrador, Direccion direccion, Transporte transporte) {
-        this.cantidad_residuo = cantidad_residuo;
+    public Traslado(Residuo residuo, Administrador administrador, Direccion direccion, List<EmpresaTransportista> empresas_trasnportistas) {
         this.residuo = residuo;
-        this.id_administrador = id_administrador;
+        this.administrador = administrador;
         this.direccion = direccion;
-        this.transporte = transporte;
+        this.empresas_trasnportistas = empresas_trasnportistas;
     }
 
     /**
      * Regresa el id del Traslado
+     *
      * @return ObjectId del Traslado
      */
     public ObjectId getId() {
@@ -91,6 +90,7 @@ public class Traslado {
 
     /**
      * Le asigna un id al Traslado
+     *
      * @param id ObjectId a asignar
      */
     public void setId(ObjectId id) {
@@ -98,23 +98,8 @@ public class Traslado {
     }
 
     /**
-     * Regresa la cantidad de residuos del Traslado
-     * @return la cantidad de Residuos del Traslado
-     */
-    public Integer getCantidad_Residuo() {
-        return cantidad_residuo;
-    }
-
-    /**
-     * Le asigna una cantidad de residuos al Traslado
-     * @param cantidadResiduo a asignar
-     */
-    public void setCantidad_Residuo(Integer cantidad_residuo) {
-        this.cantidad_residuo = cantidad_residuo;
-    }
-
-    /**
      * Regresa el Residuo del Traslado
+     *
      * @return Residuo del Traslado
      */
     public Residuo getResiduo() {
@@ -123,6 +108,7 @@ public class Traslado {
 
     /**
      * Le asigna el Residuo al Traslado
+     *
      * @param residuo objeto Residuo a asignar
      */
     public void setResiduo(Residuo residuo) {
@@ -130,23 +116,26 @@ public class Traslado {
     }
 
     /**
-     * Regresa id de el Administrador del Traslado
+     * Regresa el Administrador del Traslado
+     *
      * @return el Administrador del Traslado
      */
-    public ObjectId getId_Administrador() {
-        return id_administrador;
+    public Administrador getAdministrador() {
+        return administrador;
     }
 
     /**
-     * Le asigna un id al Administrador al Traslado
+     * Le asigna un Administrador al Traslado
+     *
      * @param administrador a asignar
      */
-    public void setId_Administrador(ObjectId id_administrador) {
-        this.id_administrador = id_administrador;
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 
     /**
      * Regresa la Direccion del Traslado
+     *
      * @return Direccion del Traslado
      */
     public Direccion getDireccion() {
@@ -155,6 +144,7 @@ public class Traslado {
 
     /**
      * Le asigna una Direccion al Traslado
+     *
      * @param direccion objeto Direccion a asignar
      */
     public void setDireccion(Direccion direccion) {
@@ -162,20 +152,21 @@ public class Traslado {
     }
 
     /**
-     * Regresa el Trasnporte del Traslado
-     * @return Transporte del Traslado
+     * Regresa la lista de Empresas Trasnportistas asignadas
+     *
+     * @return Lista de EmpresasTrasnportistas
      */
-    public Transporte getTransporte() {
-        return transporte;
+    public List<EmpresaTransportista> getEmpresas_trasnportistas() {
+        return empresas_trasnportistas;
     }
 
     /**
-     * Le asigna un Transporte al Traslado
-     * @param transporte a asignar
+     * Le asigna una Lista de Empresas Transportistas
+     *
+     * @param empresas_trasnportistas a asignar
      */
-    public void setTransporte(Transporte transporte) {
-        this.transporte = transporte;
+    public void setEmpresas_trasnportistas(List<EmpresaTransportista> empresas_trasnportistas) {
+        this.empresas_trasnportistas = empresas_trasnportistas;
     }
-    
-    
+
 }
