@@ -2,6 +2,7 @@ com\dominio\Vehiculo.class
 com\dominio\Productor.class
 com\dominio\Administrador.class
 com\dominio\EmpresaTransportista.class
+com\dominio\Estado.class
 com\dominio\Transporte.class
 com\dominio\Tratamiento.class
 com\dominio\Direccion.class

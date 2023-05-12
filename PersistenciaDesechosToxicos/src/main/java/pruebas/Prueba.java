@@ -36,7 +36,7 @@ public class Prueba {
     public static void main(String[] args) {
         System.out.println("Hello World!");
 
-        IEmpresasTrasnportistasDAO trasnportistasDAO = DAOFactory.getEmpresasTrasnportistasDAO();
+//        IEmpresasTrasnportistasDAO trasnportistasDAO = DAOFactory.getEmpresasTrasnportistasDAO();
 //        EmpresaTransportista e1 = new EmpresaTransportista();
 //        e1.setTipo(Tipo.TRANSPORTISTA);
 //        e1.setNombre("Transportista1");
@@ -64,10 +64,38 @@ public class Prueba {
 //            System.out.println(o.getCuenta().getCorreo() +" "+o.getCuenta().getContrasena());
 //            System.out.println("");
 //        }
-
         ISolicitudesDAO solicitudesDAO = DAOFactory.getSolicitudesDAO();
+        List<Solicitud> solicitudes = solicitudesDAO.consultaSolicitudesNoAtendidas();
+        for(Solicitud o : solicitudes){
+            System.out.println(o.getId()+" "+o.getEstado()+" "+o.getFecha_Solicitada());
+        }
+//        Solicitud s = new Solicitud();
+//        s.setFechaSolicitada(new Date());
+//        s.setEstado(Estado.NO_ATENDIDA);
+//
+//        Solicitud s1 = new Solicitud();
+//        s1.setFechaSolicitada(new Date());
+//        s1.setEstado(Estado.NO_ATENDIDA);
+//
+//        Solicitud s2 = new Solicitud();
+//        s2.setFechaSolicitada(new Date());
+//        s2.setEstado(Estado.NO_ATENDIDA);
+//
+//        Solicitud s3 = new Solicitud();
+//        s3.setFechaSolicitada(new Date());
+//        s3.setEstado(Estado.NO_ATENDIDA);
+//
+//        Solicitud s4 = new Solicitud();
+//        s4.setFechaSolicitada(new Date());
+//        s4.setEstado(Estado.NO_ATENDIDA);
+//
+//        solicitudesDAO.insertarSolicitud(s);
+//        solicitudesDAO.insertarSolicitud(s1);
+//        solicitudesDAO.insertarSolicitud(s2);
+//        solicitudesDAO.insertarSolicitud(s3);
+//        solicitudesDAO.insertarSolicitud(s4);
         
-        Solicitud s = new Solicitud(new Date(), Estado.NO_ATENDIDA, residuo, id_productor);
+        
 
     }
 }

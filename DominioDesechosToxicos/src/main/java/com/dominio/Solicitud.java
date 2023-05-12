@@ -38,9 +38,9 @@ public class Solicitud {
     private Residuo residuo;
 
     /**
-     * ID del Productor que registro la Solicitud
+     * Productor que registro la Solicitud
      */
-    private ObjectId id_productor;
+    private Productor productor;
 
     /**
      * Constructor por defecto
@@ -55,14 +55,14 @@ public class Solicitud {
      * @param fechaSolicitada Fecha solicitada
      * @param estado Estado de la solicitud
      * @param residuo Residuo que tiene la solicitud
-     * @param id_productor id del Productor que realizó la solicitud
+     * @param productor Productor que realizó la solicitud
      */
-    public Solicitud(ObjectId id, Date fechaSolicitada, Estado estado, Residuo residuo, ObjectId id_productor) {
+    public Solicitud(ObjectId id, Date fechaSolicitada, Estado estado, Residuo residuo, Productor productor) {
         this.id = id;
         this.fecha_solicitada = fechaSolicitada;
         this.estado = estado;
         this.residuo = residuo;
-        this.id_productor = id_productor;
+        this.productor = productor;
     }
 
     /**
@@ -72,13 +72,13 @@ public class Solicitud {
      * @param fechaSolicitada Fecha en la que se solicitó
      * @param estado Estado de la solicitud
      * @param residuo Residuo de la solicitó
-     * @param id_productor id del Productor que solicitó
+     * @param productor id del Productor que solicitó
      */
-    public Solicitud(Date fechaSolicitada, Estado estado, Residuo residuo, ObjectId id_productor) {
+    public Solicitud(Date fechaSolicitada, Estado estado, Residuo residuo, Productor productor) {
         this.fecha_solicitada = fechaSolicitada;
         this.estado = estado;
         this.residuo = residuo;
-        this.id_productor = id_productor;
+        this.productor = productor;
     }
 
     /**
@@ -154,12 +154,12 @@ public class Solicitud {
     }
 
     /**
-     * Obtener el id delproductor
+     * Obtener el productor
      *
-     * @return id del Productor
+     * @return Productor
      */
-    public ObjectId getId_Productor() {
-        return id_productor;
+    public Productor getProductor() {
+        return productor;
     }
 
     /**
@@ -167,8 +167,8 @@ public class Solicitud {
      *
      * @param productor Productor
      */
-    public void setId_Productor(ObjectId id_productor) {
-        this.id_productor = id_productor;
+    public void setProductor(Productor productor) {
+        this.productor = productor;
     }
 
 }
