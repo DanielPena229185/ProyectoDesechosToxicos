@@ -5,6 +5,7 @@
 package com.dominio;
 
 import java.util.Date;
+import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
@@ -35,7 +36,7 @@ public class Solicitud {
     /**
      * Residuo de la Solicitud
      */
-    private Residuo residuo;
+    private List<Residuo> residuos;
 
     /**
      * Productor que registro la Solicitud
@@ -49,7 +50,7 @@ public class Solicitud {
     }
 
     /**
-     * Constructor con identificador, fecha solicitada, residuo y productor
+     * Constructor con identificador, fecha solicitada, residuos y productor
      *
      * @param id Identificador de la solicitud
      * @param fechaSolicitada Fecha solicitada
@@ -57,27 +58,27 @@ public class Solicitud {
      * @param residuo Residuo que tiene la solicitud
      * @param productor Productor que realizó la solicitud
      */
-    public Solicitud(ObjectId id, Date fechaSolicitada, Estado estado, Residuo residuo, Productor productor) {
+    public Solicitud(ObjectId id, Date fechaSolicitada, Estado estado, List<Residuo> residuo, Productor productor) {
         this.id = id;
         this.fecha_solicitada = fechaSolicitada;
         this.estado = estado;
-        this.residuo = residuo;
+        this.residuos = residuo;
         this.productor = productor;
     }
 
     /**
-     * Constructor con fecha en la que solicitó, residuo y productor que lo
-     * solicitó
+     * Constructor con fecha en la que solicitó, residuos y productor que lo
+ solicitó
      *
      * @param fechaSolicitada Fecha en la que se solicitó
      * @param estado Estado de la solicitud
      * @param residuo Residuo de la solicitó
      * @param productor id del Productor que solicitó
      */
-    public Solicitud(Date fechaSolicitada, Estado estado, Residuo residuo, Productor productor) {
+    public Solicitud(Date fechaSolicitada, Estado estado, List<Residuo> residuo, Productor productor) {
         this.fecha_solicitada = fechaSolicitada;
         this.estado = estado;
-        this.residuo = residuo;
+        this.residuos = residuo;
         this.productor = productor;
     }
 
@@ -129,28 +130,28 @@ public class Solicitud {
     /**
      * Le asigna una fecha solicitada a al Solicitud
      *
-     * @param fechaSolicitada objeto Date a asignar a la Solicitud
+     * @param fecha_solicitada objeto Date a asignar a la Solicitud
      */
     public void setFechaSolicitada(Date fecha_solicitada) {
         this.fecha_solicitada = fecha_solicitada;
     }
 
     /**
-     * Obtener residuo
+     * Obtener residuos
      *
      * @return Residuo
      */
-    public Residuo getResiduo() {
-        return residuo;
+    public List<Residuo> getResiduos() {
+        return residuos;
     }
 
     /**
-     * Establecer residuo a la solicitud
+     * Establecer residuos a la solicitud
      *
-     * @param residuo Residuo
+     * @param residuos Residuo
      */
-    public void setResiduo(Residuo residuo) {
-        this.residuo = residuo;
+    public void setResiduos(List<Residuo> residuos) {
+        this.residuos = residuos;
     }
 
     /**
