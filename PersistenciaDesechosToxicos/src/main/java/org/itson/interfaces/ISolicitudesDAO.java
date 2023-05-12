@@ -6,6 +6,7 @@ package org.itson.interfaces;
 
 import com.dominio.Solicitud;
 import java.util.List;
+import org.itson.DTO.SolicitudDTO;
 import org.itson.excepciones.PersistenciaException;
 
 /**
@@ -16,4 +17,5 @@ public interface ISolicitudesDAO {
 
     Solicitud insertarSolicitud(Solicitud solicitud) throws PersistenciaException;
     List<Solicitud> consultaSolicitudesNoAtendidas() throws PersistenciaException;
+    List<Solicitud> consultar(SolicitudDTO filtro) throws PersistenciaException;
 }

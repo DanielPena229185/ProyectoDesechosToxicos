@@ -9,18 +9,13 @@ import com.dominio.Residuo;
 import com.dominio.Tipo;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Filter;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.itson.DTO.ResiduoDTO;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.implementaciones.bd.ConexionBD;
-import org.itson.interfaces.IConsultasDAO;
 import org.itson.interfaces.IResiduosDAO;
 
 /**
@@ -71,6 +66,7 @@ public class ResiduosDAO implements IResiduosDAO {
      * @return El Residuo ingresado
      * @throws PersistenciaException en caso
      */
+    @Override
     public Residuo insertar(Residuo o) throws PersistenciaException {
         try {
             COLECCION.insertOne(o);
