@@ -4,7 +4,9 @@
  */
 package org.itson.interfaces;
 
+import com.dominio.EmpresaTransportista;
 import com.dominio.Traslado;
+import java.util.List;
 import org.itson.excepciones.PersistenciaException;
 
 /**
@@ -14,4 +16,5 @@ import org.itson.excepciones.PersistenciaException;
 public interface ITrasladosDAO {
 
     Traslado insertar(Traslado traslado) throws PersistenciaException;
+    List<Traslado> consultaTrasladosAsingados(EmpresaTransportista empresaTransportista)throws PersistenciaException;
 }

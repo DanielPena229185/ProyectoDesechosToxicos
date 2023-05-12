@@ -37,7 +37,7 @@ public class Traslado {
     /**
      * Empresas transportadoras que se encargaran del Traslado
      */
-    private List<EmpresaTransportista> empresas_trasnportistas;
+    private List<EmpresaTransportista> empresas_transportistas;
 
     /**
      * Constructor por defecto
@@ -59,7 +59,7 @@ public class Traslado {
         this.residuo = residuo;
         this.administrador = administrador;
         this.direccion = direccion;
-        this.empresas_trasnportistas = empresas_trasnportistas;
+        this.empresas_transportistas = empresas_transportistas;
     }
 
     /**
@@ -72,11 +72,11 @@ public class Traslado {
      * @param direccion Direccion a asignar
      * @param transporte Trasnporte a asignar
      */
-    public Traslado(Residuo residuo, Administrador administrador, Direccion direccion, List<EmpresaTransportista> empresas_trasnportistas) {
+    public Traslado(Residuo residuo, Administrador administrador, Direccion direccion, List<EmpresaTransportista> empresas_transportistas) {
         this.residuo = residuo;
         this.administrador = administrador;
         this.direccion = direccion;
-        this.empresas_trasnportistas = empresas_trasnportistas;
+        this.empresas_transportistas = empresas_transportistas;
     }
 
     /**
@@ -156,8 +156,8 @@ public class Traslado {
      *
      * @return Lista de EmpresasTrasnportistas
      */
-    public List<EmpresaTransportista> getEmpresas_trasnportistas() {
-        return empresas_trasnportistas;
+    public List<EmpresaTransportista> getEmpresas_transportistas() {
+        return empresas_transportistas;
     }
 
     /**
@@ -165,8 +165,8 @@ public class Traslado {
      *
      * @param empresas_trasnportistas a asignar
      */
-    public void setEmpresas_trasnportistas(List<EmpresaTransportista> empresas_trasnportistas) {
-        this.empresas_trasnportistas = empresas_trasnportistas;
+    public void setEmpresas_transportistas(List<EmpresaTransportista> empresas_transportistas) {
+        this.empresas_transportistas = empresas_transportistas;
     }
 
 }
