@@ -5,6 +5,7 @@
 package org.itson.implementaciones.daos;
 
 import com.dominio.Productor;
+import com.dominio.Tipo;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -139,8 +140,12 @@ public class ProductoresDAO implements IProductoresDAO {
     @Override
     public Productor consultarLogin(String correo, String contrasena) throws PersistenciaException {
         try {
-            Document filtro = new Document("contrasena", contrasena).append("correo", correo);
-            Productor p = this.COLECCION.find(Filters.eq("cuenta", filtro)).first();
+            List<Document> filtro = new ArrayList<>();
+
+            filtro.add(new Document("cuenta", new Document("contrasena", contrasena).append("correo", correo)));
+            filtro.add(new Document("tipo", Tipo.PRODUCTO.toString()));
+
+            Productor p = COLECCION.find(new Document("$and", filtro)).first();
             return p;
         } catch (MongoException e) {
             throw new PersistenciaException("Error no se pudo consultar los datos:" + e.getMessage());

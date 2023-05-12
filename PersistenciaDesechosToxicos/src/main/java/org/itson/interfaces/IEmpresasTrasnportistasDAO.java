@@ -16,4 +16,5 @@ public interface IEmpresasTrasnportistasDAO {
 
     List<EmpresaTransportista> consultaTodasEmpresasTransportistas() throws PersistenciaException;
     EmpresaTransportista insertar(EmpresaTransportista o) throws PersistenciaException;
+    EmpresaTransportista loginEmpresaTrasnportista(String correo,String contrasena)throws PersistenciaException;
 }

@@ -196,4 +196,20 @@ public class EmpresasTransportistasDAO implements IEmpresasTrasnportistasDAO {
             throw new MongoException("Error al consultar las empresas trasnportisas: " + e.getMessage());
         }
     }
+
+    @Override
+    public EmpresaTransportista loginEmpresaTrasnportista(String correo, String contrasena) throws PersistenciaException {
+        try {
+            List<Document> filtro = new ArrayList<>();
+
+            filtro.add(new Document("cuenta", new Document("contrasena", contrasena).append("correo", correo)));
+            filtro.add(new Document("tipo", Tipo.TRANSPORTISTA.toString()));
+
+            EmpresaTransportista transportista = COLECCION.find(new Document("$and", filtro)).first();
+            return transportista;
+
+        } catch (MongoException e) {
+            throw new PersistenciaException("Error al querer iniciar sesion" + e.getMessage());
+        }
+    }
 }
