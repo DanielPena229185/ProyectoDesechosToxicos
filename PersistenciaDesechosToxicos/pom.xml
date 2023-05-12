@@ -7,26 +7,29 @@
     <packaging>jar</packaging>
     <dependencies>
         
-        <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync -->
+        <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-core -->
         <dependency>
             <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver-sync</artifactId>
-            <version>4.9.1</version>
+            <artifactId>mongodb-driver-core</artifactId>
+            <version>3.10.2</version>
         </dependency>
+
         
         <!-- https://mvnrepository.com/artifact/org.mongodb/bson -->
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>bson</artifactId>
-            <version>4.9.1</version>
+            <version>3.10.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-core -->
+
+        <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync -->
         <dependency>
             <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver-core</artifactId>
-            <version>4.9.1</version>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>3.10.2</version>
         </dependency>
+
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>DominioDesechosToxicos</artifactId>

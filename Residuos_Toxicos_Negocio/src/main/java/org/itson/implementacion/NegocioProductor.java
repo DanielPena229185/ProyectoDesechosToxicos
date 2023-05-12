@@ -140,12 +140,13 @@ public class NegocioProductor implements INegocioProductor {
     }
 
     @Override
-    public Productor insertarProductor(Productor productor) {
+    public Productor insertarProductor(Productor productor) throws NegocioExcepcion {
         try {
-            return productoresDAO.insertar(productor);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
+            productoresDAO.insertar(productor);
+            return productor;
+        } catch (PersistenciaException e) {
+            System.out.println("jdibidbibipn");
+            throw new NegocioExcepcion(e.getMessage());
         }
 
     }

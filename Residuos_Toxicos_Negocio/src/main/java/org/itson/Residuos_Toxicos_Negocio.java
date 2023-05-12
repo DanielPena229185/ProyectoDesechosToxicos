@@ -7,6 +7,7 @@ package org.itson;
 import com.dominio.Cuenta;
 import com.dominio.Productor;
 import com.dominio.Residuo;
+import com.dominio.Tipo;
 import javax.swing.JOptionPane;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioExcepcion;
@@ -31,6 +32,7 @@ public class Residuos_Toxicos_Negocio {
         INegocioProductor negocioProductor = negocio.getNegocioProductor();
         Productor insertarPor = new Productor();
         insertarPor.setNombre("Daniel");
+        insertarPor.setTipo(Tipo.PRODUCTO);
         Cuenta cuenta = new Cuenta("dapgpena@gmail.com", "14785");
         insertarPor.setCuenta(cuenta);
         try {
