@@ -19,7 +19,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     /**
      * Creates new form PrincipalProductorForm
      */
-    private PrincipalProductorForm() {
+    public PrincipalProductorForm() {
         initComponents();
         System.out.println(productor.getId().toString() + " " + productor.getNombre());
         this.setVisible(true);

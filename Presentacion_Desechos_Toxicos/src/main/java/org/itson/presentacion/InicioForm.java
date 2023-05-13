@@ -37,7 +37,7 @@ public class InicioForm extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        inicarSesionbtn = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         registrarAdministradorBtn = new javax.swing.JMenuItem();
         registrarEmpresBtn = new javax.swing.JMenuItem();
@@ -98,13 +98,13 @@ public class InicioForm extends javax.swing.JFrame {
 
         jMenu1.setText("Iniciar Sesión");
 
-        jMenuItem1.setText("Iniciar Sesion");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        inicarSesionbtn.setText("Iniciar Sesion");
+        inicarSesionbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                inicarSesionbtnActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(inicarSesionbtn);
 
         menuBar.add(jMenu1);
 
@@ -183,11 +183,11 @@ public class InicioForm extends javax.swing.JFrame {
     dispose();
     }//GEN-LAST:event_registrarProductorBtnActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void inicarSesionbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicarSesionbtnActionPerformed
    LogInForm d = new LogInForm();
    d.setVisible(true);
    dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_inicarSesionbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,9 +231,9 @@ public class InicioForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuItem inicarSesionbtn;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenuBar menuBar;

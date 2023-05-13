@@ -38,7 +38,7 @@ public class LogInForm extends javax.swing.JFrame {
     /**
      * Creates new form LogInForm
      */
-    private LogInForm() {
+    LogInForm() {
         negocio = new NegocioFactory();
         negocioProductor = negocio.getNegocioProductor();
         initComponents();
