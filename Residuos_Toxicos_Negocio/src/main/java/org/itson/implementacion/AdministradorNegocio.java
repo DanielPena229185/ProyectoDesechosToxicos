@@ -8,10 +8,12 @@ import com.dominio.Administrador;
 import java.util.LinkedList;
 import java.util.List;
 import org.bson.types.ObjectId;
+import org.itson.DTO.AdministradorDTO;
 import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.excepciones.ValidacionException;
 import org.itson.implementaciones.bd.DAOFactory;
+import org.itson.implementaciones.daos.AdministradoresDAO;
 import org.itson.interfaces.IConsultasDAO;
 
 /**
@@ -52,12 +54,18 @@ public class AdministradorNegocio{
      * @throws NegocioException
      */
     public Administrador eliminar(Administrador elemento) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            this.validarAdministradorEliminar(elemento);
+        } catch (ValidacionException a) {
+            throw new NegocioException(a.getMessage());
+        }
+        return elemento;
     }
 
     /**
      *
-     * @return @throws NegocioException
+     * @return 
+     * @throws NegocioException
      */
     public List<Administrador> consultar() throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -70,7 +78,7 @@ public class AdministradorNegocio{
      * @throws NegocioException
      */
     public List<Administrador> consultar(Administrador elemento) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -80,7 +88,7 @@ public class AdministradorNegocio{
      * @throws NegocioException
      */
     public List<Administrador> consultar(ObjectId id) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody  
     }
 
     /**
@@ -202,5 +210,10 @@ public class AdministradorNegocio{
     public Administrador actualizar(Administrador elemento, Administrador elementoE) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    
+
+    
+    
 
 }
