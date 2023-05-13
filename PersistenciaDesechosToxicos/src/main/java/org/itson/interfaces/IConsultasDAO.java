@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package org.itson.interfaces;
 
 import java.util.List;
@@ -9,7 +6,7 @@ import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
 
 /**
- * Interfaz que se encarga de realizar todas las operaciones CRUD de los
+ * Descriocion de la interfaz: Interfaz que se encarga de realizar todas las operaciones CRUD de los
  * cualquier objeto de dominio que se indique.
  * 
  * @param <T> Clase de dominio a trabajar.

@@ -10,7 +10,7 @@ import org.itson.DTO.ResiduoDTO;
 import org.itson.excepciones.PersistenciaException;
 
 /**
- * Interfaz con las operacionde de ResiduoDAO
+ * Descriocion de la interfaz: Interfaz con las operacionde de ResiduoDAO
  *
  * @author Aracely Campa Quintana ID: 233215
  * @author Edgar Emir Borbon Jimenez ID: 233184

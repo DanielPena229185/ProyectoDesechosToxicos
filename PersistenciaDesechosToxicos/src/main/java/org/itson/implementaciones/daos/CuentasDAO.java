@@ -18,7 +18,7 @@ import org.itson.excepciones.PersistenciaException;
 import org.itson.interfaces.IConsultasDAO;
 
 /**
- * Clase que se encarga de realizar todas las operaciones CRUD de las
+ * Descripción de la clase: Clase que se encarga de realizar todas las operaciones CRUD de las
  * cuentas.
  * 
  * @author Aracely Campa Quintana ID: 233215
@@ -27,7 +27,9 @@ import org.itson.interfaces.IConsultasDAO;
  * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class CuentasDAO implements IConsultasDAO<Cuenta>{
-    
+    /**
+     * Coleccion de mongoBD que contiene los datos de cuenta
+     */
     private final MongoCollection<Cuenta> COLECCION; 
     
     /**

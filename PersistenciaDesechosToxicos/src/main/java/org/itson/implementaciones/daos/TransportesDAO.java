@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package org.itson.implementaciones.daos;
 
 import com.dominio.Transporte;
@@ -12,7 +9,9 @@ import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.interfaces.ITransporteDAO;
 
 /**
- *
+ * Descripción de la clase: Clase que implementa la interfaz ITransporteDAO, 
+ * contiene una instancia estatica de si misma y una instancia estatica de la coleccion de transportes
+ * con el fin de insertar un transporte
  * @author edemb
  */
 public class TransportesDAO implements ITransporteDAO {

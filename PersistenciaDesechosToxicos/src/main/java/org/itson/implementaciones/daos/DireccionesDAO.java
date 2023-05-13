@@ -18,7 +18,7 @@ import org.itson.excepciones.PersistenciaException;
 import org.itson.interfaces.IConsultasDAO;
 
 /**
- * Clase que se encarga de realizar todas las operaciones CRUD de las
+ * Descripción de la clase: Clase que se encarga de realizar todas las operaciones CRUD de las
  * direcciones.
  * 
  * @author Aracely Campa Quintana ID: 233215

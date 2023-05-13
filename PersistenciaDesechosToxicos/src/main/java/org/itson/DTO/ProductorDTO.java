@@ -3,6 +3,8 @@ package org.itson.DTO;
 
 /**
  * Descripción de la clase: Esta clase representa un DTO para un Productor
+ * Contiene dos propiedades que son email y contrasena que son los datos para poder 
+ * iniciar sesion del productor
  * @author edemb
  */
 public class ProductorDTO {

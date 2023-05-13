@@ -18,7 +18,7 @@ import org.itson.interfaces.IConsultasDAO;
 import org.itson.interfaces.IQuimicosDAO;
 
 /**
- * Implementa todas la operaciones para Quimicos
+ * Descripción de clase: Implementa todas la operaciones para Quimicos
  *
  * @author Aracely Campa Quintana ID: 233215
  * @author Edgar Emir Borbon Jimenez ID: 233184
@@ -26,23 +26,40 @@ import org.itson.interfaces.IQuimicosDAO;
  * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class QuimicosDAO implements IQuimicosDAO {
-
+    /**
+     * Coleccion de mongoBD que contiene los datos de quimico
+     */
     private static MongoCollection<Quimico> COLECCION;
+    /**
+     * Instancia unica de QuimicosDAO
+     */
     private static QuimicosDAO instanceQuimicosDAO;
-
+    /**
+     * Método constructor que inicializa la clase para empezar con las
+     * operaciones.
+     * @param BASE_DATOS Base de datos a la que se conecta.
+     */
     private QuimicosDAO() {
         if (COLECCION == null) {
             COLECCION = ConexionBD.getBaseDatos().getCollection("quimicos", Quimico.class);
         }
     }
-
+    /**
+     * Devuelve una instancia unica de QuimicosDAO, en caso de no existir se crea una nueva
+     * @return la instancia única de QuimicosDAO.
+     */ 
     public static QuimicosDAO getInstanceQuimicosDAO() {
         if (instanceQuimicosDAO == null) {
             instanceQuimicosDAO = new QuimicosDAO();
         }
         return instanceQuimicosDAO;
     }
-
+    /**
+     * Inserta un objeto de tipo Quimico en la coleccion de la base de datos
+     * @param o el objeto Quimico a insertar
+     * @return el objeto Quimico insertado
+     * @throws PersistenciaException si ocurre un error al insertar el objeto Quimico en la base de datos
+     */
     public Quimico insertar(Quimico o) throws PersistenciaException {
         try {
             COLECCION.insertOne(o);

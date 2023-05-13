@@ -9,7 +9,7 @@ import java.util.List;
 import org.itson.excepciones.PersistenciaException;
 
 /**
- * Interfaz con las operaciones de QuimicosDAO
+ * Descriocion de la interfaz: Interfaz con las operaciones de QuimicosDAO
  * 
  * @author Aracely Campa Quintana ID: 233215
  * @author Edgar Emir Borbon Jimenez ID: 233184

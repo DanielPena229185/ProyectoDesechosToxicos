@@ -19,7 +19,9 @@ import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.interfaces.ISolicitudesDAO;
 
 /**
- *
+ * Descripción de la clase: La clase proporciona metodos para consultar las solicitudes no atendidas, 
+ * consultar solicitudes por filtro y para insertar una solicitud. Estos metodos manejan excepciones 
+ * y proporcionan información detallada sobre los errores, como el mensaje de error y la causa del error
  * @author oscar
  */
 public class SolicitudesDAO implements ISolicitudesDAO {

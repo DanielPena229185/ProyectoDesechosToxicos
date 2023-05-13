@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package org.itson.implementaciones.daos;
 
 import com.dominio.EmpresaTransportista;
@@ -16,7 +13,8 @@ import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.interfaces.ITrasladosDAO;
 
 /**
- *
+ * Descripción de la clase: La clase realiza operaciones como insertar un traslado 
+ * o consultar los traslados asignados a una empresa transportista 
  * @author edemb
  */
 public class TrasladosDAO implements ITrasladosDAO {

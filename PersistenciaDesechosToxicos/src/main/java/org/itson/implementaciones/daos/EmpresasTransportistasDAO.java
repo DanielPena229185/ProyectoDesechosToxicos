@@ -21,7 +21,7 @@ import org.itson.interfaces.IConsultasDAO;
 import org.itson.interfaces.IEmpresasTrasnportistasDAO;
 
 /**
- * Clase que se encarga de realizar todas las operaciones CRUD de las empresas
+ * Descripción de la clase: Clase que se encarga de realizar todas las operaciones CRUD de las empresas
  * transportistas.
  *
  * @author Aracely Campa Quintana ID: 233215
@@ -30,14 +30,26 @@ import org.itson.interfaces.IEmpresasTrasnportistasDAO;
  * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class EmpresasTransportistasDAO implements IEmpresasTrasnportistasDAO {
-
+    /**
+     * Coleccion de mongoBD que contiene los datos de empresa transportista
+     */
     private static MongoCollection<EmpresaTransportista> COLECCION;
+    /**
+     * Instancia de la clase EmpresaTransportistaDAO
+     */
     private static EmpresasTransportistasDAO empresasTransportistasDAO;
-
+    /**
+     * Método constructor que inicializa la clase para empezar con las
+     * operaciones.
+     * @param BASE_DATOS Base de datos a la que se conecta.
+     */
     private EmpresasTransportistasDAO() {
         this.COLECCION = ConexionBD.getBaseDatos().getCollection("empresas", EmpresaTransportista.class);
     }
-
+    /**
+     * Devuelve la instancia unica de la clase EmpresasTransportistasDAO, creándola si aun no existe
+     * @return la instancia unica de la clase EmpresasTransportistasDAO
+     */
     public static EmpresasTransportistasDAO getInstanceEmpresasTrasnportistasDAO() {
         if (empresasTransportistasDAO == null) {
             empresasTransportistasDAO = new EmpresasTransportistasDAO();
@@ -185,7 +197,11 @@ public class EmpresasTransportistasDAO implements IEmpresasTrasnportistasDAO {
 //
 //        return empresasTransportistas;
 //    }
-
+    /**
+     * Consulta todas las empresas transportistas registradas en la base de datos
+     * @return una lista de objetos EmpresaTransportista
+     * @throws PersistenciaException si ocurre un error al consultar la base de datos
+     */
     @Override
     public List<EmpresaTransportista> consultaTodasEmpresasTransportistas() throws PersistenciaException {
         try {
@@ -196,7 +212,13 @@ public class EmpresasTransportistasDAO implements IEmpresasTrasnportistasDAO {
             throw new MongoException("Error al consultar las empresas trasnportisas: " + e.getMessage());
         }
     }
-
+    /**
+     * Realiza el inicio de sesion de una empresa transportista en el sistema
+     * @param correo El correo electrónico de la empresa transportista.
+     * @param contrasena La contraseña de la empresa transportista.
+     * @return La empresa transportista si las credenciales son válidas, o null si no son válidas.
+     * @throws PersistenciaException Si ocurre un error al intentar iniciar sesión.
+     */
     @Override
     public EmpresaTransportista loginEmpresaTrasnportista(String correo, String contrasena) throws PersistenciaException {
         try {

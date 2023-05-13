@@ -19,11 +19,25 @@ import org.bson.types.ObjectId;
  * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class ResiduoDTO {
-
+    /**
+     * El ID de la empresa productora a la que pertenece el quimico
+     */
     private ObjectId id_EmpresaProductora;
+    /**
+     * El nombre de la empresa productora a la que pertenece el quimico
+     */
     private String nombreEmpresaProductora;
+    /**
+     * La clave unica del químico
+     */
     private String clave;
+    /**
+     * El nombre del quimico
+     */
     private String nombre;
+    /**
+     * La lista de quimicos asociados a esta empresa productora
+     */
     private List<Quimico> quimicos;
 
     /**

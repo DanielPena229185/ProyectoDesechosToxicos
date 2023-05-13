@@ -18,7 +18,7 @@ import org.itson.excepciones.PersistenciaException;
 import org.itson.interfaces.IConsultasDAO;
 
 /**
- * Clase que se encarga de realizar todas las operaciones CRUD de los
+ * Descripción de la clase: Clase que se encarga de realizar todas las operaciones CRUD de los
  * administradores.
  * 
  * @author Aracely Campa Quintana ID: 233215
@@ -27,7 +27,11 @@ import org.itson.interfaces.IConsultasDAO;
  * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class AdministradoresDAO implements IConsultasDAO<Administrador> {
-
+    /**
+     * Método constructor que inicializa la clase para empezar con las
+     * operaciones.
+     * @param BASE_DATOS Base de datos a la que se conecta.
+     */
     private final MongoCollection<Administrador> COLECCION; 
     
     /**

@@ -26,7 +26,9 @@ import org.itson.interfaces.ITrasladosDAO;
 import org.itson.interfaces.IVehiculosDAO;
 
 /**
- *
+ * Descripción de la clase: Esta clase nos ayuda a obtener las instancias diferentes de los 
+ * objetos DAO en el sistema mediante los metodos estaticos correpondientes a un tipo de obejto
+ * negocio
  * @author oscar
  */
 public class DAOFactory {

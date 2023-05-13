@@ -19,7 +19,7 @@ import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.interfaces.IResiduosDAO;
 
 /**
- * Clase que implementa todas las operaciones de Residuo
+ * Descripcion de la clase: Clase que implementa todas las operaciones de Residuo
  *
  * @author Aracely Campa Quintana ID: 233215
  * @author Edgar Emir Borbon Jimenez ID: 233184

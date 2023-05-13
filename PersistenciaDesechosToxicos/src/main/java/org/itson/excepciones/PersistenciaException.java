@@ -1,7 +1,7 @@
 package org.itson.excepciones;
 
 /**
- * Esta clase se encarga de manejar las excepciones generadas en la capa
+ * Descripción de la clase: Esta clase se encarga de manejar las excepciones generadas en la capa
  * de persistencia.
  * 
  * @author oscar

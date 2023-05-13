@@ -22,7 +22,7 @@ import org.itson.interfaces.IConsultasDAO;
 import org.itson.interfaces.IProductoresDAO;
 
 /**
- * Clase que se encarga de realizar todas las operaciones CRUD de las empresas
+ * Descripción de la clase: Clase que se encarga de realizar todas las operaciones CRUD de las empresas
  * productoras.
  *
  * @author Aracely Campa Quintana ID: 233215
@@ -31,8 +31,13 @@ import org.itson.interfaces.IProductoresDAO;
  * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class ProductoresDAO implements IProductoresDAO {
-
+    /**
+     * Coleccion de mongoBD que contiene los datos de productor
+     */
     private static MongoCollection<Productor> COLECCION;
+    /**
+     * Instancia de la clase ProductoresDAO
+     */
     private static ProductoresDAO productoresDAO;
 
     /**

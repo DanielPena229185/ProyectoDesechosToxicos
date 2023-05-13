@@ -15,7 +15,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 import org.itson.interfaces.IConexionBD;
 
 /**
- * Clase que se va a encargar de conectar el sistema a la base de datos.
+ * Descripción de la clase: Clase que se va a encargar de conectar el sistema a la base de datos.
  *
  * @author oscar
  */

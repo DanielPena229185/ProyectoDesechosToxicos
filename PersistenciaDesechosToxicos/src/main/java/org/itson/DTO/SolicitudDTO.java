@@ -14,9 +14,21 @@ import java.util.List;
  * @author oscar
  */
 public class SolicitudDTO {
+    /**
+     * La fecha en la que se solicita la recogida de residuos
+     */
     private Date fechaSolicitada;
+    /**
+     * El estado de la solicitud de recogida de residuos
+     */
     private Estado estado;
+    /**
+     * La lista de residuos que se solicitan para su recogida
+     */
     private List<Residuo> residuos;
+    /**
+     * El nombre del productor que realiza la solicitud de recogida de residuos
+     */
     private String nombreProductor;
     /**
      * Constructor vacio
