@@ -42,6 +42,7 @@ public class SolicitudesDAO implements ISolicitudesDAO {
 
     /**
      * Regresa una instancia de SolicitudesDAO
+     *
      * @return una instancia SolicitudesDAO
      */
     public static SolicitudesDAO getInstanceSolicitudesDAO() {
@@ -70,48 +71,46 @@ public class SolicitudesDAO implements ISolicitudesDAO {
 
     /**
      * Método que consulta a todas las solicitudes por filtros.
+     *
      * @param filtro filtro que recibe.
      * @return lista de solicitudes que coinciden con los filtros.
-     * @throws PersistenciaException si recibe un filtro como null, si no encuentra ninguna coincidencia, por si hay un fallo con la base de datos.
+     * @throws PersistenciaException si recibe un filtro como null, si no
+     * encuentra ninguna coincidencia, por si hay un fallo con la base de datos.
      */
     @Override
     public List<Solicitud> consultarSolicitudFiltro(SolicitudDTO filtro) throws PersistenciaException {
         List<Solicitud> solicitudes = new ArrayList<>();
         List<Bson> filtros = new ArrayList<>();
-        
+
         if (filtro == null) {
             throw new PersistenciaException("No se recibieron parámetros válidos.");
         }
-        
+
         if (filtro.getFechaSolicitada() != null) {
             filtros.add(Filters.eq("fecha_solicitada", filtro.getFechaSolicitada()));
         }
-        
+
         if (filtro.getNombreProductor() != null) {
             filtros.add(Filters.eq("productor.nombre", filtro.getNombreProductor()));
         }
-        
+
         if (filtro.getEstado() != null) {
             filtros.add(Filters.eq("estado", filtro.getEstado()));
         }
-        
+
         if (filtro.getResiduos() != null) {
             filtros.add(Filters.eq("residuos", filtro.getResiduos()));
         }
-        
+
         try {
             COLECCION.find(Filters.and(filtros)).into(solicitudes);
-        
-            if (filtros.size() <= 0) {
-                throw new PersistenciaException("No hubo coincidencias con los parámetros dados.");
-            }
         } catch (MongoException e) {
             throw new PersistenciaException("Hubo un error al realizar la consulta.", e.getCause());
         }
-        
+
         return solicitudes;
     }
-    
+
     /**
      * Inserta una Solicitud
      *

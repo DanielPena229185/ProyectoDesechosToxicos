@@ -96,7 +96,14 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
     @Override
     public Solicitud insertarSolicitud(Solicitud solicitud) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            validarSolicitudInsertar(solicitud);
+            return persistencia.insertarSolicitud(solicitud);
+        } catch (PersistenciaException e) {
+            throw new NegocioException(e.getMessage());
+        } catch (ValidacionException a) {
+            throw new NegocioException(a.getMessage());
+        }
     }
 
     @Override
@@ -106,7 +113,21 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
     @Override
     public List<Solicitud> consultarSolicitudFiltro(Solicitud residuo) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            
+            if (residuo == null) {
+                throw new ValidacionException("No hay datos de la solicitud");
+            }
+            
+            SolicitudDTO solicitudDTO = convertirSolicitudToDTO(residuo);
+            
+            return persistencia.consultarSolicitudFiltro(solicitudDTO);
+            
+        } catch (PersistenciaException e) {
+            throw new NegocioException(e.getMessage());
+        } catch (ValidacionException a) {
+            throw new NegocioException(a.getMessage());
+        }
     }
 
     private Solicitud validarSolicitudInsertar(Solicitud solicitud) throws ValidacionException {
@@ -145,5 +166,38 @@ public class NegocioSolicitud implements INegocioSolicitud {
         Valida que no exista ninguna solicitud expedida para el mismo día, 
         del mismo productor y de la misma coleccion de residuos
          */
+        List<Solicitud> solicitudes;
+
+        try {
+            solicitudes = consultarSolicitudFiltro(solicitud);
+        } catch (PersistenciaException e) {
+            throw new ValidacionException(e.getMessage());
+        }
+
+        if (camposError.isEmpty()) {
+            if (solicitudes.size() > 5) {
+                throw new ValidacionException("- Ya hay más de 5 solicitudes que cuentan con los mismos datos");
+            }
+            return solicitud;
+        }
+
+        String mensaje = mensajeCampos(camposError);
+
+        throw new ValidacionException(mensaje);
+
+    }
+
+    /**
+     * Contatena todos los elementos de la lista de tipo String
+     *
+     * @param listaCampos Lista que quiere concatenar sus elementos
+     * @return Cadena concatenada de la lista de elementos
+     */
+    private String mensajeCampos(List<String> listaCampos) {
+        String mensaje = "";
+        for (String campo : listaCampos) {
+            mensaje += campo + "\n";
+        }
+        return mensaje;
     }
 }
