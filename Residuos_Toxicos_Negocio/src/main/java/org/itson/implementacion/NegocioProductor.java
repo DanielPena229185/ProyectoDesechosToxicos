@@ -34,7 +34,7 @@ public class NegocioProductor implements INegocioProductor {
     }
 
     @Override
-    public Productor login(ProductorDTO productorDTO) throws NegocioException {
+    public Productor loginProductor(ProductorDTO productorDTO) throws NegocioException {
         try {
 
             if (productorDTO == null) {

@@ -9,14 +9,14 @@ import com.dominio.Quimico;
 import com.dominio.Residuo;
 import java.util.LinkedList;
 import java.util.List;
+import org.bson.types.ObjectId;
+import org.itson.DTO.ResiduoDTO;
 import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.excepciones.ValidacionException;
-import org.itson.implementaciones.bd.DAOFactory;
 import org.itson.implementaciones.fachada.FachadaPersistencia;
 import org.itson.interfaces.INegocioResiduo;
 import org.itson.interfaces.IPersistencia;
-import org.itson.interfaces.IResiduosDAO;
 
 /**
  * Descripción de la clase:
@@ -25,14 +25,12 @@ import org.itson.interfaces.IResiduosDAO;
  */
 public class NegocioResiduo implements INegocioResiduo {
 
-    IResiduosDAO residuoDAO;
     IPersistencia persistencia;
 
     /**
      * Constructor por default
      */
     public NegocioResiduo() {
-        residuoDAO = DAOFactory.getResiduoDAO();
         persistencia = new FachadaPersistencia();
     }
 
@@ -43,28 +41,28 @@ public class NegocioResiduo implements INegocioResiduo {
      * @param residuo Residuo que se desea insertarTraslado
      * @return Residuo insertado
      * @throws NegocioException En caso que ocurra algún error al momento de
- insertarTraslado o no cumpla las validaciones previas
+     * insertarTraslado o no cumpla las validaciones previas
      */
     @Override
     public Residuo insertarResiduo(Residuo residuo) throws NegocioException {
         try {
-            
+
             if (residuo == null) {
                 //Sí el residuo es nulo
                 throw new ValidacionException("No hay información del residuo");
             }
-            
+
             //Realiza las particiones para solo guardar lo importante del
             //productor
             this.realizarParticiones(residuo);
-            
+
             //Valida si el residuo cumple las validaciones para guardarse en la
             //Base de datos
-            this.validarResiduo(residuo);
-            
+            this.validarResiduoInsertar(residuo);
+
             //Se inserta el residuo a la base de datos
             persistencia.insertarResiduo(residuo);
-            
+
             //Regresa el residuo guardado
             return residuo;
         } catch (ValidacionException validacionExcepcion) {
@@ -80,18 +78,13 @@ public class NegocioResiduo implements INegocioResiduo {
     }
 
     @Override
-    public List<Residuo> consultarResiduos() throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<Residuo> consultarResiduo(Residuo residuo) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public List<Residuo> consultarResiduoFiltro(Residuo residuo) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            ResiduoDTO residuoDTO = convertirResiduoToDTO(residuo);
+            return persistencia.consultarResiduoFiltro(residuoDTO);
+        } catch (ValidacionException e) {
+            throw new NegocioException(e.getMessage());
+        }
     }
 
     /**
@@ -102,7 +95,7 @@ public class NegocioResiduo implements INegocioResiduo {
      * @throws ValidacionException Mensaje de que campos fueron los que no
      * cumplieron las validaciones
      */
-    private Residuo validarResiduo(Residuo residuo) throws ValidacionException {
+    private Residuo validarResiduoInsertar(Residuo residuo) throws ValidacionException {
         List<String> camposErroneos = new LinkedList<>();
         if (residuo == null) {
             //Si el residuo es nulo
@@ -240,4 +233,22 @@ public class NegocioResiduo implements INegocioResiduo {
         residuo.setProductor(productor);
         return residuo;
     }
+
+    private ResiduoDTO convertirResiduoToDTO(Residuo residuo) throws ValidacionException {
+
+        ResiduoDTO residuoDTO = new ResiduoDTO();
+
+        if (residuo == null) {
+            throw new ValidacionException("No hay información del residuo");
+        }
+
+        residuoDTO.setClave(residuo.getCodigo());
+        residuoDTO.setNombre(residuo.getNombre());
+        residuoDTO.setQuimicos(residuo.getQuimicos());
+        residuoDTO.setNombreEmpresaProductora(residuo.getProductor().getNombre());
+        residuoDTO.setId_EmpresaProductora(residuo.getProductor().getId());
+
+        return residuoDTO;
+    }
+
 }

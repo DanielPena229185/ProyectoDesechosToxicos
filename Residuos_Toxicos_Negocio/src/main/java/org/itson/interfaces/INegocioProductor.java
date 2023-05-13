@@ -17,6 +17,6 @@ import org.itson.excepciones.NegocioException;
 public interface INegocioProductor {
 
     public Productor insertarProductor(Productor productor);
-    public Productor login(ProductorDTO productor) throws NegocioException;
+    public Productor loginProductor(ProductorDTO productor) throws NegocioException;
     
 }
