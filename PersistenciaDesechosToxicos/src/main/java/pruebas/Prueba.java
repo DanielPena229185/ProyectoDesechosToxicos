@@ -51,8 +51,7 @@ public class Prueba {
         empresa.setId(t.getId());
         empresa.setNombre(t.getNombre());
         empresa.setTipo(t.getTipo());
-        
-<<<<<<< HEAD
+
         Vehiculo v = new Vehiculo("modelo1", "marca1", empresa);
         Vehiculo v1 = new Vehiculo("modelo2", "marca2", empresa);
         Vehiculo v2 = new Vehiculo();
@@ -62,7 +61,6 @@ public class Prueba {
 //        vehiculosDAO.insertarVehiculo(v);
 //        vehiculosDAO.insertarVehiculo(v1);
 //        vehiculosDAO.insertarVehiculo(v2);
-=======
         ITrasladosDAO trasladosDAO = DAOFactory.getTrasladosDAO();
 //        Traslado traslado = new Traslado();
 //        traslado.setEmpresas_transportistas(Arrays.asList(empresa));
@@ -72,12 +70,13 @@ public class Prueba {
             System.out.println(o.getId());
             for (EmpresaTransportista e : o.getEmpresas_transportistas()) {
                 System.out.println("Trasnportista: " + e.getId() + " " + e.getTipo() + " " + t.getNombre());
->>>>>>> 6543066776d164a4c7b2a4a8c55a86a2390f2cbf
 
-    List<Vehiculo> vehiculos = vehiculosDAO.consultarVehiculosEmpresaTrasnportadora(empresa);
-    for(Vehiculo l : vehiculos){
-        System.out.println(l.getId()+" "+ l.getMarca()+" "+l.getModelo()+" "+l.getEmpresa_trasnportista().getId()+" "+l.getEmpresa_trasnportista().getNombre());
-    }
+                List<Vehiculo> vehiculos = vehiculosDAO.consultarVehiculosEmpresaTrasnportadora(empresa);
+                for (Vehiculo l : vehiculos) {
+                    System.out.println(l.getId() + " " + l.getMarca() + " " + l.getModelo() + " " + l.getEmpresa_trasnportista().getId() + " " + l.getEmpresa_trasnportista().getNombre());
+                }
 
+            }
+        }
     }
 }
