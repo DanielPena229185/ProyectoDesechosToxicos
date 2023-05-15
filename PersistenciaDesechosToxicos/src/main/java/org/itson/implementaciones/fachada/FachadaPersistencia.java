@@ -226,4 +226,31 @@ public class FachadaPersistencia implements IPersistencia {
             throw new PersistenciaException(e.getMessage());
         }
     }
+
+    @Override
+    public List<EmpresaTransportista> consultaTodasEmpresasTransportistas() throws PersistenciaException {
+        try {
+            return empresasTransportistasDAO.consultaTodasEmpresasTransportistas();
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException(e.getMessage());
+        }
+    }
+
+    @Override
+    public EmpresaTransportista insertar(EmpresaTransportista o) throws PersistenciaException {
+        try {
+            return empresasTransportistasDAO.insertar(o);
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException(e.getMessage());
+        }
+    }
+
+    @Override
+    public EmpresaTransportista loginEmpresaTrasnportista(String correo, String contrasena) throws PersistenciaException {
+        try {
+            return empresasTransportistasDAO.loginEmpresaTrasnportista(correo, contrasena);
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException(e.getMessage());
+        }
+    }
 }
