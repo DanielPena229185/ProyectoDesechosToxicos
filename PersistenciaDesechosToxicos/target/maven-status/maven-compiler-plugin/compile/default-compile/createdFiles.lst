@@ -7,6 +7,7 @@ org\itson\interfaces\ITransporteDAO.class
 pruebas\Prueba.class
 org\itson\DTO\SolicitudDTO.class
 org\itson\implementaciones\daos\CuentasDAO.class
+org\itson\implementaciones\fachada\FachadaPersistencia.class
 org\itson\implementaciones\daos\EmpresasTransportistasDAO.class
 org\itson\implementaciones\daos\QuimicosDAO.class
 org\itson\implementaciones\daos\TrasladosDAO.class
@@ -19,10 +20,12 @@ org\itson\interfaces\IVehiculosDAO.class
 org\itson\interfaces\IResiduosDAO.class
 org\itson\implementaciones\daos\AdministradoresDAO.class
 org\itson\interfaces\IConsultasDAO.class
+org\itson\interfaces\IPersistencia.class
 org\itson\DTO\ResiduoDTO.class
 org\itson\implementaciones\daos\VehiculosDAO.class
 org\itson\implementaciones\bd\ConexionBD.class
 org\itson\implementaciones\daos\DireccionesDAO.class
+org\itson\DTO\AdministradorDTO.class
 org\itson\excepciones\PersistenciaException.class
 org\itson\interfaces\IProductoresDAO.class
 org\itson\persistenciadesechostoxicos\PersistenciaDesechosToxicos.class
