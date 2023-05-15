@@ -9,6 +9,7 @@ com\dominio\Direccion.class
 com\mycompany\dominiodesechostoxicos\DominioDesechosToxicos.class
 com\dominio\Traslado.class
 com\dominio\Residuo.class
+com\dominio\MedidaResiduo.class
 com\dominio\Empresa.class
 com\dominio\Solicitud.class
 com\dominio\Quimico.class
