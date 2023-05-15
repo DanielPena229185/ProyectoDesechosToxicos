@@ -19,6 +19,10 @@ import org.itson.interfaces.INegocio;
 import org.itson.interfaces.INegocioProductor;
 import org.itson.interfaces.INegocioQuimico;
 import org.itson.interfaces.INegocioResiduo;
+import org.itson.interfaces.INegocioSolicitud;
+import org.itson.interfaces.INegocioTransporte;
+import org.itson.interfaces.INegocioTraslado;
+import org.itson.interfaces.INegocioVehiculo;
 
 /**
  * Descripción de la clase:
@@ -30,6 +34,10 @@ public class FachadaNegocio implements INegocio{
     INegocioResiduo negocioResiduo;
     INegocioProductor negocioProductor;
     INegocioQuimico negocioQuimico;
+    INegocioSolicitud negocioSolicitud;
+    INegocioTransporte negocioTransporte;
+    INegocioTraslado negocioTraslado;
+    INegocioVehiculo negocioVehiculo;
 
     /**
      * Constructor por default
@@ -38,6 +46,10 @@ public class FachadaNegocio implements INegocio{
         negocioResiduo = NegocioFactory.getNegocioResiduo();
         negocioProductor = NegocioFactory.getNegocioProductor();
         negocioQuimico = NegocioFactory.getNegocioQuimico();
+        negocioSolicitud = NegocioFactory.getNegocioSolicitud();
+        negocioTransporte = NegocioFactory.getNegocioTransporte();
+        negocioTraslado = NegocioFactory.getNegocioTraslado();
+        negocioVehiculo = NegocioFactory.getNegocioVehiculo();
     }
 
     @Override
@@ -87,36 +99,64 @@ public class FachadaNegocio implements INegocio{
 
     @Override
     public Solicitud insertarSolicitud(Solicitud solicitud) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            return negocioSolicitud.insertarSolicitud(solicitud);
+        } catch (NegocioException e) {
+            throw new NegocioException(e.getMessage());
+        }
     }
 
     @Override
     public List<Solicitud> consultaSolicitudesNoAtendidas() throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            return negocioSolicitud.consultaSolicitudesNoAtendidas();
+        } catch (NegocioException e) {
+            throw new NegocioException(e.getMessage());
+        }
     }
 
     @Override
     public List<Solicitud> consultarSolicitudFiltro(Solicitud solicitud) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            return negocioSolicitud.consultarSolicitudFiltro(solicitud);
+        } catch (NegocioException e) {
+            throw new NegocioException(e.getMessage());
+        }
     }
 
     @Override
     public Transporte insertarTransporte(Transporte transporte) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            return negocioTransporte.insertarTransporte(transporte);
+        } catch (NegocioException e) {
+            throw new NegocioException(e.getMessage());
+        }
     }
 
     @Override
     public Traslado insertarTraslado(Traslado traslado) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            return negocioTraslado.insertarTraslado(traslado);
+        } catch (NegocioException e) {
+            throw new NegocioException(e.getMessage());
+        }
     }
 
     @Override
     public List<Traslado> consultaTrasladosAsingados(EmpresaTransportista empresaTransportista) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            return negocioTraslado.consultaTrasladosAsingados(empresaTransportista);
+        } catch (NegocioException e) {
+            throw new NegocioException(e.getMessage());
+        }
     }
 
     @Override
     public List<Vehiculo> consultaVehiuculoEmpresaTrasnportadora(EmpresaTransportista empresaTransportista) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            return negocioVehiculo.consultaVehiuculoEmpresaTrasnportadora(empresaTransportista);
+        } catch (NegocioException e) {
+            throw new NegocioException(e.getMessage());
+        }
     }
 }
