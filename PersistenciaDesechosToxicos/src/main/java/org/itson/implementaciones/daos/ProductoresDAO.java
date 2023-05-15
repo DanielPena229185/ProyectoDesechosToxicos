@@ -8,17 +8,11 @@ import com.dominio.Productor;
 import com.dominio.Tipo;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
-import org.bson.conversions.Bson;
-import org.bson.types.ObjectId;
-import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.implementaciones.bd.ConexionBD;
-import org.itson.interfaces.IConsultasDAO;
 import org.itson.interfaces.IProductoresDAO;
 
 /**

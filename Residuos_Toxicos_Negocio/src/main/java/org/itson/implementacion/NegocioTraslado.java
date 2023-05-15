@@ -12,8 +12,11 @@ import com.dominio.Traslado;
 import java.util.LinkedList;
 import java.util.List;
 import org.itson.excepciones.NegocioException;
+import org.itson.excepciones.PersistenciaException;
 import org.itson.excepciones.ValidacionException;
+import org.itson.implementaciones.fachada.FachadaPersistencia;
 import org.itson.interfaces.INegocioTraslado;
+import org.itson.interfaces.IPersistencia;
 
 /**
  * Descripción de la clase:
@@ -22,21 +25,37 @@ import org.itson.interfaces.INegocioTraslado;
  */
 public class NegocioTraslado implements INegocioTraslado {
 
+    IPersistencia persistencia;
+
     /**
      * Constructor por default
      */
     public NegocioTraslado() {
-
+        persistencia = new FachadaPersistencia();
     }
 
     @Override
     public Traslado insertarTraslado(Traslado traslado) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            validarTrasladoInsertar(traslado);
+            return persistencia.insertarTraslado(traslado);
+        } catch (ValidacionException e) {
+            throw new NegocioException(e.getMessage());
+        } catch (PersistenciaException a) {
+            throw new NegocioException(a.getMessage());
+        }
     }
 
     @Override
     public List<Traslado> consultaTrasladosAsingados(EmpresaTransportista empresaTransportista) throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            if(empresaTransportista == null){
+                throw new ValidacionException("No hay información de la empresa transportista");
+            }
+            return persistencia.consultaTrasladosAsingados(empresaTransportista);
+        } catch (PersistenciaException e) {
+            throw new NegocioException(e.getMessage());
+        }
     }
 
     private Traslado validarTrasladoInsertar(Traslado traslado) throws ValidacionException {
@@ -72,9 +91,17 @@ public class NegocioTraslado implements INegocioTraslado {
         //Valida la lista de empresas_transportistas
         List<EmpresaTransportista> empresasTransportistas = traslado.getEmpresas_transportistas();
 
-        if(validarListaVacia(empresasTransportistas)){
+        if (validarListaVacia(empresasTransportistas)) {
             camposError.add("No hay ninguna empresa transportista seleccionada");
         }
+
+        if (camposError.isEmpty()) {
+            return traslado;
+        }
+
+        String mensaje = mensajeCampos(camposError);
+
+        throw new ValidacionException(mensaje);
     }
 
     private Direccion validarDireccion(Direccion direccion) throws ValidacionException {
