@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import org.itson.implementacion.FachadaNegocio;
 import org.itson.implementacion.NegocioFactory;
 import org.itson.interfaces.INegocio;
 import org.itson.interfaces.INegocioQuimico;
@@ -21,25 +22,27 @@ import org.itson.presentacion.Productor.PrincipalProductorForm;
  * @author arace
  */
 public class RegistroResiduoForm extends javax.swing.JFrame {
-private final String NOMBRE_RESIDUO = "Residuo";
-private List<Quimico> listaQuimicosDisponibles;
-private List<String> listaQuimicosComponentesResiduo;
-INegocioQuimico negocioQuimico;
-INegocio negocio;
+
+    private final String NOMBRE_RESIDUO = "Residuo";
+    private List<Quimico> listaQuimicosDisponibles;
+    private List<String> listaQuimicosComponentesResiduo;
+    INegocio negocio;
+
     /**
      * Creates new form RegistroResiduoForm
      */
     public RegistroResiduoForm() {
-        negocio = new NegocioFactory();
-        negocioQuimico = negocio.getNegocioQuimico();
+        negocio = new FachadaNegocio();
         listaQuimicosDisponibles = consultarListaQuimicos();
         initComponents();
     }
-    private List<Quimico> consultarListaQuimicos(){
+
+    private List<Quimico> consultarListaQuimicos() {
         List<Quimico> listaQuimicos;
-        listaQuimicos = negocioQuimico.consultarQuimicos();
-    return listaQuimicos;
+        listaQuimicos = negocio.consultarQuimicos();
+        return listaQuimicos;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -224,16 +227,13 @@ INegocio negocio;
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarResiduoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarResiduoBtnActionPerformed
-      
-            
-            
- 
-        
+
+
     }//GEN-LAST:event_guardarResiduoBtnActionPerformed
 
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
-       PrincipalProductorForm p = new PrincipalProductorForm();
-       p.setVisible(true);
+        PrincipalProductorForm p = new PrincipalProductorForm();
+        p.setVisible(true);
     }//GEN-LAST:event_regresarBtnActionPerformed
 
     private void campoNombreResiduoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNombreResiduoMouseClicked
@@ -251,98 +251,113 @@ INegocio negocio;
     }//GEN-LAST:event_campoNombreResiduoFocusGained
 
     private void campoNombreResiduoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreResiduoFocusLost
-       if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
+        if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
             this.campoNombreResiduo.setForeground(Color.GRAY);
             this.campoNombreResiduo.setText(NOMBRE_RESIDUO);
         }
     }//GEN-LAST:event_campoNombreResiduoFocusLost
 
     private boolean validarCampoTextoVacio(javax.swing.JTextField campo, String nombreCampo) {
-    if (campo.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Campo vacio " + nombreCampo + " Favor de ingresar el dato.");
-        campo.requestFocus();
-        return false;
+        if (campo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo vacio " + nombreCampo + " Favor de ingresar el dato.");
+            campo.requestFocus();
+            return false;
+        }
+        return true;
     }
-    return true;
-}
-    private void agregarQuimicoSeleccionadoListaComponentesResiduo(){
+
+    private void agregarQuimicoSeleccionadoListaComponentesResiduo() {
         List<String> quimicos = pasarListaQuimicosString(listaQuimicosDisponibles);
         String quimicoSeleccionado = getQuimicoSeleccionadoDisponibles();
         eliminarQuimicoListaDisponible(quimicoSeleccionado, quimicos);
         agregarQuimicoListaComponenteResiduo(quimicoSeleccionado, listaQuimicosComponentesResiduo);
         cargarComboBoxResiduosDisponibles(listaQuimicosComponentesResiduo);
     }
-    private String getQuimicoSeleccionadoDisponibles(){
+
+    private String getQuimicoSeleccionadoDisponibles() {
         String quimicoSeleccionado = comboResiduosRegistrados.getSelectedItem().toString();
         return quimicoSeleccionado;
-        
+
     }
-    private List<String> cargarComboBoxResiduosDisponibles(List<String> quimicos){
+
+    private List<String> cargarComboBoxResiduosDisponibles(List<String> quimicos) {
         this.comboResiduosRegistrados.removeAllItems();
         for (int i = 0; i < quimicos.size(); i++) {
             comboResiduosRegistrados.addItem(quimicos.get(i));
-        } return quimicos;
+        }
+        return quimicos;
     }
-    private List<String> eliminarQuimicoListaDisponible(String quimicoSeleccionado, List<String> quimicos){
+
+    private List<String> eliminarQuimicoListaDisponible(String quimicoSeleccionado, List<String> quimicos) {
         quimicos.remove(quimicoSeleccionado);
-        
-    return quimicos;
-        
+
+        return quimicos;
+
     }
-    private List<String> agregarQuimicoListaComponenteResiduo(String quimicoSeleccionado, List<String> quimicos){
+
+    private List<String> agregarQuimicoListaComponenteResiduo(String quimicoSeleccionado, List<String> quimicos) {
         quimicos.add(quimicoSeleccionado);
 
         return quimicos;
     }
-    private List<String> pasarListaQuimicosString(List<Quimico> quimicos){
+
+    private List<String> pasarListaQuimicosString(List<Quimico> quimicos) {
         List<String> listaQuimicoString = new LinkedList<>();
         for (int i = 0; i < quimicos.size(); i++) {
             listaQuimicoString.add(quimicos.get(i).getNombre());
         }
         return listaQuimicoString;
     }
-    private List<String> eliminarQuimicoListaComponenteResiduo(String quimicoSeleccionado, List<String> quimicos){
+
+    private List<String> eliminarQuimicoListaComponenteResiduo(String quimicoSeleccionado, List<String> quimicos) {
         quimicos.removeIf(quimico -> quimico.equalsIgnoreCase(quimicoSeleccionado));
         return quimicos;
     }
-    private String getQuimicoSeleccionadoListaComponenteResiduo(){
+
+    private String getQuimicoSeleccionadoListaComponenteResiduo() {
         String listaComponenteResiduo = comboResiduosRegistrados.getSelectedItem().toString();
         return listaComponenteResiduo;
-        
+
     }
-    private List<String> getQuimicoSeleccionadoListaDisponibles(){
-         return listaQuimicosComponentesResiduo; 
+
+    private List<String> getQuimicoSeleccionadoListaDisponibles() {
+        return listaQuimicosComponentesResiduo;
     }
- 
-    private String eliminarQuimicoListaComponentesResiduo(){
-        String quimicoSeleccionado = getQuimicoSeleccionadoListaComponenteResiduo(); 
+
+    private String eliminarQuimicoListaComponentesResiduo() {
+        String quimicoSeleccionado = getQuimicoSeleccionadoListaComponenteResiduo();
         eliminarQuimicoListaComponenteResiduo(quimicoSeleccionado, listaQuimicosComponentesResiduo);
         return quimicoSeleccionado;
     }
-    private List<String> getListaQuimicosComponentesResiduo(String eliminarQuimicoListaComponente){
+
+    private List<String> getListaQuimicosComponentesResiduo(String eliminarQuimicoListaComponente) {
         List<String> quimicos = new LinkedList<>(listaQuimicosComponentesResiduo);
         eliminarQuimicoListaComponenteResiduo(eliminarQuimicoListaComponente, quimicos);
         return quimicos;
     }
+
     private void agregarQuimicoListaDisponibles(String quimicoSeleccionado) {
-    listaQuimicosDisponibles.add(new Quimico(quimicoSeleccionado));
+        listaQuimicosDisponibles.add(new Quimico(quimicoSeleccionado));
     }
+
     //listaQuimicosDisponibles: agregarQuimicoListaDisponibles()
     private List<String> eliminarQuimicoListaDisponibles(String quimicoSeleccionado) {
-    listaQuimicosDisponibles.removeIf(quimico -> quimico.equals(quimicoSeleccionado));
-    return eliminarQuimicoListaDisponibles(quimicoSeleccionado);
+        listaQuimicosDisponibles.removeIf(quimico -> quimico.equals(quimicoSeleccionado));
+        return eliminarQuimicoListaDisponibles(quimicoSeleccionado);
     }
+
     public void cargarListaQuimicosDisponibles(List<String> listaQuimicosDisponibles) {
-    comboResiduosRegistrados.removeAllItems(); 
-    for (String quimico : listaQuimicosDisponibles) {
-        comboResiduosRegistrados.addItem(quimico); 
-    }   
+        comboResiduosRegistrados.removeAllItems();
+        for (String quimico : listaQuimicosDisponibles) {
+            comboResiduosRegistrados.addItem(quimico);
+        }
     }
+
     private void cargarListaQuimicosComponentesResiduo(List<String> quimicos) {
-    comboResiduosRegistrados.removeAllItems();
-    for (String quimico : quimicos) {
-        comboResiduosRegistrados.addItem(quimico);
-    }
+        comboResiduosRegistrados.removeAllItems();
+        for (String quimico : quimicos) {
+            comboResiduosRegistrados.addItem(quimico);
+        }
     }
 
     /**

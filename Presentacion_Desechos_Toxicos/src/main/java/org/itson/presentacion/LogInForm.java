@@ -11,9 +11,8 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioException;
-import org.itson.implementacion.NegocioFactory;
+import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
-import org.itson.interfaces.INegocioProductor;
 import org.itson.presentacion.Administrador.PrincipalAdministradorForm;
 import org.itson.presentacion.Productor.PrincipalProductorForm;
 import org.itson.presentacion.empresa.PrincipalEmpresaForm;
@@ -32,15 +31,13 @@ public class LogInForm extends javax.swing.JFrame {
     private static final String CONTRASENA_DEFAULT = "123456789112345";
     JComboBox<String> comboBox = new JComboBox<String>();
     INegocio negocio;
-    INegocioProductor negocioProductor;
     static LogInForm login;
 
     /**
      * Creates new form LogInForm
      */
     LogInForm() {
-        negocio = new NegocioFactory();
-        negocioProductor = negocio.getNegocioProductor();
+        negocio = new FachadaNegocio();
         initComponents();
         this.setVisible(true);
     }
@@ -260,7 +257,8 @@ public class LogInForm extends javax.swing.JFrame {
                     ProductorDTO productor = new ProductorDTO();
                     productor.setEmail(this.campoUsuario.getText());
                     productor.setContrasena(this.campoContrasena.getText());
-                    pro = negocioProductor.loginProductor(productor);
+                    pro = negocio.loginProductor(productor);
+                    PrincipalProductorForm.setProductor(pro);
                     PrincipalProductorForm.getInstance(pro);
                     this.setVisible(false);
                 } catch (NegocioException e) {
