@@ -44,7 +44,6 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     }
     private void cargarTablaQuimicos(){
         Residuo a = new Residuo();
-        
         try{
             List<Quimico> listaResiduo = b.(configPaginado, residuo, this.composicionQuimica(), this.solicitarFecha());
             DefaultTableModel modeloTabla = (DefaultTableModel) this.tblResiduoSolicitarTraslado.getModel();
@@ -83,6 +82,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         solicitarBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -128,15 +128,24 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
+        jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
+        jLabel4.setText("Sesion: Productor");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel4)
+                .addContainerGap(171, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel4)
+                .addContainerGap(480, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 320, 530));
@@ -152,7 +161,6 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Fecha vacia", "Error", JOptionPane.ERROR_MESSAGE);
                 i++;
         }
-        
          else {
             List<String> camposVacios = this.validarCampoVacio();
             if (!camposVacios.isEmpty()) {
@@ -160,16 +168,16 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
                 for (String campos : camposVacios) {
                     mensaje += campos + "\n";
                 }
-                JOptionPane.showMessageDialog(this, mensaje, "No se solicitarTraslado", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, mensaje, "No se puede solicitar traslado", JOptionPane.ERROR_MESSAGE);
                 i++;
             }
         }
         if (i == 0) {
           
-            JOptionPane.showMessageDialog(this, "Registro exitoso", "Nuevo Registro de traslado", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Traslado Exitoso", "", JOptionPane.INFORMATION_MESSAGE);
         }
-       SolictudTrasladoForm r = new SolictudTrasladoForm();
-       r.setVisible(true);
+       PrincipalProductorForm a = new PrincipalProductorForm();
+       a.setVisible(true);
        dispose();
     }//GEN-LAST:event_solicitarBtnActionPerformed
 
@@ -223,6 +231,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

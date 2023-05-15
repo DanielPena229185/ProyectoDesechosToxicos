@@ -4,6 +4,9 @@
  */
 package org.itson.presentacion.empresa;
 
+import org.itson.presentacion.Administrador.RegistrarTrasladoForm;
+import org.itson.presentacion.InicioForm;
+
 /**
  *
  * @author arace
@@ -26,21 +29,102 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        regsarBtn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        registarEmpresaBtn = new javax.swing.JButton();
+        registrarTrasladoBtn = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 30)); // NOI18N
+        jLabel1.setText("Empresa");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 48, -1, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 101, 134, 10));
+
+        regsarBtn.setText("Regresar");
+        regsarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regsarBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(regsarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 460, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 155, 71));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Bienvenido al menu principal de empresa ");
+
+        registarEmpresaBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        registarEmpresaBtn.setText("Registrar Empresa");
+        registarEmpresaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registarEmpresaBtnActionPerformed(evt);
+            }
+        });
+
+        registrarTrasladoBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        registrarTrasladoBtn.setText("Registrar Traslado");
+        registrarTrasladoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarTrasladoBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(registrarTrasladoBtn)
+                            .addComponent(registarEmpresaBtn)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addComponent(jLabel2)))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addComponent(jLabel2)
+                .addGap(48, 48, 48)
+                .addComponent(registarEmpresaBtn)
+                .addGap(48, 48, 48)
+                .addComponent(registrarTrasladoBtn)
+                .addContainerGap(215, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 680, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void registrarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarTrasladoBtnActionPerformed
+        RegistrarTrasladoForm b = new RegistrarTrasladoForm();
+        b.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_registrarTrasladoBtnActionPerformed
+
+    private void regsarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regsarBtnActionPerformed
+        InicioForm a= new InicioForm();
+        a.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_regsarBtnActionPerformed
+
+    private void registarEmpresaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registarEmpresaBtnActionPerformed
+        RegistrarEmpresaForm c  = new RegistrarEmpresaForm();
+        c.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_registarEmpresaBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +164,12 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton registarEmpresaBtn;
+    private javax.swing.JButton registrarTrasladoBtn;
+    private javax.swing.JButton regsarBtn;
     // End of variables declaration//GEN-END:variables
 }
