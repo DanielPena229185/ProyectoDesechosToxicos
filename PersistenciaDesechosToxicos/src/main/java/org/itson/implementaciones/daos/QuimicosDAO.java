@@ -39,7 +39,7 @@ public class QuimicosDAO implements IQuimicosDAO {
      * operaciones.
      * @param BASE_DATOS Base de datos a la que se conecta.
      */
-    private QuimicosDAO() {
+    public QuimicosDAO() {
         if (COLECCION == null) {
             COLECCION = ConexionBD.getBaseDatos().getCollection("quimicos", Quimico.class);
         }

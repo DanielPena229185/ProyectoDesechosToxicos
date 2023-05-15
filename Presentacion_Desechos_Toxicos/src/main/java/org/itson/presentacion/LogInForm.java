@@ -260,7 +260,7 @@ public class LogInForm extends javax.swing.JFrame {
                     ProductorDTO productor = new ProductorDTO();
                     productor.setEmail(this.campoUsuario.getText());
                     productor.setContrasena(this.campoContrasena.getText());
-                    pro = negocioProductor.login(productor);
+                    pro = negocioProductor.loginProductor(productor);
                     PrincipalProductorForm.getInstance(pro);
                     this.setVisible(false);
                 } catch (NegocioException e) {

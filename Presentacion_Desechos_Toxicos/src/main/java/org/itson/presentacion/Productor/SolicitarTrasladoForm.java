@@ -1,22 +1,70 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package org.itson.presentacion.Productor;
+
+import com.dominio.Quimico;
+import java.util.List;
+import java.util.logging.Logger;
+import org.itson.implementaciones.daos.QuimicosDAO;
+import org.itson.interfaces.INegocioQuimico;
+import com.dominio.Residuo;
+import static java.awt.image.ImageObserver.ERROR;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.itson.presentacion.empresa.SolictudTrasladoForm;
 
 /**
  *
  * @author arace
  */
 public class SolicitarTrasladoForm extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form SolicitarTrasladoForm
      */
     public SolicitarTrasladoForm() {
         initComponents();
     }
-
+    
+    private LocalDate solicitarFecha() {
+        LocalDate fecha = this.solicitarFecha.getDate();
+        while (solicitarFecha.getDate() == null) {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    return fecha;
+    }
+    private void cargarTablaQuimicos(){
+        Residuo a = new Residuo();
+        
+        try{
+            List<Quimico> listaResiduo = b.(configPaginado, residuo, this.composicionQuimica(), this.solicitarFecha());
+            DefaultTableModel modeloTabla = (DefaultTableModel) this.tblResiduoSolicitarTraslado.getModel();
+            modeloTabla.setRowCount(0);
+            for (SolicitarTraslado Solicitudraslado : solicitud) {
+                Calendar fechaRegistroReisduo = residuo.getFechaEmision();
+                Date date = fechaRegistroReisduo.getTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String fechaE = sdf.format(date);
+                Object[] solicitud = {
+                    residuo.getNombreResiduo(),
+                    residuo.getComposicion(),
+                    fechaE
+                };
+                modeloTabla.addRow(solicitud);
+            }
+        } catch (Exception e) {
+            LOG.log(Level.SEVERE, e.getMessage());
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,17 +78,23 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         solicitarFecha = new com.github.lgooddatepicker.components.DatePicker();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblResiduoSolicitarTraslado = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         solicitarBtn = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Seleccione fecha");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(solicitarFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel2.setText("Seleccione fecha");
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        tblResiduoSolicitarTraslado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -51,59 +105,84 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
                 "Residuo", "Composicion Quimica"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblResiduoSolicitarTraslado);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 383, 89));
 
         jLabel3.setText("Selecciones Residuo");
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         jLabel1.setText("Solicitar Traslado");
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 30)); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         solicitarBtn.setText("Solicitar");
+        solicitarBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+        solicitarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                solicitarBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(solicitarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 100, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(solicitarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel3)))
-                .addContainerGap(39, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(solicitarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(solicitarFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addComponent(solicitarBtn)
-                .addContainerGap(158, Short.MAX_VALUE))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 530));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 320, 530));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void solicitarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarBtnActionPerformed
+       int i = 0;
+        if(!validarCampoTextoVacio()){
+            JOptionPane.showMessageDialog(this, "Fecha vacia", "Error", JOptionPane.ERROR_MESSAGE);
+                i++;
+        }
+        
+         else {
+            List<String> camposVacios = this.validarCampoVacio();
+            if (!camposVacios.isEmpty()) {
+                String mensaje = "Los siguientes campos se encuentran vacíos \n";
+                for (String campos : camposVacios) {
+                    mensaje += campos + "\n";
+                }
+                JOptionPane.showMessageDialog(this, mensaje, "No se solicitarTraslado", JOptionPane.ERROR_MESSAGE);
+                i++;
+            }
+        }
+        if (i == 0) {
+          
+            JOptionPane.showMessageDialog(this, "Registro exitoso", "Nuevo Registro de traslado", JOptionPane.INFORMATION_MESSAGE);
+        }
+       SolictudTrasladoForm r = new SolictudTrasladoForm();
+       r.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_solicitarBtnActionPerformed
+
+    private boolean validarCampoTextoVacio() {
+        return solicitarFecha.getText().isEmpty() || solicitarFecha.getText().equals(ERROR);
+    }
+    private List<String> validarCampoVacio() {
+    List<String> campos = new ArrayList<>();
+    if (this.validarCampoTextoVacio()) {
+        campos.add("- Fecha");
+    }
+        return campos;
+    }
     /**
      * @param args the command line arguments
      */
@@ -133,6 +212,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new SolicitarTrasladoForm().setVisible(true);
             }
@@ -144,9 +224,10 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton solicitarBtn;
     private com.github.lgooddatepicker.components.DatePicker solicitarFecha;
+    private javax.swing.JTable tblResiduoSolicitarTraslado;
     // End of variables declaration//GEN-END:variables
 }

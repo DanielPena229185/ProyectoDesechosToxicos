@@ -36,15 +36,12 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        solicitarTrasladosBtn = new javax.swing.JButton();
-        solicitudesTrasladosBtn = new javax.swing.JButton();
-        actualizarSolictudBtn = new javax.swing.JButton();
-        eliminarSolicitudBtn = new javax.swing.JButton();
-        regresarBtn = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jPanel1 = new javax.swing.JPanel();
+        solictarTrasladoBtn = new javax.swing.JButton();
+        regresarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 204, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -52,45 +49,13 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
         jLabel2.setText("PRODUCTOR");
 
-        solicitarTrasladosBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        solicitarTrasladosBtn.setForeground(new java.awt.Color(0, 0, 0));
-        solicitarTrasladosBtn.setText("Solicitar Traslado");
-        solicitarTrasladosBtn.setContentAreaFilled(false);
-        solicitarTrasladosBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        solicitarTrasladosBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        solicitarTrasladosBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                solicitarTrasladosBtnActionPerformed(evt);
-            }
-        });
+        solictarTrasladoBtn.setBackground(new java.awt.Color(153, 204, 255));
+        solictarTrasladoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        solictarTrasladoBtn.setText("Solicitar Traslado");
 
-        solicitudesTrasladosBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        solicitudesTrasladosBtn.setForeground(new java.awt.Color(0, 0, 0));
-        solicitudesTrasladosBtn.setText("Ver solicitudes");
-        solicitudesTrasladosBtn.setContentAreaFilled(false);
-        solicitudesTrasladosBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        solicitudesTrasladosBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-
-        actualizarSolictudBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        actualizarSolictudBtn.setForeground(new java.awt.Color(0, 0, 0));
-        actualizarSolictudBtn.setText("Actualizar Solicitud");
-        actualizarSolictudBtn.setContentAreaFilled(false);
-        actualizarSolictudBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        actualizarSolictudBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-
-        eliminarSolicitudBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        eliminarSolicitudBtn.setForeground(new java.awt.Color(0, 0, 0));
-        eliminarSolicitudBtn.setText("Eliminar Solicitud");
-        eliminarSolicitudBtn.setContentAreaFilled(false);
-        eliminarSolicitudBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        eliminarSolicitudBtn.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        eliminarSolicitudBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminarSolicitudBtnActionPerformed(evt);
-            }
-        });
-
+        regresarBtn.setBackground(new java.awt.Color(153, 204, 255));
         regresarBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
+        regresarBtn.setText("Regresar");
         regresarBtn.setContentAreaFilled(false);
         regresarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,99 +67,55 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(157, 157, 157))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(solicitudesTrasladosBtn)
-                            .addComponent(solicitarTrasladosBtn))
-                        .addGap(184, 184, 184)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(eliminarSolicitudBtn)
-                            .addComponent(actualizarSolictudBtn)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(regresarBtn))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(224, 224, 224)
-                        .addComponent(jLabel2)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(256, 256, 256)
+                        .addComponent(solictarTrasladoBtn))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(regresarBtn)))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(actualizarSolictudBtn)
-                    .addComponent(solicitarTrasladosBtn))
-                .addGap(118, 118, 118)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(solicitudesTrasladosBtn, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(eliminarSolicitudBtn, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(regresarBtn)
-                .addGap(14, 14, 14))
-        );
-
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 717, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
+                .addGap(52, 52, 52)
+                .addComponent(solictarTrasladoBtn)
+                .addGap(188, 188, 188)
+                .addComponent(regresarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(78, 78, 78)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(166, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void solicitarTrasladosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarTrasladosBtnActionPerformed
-      
-    }//GEN-LAST:event_solicitarTrasladosBtnActionPerformed
-
-    private void eliminarSolicitudBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarSolicitudBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eliminarSolicitudBtnActionPerformed
 
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
         InicioForm p = new InicioForm();
@@ -257,14 +178,10 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton actualizarSolictudBtn;
-    private javax.swing.JButton eliminarSolicitudBtn;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton regresarBtn;
-    private javax.swing.JButton solicitarTrasladosBtn;
-    private javax.swing.JButton solicitudesTrasladosBtn;
+    private javax.swing.JButton solictarTrasladoBtn;
     // End of variables declaration//GEN-END:variables
 }

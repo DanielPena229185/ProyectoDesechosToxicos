@@ -1,6 +1,7 @@
 
 package org.itson.presentacion.Administrador;
 
+import com.dominio.Residuo;
 import org.itson.presentacion.empresa.SolictudTrasladoForm;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
