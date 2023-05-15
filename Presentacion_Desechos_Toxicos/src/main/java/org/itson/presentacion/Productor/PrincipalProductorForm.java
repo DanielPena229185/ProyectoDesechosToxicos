@@ -171,8 +171,8 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         return productor;
     }
 
-    public void setProductor(Productor productor) {
-        this.productor = productor;
+    public static void setProductor(Productor productor) {
+        PrincipalProductorForm.productor = productor;
     }
 
     
