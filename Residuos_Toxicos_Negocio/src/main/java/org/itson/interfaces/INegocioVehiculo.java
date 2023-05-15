@@ -17,8 +17,6 @@ import org.itson.excepciones.NegocioException;
  */
 public interface INegocioVehiculo {
 
-    Vehiculo insertarVehiculo(Vehiculo vehiculo) throws NegocioException;
-    
     List<Vehiculo> consultaVehiuculoEmpresaTrasnportadora(EmpresaTransportista empresaTransportista) throws NegocioException;
     
 }

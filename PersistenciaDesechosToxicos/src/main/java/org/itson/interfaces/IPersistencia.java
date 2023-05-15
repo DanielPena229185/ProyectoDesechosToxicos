@@ -10,6 +10,7 @@ import com.dominio.Quimico;
 import com.dominio.Residuo;
 import com.dominio.Solicitud;
 import com.dominio.Traslado;
+import com.dominio.Vehiculo;
 import java.util.List;
 import org.itson.DTO.ResiduoDTO;
 import org.itson.DTO.SolicitudDTO;
@@ -110,4 +111,11 @@ public interface IPersistencia {
      */
     List<Traslado> consultaTrasladosAsingados(EmpresaTransportista empresaTransportista) throws PersistenciaException;
 
+    /**
+     * Devuelve una lista de Vehiculos pertenecientes a una EmpresaTransportista especifica.
+     * @param empresaTransportista la EmpresaTransportista de la cual se quieren obtener los Vehiculos.
+     * @return una lista de Vehiculos pertenecientes a la EmpresaTransportista especificada.
+     * @throws PersistenciaException si ocurre un error al acceder a la base de datos.
+     */
+    List<Vehiculo> consultarVehiculosEmpresaTrasnportadora(EmpresaTransportista empresaTransportista) throws PersistenciaException;
 }

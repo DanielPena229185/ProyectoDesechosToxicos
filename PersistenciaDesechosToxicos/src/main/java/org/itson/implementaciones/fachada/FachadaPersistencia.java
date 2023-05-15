@@ -10,6 +10,7 @@ import com.dominio.Quimico;
 import com.dominio.Residuo;
 import com.dominio.Solicitud;
 import com.dominio.Traslado;
+import com.dominio.Vehiculo;
 import java.util.List;
 import org.itson.DTO.ResiduoDTO;
 import org.itson.DTO.SolicitudDTO;
@@ -22,6 +23,7 @@ import org.itson.interfaces.IQuimicosDAO;
 import org.itson.interfaces.IResiduosDAO;
 import org.itson.interfaces.ISolicitudesDAO;
 import org.itson.interfaces.ITrasladosDAO;
+import org.itson.interfaces.IVehiculosDAO;
 
 /**
  * Descripción de la clase: Esta clase implementa la IPersistencia y se encarga de manejar la persistencia
@@ -41,6 +43,7 @@ public class FachadaPersistencia implements IPersistencia {
     ISolicitudesDAO solicitudesDAO;
     IEmpresasTrasnportistasDAO empresasTransportistasDAO;
     ITrasladosDAO trasladosDAO;
+    IVehiculosDAO vehiculosDAO;
 
     /**
      * Constructor por default
@@ -53,6 +56,8 @@ public class FachadaPersistencia implements IPersistencia {
         solicitudesDAO = DAOFactory.getSolicitudesDAO();
         empresasTransportistasDAO = DAOFactory.getEmpresasTrasnportistasDAO();
         trasladosDAO = DAOFactory.getTrasladosDAO();
+        vehiculosDAO = DAOFactory.getVehiculosDAO();
+        
 
     }
     /**
@@ -208,6 +213,15 @@ public class FachadaPersistencia implements IPersistencia {
     public List<Traslado> consultaTrasladosAsingados(EmpresaTransportista empresaTransportista) throws PersistenciaException {
         try {
             return trasladosDAO.consultaTrasladosAsingados(empresaTransportista);
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Vehiculo> consultarVehiculosEmpresaTrasnportadora(EmpresaTransportista empresaTransportista) throws PersistenciaException {
+        try {
+            return vehiculosDAO.consultarVehiculosEmpresaTrasnportadora(empresaTransportista);
         } catch (PersistenciaException e) {
             throw new PersistenciaException(e.getMessage());
         }
