@@ -18,7 +18,5 @@ public interface INegocioProductor {
 
     public Productor insertarProductor(Productor productor);
     public Productor loginProductor(ProductorDTO productor) throws NegocioException;
-
-    public Productor login(ProductorDTO productor);
     
 }
