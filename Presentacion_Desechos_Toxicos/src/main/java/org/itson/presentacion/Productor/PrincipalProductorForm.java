@@ -6,6 +6,7 @@ package org.itson.presentacion.Productor;
 
 import com.dominio.Productor;
 import org.itson.presentacion.InicioForm;
+import org.itson.presentacion.RegistrarResiduoForm;
 
 /**
  *
@@ -52,6 +53,11 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         solictarTrasladoBtn.setBackground(new java.awt.Color(153, 204, 255));
         solictarTrasladoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
         solictarTrasladoBtn.setText("Solicitar Traslado");
+        solictarTrasladoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                solictarTrasladoBtnActionPerformed(evt);
+            }
+        });
 
         regresarBtn.setBackground(new java.awt.Color(153, 204, 255));
         regresarBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
@@ -122,6 +128,10 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         p.setVisible(true);
         dispose();
     }//GEN-LAST:event_regresarBtnActionPerformed
+
+    private void solictarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solictarTrasladoBtnActionPerformed
+        new RegistrarResiduoForm().setVisible(true);
+    }//GEN-LAST:event_solictarTrasladoBtnActionPerformed
 
     /**
      * @param args the command line arguments
