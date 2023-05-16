@@ -4,6 +4,7 @@
  */
 package org.itson.implementacion;
 
+import org.itson.interfaces.INegocioAdministrador;
 import org.itson.interfaces.INegocioProductor;
 import org.itson.interfaces.INegocioQuimico;
 import org.itson.interfaces.INegocioResiduo;
@@ -52,5 +53,9 @@ public class NegocioFactory{
     
     public static INegocioVehiculo getNegocioVehiculo(){
         return new NegocioVehiculo();
+    }
+    
+    public static INegocioAdministrador getNegocioAdministrador(){
+        return new NegocioAdministrador();
     }
 }
