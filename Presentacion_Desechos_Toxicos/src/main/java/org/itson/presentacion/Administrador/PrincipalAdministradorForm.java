@@ -16,6 +16,7 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
      */
     public PrincipalAdministradorForm() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**

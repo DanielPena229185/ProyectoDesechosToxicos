@@ -5,6 +5,7 @@
  */
 package org.itson.presentacion;
 
+import com.dominio.Administrador;
 import com.dominio.EmpresaTransportista;
 import com.dominio.Productor;
 import java.awt.Color;
@@ -245,12 +246,13 @@ public class LogInForm extends javax.swing.JFrame {
         String selectedItem = comboBoxOpcionLogin.getSelectedItem().toString();
         switch (selectedItem) {
             case ADMINISTRADOR:
+                Administrador adm = null;
                 try{
                 AdministradorDTO administrador = new AdministradorDTO();
                 administrador.setEmail(this.campoUsuario.getText());
                 administrador.setContrasena(this.campoContrasena.getText());
-                adm = negocio.loginAdministrador(administrador);
-                PrincipalAdministradorForm.setAdministrador(administrador);
+//                adm = negocio.loginAdministrador(administrador);
+//                PrincipalAdministradorForm.setAdministrador(administrador);
                 PrincipalAdministradorForm.getInstance(adm);
                 this.setVisible(false);
                 } catch(NegocioException e){
