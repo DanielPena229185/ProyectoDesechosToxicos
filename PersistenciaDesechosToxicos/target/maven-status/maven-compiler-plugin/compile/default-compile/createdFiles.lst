@@ -29,5 +29,6 @@ org\itson\DTO\AdministradorDTO.class
 org\itson\excepciones\PersistenciaException.class
 org\itson\interfaces\IProductoresDAO.class
 org\itson\persistenciadesechostoxicos\PersistenciaDesechosToxicos.class
+org\itson\interfaces\IAdministradoresDAO.class
 org\itson\interfaces\ITrasladosDAO.class
 org\itson\interfaces\IEmpresasTrasnportistasDAO.class

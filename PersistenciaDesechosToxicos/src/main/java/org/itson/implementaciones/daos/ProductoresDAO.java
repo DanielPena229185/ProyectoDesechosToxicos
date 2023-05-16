@@ -141,7 +141,8 @@ public class ProductoresDAO implements IProductoresDAO {
         try {
             List<Document> filtro = new ArrayList<>();
 
-            filtro.add(new Document("cuenta", new Document("contrasena", contrasena).append("correo", correo)));
+            filtro.add(new Document("cuenta", new Document("correo", correo).append("contrasena", contrasena)));
+//            filtro.add(new Document("cuenta", new Document("contrasena", contrasena).append("correo", correo)));
             filtro.add(new Document("tipo", Tipo.PRODUCTO.toString()));
 
             Productor p = COLECCION.find(new Document("$and", filtro)).first();

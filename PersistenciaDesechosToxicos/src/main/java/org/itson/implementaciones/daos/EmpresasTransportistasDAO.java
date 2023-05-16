@@ -224,7 +224,7 @@ public class EmpresasTransportistasDAO implements IEmpresasTrasnportistasDAO {
         try {
             List<Document> filtro = new ArrayList<>();
 
-            filtro.add(new Document("cuenta", new Document("contrasena", contrasena).append("correo", correo)));
+            filtro.add(new Document("cuenta", new Document("correo", correo).append("contrasena", contrasena)));
             filtro.add(new Document("tipo", Tipo.TRANSPORTISTA.toString()));
 
             EmpresaTransportista transportista = COLECCION.find(new Document("$and", filtro)).first();

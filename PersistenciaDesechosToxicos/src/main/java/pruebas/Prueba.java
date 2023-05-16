@@ -3,6 +3,7 @@
  */
 package pruebas;
 
+import com.dominio.Administrador;
 import com.dominio.Cuenta;
 import com.dominio.EmpresaTransportista;
 import com.dominio.Estado;
@@ -23,6 +24,7 @@ import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.implementaciones.bd.DAOFactory;
 import org.itson.implementaciones.daos.QuimicosDAO;
 import org.itson.implementaciones.daos.ResiduosDAO;
+import org.itson.interfaces.IAdministradoresDAO;
 import org.itson.interfaces.IEmpresasTrasnportistasDAO;
 import org.itson.interfaces.IProductoresDAO;
 import org.itson.interfaces.IQuimicosDAO;
@@ -38,45 +40,14 @@ import org.itson.interfaces.IVehiculosDAO;
 public class Prueba {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-
-        IProductoresDAO productoresDAO = DAOFactory.getProductoresDAO();
-        IEmpresasTrasnportistasDAO trasnportistasDAO = DAOFactory.getEmpresasTrasnportistasDAO();
-
-        EmpresaTransportista t = trasnportistasDAO.loginEmpresaTrasnportista("trinu_1980@hotmail.com", "bone770115");
-
-        System.out.println("Trasnportista: " + t.getId() + " " + t.getTipo() + " " + t.getCuenta().getCorreo() + " " + t.getCuenta().getContrasena() + " " + t.getNombre());
-
-        EmpresaTransportista empresa = new EmpresaTransportista();
-        empresa.setId(t.getId());
-        empresa.setNombre(t.getNombre());
-        empresa.setTipo(t.getTipo());
-
-        Vehiculo v = new Vehiculo("modelo1", "marca1", empresa);
-        Vehiculo v1 = new Vehiculo("modelo2", "marca2", empresa);
-        Vehiculo v2 = new Vehiculo();
-        v2.setMarca("marca3");
-        v2.setModelo("modelo3");
-        IVehiculosDAO vehiculosDAO = DAOFactory.getVehiculosDAO();
-//        vehiculosDAO.insertarVehiculo(v);
-//        vehiculosDAO.insertarVehiculo(v1);
-//        vehiculosDAO.insertarVehiculo(v2);
-        ITrasladosDAO trasladosDAO = DAOFactory.getTrasladosDAO();
-//        Traslado traslado = new Traslado();
-//        traslado.setEmpresas_transportistas(Arrays.asList(empresa));
-//        trasladosDAO.insertarTraslado(traslado);
-        List<Traslado> lista = trasladosDAO.consultaTrasladosAsingados(empresa);
-        for (Traslado o : lista) {
-            System.out.println(o.getId());
-            for (EmpresaTransportista e : o.getEmpresas_transportistas()) {
-                System.out.println("Trasnportista: " + e.getId() + " " + e.getTipo() + " " + t.getNombre());
-
-                List<Vehiculo> vehiculos = vehiculosDAO.consultarVehiculosEmpresaTrasnportadora(empresa);
-                for (Vehiculo l : vehiculos) {
-                    System.out.println(l.getId() + " " + l.getMarca() + " " + l.getModelo() + " " + l.getEmpresa_trasnportista().getId() + " " + l.getEmpresa_trasnportista().getNombre());
-                }
-
-            }
-        }
+        IAdministradoresDAO administradoresDAO = DAOFactory.getAdministradoresDAO();
+        
+//        Administrador a = administradoresDAO.loginAdministrador("edemboji@gmail.com", "eebj031002");
+        IEmpresasTrasnportistasDAO ad = DAOFactory.getEmpresasTrasnportistasDAO();
+        EmpresaTransportista a = ad.loginEmpresaTrasnportista("edemboji@gmail.com", "eebj031002");
+        System.out.println(a.getId());
+        System.out.println(a.getNombre());
+        System.out.println(a.getCuenta().getCorreo());
+        System.out.println(a.getCuenta().getContrasena());
     }
 }

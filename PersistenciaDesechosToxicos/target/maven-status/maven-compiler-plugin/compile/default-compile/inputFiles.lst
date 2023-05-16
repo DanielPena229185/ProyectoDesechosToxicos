@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\QuimicosDAO.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\TransportesDAO.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IResiduosDAO.java
@@ -13,6 +12,7 @@ C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\Persi
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\DTO\ProductorDTO.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IConsultasDAO.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\TrasladosDAO.java
+C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IAdministradoresDAO.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\DTO\SolicitudDTO.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IQuimicosDAO.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\ProductoresDAO.java
@@ -32,38 +32,3 @@ C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\Persi
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\bd\ConexionBD.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IPersistencia.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\persistenciadesechostoxicos\PersistenciaDesechosToxicos.java
-=======
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\pruebas\Prueba.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\DTO\AdministradorDTO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\bd\DAOFactory.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\DTO\ResiduoDTO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\TransportesDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\ITransporteDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\TrasladosDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\ITrasladosDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\CuentasDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\DireccionesDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IQuimicosDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IProductoresDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\fachada\FachadaPersistencia.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\DTO\SolicitudDTO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\excepciones\PersistenciaException.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\EmpresasTransportistasDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IConsultasDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\DTO\ProductorDTO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\AdministradoresDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IPersistencia.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\ProductoresDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\QuimicosDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IEmpresasTrasnportistasDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IResiduosDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\SolicitudesDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\EmpresaProductoraDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\persistenciadesechostoxicos\PersistenciaDesechosToxicos.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IVehiculosDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\VehiculosDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\ResiduosDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\ISolicitudesDAO.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\bd\ConexionBD.java
-C:\Users\oscar\Documents\NetbeansProjects\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IConexionBD.java
->>>>>>> 10ec626ccdad8693818d3d693349e8e1c632beaa

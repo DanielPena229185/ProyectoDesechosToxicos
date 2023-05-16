@@ -15,6 +15,7 @@ import org.itson.implementaciones.daos.SolicitudesDAO;
 import org.itson.implementaciones.daos.TransportesDAO;
 import org.itson.implementaciones.daos.TrasladosDAO;
 import org.itson.implementaciones.daos.VehiculosDAO;
+import org.itson.interfaces.IAdministradoresDAO;
 import org.itson.interfaces.IConsultasDAO;
 import org.itson.interfaces.IEmpresasTrasnportistasDAO;
 import org.itson.interfaces.IProductoresDAO;
@@ -26,9 +27,10 @@ import org.itson.interfaces.ITrasladosDAO;
 import org.itson.interfaces.IVehiculosDAO;
 
 /**
- * Descripción de la clase: Esta clase nos ayuda a obtener las instancias diferentes de los 
- * objetos DAO en el sistema mediante los metodos estaticos correpondientes a un tipo de obejto
- * negocio
+ * Descripción de la clase: Esta clase nos ayuda a obtener las instancias
+ * diferentes de los objetos DAO en el sistema mediante los metodos estaticos
+ * correpondientes a un tipo de obejto negocio
+ *
  * @author oscar
  */
 public class DAOFactory {
@@ -107,5 +109,14 @@ public class DAOFactory {
      */
     public static ITransporteDAO getTransporteDAO() {
         return TransportesDAO.getInstanceTransportesDAO();
+    }
+
+    /**
+     * Regersa una instancia de AdministradoresDAO
+     *
+     * @return Una instancia de AdministradoresDAO
+     */
+    public static IAdministradoresDAO getAdministradoresDAO() {
+        return AdministradoresDAO.getInstanceAdministradoresDAO();
     }
 }
