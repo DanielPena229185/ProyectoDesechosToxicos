@@ -204,7 +204,7 @@ db.getCollection("administradores").insertMany([
 
       //Insertando Vehiculos
 
-
+db.getCollection("vehiculos).insertMany([
       {
         "_id" : ObjectId("6463189052beb9b2670968ba"),
         "modelo" : "Modelo 1",
@@ -213,7 +213,7 @@ db.getCollection("administradores").insertMany([
             "_id" : ObjectId("646314f6dff379d164733eba"),
             "nombre" : "Transportista 1"
         }
-    }
+    },
     {
         "_id" : ObjectId("6463189052beb9b2670968bb"),
         "modelo" : "Modelo 2",
@@ -222,7 +222,7 @@ db.getCollection("administradores").insertMany([
             "_id" : ObjectId("646314f6dff379d164733ebc"),
             "nombre" : "Transportista 2"
         }
-    }
+    },
     {
         "_id" : ObjectId("6463189052beb9b2670968bc"),
         "modelo" : "Modelo 3",
@@ -231,7 +231,7 @@ db.getCollection("administradores").insertMany([
             "_id" : ObjectId("646314f6dff379d164733ebe"),
             "nombre" : "Transportista 3"
         }
-    }
+    },
     {
         "_id" : ObjectId("6463189052beb9b2670968bd"),
         "modelo" : "Modelo 4",
@@ -240,7 +240,7 @@ db.getCollection("administradores").insertMany([
             "_id" : ObjectId("646314f6dff379d164733ec0"),
             "nombre" : "Transportista 4"
         }
-    }
+    },
     {
         "_id" : ObjectId("6463189052beb9b2670968be"),
         "modelo" : "Modelo 5",
@@ -250,6 +250,8 @@ db.getCollection("administradores").insertMany([
             "nombre" : "Transportista 5"
         }
     }
+]);
+
 
 db.getCollection("quimicos").insertMany([
 {
