@@ -22,7 +22,7 @@ db.getCollection("administradores").insertMany([
             "ciudad" : "Ciudad 2"
         }
     ]
-}
+},
 {
     "_id" : ObjectId("646314f6dff379d164733ebb"),
     "tipo" : "PRODUCTO",
@@ -39,7 +39,7 @@ db.getCollection("administradores").insertMany([
             "ciudad" : "Ciudad 3"
         }
     ]
-}
+},
 {
     "_id" : ObjectId("646314f6dff379d164733ebc"),
     "tipo" : "TRANSPORTISTA",
@@ -56,7 +56,7 @@ db.getCollection("administradores").insertMany([
             "ciudad" : "Ciudad 4"
         }
     ]
-}
+},
 {
     "_id" : ObjectId("646314f6dff379d164733ebd"),
     "tipo" : "PRODUCTO",
@@ -79,7 +79,7 @@ db.getCollection("administradores").insertMany([
             "ciudad" : "Ciudad 6"
         }
     ]
-}
+},
 {
     "_id" : ObjectId("646314f6dff379d164733ebe"),
     "tipo" : "TRANSPORTISTA",
@@ -96,7 +96,7 @@ db.getCollection("administradores").insertMany([
             "ciudad" : "Ciudad 7"
         }
     ]
-}
+},
 {
     "_id" : ObjectId("646314f6dff379d164733ebf"),
     "tipo" : "PRODUCTO",
@@ -119,7 +119,7 @@ db.getCollection("administradores").insertMany([
             "ciudad" : "Ciudad 9"
         }
     ]
-}
+},
 {
     "_id" : ObjectId("646314f6dff379d164733ec0"),
     "tipo" : "TRANSPORTISTA",
@@ -136,7 +136,7 @@ db.getCollection("administradores").insertMany([
             "ciudad" : "Ciudad 10"
         }
     ]
-}
+},
 {
     "_id" : ObjectId("646314f6dff379d164733ec1"),
     "tipo" : "PRODUCTO",
@@ -153,7 +153,7 @@ db.getCollection("administradores").insertMany([
             "ciudad" : "Ciudad 11"
         }
     ]
-}
+},
 {
     "_id" : ObjectId("646314f6dff379d164733ec2"),
     "tipo" : "TRANSPORTISTA",
@@ -176,7 +176,7 @@ db.getCollection("administradores").insertMany([
             "ciudad" : "Ciudad 13"
         }
     ]
-}
+},
 {
     "_id" : ObjectId("646314f6dff379d164733ec3"),
     "tipo" : "PRODUCTO",
