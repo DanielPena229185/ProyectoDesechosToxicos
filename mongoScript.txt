@@ -250,4 +250,27 @@ db.getCollection("administradores").insertMany([
             "nombre" : "Transportista 5"
         }
     }
+
+db.getCollection("quimicos").insertMany([
+{
+    "_id" : ObjectId("645c5019255a2e34f1971f81"),
+    "nombre" : "Glucosa"
+},
+{
+    "_id" : ObjectId("645c5019255a2e34f1971f82"),
+    "nombre" : "Grafito"
+},
+{
+    "_id" : ObjectId("645c5019255a2e34f1971f83"),
+    "nombre" : "Ozono"
+},
+{
+    "_id" : ObjectId("645c5019255a2e34f1971f84"),
+    "nombre" : "Dioxido de carbono"
+},
+{
+    "_id" : ObjectId("645c5019255a2e34f1971f85"),
+    "nombre" : "Agua"
+}
+]);
     
