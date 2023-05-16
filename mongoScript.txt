@@ -252,6 +252,7 @@ db.getCollection("vehiculos").insertMany([
     }
 ]);
 
+//Inserta Quimicos
 
 db.getCollection("quimicos").insertMany([
 {
@@ -273,6 +274,60 @@ db.getCollection("quimicos").insertMany([
 {
     "_id" : ObjectId("645c5019255a2e34f1971f85"),
     "nombre" : "Agua"
+}
+]);
+
+//Inserta Administradores
+db.getCollection("administradores").insertMany([
+{
+    "_id" : ObjectId("64630acb2090fe7866ec2468"),
+    "nombres" : "María",
+    "apellido_paterno" : "Rodríguez",
+    "apellido_materno" : "García",
+    "cuenta" : {
+        "correo" : "maria.rodriguez@hotmail.com",
+        "contrasena" : "12345abc"
+    }
+},
+{
+    "_id" : ObjectId("64630acb2090fe7866ec2469"),
+    "nombres" : "Carlos",
+    "apellido_paterno" : "Sánchez",
+    "apellido_materno" : "Pérez",
+    "cuenta" : {
+        "correo" : "carlos.sanchez@gmail.com",
+        "contrasena" : "pass1234"
+    }
+},
+{
+    "_id" : ObjectId("64630acb2090fe7866ec246a"),
+    "nombres" : "Laura",
+    "apellido_paterno" : "López",
+    "apellido_materno" : "Hernández",
+    "cuenta" : {
+        "correo" : "laura.lopez@gmail.com",
+        "contrasena" : "securepass"
+    }
+},
+{
+    "_id" : ObjectId("64630acb2090fe7866ec246b"),
+    "nombres" : "Javier",
+    "apellido_paterno" : "Martínez",
+    "apellido_materno" : "González",
+    "cuenta" : {
+        "correo" : "javier.martinez@gmail.com",
+        "contrasena" : "password123"
+    }
+},
+{
+    "_id" : ObjectId("64630acb2090fe7866ec246c"),
+    "nombres" : "Ana",
+    "apellido_paterno" : "Herrera",
+    "apellido_materno" : "Vargas",
+    "cuenta" : {
+        "correo" : "ana.herrera@hotmail.com",
+        "contrasena" : "abcde12345"
+    }
 }
 ]);
     
