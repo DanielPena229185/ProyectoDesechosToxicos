@@ -1,0 +1,253 @@
+//Insercion de Administradores
+db.getCollection("administradores").insertMany([
+{
+    "_id" : ObjectId("646314f6dff379d164733eba"),
+    "tipo" : "TRANSPORTISTA",
+    "nombre" : "Transportista 1",
+    "cuenta" : {
+        "correo" : "transportista1@example.com",
+        "contrasena" : "contrasena1"
+    },
+    "direcciones" : [
+        {
+            "calle" : "Calle 1",
+            "colonia" : "Colonia 1",
+            "numero" : "123",
+            "ciudad" : "Ciudad 1"
+        },
+        {
+            "calle" : "Calle 2",
+            "colonia" : "Colonia 2",
+            "numero" : "456",
+            "ciudad" : "Ciudad 2"
+        }
+    ]
+}
+{
+    "_id" : ObjectId("646314f6dff379d164733ebb"),
+    "tipo" : "PRODUCTO",
+    "nombre" : "Producto 1",
+    "cuenta" : {
+        "correo" : "producto1@example.com",
+        "contrasena" : "contrasena1"
+    },
+    "direcciones" : [
+        {
+            "calle" : "Calle 3",
+            "colonia" : "Colonia 3",
+            "numero" : "789",
+            "ciudad" : "Ciudad 3"
+        }
+    ]
+}
+{
+    "_id" : ObjectId("646314f6dff379d164733ebc"),
+    "tipo" : "TRANSPORTISTA",
+    "nombre" : "Transportista 2",
+    "cuenta" : {
+        "correo" : "transportista2@example.com",
+        "contrasena" : "contrasena2"
+    },
+    "direcciones" : [
+        {
+            "calle" : "Calle 4",
+            "colonia" : "Colonia 4",
+            "numero" : "1011",
+            "ciudad" : "Ciudad 4"
+        }
+    ]
+}
+{
+    "_id" : ObjectId("646314f6dff379d164733ebd"),
+    "tipo" : "PRODUCTO",
+    "nombre" : "Producto 2",
+    "cuenta" : {
+        "correo" : "producto2@example.com",
+        "contrasena" : "contrasena2"
+    },
+    "direcciones" : [
+        {
+            "calle" : "Calle 5",
+            "colonia" : "Colonia 5",
+            "numero" : "1213",
+            "ciudad" : "Ciudad 5"
+        },
+        {
+            "calle" : "Calle 6",
+            "colonia" : "Colonia 6",
+            "numero" : "1415",
+            "ciudad" : "Ciudad 6"
+        }
+    ]
+}
+{
+    "_id" : ObjectId("646314f6dff379d164733ebe"),
+    "tipo" : "TRANSPORTISTA",
+    "nombre" : "Transportista 3",
+    "cuenta" : {
+        "correo" : "transportista3@example.com",
+        "contrasena" : "contrasena3"
+    },
+    "direcciones" : [
+        {
+            "calle" : "Calle 7",
+            "colonia" : "Colonia 7",
+            "numero" : "1617",
+            "ciudad" : "Ciudad 7"
+        }
+    ]
+}
+{
+    "_id" : ObjectId("646314f6dff379d164733ebf"),
+    "tipo" : "PRODUCTO",
+    "nombre" : "Producto 3",
+    "cuenta" : {
+        "correo" : "producto3@example.com",
+        "contrasena" : "contrasena3"
+    },
+    "direcciones" : [
+        {
+            "calle" : "Calle 8",
+            "colonia" : "Colonia 8",
+            "numero" : "1819",
+            "ciudad" : "Ciudad 8"
+        },
+        {
+            "calle" : "Calle 9",
+            "colonia" : "Colonia 9",
+            "numero" : "2021",
+            "ciudad" : "Ciudad 9"
+        }
+    ]
+}
+{
+    "_id" : ObjectId("646314f6dff379d164733ec0"),
+    "tipo" : "TRANSPORTISTA",
+    "nombre" : "Transportista 4",
+    "cuenta" : {
+        "correo" : "transportista4@example.com",
+        "contrasena" : "contrasena4"
+    },
+    "direcciones" : [
+        {
+            "calle" : "Calle 10",
+            "colonia" : "Colonia 10",
+            "numero" : "2223",
+            "ciudad" : "Ciudad 10"
+        }
+    ]
+}
+{
+    "_id" : ObjectId("646314f6dff379d164733ec1"),
+    "tipo" : "PRODUCTO",
+    "nombre" : "Producto 4",
+    "cuenta" : {
+        "correo" : "producto4@example.com",
+        "contrasena" : "contrasena4"
+    },
+    "direcciones" : [
+        {
+            "calle" : "Calle 11",
+            "colonia" : "Colonia 11",
+            "numero" : "2425",
+            "ciudad" : "Ciudad 11"
+        }
+    ]
+}
+{
+    "_id" : ObjectId("646314f6dff379d164733ec2"),
+    "tipo" : "TRANSPORTISTA",
+    "nombre" : "Transportista 5",
+    "cuenta" : {
+        "correo" : "transportista5@example.com",
+        "contrasena" : "contrasena5"
+    },
+    "direcciones" : [
+        {
+            "calle" : "Calle 12",
+            "colonia" : "Colonia 12",
+            "numero" : "2627",
+            "ciudad" : "Ciudad 12"
+        },
+        {
+            "calle" : "Calle 13",
+            "colonia" : "Colonia 13",
+            "numero" : "2829",
+            "ciudad" : "Ciudad 13"
+        }
+    ]
+}
+{
+    "_id" : ObjectId("646314f6dff379d164733ec3"),
+    "tipo" : "PRODUCTO",
+    "nombre" : "Producto 5",
+    "cuenta" : {
+        "correo" : "producto5@example.com",
+        "contrasena" : "contrasena5"
+    },
+    "direcciones" : [
+        {
+            "calle" : "Calle 14",
+            "colonia" : "Colonia 14",
+            "numero" : "3031",
+            "ciudad" : "Ciudad 14"
+        },
+        {
+            "calle" : "Calle 15",
+            "colonia" : "Colonia 15",
+            "numero" : "3233",
+            "ciudad" : "Ciudad 15"
+        }
+    ]
+}
+      ]);
+
+      //Insertando Vehiculos
+
+
+      {
+        "_id" : ObjectId("6463189052beb9b2670968ba"),
+        "modelo" : "Modelo 1",
+        "marca" : "Marca 1",
+        "empresa_transportista" : {
+            "_id" : ObjectId("646314f6dff379d164733eba"),
+            "nombre" : "Transportista 1"
+        }
+    }
+    {
+        "_id" : ObjectId("6463189052beb9b2670968bb"),
+        "modelo" : "Modelo 2",
+        "marca" : "Marca 2",
+        "empresa_transportista" : {
+            "_id" : ObjectId("646314f6dff379d164733ebc"),
+            "nombre" : "Transportista 2"
+        }
+    }
+    {
+        "_id" : ObjectId("6463189052beb9b2670968bc"),
+        "modelo" : "Modelo 3",
+        "marca" : "Marca 3",
+        "empresa_transportista" : {
+            "_id" : ObjectId("646314f6dff379d164733ebe"),
+            "nombre" : "Transportista 3"
+        }
+    }
+    {
+        "_id" : ObjectId("6463189052beb9b2670968bd"),
+        "modelo" : "Modelo 4",
+        "marca" : "Marca 4",
+        "empresa_transportista" : {
+            "_id" : ObjectId("646314f6dff379d164733ec0"),
+            "nombre" : "Transportista 4"
+        }
+    }
+    {
+        "_id" : ObjectId("6463189052beb9b2670968be"),
+        "modelo" : "Modelo 5",
+        "marca" : "Marca 5",
+        "empresa_transportista" : {
+            "_id" : ObjectId("646314f6dff379d164733ec2"),
+            "nombre" : "Transportista 5"
+        }
+    }
+    

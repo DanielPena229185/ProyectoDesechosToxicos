@@ -88,7 +88,7 @@ public class VehiculosDAO implements IVehiculosDAO {
         try {
             List<Vehiculo> vehiculos = new ArrayList<>();
 
-            COLECCION.find(new Document("empresa_trasnportista._id", empresaTransportista.getId())).into(vehiculos);
+            COLECCION.find(new Document("empresa_transportista._id", empresaTransportista.getId())).into(vehiculos);
             return vehiculos;
 
         } catch (MongoException e) {

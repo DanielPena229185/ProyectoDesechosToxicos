@@ -43,8 +43,9 @@ public class Prueba {
         IAdministradoresDAO administradoresDAO = DAOFactory.getAdministradoresDAO();
         
 //        Administrador a = administradoresDAO.loginAdministrador("edemboji@gmail.com", "eebj031002");
-        IEmpresasTrasnportistasDAO ad = DAOFactory.getEmpresasTrasnportistasDAO();
-        EmpresaTransportista a = ad.loginEmpresaTrasnportista("edemboji@gmail.com", "eebj031002");
+//        IEmpresasTrasnportistasDAO ad = DAOFactory.getEmpresasTrasnportistasDAO();
+IProductoresDAO ad = DAOFactory.getProductoresDAO();
+        Productor a = ad.consultarLogin("trinu_1980@hotmail.com", "bone770115");
         System.out.println(a.getId());
         System.out.println(a.getNombre());
         System.out.println(a.getCuenta().getCorreo());

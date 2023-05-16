@@ -31,7 +31,7 @@ public class Vehiculo {
     /**
      * empresa trasnportista que le pertenece el Vehiculo
      */
-    private EmpresaTransportista empresa_trasnportista;
+    private EmpresaTransportista empresa_transportista;
 
     /**
      * Constructor por defecto
@@ -51,7 +51,7 @@ public class Vehiculo {
         this.id = id;
         this.modelo = modelo;
         this.marca = marca;
-        this.empresa_trasnportista = empresa_trasnportista;
+        this.empresa_transportista = empresa_trasnportista;
     }
 
     /**
@@ -65,7 +65,7 @@ public class Vehiculo {
     public Vehiculo(String modelo, String marca, EmpresaTransportista empresa_trasnportista) {
         this.modelo = modelo;
         this.marca = marca;
-        this.empresa_trasnportista = empresa_trasnportista;
+        this.empresa_transportista = empresa_trasnportista;
     }
 
     /**
@@ -128,7 +128,7 @@ public class Vehiculo {
      * @return EmpresaTrasnportista del Vehiculo
      */
     public EmpresaTransportista getEmpresa_trasnportista() {
-        return empresa_trasnportista;
+        return empresa_transportista;
     }
 
     /**
@@ -137,7 +137,7 @@ public class Vehiculo {
      * @param empresa_trasnportista a asignar
      */
     public void setEmpresa_trasnportista(EmpresaTransportista empresa_trasnportista) {
-        this.empresa_trasnportista = empresa_trasnportista;
+        this.empresa_transportista = empresa_trasnportista;
     }
 
 }
