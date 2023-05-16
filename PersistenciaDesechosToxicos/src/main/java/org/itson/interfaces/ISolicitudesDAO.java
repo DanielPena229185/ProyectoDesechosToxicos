@@ -34,4 +34,6 @@ public interface ISolicitudesDAO {
      * @throws PersistenciaException si ocurre un error al intentar consultar las solicitudes en la base de datos
      */
     List<Solicitud> consultarSolicitudFiltro(SolicitudDTO filtro) throws PersistenciaException;
+
+    Solicitud actualizaEstadoASolicitudAtendida(Solicitud solicitud)throws PersistenciaException;
 }

@@ -22,6 +22,14 @@ import org.itson.excepciones.PersistenciaException;
  * @author Daniel Armando Peña Garcia ID:229185
  */
 public interface IPersistencia {
+    
+    /**
+     * Implementacion de ascutlizar el estado a Atendida de una Solicitud
+     * @param solicitud Solicitud a actualizar
+     * @return la solicitud actualizada
+     * @throws PersistenciaException en caso de algun error
+     */
+    Solicitud actualizaEstadoASolicitudAtendida(Solicitud solicitud) throws PersistenciaException;
 
     /**
      * Implementacion de insertarQuimico un Quimico

@@ -19,9 +19,11 @@ import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.interfaces.ISolicitudesDAO;
 
 /**
- * Descripción de la clase: La clase proporciona metodos para consultar las solicitudes no atendidas, 
- * consultar solicitudes por filtro y para insertar una solicitud. Estos metodos manejan excepciones 
- * y proporcionan información detallada sobre los errores, como el mensaje de error y la causa del error
+ * Descripción de la clase: La clase proporciona metodos para consultar las
+ * solicitudes no atendidas, consultar solicitudes por filtro y para insertar
+ * una solicitud. Estos metodos manejan excepciones y proporcionan información
+ * detallada sobre los errores, como el mensaje de error y la causa del error
+ *
  * @author oscar
  */
 public class SolicitudesDAO implements ISolicitudesDAO {
@@ -131,6 +133,25 @@ public class SolicitudesDAO implements ISolicitudesDAO {
         } catch (MongoException e) {
             throw new PersistenciaException("Error al insertar solicitud" + e.getMessage());
         }
+    }
+
+    /**
+     * Actualiza estado de la solicitud a Atendida
+     *
+     * @param solicitud Solicitud no Atendida que se actualizara a Atendida
+     * @return Solicitud con el estado actualizado a Atendida
+     * @throws PersistenciaException
+     */
+    @Override
+    public Solicitud actualizaEstadoASolicitudAtendida(Solicitud solicitud) throws PersistenciaException {
+
+        try {
+            COLECCION.updateOne(new Document("_id", solicitud.getId()).append("estado", "NO_ATENDIDA"), new Document("$set", new Document("estado", "ATENDIDA")));
+            return solicitud;
+        } catch (MongoException e) {
+            throw new PersistenciaException("Error no se pudo actualizar el estado de la Solicitud");
+        }
+
     }
 
 }

@@ -40,15 +40,10 @@ import org.itson.interfaces.IVehiculosDAO;
 public class Prueba {
 
     public static void main(String[] args) {
-        IAdministradoresDAO administradoresDAO = DAOFactory.getAdministradoresDAO();
-        
-//        Administrador a = administradoresDAO.loginAdministrador("edemboji@gmail.com", "eebj031002");
-//        IEmpresasTrasnportistasDAO ad = DAOFactory.getEmpresasTrasnportistasDAO();
-IProductoresDAO ad = DAOFactory.getProductoresDAO();
-        Productor a = ad.consultarLogin("trinu_1980@hotmail.com", "bone770115");
-        System.out.println(a.getId());
-        System.out.println(a.getNombre());
-        System.out.println(a.getCuenta().getCorreo());
-        System.out.println(a.getCuenta().getContrasena());
+
+        ISolicitudesDAO solicitudesDAO = DAOFactory.getSolicitudesDAO();
+        Solicitud solicitud = new Solicitud();
+        solicitud.setId(new ObjectId("645dde6c6e1569d7770b1994"));
+        solicitudesDAO.actualizaEstadoASolicitudAtendida(solicitud);
     }
 }
