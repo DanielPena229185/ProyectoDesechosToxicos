@@ -204,7 +204,7 @@ db.getCollection("administradores").insertMany([
 
       //Insertando Vehiculos
 
-db.getCollection("vehiculos).insertMany([
+db.getCollection("vehiculos").insertMany([
       {
         "_id" : ObjectId("6463189052beb9b2670968ba"),
         "modelo" : "Modelo 1",
