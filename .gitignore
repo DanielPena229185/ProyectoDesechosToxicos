@@ -1,1 +1,7 @@
 /Residuos_Toxicos_Negocio/target/
+DominioDesechosToxicos/target/classes/.netbeans_automatic_build
+DominioDesechosToxicos/target/test-classes/.netbeans_automatic_build
+*.class
+*.class
+*.class
+DominioDesechosToxicos/target/classes/com/dominio/Cuenta.class

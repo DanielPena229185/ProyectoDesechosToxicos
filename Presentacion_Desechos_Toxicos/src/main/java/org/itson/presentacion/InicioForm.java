@@ -5,6 +5,7 @@
 
 package org.itson.presentacion;
 
+import javax.swing.JOptionPane;
 import org.itson.presentacion.empresa.RegistrarEmpresaForm;
 import org.itson.presentacion.Productor.RegistrarProductorForm;
 import org.itson.presentacion.Administrador.RegistrarAdministradorForm;
@@ -31,121 +32,105 @@ public class InicioForm extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        exitMenuItem = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        inicarSesionbtn = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        registrarAdministradorBtn = new javax.swing.JMenuItem();
-        registrarEmpresBtn = new javax.swing.JMenuItem();
-        registrarProductorBtn = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        iniciarSesionBtn = new javax.swing.JButton();
+        cerrarBtn = new javax.swing.JButton();
+        acercabtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         desktopPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel3.setBackground(new java.awt.Color(157, 253, 173));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 45)); // NOI18N
+        jLabel1.setText("Bienvenido a Residuos");
+
+        jLabel2.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 45)); // NOI18N
+        jLabel2.setText("Toxicos");
+
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
+        jLabel3.setText("Para inicar el proceso favor de iniciar sesion");
+
+        iniciarSesionBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
+        iniciarSesionBtn.setText("Iniciar Sesion");
+        iniciarSesionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarSesionBtnActionPerformed(evt);
+            }
+        });
+
+        cerrarBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
+        cerrarBtn.setText("Cerrar");
+        cerrarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarBtnActionPerformed(evt);
+            }
+        });
+
+        acercabtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
+        acercabtn.setText("Acerca de ");
+        acercabtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acercabtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel2)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1)
+                    .addComponent(iniciarSesionBtn)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cerrarBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 352, Short.MAX_VALUE)
+                        .addComponent(acercabtn)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(iniciarSesionBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(acercabtn)
+                    .addComponent(cerrarBtn))
+                .addGap(16, 16, 16))
         );
 
-        desktopPane.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 510));
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 540, 450));
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 260, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
-        );
-
-        desktopPane.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 260, 510));
-
-        menuBar.setBorder(null);
-
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Sistema");
-
-        exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Salir");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
-            }
-        });
-        fileMenu.add(exitMenuItem);
-
-        menuBar.add(fileMenu);
-
-        jMenu1.setText("Iniciar Sesión");
-
-        inicarSesionbtn.setText("Iniciar Sesion");
-        inicarSesionbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inicarSesionbtnActionPerformed(evt);
-            }
-        });
-        jMenu1.add(inicarSesionbtn);
-
-        menuBar.add(jMenu1);
-
-        jMenu2.setText("Registrarme");
-
-        registrarAdministradorBtn.setText("Administrador");
-        registrarAdministradorBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarAdministradorBtnActionPerformed(evt);
-            }
-        });
-        jMenu2.add(registrarAdministradorBtn);
-
-        registrarEmpresBtn.setText("Empresa Transportadora");
-        registrarEmpresBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarEmpresBtnActionPerformed(evt);
-            }
-        });
-        jMenu2.add(registrarEmpresBtn);
-
-        registrarProductorBtn.setText("Productor");
-        registrarProductorBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarProductorBtnActionPerformed(evt);
-            }
-        });
-        jMenu2.add(registrarProductorBtn);
-
-        menuBar.add(jMenu2);
-
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Ayuda");
-
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("Sobre Nosotros");
-        helpMenu.add(aboutMenuItem);
-
-        menuBar.add(helpMenu);
-
-        setJMenuBar(menuBar);
+        desktopPane.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,39 +140,28 @@ public class InicioForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
+    private void iniciarSesionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSesionBtnActionPerformed
+       LogInForm a = new LogInForm();
+       a.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_iniciarSesionBtnActionPerformed
 
-    private void registrarAdministradorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarAdministradorBtnActionPerformed
-      RegistrarAdministradorForm a = new RegistrarAdministradorForm();
-      a.setVisible(true);
-      dispose();
-    }//GEN-LAST:event_registrarAdministradorBtnActionPerformed
+    private void cerrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarBtnActionPerformed
+        dispose();
+    }//GEN-LAST:event_cerrarBtnActionPerformed
 
-    private void registrarEmpresBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEmpresBtnActionPerformed
-    RegistrarEmpresaForm b = new RegistrarEmpresaForm();
-    b.setVisible(true);
-    dispose();
-    }//GEN-LAST:event_registrarEmpresBtnActionPerformed
-
-    private void registrarProductorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarProductorBtnActionPerformed
-    RegistrarProductorForm c = new RegistrarProductorForm();
-    c.setVisible(true);
-    dispose();
-    }//GEN-LAST:event_registrarProductorBtnActionPerformed
-
-    private void inicarSesionbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicarSesionbtnActionPerformed
-   LogInForm d = new LogInForm();
-   d.setVisible(true);
-   dispose();
-    }//GEN-LAST:event_inicarSesionbtnActionPerformed
+    private void acercabtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acercabtnActionPerformed
+       JOptionPane.showMessageDialog(this, " Integrantes:\n"+ " Aracely Campa Quintana ID: 233215\n" +
+" Edgar Emir Borbon Jimenez ID: 233184\n" +
+" Oscar Minjarez Zavala ID: 231503\n" +
+" Daniel Armando Peña Garcia ID: 229185");
+    }//GEN-LAST:event_acercabtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,20 +200,17 @@ public class InicioForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JButton acercabtn;
+    private javax.swing.JButton cerrarBtn;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenuItem inicarSesionbtn;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JButton iniciarSesionBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem registrarAdministradorBtn;
-    private javax.swing.JMenuItem registrarEmpresBtn;
-    private javax.swing.JMenuItem registrarProductorBtn;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 
 }

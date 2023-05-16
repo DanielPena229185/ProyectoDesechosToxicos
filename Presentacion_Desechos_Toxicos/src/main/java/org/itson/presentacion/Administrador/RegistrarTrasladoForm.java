@@ -117,7 +117,7 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
 
         seleccionarBtn.setText("siguiente");
         seleccionarBtn.setContentAreaFilled(false);
-        seleccionarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        seleccionarBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
         seleccionarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 seleccionarBtnActionPerformed(evt);
@@ -131,7 +131,7 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(12, Short.MAX_VALUE)
+                        .addContainerGap(10, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(seleccionarBtn)
@@ -199,7 +199,7 @@ private final String NOMBRE_PRODUCTOR_DEFAULT = "Ej: Industrias químicas";
     private void seleccionarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarBtnActionPerformed
         int i = 0;
         if(!validarCampoTextoVacio()){
-            JOptionPane.showMessageDialog(this, "Ingrese productor", "Fecha ocupada", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese productor", "ERROR", JOptionPane.ERROR_MESSAGE);
                 i++;
         }
         
