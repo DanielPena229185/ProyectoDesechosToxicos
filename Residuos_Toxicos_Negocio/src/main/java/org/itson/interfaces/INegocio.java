@@ -4,6 +4,7 @@
  */
 package org.itson.interfaces;
 
+import com.dominio.Administrador;
 import com.dominio.EmpresaTransportista;
 import com.dominio.Productor;
 import com.dominio.Quimico;
@@ -65,4 +66,7 @@ public interface INegocio {
     List<Traslado> consultaTrasladosAsingados(EmpresaTransportista empresaTransportista) throws NegocioException;
 
     List<Vehiculo> consultaVehiuculoEmpresaTrasnportadora(EmpresaTransportista empresaTransportista) throws NegocioException;
+
+    public Administrador loginAdministrador(String correo, String contrasena) throws NegocioException;
+
 }

@@ -6,15 +6,10 @@ package org.itson.implementaciones.daos;
 
 import com.dominio.Quimico;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
 import java.util.List;
-import org.bson.Document;
-import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.implementaciones.bd.ConexionBD;
-import org.itson.interfaces.IConsultasDAO;
 import org.itson.interfaces.IQuimicosDAO;
 
 /**

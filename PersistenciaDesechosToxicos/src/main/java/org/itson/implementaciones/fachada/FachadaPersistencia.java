@@ -4,6 +4,7 @@
  */
 package org.itson.implementaciones.fachada;
 
+import com.dominio.Administrador;
 import com.dominio.EmpresaTransportista;
 import com.dominio.Productor;
 import com.dominio.Quimico;
@@ -16,6 +17,7 @@ import org.itson.DTO.ResiduoDTO;
 import org.itson.DTO.SolicitudDTO;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.implementaciones.bd.DAOFactory;
+import org.itson.interfaces.IAdministradoresDAO;
 import org.itson.interfaces.IEmpresasTrasnportistasDAO;
 import org.itson.interfaces.IPersistencia;
 import org.itson.interfaces.IProductoresDAO;
@@ -47,6 +49,7 @@ public class FachadaPersistencia implements IPersistencia {
     IEmpresasTrasnportistasDAO empresasTransportistasDAO;
     ITrasladosDAO trasladosDAO;
     IVehiculosDAO vehiculosDAO;
+    IAdministradoresDAO administradorDAO;
 
     /**
      * Constructor por default
@@ -60,6 +63,7 @@ public class FachadaPersistencia implements IPersistencia {
         empresasTransportistasDAO = DAOFactory.getEmpresasTrasnportistasDAO();
         trasladosDAO = DAOFactory.getTrasladosDAO();
         vehiculosDAO = DAOFactory.getVehiculosDAO();
+        administradorDAO = DAOFactory.getAdministradoresDAO();
 
     }
 
@@ -302,5 +306,14 @@ public class FachadaPersistencia implements IPersistencia {
             throw new PersistenciaException(e.getMessage());
         }
 
+    }
+
+    @Override
+    public Administrador loginAdministrador(String correo, String contrasena) throws PersistenciaException {
+        try {
+            return administradorDAO.loginAdministrador(correo, contrasena);
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException(e.getMessage());
+        }
     }
 }

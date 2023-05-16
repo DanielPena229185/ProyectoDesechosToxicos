@@ -4,6 +4,7 @@
  */
 package org.itson.implementacion;
 
+import com.dominio.Administrador;
 import com.dominio.EmpresaTransportista;
 import com.dominio.Productor;
 import com.dominio.Quimico;
@@ -16,6 +17,7 @@ import java.util.List;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioException;
 import org.itson.interfaces.INegocio;
+import org.itson.interfaces.INegocioAdministrador;
 import org.itson.interfaces.INegocioProductor;
 import org.itson.interfaces.INegocioQuimico;
 import org.itson.interfaces.INegocioResiduo;
@@ -38,6 +40,7 @@ public class FachadaNegocio implements INegocio{
     INegocioTransporte negocioTransporte;
     INegocioTraslado negocioTraslado;
     INegocioVehiculo negocioVehiculo;
+    INegocioAdministrador negocioAdministrador;
 
     /**
      * Constructor por default
@@ -50,6 +53,7 @@ public class FachadaNegocio implements INegocio{
         negocioTransporte = NegocioFactory.getNegocioTransporte();
         negocioTraslado = NegocioFactory.getNegocioTraslado();
         negocioVehiculo = NegocioFactory.getNegocioVehiculo();
+        negocioAdministrador = NegocioFactory.getNegocioAdministrador();
     }
 
     @Override
@@ -155,6 +159,15 @@ public class FachadaNegocio implements INegocio{
     public List<Vehiculo> consultaVehiuculoEmpresaTrasnportadora(EmpresaTransportista empresaTransportista) throws NegocioException {
         try {
             return negocioVehiculo.consultaVehiuculoEmpresaTrasnportadora(empresaTransportista);
+        } catch (NegocioException e) {
+            throw new NegocioException(e.getMessage());
+        }
+    }
+
+    @Override
+    public Administrador loginAdministrador(String correo, String contrasena) throws NegocioException {
+        try {
+            return negocioAdministrador.loginAdministrador(correo, contrasena);
         } catch (NegocioException e) {
             throw new NegocioException(e.getMessage());
         }
