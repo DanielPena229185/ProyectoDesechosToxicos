@@ -4,6 +4,7 @@
  */
 package org.itson.presentacion.empresa;
 
+import com.dominio.EmpresaTransportista;
 import org.itson.presentacion.Administrador.RegistrarTrasladoForm;
 import org.itson.presentacion.InicioForm;
 
@@ -13,6 +14,8 @@ import org.itson.presentacion.InicioForm;
  */
 public class PrincipalEmpresaForm extends javax.swing.JFrame {
 
+    static EmpresaTransportista empresa;
+    private static PrincipalEmpresaForm form;
     /**
      * Creates new form PrincipalEmpresa
      */
@@ -126,42 +129,22 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_registarEmpresaBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    public static PrincipalEmpresaForm getInstance(EmpresaTransportista empresa){
+        PrincipalEmpresaForm.empresa = empresa;
+        if(form == null){
+            form = new PrincipalEmpresaForm();
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new PrincipalEmpresaForm().setVisible(true);
-            }
-        });
+        return form;
     }
+
+    public static EmpresaTransportista getEmpresa() {
+        return empresa;
+    }
+
+    public static void setEmpresa(EmpresaTransportista empresa) {
+        PrincipalEmpresaForm.empresa = empresa;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

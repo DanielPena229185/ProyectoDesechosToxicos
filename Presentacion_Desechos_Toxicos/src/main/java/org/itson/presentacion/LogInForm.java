@@ -5,10 +5,13 @@
  */
 package org.itson.presentacion;
 
+import com.dominio.EmpresaTransportista;
 import com.dominio.Productor;
 import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import org.itson.DTO.AdministradorDTO;
+import org.itson.DTO.EmpresaTransportistaDTO;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioException;
 import org.itson.implementacion.FachadaNegocio;
@@ -242,14 +245,31 @@ public class LogInForm extends javax.swing.JFrame {
         String selectedItem = comboBoxOpcionLogin.getSelectedItem().toString();
         switch (selectedItem) {
             case ADMINISTRADOR:
-                PrincipalAdministradorForm a = new PrincipalAdministradorForm();
-                a.setVisible(true);
+                try{
+                AdministradorDTO administrador = new AdministradorDTO();
+                administrador.setEmail(this.campoUsuario.getText());
+                administrador.setContrasena(this.campoContrasena.getText());
+                adm = negocio.loginAdministrador(administrador);
+                PrincipalAdministradorForm.setAdministrador(administrador);
+                PrincipalAdministradorForm.getInstance(adm);
+                this.setVisible(false);
+                } catch(NegocioException e){
+                     JOptionPane.showMessageDialog(this, e.getMessage());
+                }
                 dispose();
                 break;
             case EMPRESA_TRANSPORTADORA:
-                PrincipalEmpresaForm b = new PrincipalEmpresaForm();
-                b.setVisible(true);
-                dispose();
+                try{
+                EmpresaTransportistaDTO empresa = new EmpresaTransportistaDTO();
+                empresa.setEmail(this.campoUsuario.getText());
+                empresa.setContrasena(this.campoContrasena.getText());
+                emp = negocio.loginEmpresaTransportista(empresa);
+                PrincipalEmpresaForm.setEmpresa(empresa);
+                PrincipalEmpresaForm.getInstance(emp);
+                this.setVisible(false);
+                } catch(NegocioException e){
+                     JOptionPane.showMessageDialog(this, e.getMessage());
+                }
                 break;
             case PRODUCTOR:
                 Productor pro = null;

@@ -1,6 +1,7 @@
 
 package org.itson.presentacion.Administrador;
 
+import com.dominio.Administrador;
 import org.itson.presentacion.InicioForm;
 
 /**
@@ -8,7 +9,8 @@ import org.itson.presentacion.InicioForm;
  * @author arace
  */
 public class PrincipalAdministradorForm extends javax.swing.JFrame {
-
+    static Administrador administrador;
+    private static PrincipalAdministradorForm form;
     /**
      * Creates new form PrincipalAdministradorForm
      */
@@ -28,9 +30,9 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        regresarBtn = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         solictarTrasladoBtn = new javax.swing.JButton();
+        regresarbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(720, 531));
@@ -44,19 +46,17 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
         jLabel2.setText("ADMINISTRADOR");
 
-        regresarBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 1, 12)); // NOI18N
-        regresarBtn.setText("Regresar");
-        regresarBtn.setContentAreaFilled(false);
-        regresarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regresarBtnActionPerformed(evt);
-            }
-        });
-
         solictarTrasladoBtn.setText("Solicitar Traslado");
         solictarTrasladoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 solictarTrasladoBtnActionPerformed(evt);
+            }
+        });
+
+        regresarbtn.setText("Regresar");
+        regresarbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarbtnActionPerformed(evt);
             }
         });
 
@@ -76,11 +76,11 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
+                        .addGap(240, 240, 240)
                         .addComponent(solictarTrasladoBtn))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(regresarBtn)))
+                        .addGap(66, 66, 66)
+                        .addComponent(regresarbtn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -90,11 +90,11 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(57, 57, 57)
                 .addComponent(solictarTrasladoBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addComponent(regresarBtn)
-                .addGap(34, 34, 34))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addComponent(regresarbtn)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -119,12 +119,6 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
-        InicioForm p = new InicioForm();
-        p.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_regresarBtnActionPerformed
-
     private void solictarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solictarTrasladoBtnActionPerformed
        SolicitudesTrasladosForm b = new SolicitudesTrasladosForm();
     b.setVisible(true);
@@ -132,25 +126,35 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_solictarTrasladoBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-       
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new PrincipalAdministradorForm().setVisible(true);
-            }
-        });
+    private void regresarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarbtnActionPerformed
+        InicioForm p = new InicioForm();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_regresarbtnActionPerformed
+
+    public static PrincipalAdministradorForm getInstance(Administrador administrador){
+        PrincipalAdministradorForm.administrador = administrador;
+        if(form == null){
+            form = new PrincipalAdministradorForm();
+        }
+        return form;
     }
+    public static Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public static void setAdministrador(Administrador administrador) {
+        PrincipalAdministradorForm.administrador = administrador;
+    }
+
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton regresarBtn;
+    private javax.swing.JButton regresarbtn;
     private javax.swing.JButton solictarTrasladoBtn;
     // End of variables declaration//GEN-END:variables
 }
