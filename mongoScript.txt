@@ -1,5 +1,5 @@
-//Insercion de Administradores
-db.getCollection("administradores").insertMany([
+//Insercion de Empresas
+db.getCollection("empresas").insertMany([
 {
     "_id" : ObjectId("646314f6dff379d164733eba"),
     "tipo" : "TRANSPORTISTA",
