@@ -108,7 +108,11 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
     @Override
     public List<Solicitud> consultaSolicitudesNoAtendidas() throws NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            return persistencia.consultaSolicitudesNoAtendidas();
+        } catch (PersistenciaException e) {
+            throw new NegocioException(e.getMessage());
+        }
     }
 
     @Override

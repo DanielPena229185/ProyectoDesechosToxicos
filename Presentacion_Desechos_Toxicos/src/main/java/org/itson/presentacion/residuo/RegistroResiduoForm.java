@@ -6,15 +6,14 @@ package org.itson.presentacion.residuo;
 
 import com.dominio.Quimico;
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import org.itson.excepciones.NegocioException;
+import org.itson.excepciones.PresentacionException;
 import org.itson.implementacion.FachadaNegocio;
-import org.itson.implementacion.NegocioFactory;
 import org.itson.interfaces.INegocio;
-import org.itson.interfaces.INegocioQuimico;
-import org.itson.presentacion.InicioForm;
 import org.itson.presentacion.Productor.PrincipalProductorForm;
 
 /**
@@ -24,23 +23,19 @@ import org.itson.presentacion.Productor.PrincipalProductorForm;
 public class RegistroResiduoForm extends javax.swing.JFrame {
 
     private final String NOMBRE_RESIDUO = "Residuo";
-    private List<Quimico> listaQuimicosDisponibles;
-    private List<String> listaQuimicosComponentesResiduo;
+    private final String CODIGO_RESIDUO = "ABC-123";
     INegocio negocio;
+    List<Quimico> listaQuimicosDisponibles;
+    List<Quimico> listaQuimicosComponenteResiduo;
 
     /**
      * Creates new form RegistroResiduoForm
      */
     public RegistroResiduoForm() {
         negocio = new FachadaNegocio();
-        listaQuimicosDisponibles = consultarListaQuimicos();
         initComponents();
-    }
-
-    private List<Quimico> consultarListaQuimicos() {
-        List<Quimico> listaQuimicos;
-        listaQuimicos = negocio.consultarQuimicos();
-        return listaQuimicos;
+        listaQuimicosDisponibles = consultarListaQuimicosDisponibles();
+        llenarComboBoxListaDisponibles(listaQuimicosDisponibles);
     }
 
     /**
@@ -59,14 +54,19 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         campoNombreResiduo = new javax.swing.JTextField();
         separadorNombre = new javax.swing.JSeparator();
         tipoLbl = new javax.swing.JLabel();
-        comboTipoResiduo = new javax.swing.JComboBox<>();
+        comboBoxComponenteResiduo = new javax.swing.JComboBox<>();
         separadorTipo = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         nombreLbl = new javax.swing.JLabel();
-        comboResiduosRegistrados = new javax.swing.JComboBox<>();
-        guardarResiduoBtn = new javax.swing.JButton();
-        regresarBtn = new javax.swing.JButton();
+        comboQuimicosDisponibles = new javax.swing.JComboBox<>();
+        btnAgregarQuimicoComponenteResiduo = new javax.swing.JToggleButton();
+        lblVerificarCantidadQuimicosSeleccionados = new javax.swing.JLabel();
         nombreLbl1 = new javax.swing.JLabel();
+        btnEliminarComponenteResiduo = new javax.swing.JToggleButton();
+        lblVerificarCantidadComponentesResiduo = new javax.swing.JLabel();
+        nombreLbl2 = new javax.swing.JLabel();
+        formatoCodigoResiduo = new javax.swing.JFormattedTextField();
+        btnGuardarResiduo = new javax.swing.JToggleButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -85,8 +85,11 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         registroResiduoLbl.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 30)); // NOI18N
+        registroResiduoLbl.setForeground(new java.awt.Color(0, 0, 0));
         registroResiduoLbl.setText("Registro Residuo");
 
+        campoNombreResiduo.setBackground(new java.awt.Color(255, 255, 255));
+        campoNombreResiduo.setForeground(Color.GRAY);
         campoNombreResiduo.setText(this.NOMBRE_RESIDUO);
         campoNombreResiduo.setBorder(null);
         campoNombreResiduo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -104,16 +107,26 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         });
 
         tipoLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        tipoLbl.setForeground(new java.awt.Color(0, 0, 0));
         tipoLbl.setText("Composicion quimica:");
 
-        comboTipoResiduo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jPanel3.setBackground(new java.awt.Color(0, 51, 255));
+        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
 
         nombreLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
-        nombreLbl.setText("Residuos registrados");
+        nombreLbl.setForeground(new java.awt.Color(0, 0, 0));
+        nombreLbl.setText("Químicos disponibles");
 
-        comboResiduosRegistrados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        btnAgregarQuimicoComponenteResiduo.setText("Agregar");
+        btnAgregarQuimicoComponenteResiduo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarQuimicoComponenteResiduoActionPerformed(evt);
+            }
+        });
+
+        lblVerificarCantidadQuimicosSeleccionados.setForeground(new java.awt.Color(255, 0, 0));
+        lblVerificarCantidadQuimicosSeleccionados.setText("No hay químicos");
+
+        lblVerificarCantidadQuimicosSeleccionados.setVisible(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -122,64 +135,110 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(comboResiduosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblVerificarCantidadQuimicosSeleccionados)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAgregarQuimicoComponenteResiduo))
+                    .addComponent(comboQuimicosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nombreLbl))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(nombreLbl)
-                .addGap(41, 41, 41)
-                .addComponent(comboResiduosRegistrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(comboQuimicosDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVerificarCantidadQuimicosSeleccionados)
+                    .addComponent(btnAgregarQuimicoComponenteResiduo))
+                .addContainerGap(380, Short.MAX_VALUE))
         );
 
-        guardarResiduoBtn.setText("Continue");
-        guardarResiduoBtn.setContentAreaFilled(false);
-        guardarResiduoBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardarResiduoBtnActionPerformed(evt);
-            }
-        });
-
-        regresarBtn.setText("Back");
-        regresarBtn.setContentAreaFilled(false);
-        regresarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regresarBtnActionPerformed(evt);
-            }
-        });
-
         nombreLbl1.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        nombreLbl1.setForeground(new java.awt.Color(0, 0, 0));
         nombreLbl1.setText("Nombre:");
+
+        btnEliminarComponenteResiduo.setText("Eliminar");
+        btnEliminarComponenteResiduo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarComponenteResiduoActionPerformed(evt);
+            }
+        });
+
+        lblVerificarCantidadComponentesResiduo.setForeground(new java.awt.Color(255, 0, 0));
+        lblVerificarCantidadComponentesResiduo.setText("No hay químicos");
+
+        nombreLbl2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
+        nombreLbl2.setForeground(new java.awt.Color(0, 0, 0));
+        nombreLbl2.setText("Código:");
+
+        formatoCodigoResiduo.setBackground(new java.awt.Color(255, 255, 255));
+        formatoCodigoResiduo.setBorder(null);
+        formatoCodigoResiduo.setForeground(Color.GRAY);
+        try {
+            formatoCodigoResiduo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("UUU-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        formatoCodigoResiduo.setText("ABC-123");
+        formatoCodigoResiduo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formatoCodigoResiduoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                formatoCodigoResiduoFocusLost(evt);
+            }
+        });
+        formatoCodigoResiduo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formatoCodigoResiduoMouseClicked(evt);
+            }
+        });
+
+        btnGuardarResiduo.setText("GuardarResiduo");
+        btnGuardarResiduo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarResiduoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(regresarBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addComponent(guardarResiduoBtn)
-                        .addGap(173, 173, 173))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tipoLbl)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(registroResiduoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(separadorRegistroResiduo))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(separadorTipo, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(comboTipoResiduo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(separadorNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(campoNombreResiduo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
-                            .addComponent(nombreLbl1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tipoLbl)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(registroResiduoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(separadorRegistroResiduo))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblVerificarCantidadComponentesResiduo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                                        .addComponent(btnEliminarComponenteResiduo))
+                                    .addComponent(comboBoxComponenteResiduo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(campoNombreResiduo)
+                                    .addComponent(nombreLbl1)
+                                    .addComponent(nombreLbl2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(separadorNombre)
+                                    .addComponent(separadorTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                                    .addComponent(formatoCodigoResiduo))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGuardarResiduo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -190,23 +249,29 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
                 .addComponent(registroResiduoLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separadorRegistroResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addGap(18, 18, 18)
                 .addComponent(nombreLbl1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoNombreResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(separadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(tipoLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(comboTipoResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(nombreLbl2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(formatoCodigoResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separadorTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(136, 136, 136)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(guardarResiduoBtn)
-                    .addComponent(regresarBtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(tipoLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboBoxComponenteResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliminarComponenteResiduo)
+                    .addComponent(lblVerificarCantidadComponentesResiduo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnGuardarResiduo)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -226,28 +291,18 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void guardarResiduoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarResiduoBtnActionPerformed
-
-
-    }//GEN-LAST:event_guardarResiduoBtnActionPerformed
-
-    private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
-        PrincipalProductorForm p = new PrincipalProductorForm();
-        p.setVisible(true);
-    }//GEN-LAST:event_regresarBtnActionPerformed
-
     private void campoNombreResiduoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNombreResiduoMouseClicked
-//         if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
-//            this.campoNombreResiduo.setForeground(Color.BLACK);
-//            this.campoNombreResiduo.setText("");
-//        }
+        if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
+            this.campoNombreResiduo.setForeground(Color.BLACK);
+            this.campoNombreResiduo.setText("");
+        }
     }//GEN-LAST:event_campoNombreResiduoMouseClicked
 
     private void campoNombreResiduoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreResiduoFocusGained
-//       if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
-//            this.campoNombreResiduo.setForeground(Color.BLACK);
-//            this.campoNombreResiduo.setText("");
-//        }
+        if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
+            this.campoNombreResiduo.setForeground(Color.BLACK);
+            this.campoNombreResiduo.setText("");
+        }
     }//GEN-LAST:event_campoNombreResiduoFocusGained
 
     private void campoNombreResiduoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreResiduoFocusLost
@@ -257,107 +312,193 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoNombreResiduoFocusLost
 
-    private boolean validarCampoTextoVacio(javax.swing.JTextField campo, String nombreCampo) {
-        if (campo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Campo vacio " + nombreCampo + " Favor de ingresar el dato.");
-            campo.requestFocus();
-            return false;
+    private void btnAgregarQuimicoComponenteResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarQuimicoComponenteResiduoActionPerformed
+        try {
+            if (comboQuimicosDisponibles.getModel().getSize() == 0) {
+                throw new PresentacionException("No hay componentes que eliminar");
+            }
+            this.agregarQuimicoSeleccionadoListaComponentesResiduo();
+        } catch (PresentacionException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            if (comboBoxComponenteResiduo.getModel().getSize() >= 0) {
+                this.lblVerificarCantidadComponentesResiduo.setVisible(false);
+            }
+            if (comboQuimicosDisponibles.getModel().getSize() == 0) {
+                this.lblVerificarCantidadQuimicosSeleccionados.setVisible(true);
+            } else {
+                this.lblVerificarCantidadQuimicosSeleccionados.setVisible(false);
+            }
         }
-        return true;
+    }//GEN-LAST:event_btnAgregarQuimicoComponenteResiduoActionPerformed
+
+    private void btnEliminarComponenteResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarComponenteResiduoActionPerformed
+        try {
+            if (comboBoxComponenteResiduo.getModel().getSize() == 0) {
+                throw new PresentacionException("No hay componentes que eliminar");
+            }
+            this.eliminarQuimicoSeleccionadoListaComponentesResiduo();
+        } catch (PresentacionException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error!", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            if (comboBoxComponenteResiduo.getModel().getSize() <= 0) {
+                this.lblVerificarCantidadComponentesResiduo.setVisible(true);
+            } else {
+                this.lblVerificarCantidadComponentesResiduo.setVisible(false);
+            }
+            if (comboQuimicosDisponibles.getModel().getSize() >= 0) {
+                this.lblVerificarCantidadQuimicosSeleccionados.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_btnEliminarComponenteResiduoActionPerformed
+
+    private void formatoCodigoResiduoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formatoCodigoResiduoFocusGained
+        if(validarFormattFieldVacio(formatoCodigoResiduo, CODIGO_RESIDUO)){
+            formatoCodigoResiduo.setForeground(Color.BLACK);
+            formatoCodigoResiduo.setText("");
+        }
+    }//GEN-LAST:event_formatoCodigoResiduoFocusGained
+
+    private void formatoCodigoResiduoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formatoCodigoResiduoMouseClicked
+        if(validarFormattFieldVacio(formatoCodigoResiduo, CODIGO_RESIDUO)){
+            formatoCodigoResiduo.setForeground(Color.BLACK);
+            formatoCodigoResiduo.setText("");
+        }
+    }//GEN-LAST:event_formatoCodigoResiduoMouseClicked
+
+    private void formatoCodigoResiduoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formatoCodigoResiduoFocusLost
+        if(validarFormattFieldVacio(formatoCodigoResiduo, CODIGO_RESIDUO)){
+            formatoCodigoResiduo.setForeground(Color.GRAY);
+            formatoCodigoResiduo.setText(CODIGO_RESIDUO);
+        }
+    }//GEN-LAST:event_formatoCodigoResiduoFocusLost
+
+    private void btnGuardarResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarResiduoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarResiduoActionPerformed
+
+    private Residuo guardarResiduo(Residuo residuo){
+        return negocio.insertarResiduo(residuo);
+    }
+    
+    private boolean validarFormattFieldVacio(JFormattedTextField textField, String textoDefault) {
+        if (textField.getText().isBlank() || textField.getText().equals(textoDefault) || textField.getText().equals("   -   ")) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validarCampoTextoVacio(javax.swing.JTextField campo, String nombreCampo) {
+        if (campo.getText().isEmpty() || campo.getText().equals(nombreCampo)) {
+            return true;
+        }
+        return false;
+    }
+
+    private List<Quimico> consultarListaQuimicosDisponibles() throws PresentacionException {
+        try {
+            List<Quimico> listaQuimicos = new LinkedList<>();
+            listaQuimicos = negocio.consultarQuimicos();
+            return listaQuimicos;
+        } catch (NegocioException e) {
+            throw new PresentacionException(e.getMessage());
+        }
+    }
+
+    private void llenarComboBoxListaDisponibles(List<Quimico> listaDisponibles) throws PresentacionException {
+        try {
+            this.comboQuimicosDisponibles.removeAllItems();
+            for (Quimico quimico : listaDisponibles) {
+                this.comboQuimicosDisponibles.addItem(quimico);
+            }
+
+        } catch (PresentacionException e) {
+            JOptionPane.showMessageDialog(this, "Algo salió mal\n"
+                    + e.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void agregarQuimicoSeleccionadoListaComponentesResiduo() {
-        List<String> quimicos = pasarListaQuimicosString(listaQuimicosDisponibles);
-        String quimicoSeleccionado = getQuimicoSeleccionadoDisponibles();
-        eliminarQuimicoListaDisponible(quimicoSeleccionado, quimicos);
-        agregarQuimicoListaComponenteResiduo(quimicoSeleccionado, listaQuimicosComponentesResiduo);
-        cargarComboBoxResiduosDisponibles(listaQuimicosComponentesResiduo);
+        Quimico quimicoSeleccionado = getQuimicoSeleccionadoListaDisponibles();
+        List<Quimico> quimicosSeleccionados = this.eliminarQuimicoListaDisponibles(quimicoSeleccionado);
+        this.llenarComboBoxListaDisponibles(quimicosSeleccionados);
+        List<Quimico> quimicosComponentesResiduo = this.agregarListaComponenteResiduo(quimicoSeleccionado);
+        this.llenarComboBoxComponentesResiduo(quimicosComponentesResiduo);
     }
 
-    private String getQuimicoSeleccionadoDisponibles() {
-        String quimicoSeleccionado = comboResiduosRegistrados.getSelectedItem().toString();
-        return quimicoSeleccionado;
-
+    private void eliminarQuimicoSeleccionadoListaComponentesResiduo() {
+        Quimico quimicoSeleccionado = getQuimicoSeleccionadoListaComponentesResiduo();
+        List<Quimico> quimicosSeleccionados = this.agregarQuimicoListaDisponibles(quimicoSeleccionado);
+        this.llenarComboBoxListaDisponibles(quimicosSeleccionados);
+        List<Quimico> quimicosComponentesResiduo = this.eliminarListaComponenteResiduo(quimicoSeleccionado);
+        this.llenarComboBoxComponentesResiduo(quimicosComponentesResiduo);
     }
 
-    private List<String> cargarComboBoxResiduosDisponibles(List<String> quimicos) {
-        this.comboResiduosRegistrados.removeAllItems();
-        for (int i = 0; i < quimicos.size(); i++) {
-            comboResiduosRegistrados.addItem(quimicos.get(i));
+    private Quimico getQuimicoSeleccionadoListaDisponibles() {
+        Quimico quimico = (Quimico) comboQuimicosDisponibles.getSelectedItem();
+        return quimico;
+    }
+
+    private Quimico getQuimicoSeleccionadoListaComponentesResiduo() {
+        Quimico quimico = (Quimico) comboBoxComponenteResiduo.getSelectedItem();
+        return quimico;
+    }
+
+    private List<Quimico> eliminarQuimicoListaDisponibles(Quimico quimicoSeleccionado) {
+        listaQuimicosDisponibles.remove(quimicoSeleccionado);
+        return listaQuimicosDisponibles;
+    }
+
+    private List<Quimico> agregarListaComponenteResiduo(Quimico quimicoSeleccionado) {
+        if (listaQuimicosComponenteResiduo == null) {
+            listaQuimicosComponenteResiduo = new LinkedList<>();
         }
-        return quimicos;
+        listaQuimicosComponenteResiduo.add(quimicoSeleccionado);
+        return listaQuimicosComponenteResiduo;
     }
 
-    private List<String> eliminarQuimicoListaDisponible(String quimicoSeleccionado, List<String> quimicos) {
-        quimicos.remove(quimicoSeleccionado);
+    private void llenarComboBoxComponentesResiduo(List<Quimico> listaComponentesResiduo) {
+        try {
+            this.comboBoxComponenteResiduo.removeAllItems();
+            for (Quimico quimico : listaComponentesResiduo) {
+                this.comboBoxComponenteResiduo.addItem(quimico);
+            }
 
-        return quimicos;
-
-    }
-
-    private List<String> agregarQuimicoListaComponenteResiduo(String quimicoSeleccionado, List<String> quimicos) {
-        quimicos.add(quimicoSeleccionado);
-
-        return quimicos;
-    }
-
-    private List<String> pasarListaQuimicosString(List<Quimico> quimicos) {
-        List<String> listaQuimicoString = new LinkedList<>();
-        for (int i = 0; i < quimicos.size(); i++) {
-            listaQuimicoString.add(quimicos.get(i).getNombre());
-        }
-        return listaQuimicoString;
-    }
-
-    private List<String> eliminarQuimicoListaComponenteResiduo(String quimicoSeleccionado, List<String> quimicos) {
-        quimicos.removeIf(quimico -> quimico.equalsIgnoreCase(quimicoSeleccionado));
-        return quimicos;
-    }
-
-    private String getQuimicoSeleccionadoListaComponenteResiduo() {
-        String listaComponenteResiduo = comboResiduosRegistrados.getSelectedItem().toString();
-        return listaComponenteResiduo;
-
-    }
-
-    private List<String> getQuimicoSeleccionadoListaDisponibles() {
-        return listaQuimicosComponentesResiduo;
-    }
-
-    private String eliminarQuimicoListaComponentesResiduo() {
-        String quimicoSeleccionado = getQuimicoSeleccionadoListaComponenteResiduo();
-        eliminarQuimicoListaComponenteResiduo(quimicoSeleccionado, listaQuimicosComponentesResiduo);
-        return quimicoSeleccionado;
-    }
-
-    private List<String> getListaQuimicosComponentesResiduo(String eliminarQuimicoListaComponente) {
-        List<String> quimicos = new LinkedList<>(listaQuimicosComponentesResiduo);
-        eliminarQuimicoListaComponenteResiduo(eliminarQuimicoListaComponente, quimicos);
-        return quimicos;
-    }
-
-    private void agregarQuimicoListaDisponibles(String quimicoSeleccionado) {
-        listaQuimicosDisponibles.add(new Quimico(quimicoSeleccionado));
-    }
-
-    //listaQuimicosDisponibles: agregarQuimicoListaDisponibles()
-    private List<String> eliminarQuimicoListaDisponibles(String quimicoSeleccionado) {
-        listaQuimicosDisponibles.removeIf(quimico -> quimico.equals(quimicoSeleccionado));
-        return eliminarQuimicoListaDisponibles(quimicoSeleccionado);
-    }
-
-    public void cargarListaQuimicosDisponibles(List<String> listaQuimicosDisponibles) {
-        comboResiduosRegistrados.removeAllItems();
-        for (String quimico : listaQuimicosDisponibles) {
-            comboResiduosRegistrados.addItem(quimico);
+        } catch (PresentacionException e) {
+            JOptionPane.showMessageDialog(this, "Algo salió mal\n"
+                    + e.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private void cargarListaQuimicosComponentesResiduo(List<String> quimicos) {
-        comboResiduosRegistrados.removeAllItems();
-        for (String quimico : quimicos) {
-            comboResiduosRegistrados.addItem(quimico);
+    private List<Quimico> agregarQuimicoListaDisponibles(Quimico quimicoSeleccionado) {
+        listaQuimicosDisponibles.add(quimicoSeleccionado);
+        return listaQuimicosDisponibles;
+    }
+
+    private List<Quimico> eliminarListaComponenteResiduo(Quimico quimicoSeleccionado) {
+        if (listaQuimicosComponenteResiduo == null) {
+            listaQuimicosComponenteResiduo = new LinkedList<>();
         }
+        listaQuimicosComponenteResiduo.remove(quimicoSeleccionado);
+        return listaQuimicosComponenteResiduo;
+    }
+
+    /**
+     * Válida que una lista esté vacia, si la lista está vacía, retorna true, en
+     * caso contrarío, regresa false
+     *
+     * @param lista Lista que se quiere validar
+     * @return True si la lista está vacía, false en caso contrario
+     */
+    private boolean validarListaVacia(List lista) {
+        if (lista == null || lista.isEmpty()) {
+            //Lista vacía o nula
+            return true;
+        }
+        //Lista no está vacía
+        return false;
     }
 
     /**
@@ -396,17 +537,22 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnAgregarQuimicoComponenteResiduo;
+    private javax.swing.JToggleButton btnEliminarComponenteResiduo;
+    private javax.swing.JToggleButton btnGuardarResiduo;
     private javax.swing.JTextField campoNombreResiduo;
-    private javax.swing.JComboBox<String> comboResiduosRegistrados;
-    private javax.swing.JComboBox<String> comboTipoResiduo;
-    private javax.swing.JButton guardarResiduoBtn;
+    private javax.swing.JComboBox<Quimico> comboBoxComponenteResiduo;
+    private javax.swing.JComboBox<Quimico> comboQuimicosDisponibles;
+    private javax.swing.JFormattedTextField formatoCodigoResiduo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblVerificarCantidadComponentesResiduo;
+    private javax.swing.JLabel lblVerificarCantidadQuimicosSeleccionados;
     private javax.swing.JLabel nombreLbl;
     private javax.swing.JLabel nombreLbl1;
+    private javax.swing.JLabel nombreLbl2;
     private javax.swing.JLabel registroResiduoLbl;
-    private javax.swing.JButton regresarBtn;
     private javax.swing.JSeparator separadorNombre;
     private javax.swing.JSeparator separadorRegistroResiduo;
     private javax.swing.JSeparator separadorTipo;
