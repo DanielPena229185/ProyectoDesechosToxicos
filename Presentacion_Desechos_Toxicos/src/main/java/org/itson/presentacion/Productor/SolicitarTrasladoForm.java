@@ -131,7 +131,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tblResiduo.getModel();
         modeloTabla.setRowCount(0);
         for (Residuo r : solicitudesTablaResiduo) {
-            Object[] fila = {r.getNombre(), r.getCantidad()};
+            Object[] fila = {r.getNombre(), r.getCantidad(), r.getMedida_residuo()};
             modeloTabla.addRow(fila);
         }
     
