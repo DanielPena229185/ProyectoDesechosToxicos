@@ -16,9 +16,9 @@ import com.dominio.Vehiculo;
 import java.util.List;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioException;
-import org.itson.excepciones.PersistenciaException;
 import org.itson.interfaces.INegocio;
 import org.itson.interfaces.INegocioAdministrador;
+import org.itson.interfaces.INegocioEmpresasTransportista;
 import org.itson.interfaces.INegocioProductor;
 import org.itson.interfaces.INegocioQuimico;
 import org.itson.interfaces.INegocioResiduo;
@@ -42,7 +42,7 @@ public class FachadaNegocio implements INegocio{
     INegocioTraslado negocioTraslado;
     INegocioVehiculo negocioVehiculo;
     INegocioAdministrador negocioAdministrador;
-    NegocioEmpresaTransportista negocioEmpresaTransportista;
+    INegocioEmpresasTransportista negocioEmpresaTransportista;
 
     /**
      * Constructor por default
