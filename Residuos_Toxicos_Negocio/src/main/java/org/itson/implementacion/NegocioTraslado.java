@@ -7,8 +7,12 @@ package org.itson.implementacion;
 import com.dominio.Administrador;
 import com.dominio.Direccion;
 import com.dominio.EmpresaTransportista;
+import com.dominio.Estado;
+import com.dominio.Productor;
 import com.dominio.Residuo;
+import com.dominio.Solicitud;
 import com.dominio.Traslado;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import org.itson.excepciones.NegocioException;
@@ -97,6 +101,15 @@ public class NegocioTraslado implements INegocioTraslado {
             camposError.add("No hay ninguna empresa transportista seleccionada");
         }
 
+        //Validar solicitud
+        Solicitud solicitud = traslado.getSolicitud();
+        try {
+            validarSolicitudInsertar(solicitud);
+        } catch (ValidacionException e) {
+            camposError.add("Error en la información de solicitud\n"
+                    + e.getMessage());
+        }
+        
         if (camposError.isEmpty()) {
             return traslado;
         }
@@ -148,6 +161,44 @@ public class NegocioTraslado implements INegocioTraslado {
 
     }
 
+    private Solicitud validarSolicitudInsertar(Solicitud solicitud) throws ValidacionException{
+        
+        List<String> camposError = new LinkedList<>();
+        
+        if(solicitud == null){
+            throw new ValidacionException("No hay información de la solicitud");
+        }
+        
+        // Validar estado
+        Estado estado = solicitud.getEstado();
+        if(estado != null){
+            if (validarTextoVacio(estado.toString())) {
+                camposError.add("- No hay estado");
+            }
+        }
+        
+        //Validar fecha solicitada
+        Date fecha_solicitada = solicitud.getFecha_Solicitada();
+        if(fecha_solicitada == null){
+            camposError.add("- No hay fecha en que solicitó");
+        }
+        
+        //Validar productor
+        Productor productor = solicitud.getProductor();
+        if(productor == null){
+            camposError.add("- No hay información del productor");
+        }
+        
+        if(camposError.isEmpty()){
+           return solicitud;
+        }
+        
+        String mensaje = mensajeCampos(camposError);
+        
+        throw new ValidacionException(mensaje);
+        
+    }
+    
     /**
      * Contatena todos los elementos de la lista de tipo String
      *
@@ -191,5 +242,5 @@ public class NegocioTraslado implements INegocioTraslado {
         //Lista no está vacía
         return false;
     }
-
+    
 }
