@@ -137,10 +137,10 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     
         this.solicitarTrasloResiduo = solicitudesTablaResiduo.get(index);
     }
-    private void solicitarFecha(Date fecha){
-        SimpleDateFormat formateado = new SimpleDateFormat("dd/MM/yyyy");
-         
-        
+    private Date obetenerFecha(){
+        LocalDate fecha = this.solicitarFecha.getDate();
+        Date fechaSolicitud = new Date(fecha.getYear(), fecha.getMonthValue(), fecha.getDayOfMonth());
+    return fechaSolicitud;
     }
     /**
      * This method is called from within the constructor to initialize the form.
