@@ -5,3 +5,4 @@ DominioDesechosToxicos/target/test-classes/.netbeans_automatic_build
 *.class
 *.class
 DominioDesechosToxicos/target/classes/com/dominio/Cuenta.class
+Presentacion_Desechos_Toxicos/src/main/java/org/itson/presentacion/Productor/SolicitarTrasladoForm.java

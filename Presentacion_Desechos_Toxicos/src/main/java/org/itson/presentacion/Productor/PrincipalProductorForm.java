@@ -16,7 +16,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     /**
      * Creates new form PrincipalProductorForm
      */
-    private PrincipalProductorForm() {
+    PrincipalProductorForm() {
         initComponents();
     }
 
@@ -128,7 +128,9 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     }//GEN-LAST:event_regresarBtnActionPerformed
 
     private void solictarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solictarTrasladoBtnActionPerformed
-        abrirRegistroResiduoForm();
+        SolicitarTrasladoForm a = new SolicitarTrasladoForm();
+        a.setVisible(true);
+        dispose();
     }//GEN-LAST:event_solictarTrasladoBtnActionPerformed
 
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
