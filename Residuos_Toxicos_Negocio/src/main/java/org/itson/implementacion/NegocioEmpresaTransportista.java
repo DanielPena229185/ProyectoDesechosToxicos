@@ -1,31 +1,31 @@
 /**
-* INegocioEmpresaTransportista.java
-* 14 may. 2023 21:57:13
-*/ 
-
+ * INegocioEmpresaTransportista.java
+ * 14 may. 2023 21:57:13
+ */
 package org.itson.implementacion;
 
 import com.dominio.EmpresaTransportista;
 import java.util.List;
 import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PersistenciaException;
+import org.itson.excepciones.ValidacionException;
 import org.itson.implementaciones.fachada.FachadaPersistencia;
 import org.itson.interfaces.INegocioEmpresasTransportista;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripción de la clase: 
- * 
+ * Descripción de la clase:
+ *
  * @author Daniel Armando Peña Garcia ID:229185
  */
-public class INegocioEmpresaTransportista implements INegocioEmpresasTransportista{
+public class NegocioEmpresaTransportista implements INegocioEmpresasTransportista {
 
     IPersistencia persistencia;
-    
+
     /**
      * Constructor por default
      */
-    public INegocioEmpresaTransportista(){
+    public NegocioEmpresaTransportista() {
         persistencia = new FachadaPersistencia();
     }
 
@@ -49,6 +49,17 @@ public class INegocioEmpresaTransportista implements INegocioEmpresasTransportis
 
     @Override
     public EmpresaTransportista loginEmpresaTrasnportista(String correo, String contrasena) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+
+            if (correo == null || correo.isBlank()) {
+                throw new ValidacionException("Correo Inválido");
+            }
+
+            return persistencia.loginEmpresaTrasnportista(correo, contrasena);
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException(e.getMessage());
+        } catch (ValidacionException a) {
+            throw new PersistenciaException(a.getMessage());
+        }
     }
 }

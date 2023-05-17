@@ -16,6 +16,7 @@ import com.dominio.Vehiculo;
 import java.util.List;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioException;
+import org.itson.excepciones.PersistenciaException;
 import org.itson.interfaces.INegocio;
 import org.itson.interfaces.INegocioAdministrador;
 import org.itson.interfaces.INegocioProductor;
@@ -41,6 +42,7 @@ public class FachadaNegocio implements INegocio{
     INegocioTraslado negocioTraslado;
     INegocioVehiculo negocioVehiculo;
     INegocioAdministrador negocioAdministrador;
+    NegocioEmpresaTransportista negocioEmpresaTransportista;
 
     /**
      * Constructor por default
@@ -54,6 +56,7 @@ public class FachadaNegocio implements INegocio{
         negocioTraslado = NegocioFactory.getNegocioTraslado();
         negocioVehiculo = NegocioFactory.getNegocioVehiculo();
         negocioAdministrador = NegocioFactory.getNegocioAdministrador();
+        negocioEmpresaTransportista = NegocioFactory.getNegocioEmpresaTransportista();
     }
 
     @Override
@@ -168,6 +171,15 @@ public class FachadaNegocio implements INegocio{
     public Administrador loginAdministrador(String correo, String contrasena) throws NegocioException {
         try {
             return negocioAdministrador.loginAdministrador(correo, contrasena);
+        } catch (NegocioException e) {
+            throw new NegocioException(e.getMessage());
+        }
+    }
+
+    @Override
+    public EmpresaTransportista loginEmpresaTrasnportista(String correo, String contrasena) throws NegocioException {
+        try {
+            return negocioEmpresaTransportista.loginEmpresaTrasnportista(correo, contrasena);
         } catch (NegocioException e) {
             throw new NegocioException(e.getMessage());
         }

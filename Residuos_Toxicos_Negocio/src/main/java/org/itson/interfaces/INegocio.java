@@ -16,6 +16,7 @@ import com.dominio.Vehiculo;
 import java.util.List;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioException;
+import org.itson.excepciones.PersistenciaException;
 
 /**
  * Descripción de la interface:
@@ -68,5 +69,18 @@ public interface INegocio {
     List<Vehiculo> consultaVehiuculoEmpresaTrasnportadora(EmpresaTransportista empresaTransportista) throws NegocioException;
 
     public Administrador loginAdministrador(String correo, String contrasena) throws NegocioException;
+
+    /**
+     * Autentica una empresa transportista en algun sistema
+     *
+     * @param correo la dirección de correo electrónico de la empresa
+     * transportista
+     * @param contrasena la contraseña de la empresa transportista
+     * @return el objeto EmpresaTransportista correspondiente a los datos de
+     * inicio de sesión si son válidos
+     * @throws PersistenciaException si los datos de inicio de sesión son
+     * incorrectos o hay algún problema al realizar la autenticación
+     */
+    EmpresaTransportista loginEmpresaTrasnportista(String correo, String contrasena) throws NegocioException;
 
 }
