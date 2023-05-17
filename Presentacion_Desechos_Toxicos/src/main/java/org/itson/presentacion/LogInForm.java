@@ -251,8 +251,8 @@ public class LogInForm extends javax.swing.JFrame {
                 AdministradorDTO administrador = new AdministradorDTO();
                 administrador.setEmail(this.campoUsuario.getText());
                 administrador.setContrasena(this.campoContrasena.getText());
-//                adm = negocio.loginAdministrador(administrador);
-//                PrincipalAdministradorForm.setAdministrador(administrador);
+                adm = negocio.loginAdministrador(administrador.getEmail(), administrador.getContrasena());
+                PrincipalAdministradorForm.setAdministrador(adm);
                 PrincipalAdministradorForm.getInstance(adm);
                 this.setVisible(false);
                 } catch(NegocioException e){
