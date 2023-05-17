@@ -1,7 +1,6 @@
 package org.itson.presentacion.Productor;
 
 import com.dominio.Productor;
-import org.itson.presentacion.InicioForm;
 import org.itson.presentacion.LogInForm;
 import org.itson.presentacion.residuo.RegistroResiduoForm;
 

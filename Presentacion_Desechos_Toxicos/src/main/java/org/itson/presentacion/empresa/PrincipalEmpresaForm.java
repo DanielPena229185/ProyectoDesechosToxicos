@@ -5,7 +5,6 @@
 package org.itson.presentacion.empresa;
 
 import com.dominio.EmpresaTransportista;
-import org.itson.presentacion.Administrador.RegistrarTrasladoForm;
 import org.itson.presentacion.InicioForm;
 
 /**
@@ -22,6 +21,12 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
     public PrincipalEmpresaForm() {
         initComponents();
     }
+    
+    private void abrirRegistroTraslado() {
+        RegistrarTrasladoEmpresaForm registrarTraslado = null;
+        registrarTraslado = RegistrarTrasladoEmpresaForm.getInstance();
+        registrarTraslado.setEmpresaTransportista(empresa);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,11 +39,11 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        regsarBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         registarEmpresaBtn = new javax.swing.JButton();
         registrarTrasladoBtn = new javax.swing.JButton();
+        regsarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -47,14 +52,6 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
         jLabel1.setText("Empresa");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 48, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 101, 134, 10));
-
-        regsarBtn.setText("Regresar");
-        regsarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regsarBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(regsarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 460, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 155, 71));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -78,6 +75,13 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
             }
         });
 
+        regsarBtn.setText("Regresar");
+        regsarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regsarBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -91,7 +95,10 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
                             .addComponent(registarEmpresaBtn)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(205, 205, 205)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(regsarBtn)))
                 .addContainerGap(217, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -103,18 +110,19 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
                 .addComponent(registarEmpresaBtn)
                 .addGap(48, 48, 48)
                 .addComponent(registrarTrasladoBtn)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                .addComponent(regsarBtn)
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 680, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarTrasladoBtnActionPerformed
-        RegistrarTrasladoForm b = new RegistrarTrasladoForm();
-        b.setVisible(true);
-        dispose();
+        this.abrirRegistroTraslado();
+        this.setVisible(false);
     }//GEN-LAST:event_registrarTrasladoBtnActionPerformed
 
     private void regsarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regsarBtnActionPerformed
