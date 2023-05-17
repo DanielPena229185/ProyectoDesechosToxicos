@@ -1,10 +1,18 @@
-
 package org.itson.presentacion.Administrador;
 
+import com.dominio.Administrador;
+import com.dominio.Solicitud;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import org.itson.implementacion.FachadaNegocio;
+import org.itson.interfaces.INegocio;
 import org.itson.presentacion.Administrador.PrincipalAdministradorForm;
+import org.itson.utils.ConfiguracionDePaginado;
 
 /**
- * Descripción de la clase: Solicitudes de traslados 
+ * Descripción de la clase: Solicitudes de traslados
  *
  * @author Aracely Campa Quintana ID: 233215
  * @author Edgar Emir Borbon Jimenez ID:
@@ -13,11 +21,62 @@ import org.itson.presentacion.Administrador.PrincipalAdministradorForm;
  */
 public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
+    private Administrador administrador;
+    private SolicitudesTrasladosForm solicitudesTrasladosForm;
+    private INegocio negocio;
+    private ConfiguracionDePaginado configPaginado;
+
     /**
      * Creates new form TrasladoEmpresasForm
      */
-    public SolicitudesTrasladosForm() {
+    public SolicitudesTrasladosForm(Administrador administrador) {
         initComponents();
+        this.administrador = administrador;
+        negocio = new FachadaNegocio();
+        configPaginado = new ConfiguracionDePaginado(0, 3);
+        ejecucionLlenadoTablaSolicitudes();
+        this.setVisible(true);
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+
+    private List<Solicitud> consultaSolicitudesNoAtendidas() {
+        List<Solicitud> solicitudes = negocio.consultaSolicitudesNoAtendidas();
+        return solicitudes;
+    }
+
+    private List<Solicitud> consultaSolicitudesConConfiguracionTabla(ConfiguracionDePaginado configuracionPaginado, List<Solicitud> solicitudes) {
+        int offset = configuracionPaginado.getElementoASaltar();
+        int limit = configuracionPaginado.getElementosPorPagina();
+
+        List<Solicitud> lista = new ArrayList<>();
+        for (int i = offset; i < limit; i++) {
+            lista.add(solicitudes.get(i));
+        }
+        return lista;
+    }
+
+    private void llenarTablaSolicitudes(List<Solicitud> solicitudes) {
+                    SimpleDateFormat formateado = new SimpleDateFormat("dd/MM/yyyy");
+
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.tableSolicitudes.getModel();
+        modeloTabla.setRowCount(0);
+        for (Solicitud s : solicitudes) {
+            Object[] fila = {s.getProductor().getNombre(), s.toString()};
+            modeloTabla.addRow(fila);
+        }
+    }
+
+    private void ejecucionLlenadoTablaSolicitudes() {
+        List<Solicitud> solicitudes = consultaSolicitudesNoAtendidas();
+        solicitudes = consultaSolicitudesConConfiguracionTabla(configPaginado, solicitudes);
+        llenarTablaSolicitudes(solicitudes);
     }
 
     /**
@@ -35,12 +94,12 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         label1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableDatosEmpresa = new javax.swing.JTable();
         asignarBtn = new javax.swing.JButton();
         regresarBtn = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableSolicitudes = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         cerrarSesionBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,29 +130,6 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 340, 20));
 
-        tableDatosEmpresa.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Productor", "Fecha Solicitada", "Residuos a transportar"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tableDatosEmpresa);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 420, 80));
-
         asignarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         asignarBtn.setText("siguiente");
         asignarBtn.setContentAreaFilled(false);
@@ -102,7 +138,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
                 asignarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(asignarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, -1, -1));
+        jPanel1.add(asignarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 490, -1, -1));
 
         regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         regresarBtn.setText("Regresar");
@@ -112,14 +148,42 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
                 regresarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(regresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
+        jPanel1.add(regresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 530));
+        tableSolicitudes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
+            },
+            new String [] {
+                "Productor", "Residuo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tableSolicitudes);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 530, 190));
 
         jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
         jLabel3.setText("Sesion: Administrador");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 530));
+
+        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
 
         cerrarSesionBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
         cerrarSesionBtn.setText("Cerrar Sesion");
@@ -131,82 +195,75 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(cerrarSesionBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 199, Short.MAX_VALUE)
+                .addComponent(cerrarSesionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cerrarSesionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)))
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addComponent(cerrarSesionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 465, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 300, 530));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 340, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboBoxEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxEmpresaActionPerformed
-        
+
 
     }//GEN-LAST:event_comboBoxEmpresaActionPerformed
 
     private void asignarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarBtnActionPerformed
-       RegistrarTrasladoForm r = new RegistrarTrasladoForm();
-       r.setVisible(true);
-       dispose();
+        RegistrarTrasladoForm r = new RegistrarTrasladoForm();
+        r.setVisible(true);
+        dispose();
     }//GEN-LAST:event_asignarBtnActionPerformed
 
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
-      PrincipalAdministradorForm p = new PrincipalAdministradorForm();
-      p.setVisible(true);
-      dispose();
+        PrincipalAdministradorForm p = new PrincipalAdministradorForm();
+        p.setVisible(true);
+        dispose();
     }//GEN-LAST:event_regresarBtnActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new SolicitudesTrasladosForm().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                new SolicitudesTrasladosForm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton asignarBtn;
@@ -217,10 +274,10 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel label1;
     private javax.swing.JButton regresarBtn;
-    private javax.swing.JTable tableDatosEmpresa;
+    private javax.swing.JTable tableSolicitudes;
     // End of variables declaration//GEN-END:variables
 }

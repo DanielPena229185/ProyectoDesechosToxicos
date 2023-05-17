@@ -31,7 +31,7 @@ public class Solicitud {
     /**
      * Fecha en la que fue solicitada
      */
-    private Date fecha_solicitada;
+    private Date fecha_Solicitada;
 
     /**
      * Residuo de la Solicitud
@@ -60,7 +60,7 @@ public class Solicitud {
      */
     public Solicitud(ObjectId id, Date fechaSolicitada, Estado estado, List<Residuo> residuo, Productor productor) {
         this.id = id;
-        this.fecha_solicitada = fechaSolicitada;
+        this.fecha_Solicitada = fechaSolicitada;
         this.estado = estado;
         this.residuos = residuo;
         this.productor = productor;
@@ -68,7 +68,7 @@ public class Solicitud {
 
     /**
      * Constructor con fecha en la que solicitó, residuos y productor que lo
- solicitó
+     * solicitó
      *
      * @param fechaSolicitada Fecha en la que se solicitó
      * @param estado Estado de la solicitud
@@ -76,7 +76,7 @@ public class Solicitud {
      * @param productor id del Productor que solicitó
      */
     public Solicitud(Date fechaSolicitada, Estado estado, List<Residuo> residuo, Productor productor) {
-        this.fecha_solicitada = fechaSolicitada;
+        this.fecha_Solicitada = fechaSolicitada;
         this.estado = estado;
         this.residuos = residuo;
         this.productor = productor;
@@ -124,7 +124,7 @@ public class Solicitud {
      * @return objeto Date que es la fecha de la Solicitud
      */
     public Date getFecha_Solicitada() {
-        return fecha_solicitada;
+        return fecha_Solicitada;
     }
 
     /**
@@ -132,8 +132,8 @@ public class Solicitud {
      *
      * @param fecha_solicitada objeto Date a asignar a la Solicitud
      */
-    public void setFechaSolicitada(Date fecha_solicitada) {
-        this.fecha_solicitada = fecha_solicitada;
+    public void setFecha_Solicitada(Date fecha_solicitada) {
+        this.fecha_Solicitada = fecha_solicitada;
     }
 
     /**
@@ -170,6 +170,15 @@ public class Solicitud {
      */
     public void setProductor(Productor productor) {
         this.productor = productor;
+    }
+
+    @Override
+    public String toString() {
+        String texto = "";
+        for (Residuo r : residuos) {
+            texto += r.getNombre()+", ";
+        }
+        return texto;
     }
 
 }

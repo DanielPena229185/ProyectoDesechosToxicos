@@ -121,9 +121,8 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void solictarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solictarTrasladoBtnActionPerformed
-       SolicitudesTrasladosForm b = new SolicitudesTrasladosForm();
-    b.setVisible(true);
-    dispose();
+        SolicitudesTrasladosForm solicitudesTrasladosForm = new SolicitudesTrasladosForm(administrador);
+//    dispose();
 
     }//GEN-LAST:event_solictarTrasladoBtnActionPerformed
 

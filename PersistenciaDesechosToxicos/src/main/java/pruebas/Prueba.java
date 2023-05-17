@@ -3,35 +3,18 @@
  */
 package pruebas;
 
-import com.dominio.Administrador;
-import com.dominio.Cuenta;
-import com.dominio.EmpresaTransportista;
 import com.dominio.Estado;
+import com.dominio.MedidaResiduo;
 import com.dominio.Productor;
-import com.dominio.Quimico;
 import com.dominio.Residuo;
 import com.dominio.Solicitud;
-import com.dominio.Traslado;
-import com.dominio.Vehiculo;
+import com.mongodb.client.MongoCollection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import org.bson.types.ObjectId;
-import org.itson.DTO.ProductorDTO;
-import org.itson.DTO.ResiduoDTO;
 import org.itson.implementaciones.bd.ConexionBD;
-import org.itson.implementaciones.bd.DAOFactory;
-import org.itson.implementaciones.daos.QuimicosDAO;
-import org.itson.implementaciones.daos.ResiduosDAO;
-import org.itson.interfaces.IAdministradoresDAO;
-import org.itson.interfaces.IEmpresasTrasnportistasDAO;
-import org.itson.interfaces.IProductoresDAO;
-import org.itson.interfaces.IQuimicosDAO;
-import org.itson.interfaces.IResiduosDAO;
-import org.itson.interfaces.ISolicitudesDAO;
-import org.itson.interfaces.ITrasladosDAO;
-import org.itson.interfaces.IVehiculosDAO;
 
 /**
  *
@@ -41,9 +24,27 @@ public class Prueba {
 
     public static void main(String[] args) {
 
-        ISolicitudesDAO solicitudesDAO = DAOFactory.getSolicitudesDAO();
-        Solicitud solicitud = new Solicitud();
-        solicitud.setId(new ObjectId("645dde6c6e1569d7770b1994"));
-        solicitudesDAO.actualizaEstadoASolicitudAtendida(solicitud);
+        MongoCollection<Solicitud> Coleccion = ConexionBD.getBaseDatos().getCollection("solicitudes", Solicitud.class);
+        Residuo r = new Residuo();
+        r.setNombre("r2");
+        Residuo r1 = new Residuo();
+        r1.setNombre("r1");
+        Residuo r2 = new Residuo();
+        r2.setNombre("r2");
+        Productor productor = new Productor();
+        productor.setId(new ObjectId("646314f6dff379d164733ebf"));
+        productor.setNombre("Producto 3");
+//        Solicitud s = new Solicitud(new Date(), Estado.NO_ATENDIDA, Arrays.asList(r, r1, r2), productor);
+        Solicitud s1 = new Solicitud(new Date(), Estado.NO_ATENDIDA, Arrays.asList(r, r1, r2), productor);
+        Solicitud s2 = new Solicitud(new Date(), Estado.NO_ATENDIDA, Arrays.asList(r, r1, r2), productor);
+        
+//        Coleccion.insertMany(Arrays.asList(s,s1,s2));
+        List<Solicitud> list = new ArrayList<>();
+        Coleccion.find().into(list);
+
+        for (Solicitud s : list) {
+            System.out.println(s.getId() + ", " + s.getProductor().getNombre() + ", " + s.getFecha_Solicitada() + ", " + s.toString());
+
+        }
     }
 }
