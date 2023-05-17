@@ -1,8 +1,15 @@
-/Residuos_Toxicos_Negocio/target/
-DominioDesechosToxicos/target/classes/.netbeans_automatic_build
-DominioDesechosToxicos/target/test-classes/.netbeans_automatic_build
-*.class
-*.class
-*.class
-DominioDesechosToxicos/target/classes/com/dominio/Cuenta.class
-Presentacion_Desechos_Toxicos/src/main/java/org/itson/presentacion/Productor/SolicitarTrasladoForm.java
+# Netbeans
+/nbproject/private/
+/nbproject/Makefile-.mk
+**/nbproject/Package-.bash
+/nbproject/build-impl.xml
+/nbproject/genfiles.properties
+/nbproject/project.properties
+/nbactions.xml
+**/target/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+nb-configuration.xml

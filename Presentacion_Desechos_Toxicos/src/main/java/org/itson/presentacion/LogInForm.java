@@ -9,7 +9,6 @@ import com.dominio.Administrador;
 import com.dominio.EmpresaTransportista;
 import com.dominio.Productor;
 import java.awt.Color;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import org.itson.DTO.AdministradorDTO;
 import org.itson.DTO.EmpresaTransportistaDTO;
@@ -268,17 +267,21 @@ public class LogInForm extends javax.swing.JFrame {
                 dispose();
                 break;
             case EMPRESA_TRANSPORTADORA:
-                try{
-                EmpresaTransportistaDTO empresa = new EmpresaTransportistaDTO();
-                empresa.setEmail(this.campoUsuario.getText());
-                empresa.setContrasena(this.campoContrasena.getText());
-                emp = negocio.loginEmpresaTransportista(empresa);
-                PrincipalEmpresaForm.setEmpresa(empresa);
-                PrincipalEmpresaForm.getInstance(emp);
-                this.setVisible(false);
-                } catch(NegocioException e){
-                     JOptionPane.showMessageDialog(this, e.getMessage());
+                EmpresaTransportista empresaTransportista = null;
+                try {
+                    EmpresaTransportistaDTO empresaTransportistaDTO = new EmpresaTransportistaDTO();
+                    empresaTransportistaDTO.setEmail(this.campoUsuario.getText());
+                    empresaTransportistaDTO.setContrasena(this.campoContrasena.getText());
+                    empresaTransportista = this.negocio.loginEmpresaTrasnportista(empresaTransportistaDTO.getEmail(), empresaTransportistaDTO.getContrasena());
+                    System.out.println(empresaTransportista.getNombre());
+                    PrincipalEmpresaForm principalForm;
+                    principalForm = PrincipalEmpresaForm.getInstance();
+                    principalForm.setEmpresa(empresaTransportista);
+                    this.setVisible(false);
+                } catch (NegocioException e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "No se pudo iniciar sesión.", JOptionPane.ERROR_MESSAGE);
                 }
+                this.dispose();
                 break;
             case PRODUCTOR:
                 Productor pro = null;

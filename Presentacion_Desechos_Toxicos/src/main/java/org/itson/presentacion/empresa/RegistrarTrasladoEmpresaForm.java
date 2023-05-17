@@ -5,7 +5,10 @@
 package org.itson.presentacion.empresa;
 
 import com.dominio.EmpresaTransportista;
+import com.dominio.Estado;
 import com.dominio.Traslado;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +33,6 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
     private RegistrarTrasladoEmpresaForm() {
         this.negocio = new FachadaNegocio();
         initComponents();
-        this.cargarTablaTraslados();
     }
 
     /**
@@ -46,8 +48,10 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
         tablaTraslados = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         registrarBtn = new javax.swing.JButton();
+        lblNombreEmpresa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         tablaTraslados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,10 +63,18 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
             new String [] {
                 "Fecha Solicitada", "Residuo", "Cantidad", "Productor"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaTraslados);
 
-        jLabel1.setText("Registrar Traslado: Empresa");
+        jLabel1.setText("Registrar Traslado:");
 
         registrarBtn.setText("Registrar");
 
@@ -74,7 +86,10 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(7, 7, 7)
+                        .addComponent(lblNombreEmpresa))
                     .addComponent(registrarBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -82,7 +97,9 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblNombreEmpresa))
                 .addGap(70, 70, 70)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
@@ -91,6 +108,7 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public static RegistrarTrasladoEmpresaForm getInstance() {
@@ -101,8 +119,18 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
         return form;
     }
     
+    public void iniciarComponentes() {
+        this.cargarTablaTraslados();
+        this.lblNombreEmpresa.setText(this.empresaTransportista.getNombre());
+        this.abrirVentana();
+    }
+    
     public void setEmpresaTransportista(EmpresaTransportista empresaTransportista) {
         this.empresaTransportista = empresaTransportista;
+    }
+    
+    private void abrirVentana() {
+        this.setVisible(true);
     }
     
     private List<Traslado> consultarListaTraslados() throws PresentacionException {
@@ -113,6 +141,11 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
         }
     }
     
+    private String formatearFecha(Date fecha) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(fecha);
+    }
+    
     private void cargarTablaTraslados() {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tablaTraslados.getModel();
         modeloTabla.setNumRows(0);
@@ -121,14 +154,16 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
             List<Traslado> traslados = this.consultarListaTraslados();
         
             for (Traslado traslado : traslados) {
-                Object[] fila = {
-                    "Hola",
-                    traslado.getResiduo().getNombre(),
-                    traslado.getResiduo().getCantidad(),
-                    traslado.getResiduo().getProductor().getNombre()
-                };
-
-                modeloTabla.addRow(fila);
+                if (traslado.getSolicitud().getEstado() == Estado.NO_ATENDIDA) {
+                    Object[] fila = {
+                        this.formatearFecha(traslado.getSolicitud().getFecha_Solicitada()),
+                        traslado.getResiduo().getNombre(),
+                        traslado.getResiduo().getCantidad(),
+                        traslado.getResiduo().getProductor().getNombre()
+                    };
+                    
+                    modeloTabla.addRow(fila);
+                }
             }
         } catch (PresentacionException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -174,6 +209,7 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblNombreEmpresa;
     private javax.swing.JButton registrarBtn;
     private javax.swing.JTable tablaTraslados;
     // End of variables declaration//GEN-END:variables
