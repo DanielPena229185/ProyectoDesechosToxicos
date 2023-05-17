@@ -35,6 +35,8 @@ public class NegocioTransporte implements INegocioTransporte {
     @Override
     public Transporte insertarTransporte(Transporte transporte) throws NegocioException {
         try {
+            EmpresaTransportista empresaTransportista = particionesEmpresaTransportista(transporte.getEmpresa_Transportista());
+            transporte.setEmpresaTransportista(empresaTransportista);
             return persistencia.insertarTrasnporte(transporte);
         } catch (PersistenciaException e) {
             throw new NegocioException(e.getMessage());
@@ -69,11 +71,38 @@ public class NegocioTransporte implements INegocioTransporte {
         if (costo == null || costo == 0) {
             camposError.add("- No se especificó el costo");
         }
-        
+
         //Validar Empresa transportista
         EmpresaTransportista empresaTransportista = transporte.getEmpresa_Transportista();
-        return null;
+        if (empresaTransportista == null) {
+            camposError.add("- No hay información de la empresa transportista");
+        } else {
+            empresaTransportista = particionesEmpresaTransportista(empresaTransportista);
+            transporte.setEmpresaTransportista(empresaTransportista);
+        }
 
+        if (camposError.isEmpty()) {
+            return transporte;
+        }
+        
+        String mensaje = mensajeCampos(camposError);
+        
+        throw new ValidacionException(mensaje);
+    }
+
+    private EmpresaTransportista particionesEmpresaTransportista(EmpresaTransportista empresaTransportista) throws ValidacionException {
+
+        if (empresaTransportista == null) {
+            throw new ValidacionException("- No hay información de la empresa transportista");
+        }
+
+        //Limpiar lista de vehículos
+        empresaTransportista.setVehiculos(new LinkedList<>());
+
+        //Limpiar lista de transportes
+        empresaTransportista.setTransportes(new LinkedList<>());
+
+        return empresaTransportista;
     }
 
     /**
@@ -90,6 +119,20 @@ public class NegocioTransporte implements INegocioTransporte {
         }
         //Lista no está vacía
         return false;
+    }
+
+    /**
+     * Contatena todos los elementos de la lista de tipo String
+     *
+     * @param listaCampos Lista que quiere concatenar sus elementos
+     * @return Cadena concatenada de la lista de elementos
+     */
+    private String mensajeCampos(List<String> listaCampos) {
+        String mensaje = "";
+        for (String campo : listaCampos) {
+            mensaje += campo + "\n";
+        }
+        return mensaje;
     }
 
 }
