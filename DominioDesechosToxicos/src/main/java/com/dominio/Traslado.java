@@ -25,11 +25,16 @@ public class Traslado {
      * Residuo que tendra el Traslado
      */
     private Residuo residuo;
-
+    
     /**
-     * Adminisitrador que registro el Traslado
+     * Administrador que registro el Traslado
      */
     private Administrador administrador;
+
+    /**
+     * Solicitud que registro el Traslado
+     */
+    private Solicitud solicitud;
     /**
      * Direccion a la que se dirige el Traslado
      */
@@ -50,14 +55,16 @@ public class Traslado {
      *
      * @param id identificador a asignar
      * @param residuo Residuo a asignar
-     * @param administrador Administrador a asignar
+     * @param administrador
+     * @param solicitud solicitud a asignar
      * @param direccion Direccion a asignar
-     * @param transporte Trasnporte a asignar
+     * @param empresas_transportistas
      */
-    public Traslado(ObjectId id, Residuo residuo, Administrador administrador, Direccion direccion, List<EmpresaTransportista> empresas_trasnportistas) {
+    public Traslado(ObjectId id, Residuo residuo, Administrador administrador, Solicitud solicitud, Direccion direccion, List<EmpresaTransportista> empresas_transportistas) {    
         this.id = id;
         this.residuo = residuo;
         this.administrador = administrador;
+        this.solicitud = solicitud;
         this.direccion = direccion;
         this.empresas_transportistas = empresas_transportistas;
     }
@@ -66,15 +73,16 @@ public class Traslado {
      * Constructor que le asigna valores a todos los atributos del Traslado
      * menos el Id
      *
-     * @param cantidadResiduo cantidad de residuos a asignar
      * @param residuo Residuo a asignar
-     * @param administrador Administrador a asignar
+     * @param administrador
+     * @param solicitud solicitud a asignar
+     * @param empresas_transportistas a asignar.
      * @param direccion Direccion a asignar
-     * @param transporte Trasnporte a asignar
      */
-    public Traslado(Residuo residuo, Administrador administrador, Direccion direccion, List<EmpresaTransportista> empresas_transportistas) {
+    public Traslado(Residuo residuo, Administrador administrador, Solicitud solicitud, Direccion direccion, List<EmpresaTransportista> empresas_transportistas) {    
         this.residuo = residuo;
         this.administrador = administrador;
+        this.solicitud = solicitud;
         this.direccion = direccion;
         this.empresas_transportistas = empresas_transportistas;
     }
@@ -118,19 +126,37 @@ public class Traslado {
     /**
      * Regresa el Administrador del Traslado
      *
-     * @return el Administrador del Traslado
+     * @return el administrador del Traslado
      */
     public Administrador getAdministrador() {
         return administrador;
     }
 
     /**
-     * Le asigna un Administrador al Traslado
+     * Le asigna un administrador al Traslado
      *
      * @param administrador a asignar
      */
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
+    }
+
+    /**
+     * Regresa el solicitud del Traslado
+     *
+     * @return el solicitud del Traslado
+     */
+    public Solicitud getSolicitud() {
+        return solicitud;
+    }
+
+    /**
+     * Le asigna un solicitud al Traslado
+     *
+     * @param solicitud a asignar
+     */
+    public void setSolicitud(Solicitud solicitud) {
+        this.solicitud = solicitud;
     }
 
     /**
@@ -163,10 +189,9 @@ public class Traslado {
     /**
      * Le asigna una Lista de Empresas Transportistas
      *
-     * @param empresas_trasnportistas a asignar
+     * @param empresas_transportistas
      */
     public void setEmpresas_transportistas(List<EmpresaTransportista> empresas_transportistas) {
         this.empresas_transportistas = empresas_transportistas;
     }
-
 }
