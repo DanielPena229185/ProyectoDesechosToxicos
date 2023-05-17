@@ -123,7 +123,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tableResiduos.getModel();
         modeloTabla.setRowCount(0);
         for (Residuo r : solicitudesTablaSolicitudes.get(index).getResiduos()) {
-            Object[] fila = {r.getNombre(), r.getCantidad()};
+            Object[] fila = {r.getNombre(), r.getCantidad(),r.getMedida_residuo().toString()};
             modeloTabla.addRow(fila);
 
         }
@@ -254,7 +254,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
                 btnAsignarEmpresasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAsignarEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 130, 40));
+        jPanel1.add(btnAsignarEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 150, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 530));
 
@@ -283,14 +283,14 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Cantidad"
+                "Nombre", "Cantidad", "Medicion"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -375,7 +375,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
     private void btnAsignarEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarEmpresasActionPerformed
         // TODO add your handling code here:
-        RegistrarTrasladoForm registrarTrasladoForm = new RegistrarTrasladoForm(this.solicitudSeleccionada);
+        RegistrarTrasladoForm registrarTrasladoForm = new RegistrarTrasladoForm(this.solicitudSeleccionada,administrador);
     }//GEN-LAST:event_btnAsignarEmpresasActionPerformed
 
     /**
