@@ -33,19 +33,26 @@ public class LogInForm extends javax.swing.JFrame {
     private static final String EMPRESA_TRANSPORTADORA = "Empresa Transportadora";
     private static final String CORREO_DEFAULT = "info@ejemplo.com";
     private static final String CONTRASENA_DEFAULT = "123456789112345";
-    JComboBox<String> comboBox = new JComboBox<String>();
     INegocio negocio;
     static LogInForm login;
 
     /**
      * Creates new form LogInForm
      */
-    LogInForm() {
+    private LogInForm() {
         negocio = new FachadaNegocio();
         initComponents();
         this.setVisible(true);
     }
 
+    public void iniciarComponentes(){
+        this.abrirVentana();
+    }
+    
+    private void abrirVentana(){
+        this.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -280,8 +287,10 @@ public class LogInForm extends javax.swing.JFrame {
                     productor.setEmail(this.campoUsuario.getText());
                     productor.setContrasena(this.campoContrasena.getText());
                     pro = negocio.loginProductor(productor);
-                    PrincipalProductorForm.setProductor(pro);
-                    PrincipalProductorForm.getInstance(pro);
+                    PrincipalProductorForm principal;
+                    principal = PrincipalProductorForm.getInstance();
+                    principal.setProductor(pro);
+                    principal.iniciarComponentes();
                     this.setVisible(false);
                 } catch (NegocioException e) {
                     JOptionPane.showMessageDialog(this, e.getMessage());
@@ -350,6 +359,7 @@ public class LogInForm extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override

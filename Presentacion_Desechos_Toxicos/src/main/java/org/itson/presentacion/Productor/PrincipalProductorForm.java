@@ -1,9 +1,9 @@
-
 package org.itson.presentacion.Productor;
 
 import com.dominio.Productor;
 import org.itson.presentacion.InicioForm;
-import org.itson.presentacion.RegistrarResiduoForm;
+import org.itson.presentacion.LogInForm;
+import org.itson.presentacion.residuo.RegistroResiduoForm;
 
 /**
  *
@@ -11,16 +11,14 @@ import org.itson.presentacion.RegistrarResiduoForm;
  */
 public class PrincipalProductorForm extends javax.swing.JFrame {
 
-    static Productor productor;
+    private Productor productor;
     private static PrincipalProductorForm form;
-    
+
     /**
      * Creates new form PrincipalProductorForm
      */
-    public PrincipalProductorForm() {
+    private PrincipalProductorForm() {
         initComponents();
-        System.out.println(productor.getId().toString() + " " + productor.getNombre());
-        this.setVisible(true);
     }
 
     /**
@@ -47,9 +45,10 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
         jLabel2.setText("PRODUCTOR");
 
-        solictarTrasladoBtn.setBackground(new java.awt.Color(153, 204, 255));
+        solictarTrasladoBtn.setBackground(new java.awt.Color(0, 0, 0));
         solictarTrasladoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        solictarTrasladoBtn.setText("Solicitar Traslado");
+        solictarTrasladoBtn.setForeground(new java.awt.Color(255, 255, 255));
+        solictarTrasladoBtn.setText("Registrar Residuo");
         solictarTrasladoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 solictarTrasladoBtnActionPerformed(evt);
@@ -76,14 +75,14 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
                         .addGap(224, 224, 224)
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addComponent(solictarTrasladoBtn))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(regresarBtn)))
+                        .addComponent(regresarBtn))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addComponent(solictarTrasladoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -93,9 +92,9 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(solictarTrasladoBtn)
-                .addGap(188, 188, 188)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(solictarTrasladoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(218, 218, 218)
                 .addComponent(regresarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
         );
@@ -121,15 +120,24 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
-        InicioForm p = new InicioForm();
-        p.setVisible(true);
-        dispose();
+        this.abrirLoginForm();
+        this.cerrarVentana();
     }//GEN-LAST:event_regresarBtnActionPerformed
 
     private void solictarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solictarTrasladoBtnActionPerformed
-        new RegistrarResiduoForm().setVisible(true);
+        RegistroResiduoForm registroResiduo = null;
+        registroResiduo = RegistroResiduoForm.getInstance();
+        registroResiduo.setProductor(productor);
+        registroResiduo.iniciarComponentes();
     }//GEN-LAST:event_solictarTrasladoBtnActionPerformed
 
+    public void iniciarComponentes(){
+        this.abrirVentana();
+    }
+    
+    private void abrirVentana(){
+        this.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -165,25 +173,37 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
-    public static PrincipalProductorForm getInstance(Productor productor){
-        PrincipalProductorForm.productor = productor;
-        if(form == null){
+    public static PrincipalProductorForm getInstance() {
+        if (form == null) {
             form = new PrincipalProductorForm();
         }
         return form;
     }
-    
+
     public Productor getProductor() {
         return productor;
     }
 
-    public static void setProductor(Productor productor) {
-        PrincipalProductorForm.productor = productor;
+    public void setProductor(Productor productor) {
+        this.productor = productor;
+    }
+    
+    private void abrirLoginForm(){
+        LogInForm login = LogInForm.getInstance();
+        login.iniciarComponentes();
     }
 
-    
-    
+    private void cerrarVentana(){
+        this.setVisible(false);
+        this.reiniciarFrame();
+    }
+
+    private void reiniciarFrame(){
+        form = null;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;

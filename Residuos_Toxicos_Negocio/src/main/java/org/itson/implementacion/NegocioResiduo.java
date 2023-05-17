@@ -52,13 +52,16 @@ public class NegocioResiduo implements INegocioResiduo {
                 throw new ValidacionException("No hay información del residuo");
             }
 
-            //Realiza las particiones para solo guardar lo importante del
-            //productor
-            this.realizarParticiones(residuo);
-
             //Valida si el residuo cumple las validaciones para guardarse en la
             //Base de datos
             this.validarResiduoInsertar(residuo);
+
+            //Valida si el residuo ya existe
+            this.validarInexistenciaResiduo(residuo);
+
+            //Realiza las particiones para solo guardar lo importante del
+            //productor
+            this.realizarParticiones(residuo);
 
             //Se inserta el residuo a la base de datos
             persistencia.insertarResiduo(residuo);
@@ -124,9 +127,7 @@ public class NegocioResiduo implements INegocioResiduo {
         if (this.validarListaVacia(listaQuimicos)) {
             //Si la lista de químicos está vacía
             camposErroneos.add("- No hay compuestos químicos");
-        }
-
-        if (listaQuimicos.size() < 2) {
+        } else if (listaQuimicos.size() < 2) {
             //Si la lista tiene menos de dos químicos
             camposErroneos.add("- El residuo debe estar compuesto por almenos dos químicos");
         }
@@ -220,6 +221,9 @@ public class NegocioResiduo implements INegocioResiduo {
         }
 
         //Solo permitimos el acceso a los datos del productor necesario
+        if (residuo.getProductor() == null) {
+            throw new ValidacionException("No hay informacion del productor");
+        }
         Productor productor = residuo.getProductor();
         //Limpiar lista de residuos
         productor.setResiduos(null);
@@ -242,13 +246,86 @@ public class NegocioResiduo implements INegocioResiduo {
             throw new ValidacionException("No hay información del residuo");
         }
 
-        residuoDTO.setClave(residuo.getCodigo());
-        residuoDTO.setNombre(residuo.getNombre());
-        residuoDTO.setQuimicos(residuo.getQuimicos());
-        residuoDTO.setNombreEmpresaProductora(residuo.getProductor().getNombre());
+        String clave = residuo.getCodigo();
+        residuoDTO.setClave(clave);
+        String nombre = residuo.getNombre();
+        residuoDTO.setNombre(nombre);
+        List<Quimico> quimicos = residuo.getQuimicos();
+        residuoDTO.setQuimicos(quimicos);
+
+        Productor productor = residuo.getProductor();
+        if (productor != null) {
+            residuoDTO.setNombreEmpresaProductora(residuo.getProductor().getNombre());
+        }
         residuoDTO.setId_EmpresaProductora(residuo.getProductor().getId());
 
         return residuoDTO;
+    }
+
+    private Residuo validarInexistenciaResiduo(Residuo residuo) throws ValidacionException {
+
+        List<String> campoError = new LinkedList<>();
+
+        if (residuo == null) {
+            throw new ValidacionException("No hay información del residuo");
+        }
+
+        //Validar que no exista el código
+        String codigo = residuo.getCodigo();
+        if (validarCodigoExistenteResiduo(codigo)) {
+            campoError.add("- Mismo código");
+        }
+
+        //Validar que no exista el nombre
+        String nombre = residuo.getNombre();
+        if (validarNombreExistenteResiduo(nombre)) {
+            campoError.add("- Mismo nombre");
+        }
+
+        //Validar que no existan los mismos químicos en un residuo
+        List<Quimico> quimicos = residuo.getQuimicos();
+        if (validarListaQuimicosExistenteResiduo(quimicos)) {
+            campoError.add("- Mismos químicos");
+        }
+
+        if (campoError.isEmpty()) {
+            return residuo;
+        }
+
+        String mensaje = mensajeCampos(campoError);
+
+        throw new ValidacionException("Ya existen los siguientes datos: \n"
+                + mensaje);
+    }
+
+    private boolean validarCodigoExistenteResiduo(String codigo) {
+        Residuo residuo = new Residuo();
+        residuo.setCodigo(codigo);
+        int elementos = this.consultarResiduoFiltro(residuo).size();
+        if (elementos > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validarNombreExistenteResiduo(String nombre) {
+        Residuo residuo = new Residuo();
+        residuo.setNombre(nombre);
+        int elementos = this.consultarResiduoFiltro(residuo).size();
+        if (elementos > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validarListaQuimicosExistenteResiduo(List<Quimico> quimicos) {
+        Residuo residuo = new Residuo();
+        residuo.setQuimicos(quimicos);
+        int elementos = this.consultarResiduoFiltro(residuo).size();
+        if (elementos > 0) {
+            return true;
+        }
+        return false;
     }
 
 }
