@@ -36,8 +36,12 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         solictarTrasladoBtn = new javax.swing.JButton();
         regresarBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 204, 255));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                formComponentHidden(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -125,14 +129,23 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     }//GEN-LAST:event_regresarBtnActionPerformed
 
     private void solictarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solictarTrasladoBtnActionPerformed
+        abrirRegistroResiduoForm();
+    }//GEN-LAST:event_solictarTrasladoBtnActionPerformed
+
+    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
+        this.abrirLoginForm();
+        this.cerrarVentana();
+    }//GEN-LAST:event_formComponentHidden
+
+    public void iniciarComponentes(){
+        this.abrirVentana();
+    }
+    
+    private void abrirRegistroResiduoForm(){
         RegistroResiduoForm registroResiduo = null;
         registroResiduo = RegistroResiduoForm.getInstance();
         registroResiduo.setProductor(productor);
         registroResiduo.iniciarComponentes();
-    }//GEN-LAST:event_solictarTrasladoBtnActionPerformed
-
-    public void iniciarComponentes(){
-        this.abrirVentana();
     }
     
     private void abrirVentana(){

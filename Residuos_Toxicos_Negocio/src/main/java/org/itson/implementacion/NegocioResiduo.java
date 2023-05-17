@@ -256,9 +256,9 @@ public class NegocioResiduo implements INegocioResiduo {
         Productor productor = residuo.getProductor();
         if (productor != null) {
             residuoDTO.setNombreEmpresaProductora(residuo.getProductor().getNombre());
-        }
-        residuoDTO.setId_EmpresaProductora(residuo.getProductor().getId());
 
+            residuoDTO.setId_EmpresaProductora(residuo.getProductor().getId());
+        }
         return residuoDTO;
     }
 
