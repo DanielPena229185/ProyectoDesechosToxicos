@@ -35,8 +35,6 @@ public class NegocioTransporte implements INegocioTransporte {
     @Override
     public Transporte insertarTransporte(Transporte transporte) throws NegocioException {
         try {
-            EmpresaTransportista empresaTransportista = particionesEmpresaTransportista(transporte.getEmpresa_Transportista());
-            transporte.setEmpresaTransportista(empresaTransportista);
             return persistencia.insertarTrasnporte(transporte);
         } catch (PersistenciaException e) {
             throw new NegocioException(e.getMessage());
