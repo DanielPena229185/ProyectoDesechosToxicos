@@ -1,11 +1,14 @@
 package org.itson.presentacion.Administrador;
 
 import com.dominio.Administrador;
+import com.dominio.Estado;
+import com.dominio.Productor;
 import com.dominio.Residuo;
 import com.dominio.Solicitud;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -25,9 +28,9 @@ import org.itson.utils.ConfiguracionDePaginado;
 public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
     List<Solicitud> solicitudesTablaSolicitudes = null;
+    Solicitud solicitudSeleccionada = null;
 
     private Administrador administrador;
-    private SolicitudesTrasladosForm solicitudesTrasladosForm;
     private INegocio negocio;
     private ConfiguracionDePaginado configPaginado;
 
@@ -62,7 +65,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         List<Solicitud> lista = new ArrayList<>();
         Iterator<Solicitud> iterador = solicitudes.iterator();
         int cont = 0;
-        int l =0;
+        int l = 0;
         while (iterador.hasNext()) {
             if (cont != offset) {
                 cont++;
@@ -84,6 +87,8 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tableSolicitudes.getModel();
         modeloTabla.setRowCount(0);
         for (Solicitud s : solicitudes) {
+
+            s.getFecha_Solicitada().setDate(s.getFecha_Solicitada().getDate() + 1);
             Object[] fila = {s.getProductor().getNombre(), formateado.format(s.getFecha_Solicitada().getTime()), s.toString()};
             modeloTabla.addRow(fila);
         }
@@ -108,9 +113,10 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
     private void consultaFilaSeleccionadaSolicitudes() {
         int filaSeleccionada = this.tableSolicitudes.getSelectedRow();
-        llenadoTablaResiduos(filaSeleccionada);
         this.lblProductor.setText((String) this.tableSolicitudes.getValueAt(filaSeleccionada, 0));
         this.lblFechaSol.setText((String) this.tableSolicitudes.getValueAt(filaSeleccionada, 1));
+        llenadoTablaResiduos(filaSeleccionada);
+
     }
 
     private void llenadoTablaResiduos(int index) {
@@ -121,6 +127,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
             modeloTabla.addRow(fila);
 
         }
+        this.solicitudSeleccionada = solicitudesTablaSolicitudes.get(index);
     }
 
     /**
@@ -143,6 +150,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         btnLeft = new javax.swing.JButton();
         btnRight = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        btnAsignarEmpresas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         cerrarSesionBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -240,6 +248,14 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         jLabel2.setText("Solicitudes de traslados: No atendidas");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
+        btnAsignarEmpresas.setText("Asignar Empresas");
+        btnAsignarEmpresas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsignarEmpresasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAsignarEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 130, 40));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 530));
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
@@ -301,9 +317,8 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                         .addComponent(lblProductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblFechaSol, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,9 +350,6 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void asignarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarBtnActionPerformed
-        RegistrarTrasladoForm r = new RegistrarTrasladoForm();
-        r.setVisible(true);
-        dispose();
     }//GEN-LAST:event_asignarBtnActionPerformed
 
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
@@ -360,6 +372,11 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         consultaFilaSeleccionadaSolicitudes();
     }//GEN-LAST:event_tableSolicitudesMouseClicked
+
+    private void btnAsignarEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarEmpresasActionPerformed
+        // TODO add your handling code here:
+        RegistrarTrasladoForm registrarTrasladoForm = new RegistrarTrasladoForm(this.solicitudSeleccionada);
+    }//GEN-LAST:event_btnAsignarEmpresasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,6 +417,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton asignarBtn;
+    private javax.swing.JButton btnAsignarEmpresas;
     private javax.swing.JButton btnLeft;
     private javax.swing.JButton btnRight;
     private javax.swing.JButton cerrarSesionBtn;
