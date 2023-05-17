@@ -35,6 +35,7 @@ public class NegocioTransporte implements INegocioTransporte {
     @Override
     public Transporte insertarTransporte(Transporte transporte) throws NegocioException {
         try {
+            this.validarTransporte(transporte);
             return persistencia.insertarTrasnporte(transporte);
         } catch (PersistenciaException e) {
             throw new NegocioException(e.getMessage());
