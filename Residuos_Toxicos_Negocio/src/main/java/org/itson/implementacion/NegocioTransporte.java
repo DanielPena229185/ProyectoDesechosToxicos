@@ -4,11 +4,13 @@
  */
 package org.itson.implementacion;
 
+import com.dominio.EmpresaTransportista;
 import com.dominio.Transporte;
 import com.dominio.Vehiculo;
 import java.util.LinkedList;
 import java.util.List;
 import org.itson.excepciones.NegocioException;
+import org.itson.excepciones.PersistenciaException;
 import org.itson.excepciones.ValidacionException;
 import org.itson.implementaciones.fachada.FachadaPersistencia;
 import org.itson.interfaces.INegocioTransporte;
@@ -32,7 +34,13 @@ public class NegocioTransporte implements INegocioTransporte {
 
     @Override
     public Transporte insertarTransporte(Transporte transporte) throws NegocioException {
-        return null;
+        try {
+            return persistencia.insertarTrasnporte(transporte);
+        } catch (PersistenciaException e) {
+            throw new NegocioException(e.getMessage());
+        } catch (ValidacionException a) {
+            throw new NegocioException(a.getMessage());
+        }
     }
 
     private Transporte validarTransporte(Transporte transporte) throws ValidacionException {
@@ -45,24 +53,27 @@ public class NegocioTransporte implements INegocioTransporte {
 
         //Valida que almenos exista un vehículo seleccionado
         List<Vehiculo> vehiculos = transporte.getVehiculos();
-        
-        if(validarListaVacia(vehiculos)){
+
+        if (validarListaVacia(vehiculos)) {
             camposError.add("- No hay vehículos seleccionados");
         }
-        
+
         //Validar kilometros
         Float kilometros = transporte.getKilometros();
-        if(kilometros == null || kilometros == 0){
+        if (kilometros == null || kilometros == 0) {
             camposError.add("- No se especificó los kilometros");
         }
-        
+
         //Validar costo
         Float costo = transporte.getCoste();
-        if(costo == null || costo == 0){
+        if (costo == null || costo == 0) {
             camposError.add("- No se especificó el costo");
         }
-        return null;
         
+        //Validar Empresa transportista
+        EmpresaTransportista empresaTransportista = transporte.getEmpresa_Transportista();
+        return null;
+
     }
 
     /**

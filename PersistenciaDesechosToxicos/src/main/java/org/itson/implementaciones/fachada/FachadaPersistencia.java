@@ -10,6 +10,7 @@ import com.dominio.Productor;
 import com.dominio.Quimico;
 import com.dominio.Residuo;
 import com.dominio.Solicitud;
+import com.dominio.Transporte;
 import com.dominio.Traslado;
 import com.dominio.Vehiculo;
 import java.util.List;
@@ -24,6 +25,7 @@ import org.itson.interfaces.IProductoresDAO;
 import org.itson.interfaces.IQuimicosDAO;
 import org.itson.interfaces.IResiduosDAO;
 import org.itson.interfaces.ISolicitudesDAO;
+import org.itson.interfaces.ITransporteDAO;
 import org.itson.interfaces.ITrasladosDAO;
 import org.itson.interfaces.IVehiculosDAO;
 
@@ -50,6 +52,7 @@ public class FachadaPersistencia implements IPersistencia {
     ITrasladosDAO trasladosDAO;
     IVehiculosDAO vehiculosDAO;
     IAdministradoresDAO administradorDAO;
+    ITransporteDAO transporteDAO;
 
     /**
      * Constructor por default
@@ -64,6 +67,7 @@ public class FachadaPersistencia implements IPersistencia {
         trasladosDAO = DAOFactory.getTrasladosDAO();
         vehiculosDAO = DAOFactory.getVehiculosDAO();
         administradorDAO = DAOFactory.getAdministradoresDAO();
+        transporteDAO = DAOFactory.getTransporteDAO();
 
     }
 
@@ -312,6 +316,15 @@ public class FachadaPersistencia implements IPersistencia {
     public Administrador loginAdministrador(String correo, String contrasena) throws PersistenciaException {
         try {
             return administradorDAO.loginAdministrador(correo, contrasena);
+        } catch (PersistenciaException e) {
+            throw new PersistenciaException(e.getMessage());
+        }
+    }
+
+    @Override
+    public Transporte insertarTrasnporte(Transporte transporte) throws PersistenciaException {
+        try {
+            return transporteDAO.insertarTrasnporte(transporte);
         } catch (PersistenciaException e) {
             throw new PersistenciaException(e.getMessage());
         }
