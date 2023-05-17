@@ -13,19 +13,21 @@ import org.itson.presentacion.InicioForm;
  */
 public class PrincipalEmpresaForm extends javax.swing.JFrame {
 
-    static EmpresaTransportista empresa;
+    private EmpresaTransportista empresa;
     private static PrincipalEmpresaForm form;
     /**
      * Creates new form PrincipalEmpresa
      */
     public PrincipalEmpresaForm() {
         initComponents();
+        this.setVisible(true);
     }
     
     private void abrirRegistroTraslado() {
         RegistrarTrasladoEmpresaForm registrarTraslado = null;
         registrarTraslado = RegistrarTrasladoEmpresaForm.getInstance();
         registrarTraslado.setEmpresaTransportista(empresa);
+        registrarTraslado.iniciarComponentes();
     }
 
     /**
@@ -37,21 +39,17 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         registarEmpresaBtn = new javax.swing.JButton();
         registrarTrasladoBtn = new javax.swing.JButton();
         regsarBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 30)); // NOI18N
-        jLabel1.setText("Empresa");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 48, -1, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 101, 134, 10));
 
         jPanel1.setBackground(new java.awt.Color(255, 155, 71));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -82,6 +80,9 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 30)); // NOI18N
+        jLabel1.setText("Empresa");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -99,12 +100,24 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(regsarBtn)))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel1))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(234, 234, 234))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1)
+                .addGap(12, 12, 12)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(48, 48, 48)
                 .addComponent(registarEmpresaBtn)
@@ -115,9 +128,10 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 490));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 490));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarTrasladoBtnActionPerformed
@@ -137,20 +151,19 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_registarEmpresaBtnActionPerformed
 
-    public static PrincipalEmpresaForm getInstance(EmpresaTransportista empresa){
-        PrincipalEmpresaForm.empresa = empresa;
-        if(form == null){
+    public static PrincipalEmpresaForm getInstance(){
+        if (form == null){
             form = new PrincipalEmpresaForm();
         }
         return form;
     }
 
-    public static EmpresaTransportista getEmpresa() {
+    public EmpresaTransportista getEmpresa() {
         return empresa;
     }
 
-    public static void setEmpresa(EmpresaTransportista empresa) {
-        PrincipalEmpresaForm.empresa = empresa;
+    public void setEmpresa(EmpresaTransportista empresa) {
+        this.empresa = empresa;
     }
     
 
