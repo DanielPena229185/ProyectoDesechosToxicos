@@ -55,6 +55,8 @@ public class NegocioTraslado implements INegocioTraslado {
             return persistencia.consultaTrasladosAsingados(empresaTransportista);
         } catch (PersistenciaException e) {
             throw new NegocioException(e.getMessage());
+        } catch (ValidacionException a) {
+            throw new NegocioException(a.getMessage());
         }
     }
 
