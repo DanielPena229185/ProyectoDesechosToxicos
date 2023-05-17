@@ -175,6 +175,19 @@
             </Constraint>
           </Constraints>
         </Component>
+        <Component class="javax.swing.JButton" name="btnAsignarEmpresas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Asignar Empresas"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAsignarEmpresasActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="410" y="310" width="130" height="40"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
@@ -200,10 +213,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel1" max="32767" attributes="0"/>
-                              <Component id="jLabel4" pref="154" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel1" max="32767" attributes="0"/>
+                          <Component id="jLabel4" pref="248" max="32767" attributes="0"/>
                           <Component id="lblProductor" alignment="0" max="32767" attributes="0"/>
                           <Component id="lblFechaSol" alignment="0" pref="248" max="32767" attributes="0"/>
                       </Group>

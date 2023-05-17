@@ -83,4 +83,13 @@ public interface INegocio {
      */
     EmpresaTransportista loginEmpresaTrasnportista(String correo, String contrasena) throws NegocioException;
 
+    /**
+     * Recupera todas las empresas transportistas almacenadas en alguna fuente
+     * de datos persistente
+     *
+     * @return una lista de objetos EmpresaTransportista
+     * @throws PersistenciaException si hay algún problema al realizar la
+     * consulta
+     */
+    List<EmpresaTransportista> consultaTodasEmpresasTransportistas() throws NegocioException;
 }

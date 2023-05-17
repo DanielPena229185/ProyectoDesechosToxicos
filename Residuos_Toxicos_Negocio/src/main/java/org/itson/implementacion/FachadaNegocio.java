@@ -16,6 +16,7 @@ import com.dominio.Vehiculo;
 import java.util.List;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioException;
+import org.itson.excepciones.PersistenciaException;
 import org.itson.interfaces.INegocio;
 import org.itson.interfaces.INegocioAdministrador;
 import org.itson.interfaces.INegocioEmpresasTransportista;
@@ -32,7 +33,7 @@ import org.itson.interfaces.INegocioVehiculo;
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
-public class FachadaNegocio implements INegocio{
+public class FachadaNegocio implements INegocio {
 
     INegocioResiduo negocioResiduo;
     INegocioProductor negocioProductor;
@@ -184,4 +185,15 @@ public class FachadaNegocio implements INegocio{
             throw new NegocioException(e.getMessage());
         }
     }
+
+    @Override
+    public List<EmpresaTransportista> consultaTodasEmpresasTransportistas() throws NegocioException {
+        try {
+            return negocioEmpresaTransportista.consultaTodasEmpresasTransportistas();
+        } catch (NegocioException e) {
+            throw new NegocioException(e.getMessage());
+        }
+    }
+
+    
 }

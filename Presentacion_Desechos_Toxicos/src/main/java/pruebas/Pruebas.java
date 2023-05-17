@@ -21,13 +21,7 @@ public class Pruebas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-                            SimpleDateFormat formateado = new SimpleDateFormat("dd/MM/yyyy");
-
-        INegocio negocio = new FachadaNegocio();
-        List<Solicitud> lista = negocio.consultaSolicitudesNoAtendidas();
-        for(Solicitud s : lista){
-            System.out.println(s.getId()+", "+s.getProductor().getNombre()+", "+s.getFecha_Solicitada().toString()+", "+s.getResiduos().toString());
-        }
+        
     }
     
 }
