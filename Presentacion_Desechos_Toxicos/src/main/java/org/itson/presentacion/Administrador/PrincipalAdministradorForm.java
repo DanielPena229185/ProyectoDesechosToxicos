@@ -5,26 +5,41 @@ import org.itson.presentacion.InicioForm;
 import org.itson.presentacion.LogInForm;
 
 /**
+ * Descripción de la clase: Clase principal de administrador
  *
- * @author arace
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID:
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID:229185
  */
 public class PrincipalAdministradorForm extends javax.swing.JFrame {
 
+    /**
+     * Representa al objeto Administrador.
+     */
     private Administrador administrador;
-    
+    /**
+     * Instancia única de la clase PrincipalAdministradorForm.
+     */
     private static PrincipalAdministradorForm principalFormAdministrador;
 
     /**
+     * 
      * Creates new form PrincipalAdministradorForm
      */
     private PrincipalAdministradorForm() {
         initComponents();
     }
 
+    /**
+     * Metodo que cierra ventana actual
+     */
     private void cerrarVentanaActual() {
         this.dispose();
     }
-
+    /**
+     * Navega hacia la ventana de solicitudes de traslado
+     */
     private void irSolicitudesTrasladoForm() {
         Administrador admin = new Administrador();
         admin.setId(administrador.getId());
@@ -34,18 +49,24 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         SolicitudesTrasladosForm solicitudesTrasladosForm = new SolicitudesTrasladosForm(admin);
         cerrarVentanaActual();
     }
-    
+    /**
+     * Inicia los componentes de la ventana
+     */
     public void iniciarComponentes(){
         abrirVentana();
     }
-
+    /**
+     * Navega hacia la ventana de inicio de sesión
+     */
     private void irLoginForm() {
 
         LogInForm logInForm;
         logInForm = LogInForm.getInstance();
         logInForm.iniciarComponentes();
     }
-
+    /**
+     * Abre la ventana actual y la hace visible
+     */
     private void abrirVentana(){
         this.setVisible(true);
     }
@@ -152,23 +173,50 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción realizada al hacer clic en el botón "solicitarTrasladoBtn".
+     * Navega hacia la ventana de solicitudes de traslado.
+     * 
+     * @param evt El evento de acción.
+     */
     private void solictarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solictarTrasladoBtnActionPerformed
         irSolicitudesTrasladoForm();
     }//GEN-LAST:event_solictarTrasladoBtnActionPerformed
 
+     /**
+     * Acción realizada al hacer clic en el botón "regresarbtn".
+     * Navega hacia la ventana de inicio de sesión y cierra la ventana actual.
+     * 
+     * @param evt El evento de acción.
+     */
     private void regresarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarbtnActionPerformed
         irLoginForm();
         cerrarVentanaActual();
     }//GEN-LAST:event_regresarbtnActionPerformed
 
+    /**
+     * Obtiene el objeto Administrador.
+     * 
+     * @return El objeto Administrador.
+     */
     public Administrador getAdministrador() {
         return administrador;
     }
 
+    /**
+     * Establece el objeto Administrador.
+     * 
+     * @param administrador El objeto Administrador a establecer.
+     */
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
     }
 
+    /**
+     * Obtiene una instancia única de la clase PrincipalAdministradorForm.
+     * 
+     * @return La instancia única de PrincipalAdministradorForm.
+     */
     public static PrincipalAdministradorForm getInstance(){
         if(principalFormAdministrador == null){
             principalFormAdministrador = new PrincipalAdministradorForm();
@@ -176,6 +224,7 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         return principalFormAdministrador;
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

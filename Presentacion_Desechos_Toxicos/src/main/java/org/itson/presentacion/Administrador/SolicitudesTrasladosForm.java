@@ -28,11 +28,25 @@ import org.itson.utils.ConfiguracionDePaginado;
  */
 public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
+    /**
+     * Lista de solicitudes de traslados que se mostrarán en la tabla de solicitudes.
+     */
     List<Solicitud> solicitudesTablaSolicitudes = null;
+    /**
+     * La solicitud seleccionada actualmente en la tabla de solicitudes.
+     */
     Solicitud solicitudSeleccionada = null;
-
+    /**
+     * El objeto Administrador que representa al usuario actual.
+     */
     private Administrador administrador;
+    /**
+     * La instancia de la interfaz de negocio utilizada para realizar operaciones relacionadas con las solicitudes de traslados.
+     */
     private INegocio negocio;
+    /**
+     * La configuración de paginado utilizada para la visualización de las solicitudes en la tabla.
+     */
     private ConfiguracionDePaginado configPaginado;
 
     /**
@@ -46,20 +60,35 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         ejecucionLlenadoTablaSolicitudes();
         this.setVisible(true);
     }
-
+    /**
+     * Obtiene el objeto Administrador asociado a este formulario.
+     * @return El objeto Administrador asociado.
+     */
     public Administrador getAdministrador() {
         return administrador;
     }
 
+    /**
+     * Establece el objeto Administrador asociado a este formulario.
+     * @param administrador El objeto Administrador a establecer.
+     */
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
     }
-
+    /**
+     * Consulta las solicitudes de traslados que no han sido atendidas.
+     * @return Una lista de objetos Solicitud que representan las solicitudes no atendidas.
+     */
     private List<Solicitud> consultaSolicitudesNoAtendidas() {
         List<Solicitud> solicitudes = negocio.consultaSolicitudesNoAtendidas();
         return solicitudes;
     }
-
+    /**
+     * Consulta las solicitudes de traslados con la configuración de paginado especificada.
+     * @param configuracionPaginado La configuración de paginado a aplicar.
+     * @param solicitudes La lista de solicitudes de traslados completa.
+     * @return Una lista de objetos Solicitud que representan las solicitudes según la configuración de paginado.
+     */
     private List<Solicitud> consultaSolicitudesConConfiguracionTabla(ConfiguracionDePaginado configuracionPaginado, List<Solicitud> solicitudes) {
         int offset = configuracionPaginado.getElementoASaltar();
         int limit = configuracionPaginado.getElementosPorPagina();
@@ -82,6 +111,12 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         return lista;
     }
 
+    /**
+     * Consulta las solicitudes de traslados con la configuración de paginado especificada.
+     * @param configuracionPaginado La configuración de paginado a aplicar.
+     * @param solicitudes La lista de solicitudes de traslados completa.
+     * @return Una lista de objetos Solicitud que representan las solicitudes según la configuración de paginado.
+     */
     private void llenarTablaSolicitudes(List<Solicitud> solicitudes) {
         SimpleDateFormat formateado = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -95,23 +130,33 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Ejecuta el llenado de la tabla de solicitudes con las solicitudes no atendidas y la configuración de paginado actual.
+     * También almacena las solicitudes en la variable "solicitudesTablaSolicitudes" y llena la tabla de solicitudes.
+     */
     private void ejecucionLlenadoTablaSolicitudes() {
         List<Solicitud> solicitudes = consultaSolicitudesNoAtendidas();
         solicitudes = consultaSolicitudesConConfiguracionTabla(configPaginado, solicitudes);
         solicitudesTablaSolicitudes = solicitudes;
         llenarTablaSolicitudes(solicitudes);
     }
-
+    /**
+     * Retrocede una página en la tabla de solicitudes utilizando la configuración de paginado actual y vuelve a llenar la tabla.
+     */
     private void retrocederPagina() {
         this.configPaginado.retrocederPagina();
         ejecucionLlenadoTablaSolicitudes();
     }
-
+    /**
+     * Avanza una página en la tabla de solicitudes utilizando la configuración de paginado actual y vuelve a llenar la tabla.
+     */
     private void avanzarPagina() {
         this.configPaginado.avanzarPagina();
         ejecucionLlenadoTablaSolicitudes();
     }
-
+    /**
+     * Consulta la fila seleccionada en la tabla de solicitudes y muestra los datos correspondientes en los campos de texto.
+     */
     private void consultaFilaSeleccionadaSolicitudes() {
         int filaSeleccionada = this.tableSolicitudes.getSelectedRow();
         this.lblProductor.setText((String) this.tableSolicitudes.getValueAt(filaSeleccionada, 0));
@@ -119,7 +164,10 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         llenadoTablaResiduos(filaSeleccionada);
 
     }
-
+    /**
+     * Llena la tabla de residuos con los residuos de la solicitud seleccionada en la tabla de solicitudes.
+     * @param index El índice de la solicitud seleccionada en la lista de solicitudes.
+     */
     private void llenadoTablaResiduos(int index) {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tableResiduos.getModel();
         modeloTabla.setRowCount(0);
@@ -131,6 +179,10 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         this.solicitudSeleccionada = solicitudesTablaSolicitudes.get(index);
     }
 
+    /**
+     * Navega hacia el formulario de registro de traslado si se ha seleccionado una solicitud en la tabla de solicitudes.
+     * Si no se ha seleccionado una solicitud, muestra un mensaje de error.
+     */
     private void irRegistrarTrasladoForm() {
         if (!seleccionoUnaSolicitud()) {
             JOptionPane.showMessageDialog(this, "Favor de Seleccionar alguna Solicitude de la Talba de Solicitudes", "Error", JOptionPane.ERROR_MESSAGE);
@@ -143,7 +195,10 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         RegistrarTrasladoForm registrarTrasladoForm = new RegistrarTrasladoForm(this.solicitudSeleccionada, administrador);
         cerrarVentanaActual();
     }
-
+    /**
+     * Navega hacia el formulario principal del administrador.
+     * Cierra la ventana actual.
+     */
     private void irPrincipalAdministradorForm() {
         PrincipalAdministradorForm principalAdministradorForm;
         principalAdministradorForm = PrincipalAdministradorForm.getInstance();
@@ -151,11 +206,16 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         principalAdministradorForm.iniciarComponentes();
         cerrarVentanaActual();
     }
-    
+    /**
+     * Cierra la ventana actual.
+     */
     private void cerrarVentanaActual(){
     this.dispose();
     }
-    
+    /**
+     * Verifica si se ha seleccionado una solicitud en la tabla de solicitudes.
+     * @return true si se ha seleccionado una solicitud, false de lo contrario.
+     */
     private boolean seleccionoUnaSolicitud(){
         return this.solicitudSeleccionada != null;
     }
@@ -357,66 +417,47 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Navega hacia el formulario principal del administrador.
+     */
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
         irPrincipalAdministradorForm();
     }//GEN-LAST:event_regresarBtnActionPerformed
+
+    /**
+     * Retrocede una página en la tabla de solicitudes.
+     */
 
     private void btnLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeftActionPerformed
         // TODO add your handling code here:
         retrocederPagina();
     }//GEN-LAST:event_btnLeftActionPerformed
 
+    /**
+     * Avanza una página en la tabla de solicitudes.
+     */
     private void btnRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRightActionPerformed
         // TODO add your handling code here:
         avanzarPagina();
     }//GEN-LAST:event_btnRightActionPerformed
 
+    /**
+     * Selecciona una fila en la tabla de solicitudes y realiza la consulta correspondiente.
+     */
     private void tableSolicitudesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSolicitudesMouseClicked
         // TODO add your handling code here:
         consultaFilaSeleccionadaSolicitudes();
     }//GEN-LAST:event_tableSolicitudesMouseClicked
 
+    /**
+     * Selecciona una fila en la tabla de solicitudes y realiza la consulta correspondiente.
+     */
     private void btnAsignarEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarEmpresasActionPerformed
         // TODO add your handling code here:
         irRegistrarTrasladoForm();
     }//GEN-LAST:event_btnAsignarEmpresasActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(SolicitudesTrasladosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                new SolicitudesTrasladosForm().setVisible(true);
-//            }
-//        });
-//    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAsignarEmpresas;

@@ -24,18 +24,25 @@ import org.itson.presentacion.Productor.PrincipalProductorForm;
 import org.itson.presentacion.empresa.PrincipalEmpresaForm;
 
 /**
- * Descripción de la clase:
+ * Descripción de la clase: Form que permite iniciar sesion 
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
 public class LogInForm extends javax.swing.JFrame {
 
+    // Constantes de roles
     private static final String ADMINISTRADOR = "Administrador";
     private static final String PRODUCTOR = "Productor";
     private static final String EMPRESA_TRANSPORTADORA = "Empresa Transportadora";
+
+    // Valores predeterminados de correo electrónico y contraseña
     private static final String CORREO_DEFAULT = "info@ejemplo.com";
     private static final String CONTRASENA_DEFAULT = "123456789112345";
+
+    // Objeto de negocio para acceder a la lógica del negocio
     INegocio negocio;
+
+    // Objeto de formulario de inicio de sesión
     static LogInForm login;
 
     /**
@@ -47,10 +54,17 @@ public class LogInForm extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
+    /**
+     * Inicia los componentes de la aplicación.
+     * Este método se encarga de abrir la ventana principal.
+     */
     public void iniciarComponentes() {
         this.abrirVentana();
     }
-
+    /**
+     * Abre la ventana principal de la aplicación.
+     * Establece la visibilidad de la ventana como verdadera.
+     */
     private void abrirVentana() {
         this.setVisible(true);
     }
@@ -187,11 +201,25 @@ public class LogInForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Maneja el evento de selección de una opción en el ComboBox de login.
+     * Obtiene el elemento seleccionado y realiza cambios en el panel de información según el tipo de login.
+     * 
+     * @param evt El evento de selección de opción en el ComboBox.
+     */
     private void comboBoxOpcionLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOpcionLoginActionPerformed
         String itemSelected = this.comboBoxOpcionLogin.getSelectedItem().toString();
         this.cambiarColorTipoLoginPanelInformacion(itemSelected);
     }//GEN-LAST:event_comboBoxOpcionLoginActionPerformed
 
+    /**
+     * Maneja el evento de acción del CheckBox de visibilidad de contraseña.
+     * Alterna la visibilidad de la contraseña en el campo correspondiente.
+     * Si el CheckBox está seleccionado y el campo de contraseña está vacío, se borra el contenido.
+     * Si el CheckBox no está seleccionado y el campo de contraseña está vacío, se establece un valor predeterminado.
+     * 
+     * @param evt El evento de acción del CheckBox.
+     */
     private void checkVisibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkVisibleActionPerformed
         this.alternarVisibilidadContrasena();
 
@@ -206,6 +234,12 @@ public class LogInForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_checkVisibleActionPerformed
 
+    /**
+     * Maneja el evento de clic en el campo de usuario.
+     * Si el campo de usuario está vacío, cambia el color del texto a negro y borra el contenido.
+     * 
+     * @param evt El evento de clic en el campo de usuario.
+     */
     private void campoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoUsuarioMouseClicked
         if (this.verificarCampoUsuarioVacio()) {
             this.campoUsuario.setForeground(Color.BLACK);
@@ -213,6 +247,12 @@ public class LogInForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoUsuarioMouseClicked
 
+    /**
+     * Maneja el evento de enfoque obtenido en el campo de usuario.
+     * Si el campo de usuario está vacío, cambia el color del texto a negro y borra el contenido.
+     * 
+     * @param evt El evento de enfoque obtenido en el campo de usuario.
+     */
     private void campoUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoUsuarioFocusGained
         if (this.verificarCampoUsuarioVacio()) {
             this.campoUsuario.setForeground(Color.BLACK);
@@ -220,6 +260,12 @@ public class LogInForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoUsuarioFocusGained
 
+    /**
+     * Maneja el evento de enfoque perdido en el campo de usuario.
+     * Si el campo de usuario está vacío, cambia el color del texto a gris y establece un valor predeterminado.
+     * 
+     * @param evt El evento de enfoque perdido en el campo de usuario.
+     */
     private void campoUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoUsuarioFocusLost
         if (this.verificarCampoUsuarioVacio()) {
             this.campoUsuario.setForeground(Color.GRAY);
@@ -227,6 +273,12 @@ public class LogInForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoUsuarioFocusLost
 
+    /**
+     * Maneja el evento de enfoque perdido en el campo de usuario.
+     * Si el campo de usuario está vacío, cambia el color del texto a gris y establece un valor predeterminado.
+     * 
+     * @param evt El evento de enfoque perdido en el campo de usuario.
+     */
     private void campoContrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoContrasenaMouseClicked
         if (this.verificarCampoContrasenaVacio()) {
             this.campoContrasena.setForeground(Color.BLACK);
@@ -234,6 +286,11 @@ public class LogInForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoContrasenaMouseClicked
 
+    /**
+     * Maneja el evento de enfoque obtenido en el campo de contraseña
+     * Si el campo de contraseña está vacío, cambia el color del texto a negro y borra el contenido
+     * @param evt El evento de enfoque obtenido en el campo de contraseña
+     */
     private void campoContrasenaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContrasenaFocusGained
         if (this.verificarCampoContrasenaVacio()) {
             this.campoContrasena.setForeground(Color.BLACK);
@@ -242,6 +299,12 @@ public class LogInForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_campoContrasenaFocusGained
 
+    /**
+     * Maneja el evento de enfoque perdido en el campo de contraseña.
+     * Si el campo de contraseña está vacío, cambia el color del texto a gris y establece un valor predeterminado.
+     * 
+     * @param evt El evento de enfoque perdido en el campo de contraseña.
+     */
     private void campoContrasenaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoContrasenaFocusLost
 
         if (this.verificarCampoContrasenaVacio()) {
@@ -251,6 +314,15 @@ public class LogInForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_campoContrasenaFocusLost
 
+    /**
+     * Maneja el evento de acción del botón de iniciar sesión.
+     * Obtiene la opción seleccionada en el ComboBox y realiza las acciones correspondientes según dicha opción.
+     * En el caso de "Administrador", se intenta iniciar sesión como administrador y se cierra la ventana actual.
+     * En el caso de "Empresa Transportadora", se intenta iniciar sesión como empresa transportista y se cierra la ventana actual.
+     * En el caso de "Productor", se intenta iniciar sesión como productor.
+     * 
+     * @param evt El evento de acción del botón de iniciar sesión.
+     */
     private void iniciarSesionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSesionBtnActionPerformed
         String selectedItem = comboBoxOpcionLogin.getSelectedItem().toString();
         switch (selectedItem) {
@@ -283,6 +355,11 @@ public class LogInForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_iniciarSesionBtnActionPerformed
 
+    /**
+     * Alterna la visibilidad de la contraseña en el campo correspondiente según el estado del CheckBox.
+     * Si el CheckBox está seleccionado, se muestra la contraseña sin ocultar.
+     * Si el CheckBox no está seleccionado, se muestra la contraseña oculta.
+     */
     private void alternarVisibilidadContrasena() {
         if (this.checkVisible.isSelected()) {
             this.campoContrasena.setEchoChar((char) 0);
@@ -290,11 +367,21 @@ public class LogInForm extends javax.swing.JFrame {
             this.campoContrasena.setEchoChar('•');
         }
     }
-
+    /**
+     * Verifica si el campo de usuario está vacío o contiene el valor predeterminado.
+     * 
+     * @return true si el campo de usuario está vacío o contiene el valor predeterminado, false de lo contrario.
+     */
     private boolean verificarCampoUsuarioVacio() {
         return this.campoUsuario.getText().isEmpty() || this.campoUsuario.getText().equals(this.CORREO_DEFAULT);
     }
 
+    /**
+     * Cambia el color del panel de información y habilita/deshabilita el botón de iniciar sesión
+     * según el tipo de login seleccionado.
+     * 
+     * @param tipoLogin El tipo de login seleccionado.
+     */
     private void cambiarColorTipoLoginPanelInformacion(String tipoLogin) {
         Color color;
         if (tipoLogin == this.ADMINISTRADOR) {
@@ -323,7 +410,16 @@ public class LogInForm extends javax.swing.JFrame {
             this.iniciarSesionBtn.setEnabled(false);
         }
     }
-
+    
+    
+/**
+ * Consulta un productor usando el correo y la contraseña proporcionados.
+ * 
+ * @param correo     El correo del productor.
+ * @param contrasena La contraseña del productor.
+ * @return El objeto Productor consultado.
+ * @throws PresentacionException Si ocurre un error durante la consulta del productor.
+ */
     private Productor consultarProductor(String correo, String contrasena) throws PresentacionException {
         try {
             ProductorDTO productor = new ProductorDTO();
@@ -335,6 +431,15 @@ public class LogInForm extends javax.swing.JFrame {
         }
     }
 
+    
+/**
+ * Consulta un productor usando el correo y la contraseña proporcionados.
+ * 
+ * @param correo     El correo del productor.
+ * @param contrasena La contraseña del productor.
+ * @return El objeto Productor consultado.
+ * @throws PresentacionException Si ocurre un error durante la consulta del productor.
+ */
     private void iniciarSesionProductor() throws PresentacionException {
 
         List<String> campoError = new LinkedList<>();
@@ -378,10 +483,17 @@ public class LogInForm extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Cierra la ventana actual.
+     */
     private void cerrarVentana() {
         this.setVisible(false);
     }
-
+    /**
+     * Abre la ventana principal del productor con el productor proporcionado.
+     * 
+     * @param productor El objeto Productor.
+     */
     private void abrirPrincipalProductor(Productor productor) {
         PrincipalProductorForm principalProductorForm;
 
@@ -390,7 +502,12 @@ public class LogInForm extends javax.swing.JFrame {
         principalProductorForm.setProductor(productor);
         principalProductorForm.iniciarComponentes();
     }
-    
+    /**
+     * Inicia sesión como empresa transportista utilizando los campos de correo y contraseña ingresados.
+     * Realiza validaciones y manejo de errores.
+     * 
+     * @throws PresentacionException Si ocurre un error durante el inicio de sesión de la empresa transportista.
+     */
     private void iniciarSesionEmpresaTransportista() throws PresentacionException{
 
         List<String> campoError = new LinkedList<>();
@@ -434,7 +551,14 @@ public class LogInForm extends javax.swing.JFrame {
         }
 
     }
-    
+    /**
+     * Consulta una empresa transportista usando el correo y la contraseña proporcionados.
+     * 
+     * @param correo     El correo de la empresa transportista.
+     * @param contrasena La contraseña de la empresa transportista.
+     * @return El objeto EmpresaTransportista consultado.
+     * @throws PresentacionException Si ocurre un error durante la consulta de la empresa transportista.
+     */
     private EmpresaTransportista consultarEmpresaTransportista(String correo, String contrasena) throws PresentacionException{
         try {
             return negocio.loginEmpresaTrasnportista(correo, contrasena);
@@ -442,14 +566,25 @@ public class LogInForm extends javax.swing.JFrame {
             throw new PresentacionException(e.getMessage());
         }
     }
-    
+
+    /**
+     * Abre la ventana principal de la empresa transportista con la empresa transportista proporcionada.
+     * 
+     * @param empresaTransportista El objeto EmpresaTransportista.
+     * @throws PresentacionException Si ocurre un error al abrir la ventana principal de la empresa transportista.
+     */
     private void abrirPrincipalEmpresaTransportista(EmpresaTransportista empresaTransportista) throws PresentacionException{
         PrincipalEmpresaForm principalEmpresaForm;
         principalEmpresaForm = PrincipalEmpresaForm.getInstance();
         principalEmpresaForm.setEmpresa(empresaTransportista);
         principalEmpresaForm.iniciarComponentes();
     }
-    
+    /**
+     * Inicia sesión como administrador utilizando los campos de correo y contraseña ingresados.
+     * Realiza validaciones y manejo de errores.
+     * 
+     * @throws PresentacionException Si ocurre un error durante el inicio de sesión del administrador.
+     */
     private void iniciarSesionAdministrador() throws PresentacionException{
 
         List<String> campoError = new LinkedList<>();
@@ -491,7 +626,14 @@ public class LogInForm extends javax.swing.JFrame {
             throw new PresentacionException(a.getMessage());
         }
     }
-    
+    /**
+     * Consulta un administrador utilizando el correo y la contraseña proporcionados
+     * 
+     * @param correo     El correo del administrador.
+     * @param contrasena La contraseña del administrador.
+     * @return El objeto Administrador consultado.
+     * @throws PresentacionException Si ocurre un error durante la consulta del administrador.
+     */
     private Administrador consultarAdministrador(String correo, String contrasena) throws PresentacionException{
         try {
             return negocio.loginAdministrador(correo, contrasena);
@@ -499,7 +641,14 @@ public class LogInForm extends javax.swing.JFrame {
             throw new PresentacionException(e.getMessage());
         }
     }
-    
+    /**
+     * Consulta un administrador utilizando el correo y la contraseña proporcionados.
+     * 
+     * @param correo     El correo del administrador.
+     * @param contrasena La contraseña del administrador.
+     * @return El objeto Administrador consultado.
+     * @throws PresentacionException Si ocurre un error durante la consulta del administrador.
+     */
     private void abrirPrincipalAdministrador(Administrador administrador) throws PresentacionException{
         PrincipalAdministradorForm principalAdministradorForm;
         principalAdministradorForm = PrincipalAdministradorForm.getInstance();
@@ -521,10 +670,19 @@ public class LogInForm extends javax.swing.JFrame {
         return mensaje;
     }
 
+    /**
+     * Verifica si el campo de contraseña está vacío o si contiene la contraseña predeterminada.
+     * 
+     * @return true si el campo de contraseña está vacío o contiene la contraseña predeterminada, false de lo contrario.
+     */
     private boolean verificarCampoContrasenaVacio() {
         return this.campoContrasena.getText().isEmpty() || this.campoContrasena.getText().equals(this.CONTRASENA_DEFAULT);
     }
-
+    /**
+     * Obtiene una instancia de la clase LogInForm. Si no existe una instancia previa, crea una nueva y la devuelve.
+     * 
+     * @return Una instancia de la clase LogInForm.
+     */
     public static LogInForm getInstance() {
         if (LogInForm.login == null) {
             LogInForm.login = new LogInForm();
