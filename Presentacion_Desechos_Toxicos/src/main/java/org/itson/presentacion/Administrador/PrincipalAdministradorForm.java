@@ -62,7 +62,7 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
         jLabel2.setText("ADMINISTRADOR");
 
-        solictarTrasladoBtn.setText("Solicitar Traslado");
+        solictarTrasladoBtn.setText("Solicitud de Traslado");
         solictarTrasladoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 solictarTrasladoBtnActionPerformed(evt);

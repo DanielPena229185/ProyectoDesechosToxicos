@@ -110,13 +110,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" pref="11" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="solictarTrasladoBtn" min="-2" pref="45" max="-2" attributes="0"/>
                       <EmptySpace pref="153" max="32767" attributes="0"/>
                       <Component id="regresarbtn" min="-2" pref="45" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -134,7 +134,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="solictarTrasladoBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Solicitar Traslado"/>
+                <Property name="text" type="java.lang.String" value="Solicitud de Traslado"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="solictarTrasladoBtnActionPerformed"/>

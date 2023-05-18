@@ -525,9 +525,9 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void seleccionarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarBtnActionPerformed
-//        if (persistirTraslado() == null) {
-//            return;
-//        }
+        if (persistirTraslado() == null) {
+            return;
+        }
         quitarResiduoTablaResiduos();
 
 
