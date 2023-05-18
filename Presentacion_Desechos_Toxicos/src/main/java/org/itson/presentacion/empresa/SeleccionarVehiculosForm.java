@@ -1,10 +1,13 @@
-
 package org.itson.presentacion.empresa;
 
 import com.dominio.EmpresaTransportista;
 import com.dominio.Traslado;
 import com.dominio.Vehiculo;
+import com.github.lgooddatepicker.components.DatePicker;
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PersistenciaException;
@@ -26,9 +29,9 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
     private EmpresaTransportista empresa;
     private Traslado traslado;
     private static SeleccionarVehiculosForm form;
-    
+
     private List<Vehiculo> vehiculos;
-    
+
     /**
      * Creates new form SeleccionarVehiculosForm
      */
@@ -37,17 +40,19 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
     }
+
     /**
      * Devuelve una instancia única de SeleccionarVehiculosForm.
      *
      * @return La instancia única de SeleccionarVehiculosForm.
      */
-    public static SeleccionarVehiculosForm getInstance(){
+    public static SeleccionarVehiculosForm getInstance() {
         if (form == null) {
             form = new SeleccionarVehiculosForm();
         }
         return form;
     }
+
     /**
      * Establece la empresa transportista.
      *
@@ -56,22 +61,26 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
     public void setEmpresaTransportista(EmpresaTransportista empresa) {
         this.empresa = empresa;
     }
+
     /**
      * Establece la empresa transportista.
      *
-     * @param empresa La empresa transportista.
+     * @param traslado traslado.
      */
     public void setTraslado(Traslado traslado) {
         this.traslado = traslado;
     }
-     /**
+
+    /**
      * Inicia los componentes de la ventana.
-     */       
+     */
     public void iniciarComponentes() {
         this.cargarTablaCajasVerificacion();
+        this.lblNombreEmpresa.setText(this.empresa.getNombre());
+        this.lblNombreResiduo.setText(this.traslado.getResiduo().getNombre());
         this.abrirVentana();
-        System.out.println(this.traslado);
     }
+
     /**
      * Carga la lista de vehículos desde el negocio.
      *
@@ -86,59 +95,114 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
             throw new PresentacionException(e.getMessage());
         }
     }
+
     /**
      * Carga la tabla de cajas de verificación con los vehículos.
      */
     private void cargarTablaCajasVerificacion() {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tablaVehiculos.getModel();
         modeloTabla.setNumRows(0);
-        
+
         try {
             this.vehiculos = this.cargarListaVehiculos();
-            
+
             for (Vehiculo vehiculo : this.vehiculos) {
                 Object[] fila = {
                     vehiculo.getModelo() + ", " + vehiculo.getMarca()
                 };
-                
+
                 modeloTabla.addRow(fila);
             }
         } catch (PresentacionException e) {
             throw new PersistenciaException(e.getMessage());
         }
     }
-   /**
+
+    /**
      * Obtiene el vehículo seleccionado en la tabla.
      *
      * @return El vehículo seleccionado.
-     */ 
+     */
     private Vehiculo obtenerVehiculoSeleccionado() {
         int filaSeleccionda = this.tablaVehiculos.getSelectedRow();
-        
+
         return this.vehiculos.get(filaSeleccionda);
     }
- /**
- * Comprueba la selección de un vehículo en la tabla y actualiza los campos correspondientes.
- */
+
+    /**
+     * Comprueba la selección de un vehículo en la tabla y actualiza los campos
+     * correspondientes.
+     */
     private void comprobarSeleccion() {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tablaVehiculos.getModel();
-        int filaSeleccionda = this.tablaVehiculos.getSelectedRow();
-        boolean seleccion = (boolean) modeloTabla.getValueAt(filaSeleccionda, 1);
-        
+        int filaSeleccionada = this.tablaVehiculos.getSelectedRow();
+
+        // Obtenemos el valor actual del checkbox en la columna 1
+        boolean seleccionActual = (boolean) modeloTabla.getValueAt(filaSeleccionada, 1);
+
+        // Iteramos sobre todas las filas de la tabla
         for (int i = 0; i < modeloTabla.getRowCount(); i++) {
-            if (seleccion) {
-                continue;
+            // Si la fila actual es diferente a la fila seleccionada
+            if (i != filaSeleccionada) {
+                // Deseleccionamos el checkbox en la columna 1
+                modeloTabla.setValueAt(false, i, 1);
             }
-            
-            modeloTabla.setValueAt(false, i, 1);
+        }
+
+        // Actualizamos los campos con la selección actual
+        this.actualizarCampos(seleccionActual);
+    }
+    
+    private boolean comprobarTxtFieldVacio(JTextField e) throws PresentacionException {
+        if (e.getText().isEmpty() || e.getText().isBlank()) {
+            throw new PresentacionException("Error: campos de texto vacíos.");
         }
         
-        this.actualizarCampos(seleccion);
+        return true;
     }
- /**
- * Actualiza el estado de los campos en la interfaz gráfica.
- * @param x true si los campos deben estar habilitados, false si deben estar deshabilitados.
- */ 
+    
+    private boolean comprobarTextAreaVacio(JTextArea e) throws PresentacionException {
+        if (e.getText().isEmpty() || e.getText().isBlank()) {
+            throw new PresentacionException("Error: Cuadro de texto vacío.");
+        }
+        
+        return true;
+    }
+    
+    private boolean comprobarFechaSeleccionad(DatePicker e) throws PresentacionException {
+        if (e.getDate() == null) {
+            throw new PresentacionException("Error: No hay ninguna fecha seleccionada.");
+        }
+        
+        return true;
+    }
+    
+    private boolean comprobarTodosLosCampos() throws PresentacionException {
+        try {
+            return this.comprobarTxtFieldVacio(this.txtKilometrosRecorridos) &&
+                this.comprobarTxtFieldVacio(this.txtCosto) &&
+                this.comprobarTextAreaVacio(this.textAreaTratamiento) &&
+                this.comprobarFechaSeleccionad(this.datePickerFechaLlegada);
+        } catch (PresentacionException e) {
+            throw new PresentacionException(e.getLocalizedMessage());
+        }
+    }
+    
+    private void enviarTraslado() {
+        try {
+            this.comprobarTodosLosCampos();
+            System.out.println(this.obtenerVehiculoSeleccionado());
+        } catch (PresentacionException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Campos requeridos", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    /**
+     * Actualiza el estado de los campos en la interfaz gráfica.
+     *
+     * @param x true si los campos deben estar habilitados, false si deben estar
+     * deshabilitados.
+     */
     private void actualizarCampos(boolean x) {
         this.txtKilometrosRecorridos.setEnabled(x);
         this.txtCosto.setEnabled(x);
@@ -146,13 +210,14 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
         this.textAreaTratamiento.setEnabled(x);
         this.btnRegistrar.setEnabled(x);
     }
-/**
- * Abre la ventana actual y la hace visible.
- */
+
+    /**
+     * Abre la ventana actual y la hace visible.
+     */
     private void abrirVentana() {
         this.setVisible(true);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -175,6 +240,10 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         textAreaTratamiento = new javax.swing.JTextArea();
         btnRegistrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblNombreEmpresa = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblNombreResiduo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Seleccionar vehículos");
@@ -215,10 +284,23 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
         lblKilometrosRecorridos.setText("Kilómetros recorridos:");
 
         txtKilometrosRecorridos.setEnabled(false);
+        txtKilometrosRecorridos.setNextFocusableComponent(lblKilometrosRecorridos);
+        txtKilometrosRecorridos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtKilometrosRecorridosKeyTyped(evt);
+            }
+        });
 
         lblCosto.setText("Costo:");
 
+        txtCosto.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtCosto.setEnabled(false);
+        txtCosto.setNextFocusableComponent(lblCosto);
+        txtCosto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCostoKeyTyped(evt);
+            }
+        });
 
         lblFechaLlegada.setText("Fecha de llegada:");
 
@@ -254,19 +336,20 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
                         .addComponent(lblCosto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCosto))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnRegistrar))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(lblFechaLlegada)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(datePickerFechaLlegada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(lblTratamiento)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblFechaLlegada)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(datePickerFechaLlegada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTratamiento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnRegistrar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -293,21 +376,42 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel1.setText("Empresa transportista:");
+
+        jLabel2.setText("Residuo: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(1, 1, 1)
+                        .addComponent(lblNombreResiduo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(lblNombreEmpresa)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblNombreEmpresa))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lblNombreResiduo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
@@ -317,34 +421,49 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-/**
- * Método que se ejecuta cuando se hace clic en la tabla de vehículos.
- * Comprueba la selección de un vehículo en la tabla y actualiza los campos correspondientes.
- * @param evt El evento de clic del mouse.
- */
+
+    /**
+     * Método que se ejecuta cuando se hace clic en el botón "Registrar".
+     * Obtiene el vehículo seleccionado y realiza alguna acción.
+     *
+     * @param evt El evento de acción.
+     */
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        this.enviarTraslado();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
     private void tablaVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaVehiculosMouseClicked
         this.comprobarSeleccion();
     }//GEN-LAST:event_tablaVehiculosMouseClicked
-/**
- * Método que se ejecuta cuando se hace clic en el botón "Registrar".
- * Obtiene el vehículo seleccionado y realiza alguna acción.
- * @param evt El evento de acción.
- */
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        this.obtenerVehiculoSeleccionado();
-    }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    private void txtCostoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCostoKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume(); // Ignora el carácter no numérico
+        }
+    }//GEN-LAST:event_txtCostoKeyTyped
+
+    private void txtKilometrosRecorridosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKilometrosRecorridosKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume(); // Ignora el carácter no numérico
+        }
+    }//GEN-LAST:event_txtKilometrosRecorridosKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
     private com.github.lgooddatepicker.components.DatePicker datePickerFechaLlegada;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCosto;
     private javax.swing.JLabel lblFechaLlegada;
     private javax.swing.JLabel lblKilometrosRecorridos;
+    private javax.swing.JLabel lblNombreEmpresa;
+    private javax.swing.JLabel lblNombreResiduo;
     private javax.swing.JLabel lblTratamiento;
     private javax.swing.JTable tablaVehiculos;
     private javax.swing.JTextArea textAreaTratamiento;
