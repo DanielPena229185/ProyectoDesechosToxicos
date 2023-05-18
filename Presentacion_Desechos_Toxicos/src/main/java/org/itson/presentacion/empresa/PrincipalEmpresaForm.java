@@ -18,8 +18,27 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
     /**
      * Creates new form PrincipalEmpresa
      */
-    public PrincipalEmpresaForm() {
+    private PrincipalEmpresaForm() {
         initComponents();
+    }
+    
+    public static PrincipalEmpresaForm getInstance(){
+        if(form == null){
+            form = new PrincipalEmpresaForm();
+        }
+        
+        return form;
+    }
+    
+    public void iniciarComponentes(){
+        this.abrirVentana();
+    }
+    
+    private void cerrarVentana(){
+        this.setVisible(false);
+    }
+    
+    private void abrirVentana(){
         this.setVisible(true);
     }
     
@@ -150,13 +169,6 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
         c.setVisible(true);
         dispose();
     }//GEN-LAST:event_registarEmpresaBtnActionPerformed
-
-    public static PrincipalEmpresaForm getInstance(){
-        if (form == null){
-            form = new PrincipalEmpresaForm();
-        }
-        return form;
-    }
 
     public EmpresaTransportista getEmpresa() {
         return empresa;

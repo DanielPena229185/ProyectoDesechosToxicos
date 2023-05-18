@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import org.itson.DTO.EmpresaTransportistaDTO;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioException;
+import org.itson.excepciones.PersistenciaException;
 import org.itson.excepciones.PresentacionException;
 import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
@@ -254,7 +255,6 @@ public class LogInForm extends javax.swing.JFrame {
         String selectedItem = comboBoxOpcionLogin.getSelectedItem().toString();
         switch (selectedItem) {
             case ADMINISTRADOR:
-                Administrador adm = null;
                 try {
                     this.iniciarSesionAdministrador();
                 } catch (NegocioException e) {
@@ -263,19 +263,10 @@ public class LogInForm extends javax.swing.JFrame {
                 dispose();
                 break;
             case EMPRESA_TRANSPORTADORA:
-                EmpresaTransportista empresaTransportista = null;
                 try {
-                    EmpresaTransportistaDTO empresaTransportistaDTO = new EmpresaTransportistaDTO();
-                    empresaTransportistaDTO.setEmail(this.campoUsuario.getText());
-                    empresaTransportistaDTO.setContrasena(this.campoContrasena.getText());
-                    empresaTransportista = this.negocio.loginEmpresaTrasnportista(empresaTransportistaDTO.getEmail(), empresaTransportistaDTO.getContrasena());
-                    System.out.println(empresaTransportista.getNombre());
-                    PrincipalEmpresaForm principalForm;
-                    principalForm = PrincipalEmpresaForm.getInstance();
-                    principalForm.setEmpresa(empresaTransportista);
-                    this.setVisible(false);
+                    this.iniciarSesionEmpresaTransportista();
                 } catch (NegocioException e) {
-                    JOptionPane.showMessageDialog(this, e.getMessage(), "No se pudo iniciar sesión.", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, e.getMessage());
                 }
                 this.dispose();
                 break;
@@ -398,6 +389,65 @@ public class LogInForm extends javax.swing.JFrame {
 
         principalProductorForm.setProductor(productor);
         principalProductorForm.iniciarComponentes();
+    }
+    
+    private void iniciarSesionEmpresaTransportista() throws PresentacionException{
+
+        List<String> campoError = new LinkedList<>();
+
+        String correo = "";
+
+        if(verificarCampoUsuarioVacio()){
+            campoError.add("- Correo vacío");
+        }else{
+            correo = this.campoUsuario.getText();
+        }
+
+        String contrasena = "";
+
+        if(verificarCampoContrasenaVacio()){
+            campoError.add("- Contraseña vacía");
+        }else{ 
+            contrasena = this.campoContrasena.getText();
+        }
+
+        if (!campoError.isEmpty()) {
+
+            String mensaje = mensajeCampos(campoError);
+
+            throw new PresentacionException(mensaje);
+
+        }
+
+        try {
+            EmpresaTransportista empresaTransportista = consultarEmpresaTransportista(correo, contrasena);
+
+            if (empresaTransportista == null) {
+                throw new PresentacionException("No hay una cuenta con esos datos");
+            }
+
+            this.abrirPrincipalEmpresaTransportista(empresaTransportista);
+            
+            this.cerrarVentana();
+        } catch (PresentacionException a) {
+            throw new PresentacionException(a.getMessage());
+        }
+
+    }
+    
+    private EmpresaTransportista consultarEmpresaTransportista(String correo, String contrasena) throws PresentacionException{
+        try {
+            return negocio.loginEmpresaTrasnportista(correo, contrasena);
+        } catch (NegocioException e) {
+            throw new PresentacionException(e.getMessage());
+        }
+    }
+    
+    private void abrirPrincipalEmpresaTransportista(EmpresaTransportista empresaTransportista) throws PresentacionException{
+        PrincipalEmpresaForm principalEmpresaForm;
+        principalEmpresaForm = PrincipalEmpresaForm.getInstance();
+        principalEmpresaForm.setEmpresa(empresaTransportista);
+        principalEmpresaForm.iniciarComponentes();
     }
     
     private void iniciarSesionAdministrador() throws PresentacionException{

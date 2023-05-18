@@ -281,9 +281,9 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_solicitarBtnActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        PrincipalProductorForm a = new PrincipalProductorForm();
-        a.setVisible(true);
-        dispose();
+        //PrincipalProductorForm a = new PrincipalProductorForm();
+//        a.setVisible(true);
+//        dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private boolean validarCampoTextoVacio() {
