@@ -9,13 +9,12 @@ import static java.awt.image.ImageObserver.ERROR;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.NumberFormatter;
 import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PresentacionException;
 import org.itson.implementacion.FachadaNegocio;
@@ -513,7 +512,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
     /**
      * Abre la ventana principal del productor con el productor proporcionado.
-     * 
+     *
      * @param productor El objeto Productor.
      */
     private void abrirPrincipalProductor(Productor productor) {
@@ -524,7 +523,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         principalProductorForm.setProductor(productor);
         principalProductorForm.iniciarComponentes();
     }
-    
+
     private void btnAdelanteTblResiduosNoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdelanteTblResiduosNoSeleccionadoActionPerformed
         this.avanzarPaginaTblNoSeleccionados();
     }//GEN-LAST:event_btnAdelanteTblResiduosNoSeleccionadoActionPerformed
@@ -728,9 +727,21 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         }
 
         // Convertir LocalDate a Date
-        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date fecha = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-        return date;
+        // Crear una instancia de Calendar y establecer la fecha
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(fecha);
+
+        // Establecer la hora, minutos y segundos en 0
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+
+        // Obtener la fecha modificada
+        Date fechaModificada = calendar.getTime();
+
+        return fecha;
     }
 
     private void solicitarTraslado() {
@@ -741,6 +752,10 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
             solicitud.setFecha_Solicitada(obtenerFecha());
             realizarParticionSolicitud(solicitud);
             negocio.insertarSolicitud(solicitud);
+            if (solicitud.getId() != null) {
+                JOptionPane.showMessageDialog(this, "Solicitud con éxito", "Registrar solicitud", JOptionPane.INFORMATION_MESSAGE);
+                cerrarVentana();
+            }
         } catch (NegocioException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } catch (PresentacionException a) {
