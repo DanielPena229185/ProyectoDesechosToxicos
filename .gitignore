@@ -1,11 +1,11 @@
 # Netbeans
-/nbproject/private/
-/nbproject/Makefile-.mk
+**/nbproject/private/
+**/nbproject/Makefile-.mk
 **/nbproject/Package-.bash
-/nbproject/build-impl.xml
-/nbproject/genfiles.properties
-/nbproject/project.properties
-/nbactions.xml
+**/nbproject/build-impl.xml
+**/nbproject/genfiles.properties
+**/nbproject/project.properties
+**/nbactions.xml
 **/target/
 build/
 nbbuild/
