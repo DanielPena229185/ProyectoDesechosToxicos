@@ -141,8 +141,10 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
     }
 
     private void irPrincipalAdministradorForm() {
-        PrincipalAdministradorForm p = new PrincipalAdministradorForm();
-        p.setAdministrador(administrador);
+        PrincipalAdministradorForm principalAdministradorForm;
+        principalAdministradorForm = PrincipalAdministradorForm.getInstance();
+        principalAdministradorForm.setAdministrador(administrador);
+        principalAdministradorForm.iniciarComponentes();
         cerrarVentanaActual();
     }
     
