@@ -110,6 +110,8 @@ public class NegocioResiduo implements INegocioResiduo {
         if (this.validarTextoVacio(nombre)) {
             //Si el nombre no está disponible, ya sea que esté vacío o nulo
             camposErroneos.add("- No contiene nombre");
+        }else if (validarTexto(nombre)){
+            camposErroneos.add("- Ingresa un nombre más simple que " + nombre);
         }
 
         //Validamos el código del residuo
@@ -145,6 +147,12 @@ public class NegocioResiduo implements INegocioResiduo {
         //Lanza el todos los elementos erroneos por los que no cumplieron las 
         //validaciones
         throw new ValidacionException(camposVacios);
+    }
+
+    public boolean validarTexto(String texto) {
+        // Expresión regular que valida un texto sin números ni caracteres especiales
+        String patron = "^[a-zA-Z]+([\\s][a-zA-Z]+)*$";
+        return texto.matches(patron);
     }
 
     /**
