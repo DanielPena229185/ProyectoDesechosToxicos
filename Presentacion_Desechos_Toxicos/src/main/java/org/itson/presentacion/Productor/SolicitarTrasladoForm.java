@@ -5,6 +5,7 @@ import com.dominio.Productor;
 import java.util.List;
 import com.dominio.Residuo;
 import com.dominio.Solicitud;
+import com.github.lgooddatepicker.components.DatePicker;
 import static java.awt.image.ImageObserver.ERROR;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -508,6 +509,8 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         abrirPrincipalProductor(productor);
+        reiniciarFormulario();
+        cerrarVentana();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
@@ -588,11 +591,19 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
         iniciarPantallaPrincipalForm();
+        reiniciarFormulario();
     }//GEN-LAST:event_formComponentHidden
 
+    private void reiniciarFormulario(){
+        this.fecha.setText("");
+        this.residuoSeleccionados.clear();
+        limpiarCamposResiduo();
+    }
+    
     private void iniciarPantallaPrincipalForm() {
         PrincipalProductorForm principalProductorForm;
         principalProductorForm = PrincipalProductorForm.getInstance();
+        principalProductorForm.setProductor(productor);
         principalProductorForm.iniciarComponentes();
     }
 

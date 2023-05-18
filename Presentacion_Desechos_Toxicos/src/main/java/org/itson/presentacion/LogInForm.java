@@ -91,7 +91,7 @@ public class LogInForm extends javax.swing.JFrame {
         checkVisible = new javax.swing.JCheckBox();
         iniciarSesionBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión");
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));

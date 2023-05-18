@@ -150,7 +150,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
         //Establece el nombre del productor
         solicitudDTO.setNombreProductor(solicitud.getProductor().getNombre());
         //Establece la fecha en la que se solicitó
-        solicitudDTO.setFechaSolicitada(solicitud.getFecha_Solicitada());
+//        solicitudDTO.setFechaSolicitada(solicitud.getFecha_Solicitada());
         //Establece la lista de residuos
         solicitudDTO.setResiduos(solicitud.getResiduos());
 
@@ -266,7 +266,8 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
         try {
             solicitudes = consultarSolicitudFiltro(solicitud);
-            if (solicitudes.size() > 5) {
+            List<Solicitud> solicitudesFiltradas =listaFecha(solicitudes, solicitud.getFecha_Solicitada());
+            if (solicitudesFiltradas.size() > 5) {
                 throw new ValidacionException("- Ya hay más de 5 solicitudes que cuentan con los mismos datos");
             }
         } catch (PersistenciaException e) {
@@ -311,5 +312,18 @@ public class NegocioSolicitud implements INegocioSolicitud {
         } catch (PersistenciaException e) {
             throw new NegocioException(e.getMessage());
         }
+    }
+    
+    private List<Solicitud> listaFecha(List<Solicitud> lista, Date date){
+        
+        List<Solicitud> listaSolicitud = new LinkedList<>();
+        
+        for (Solicitud solicitud : lista) {
+            if(solicitud.getFecha_Solicitada().equals(date)){
+                listaSolicitud.add(solicitud);
+            }
+        }
+        
+        return listaSolicitud;
     }
 }

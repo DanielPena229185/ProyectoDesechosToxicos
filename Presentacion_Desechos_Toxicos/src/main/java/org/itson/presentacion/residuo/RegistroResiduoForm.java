@@ -1,4 +1,3 @@
-
 package org.itson.presentacion.residuo;
 
 import com.dominio.Productor;
@@ -14,6 +13,7 @@ import org.itson.excepciones.PresentacionException;
 import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
 import org.itson.presentacion.Productor.PrincipalProductorForm;
+
 /**
  * Descripción de la clase: Aqui se registra todos los registros
  *
@@ -37,9 +37,10 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
      * Codigo del residuo
      */
     private final String CODIGO_RESIDUO = "ABC-123";
-    
+
     /**
-     * Objeto de negocio utilizado para realizar operaciones relacionadas con el residuo
+     * Objeto de negocio utilizado para realizar operaciones relacionadas con el
+     * residuo
      */
     INegocio negocio;
     /**
@@ -67,13 +68,14 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
 
     /**
      * Inicializa los componentes del formulario de registro de residuo.
-     * Establece el nombre del productor en la etiqueta correspondiente y hace visible el formulario.
+     * Establece el nombre del productor en la etiqueta correspondiente y hace
+     * visible el formulario.
      */
-    public void iniciarComponentes(){
+    public void iniciarComponentes() {
         this.lblNombreProductor.setText(productor.getNombre());
         this.setVisible(true);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -117,7 +119,14 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrar Residuo");
         setBackground(new java.awt.Color(153, 153, 255));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -340,8 +349,9 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Maneja el evento de clic del mouse en el campo de nombre del residuo.
-     * Si el campo está vacío, establece el color del texto en negro y borra el contenido del campo.
+     * Maneja el evento de clic del mouse en el campo de nombre del residuo. Si
+     * el campo está vacío, establece el color del texto en negro y borra el
+     * contenido del campo.
      */
     private void campoNombreResiduoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNombreResiduoMouseClicked
         if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
@@ -351,8 +361,9 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_campoNombreResiduoMouseClicked
 
     /**
-     * Maneja el evento de ganar el enfoque del campo de nombre del residuo.
-     * Si el campo está vacío, establece el color del texto en negro y borra el contenido del campo.
+     * Maneja el evento de ganar el enfoque del campo de nombre del residuo. Si
+     * el campo está vacío, establece el color del texto en negro y borra el
+     * contenido del campo.
      */
     private void campoNombreResiduoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreResiduoFocusGained
         if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
@@ -362,8 +373,9 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_campoNombreResiduoFocusGained
 
     /**
-     * Maneja el evento de perder el enfoque del campo de nombre del residuo.
-     * Si el campo está vacío, establece el color del texto en gris y muestra el valor predeterminado del nombre del residuo.
+     * Maneja el evento de perder el enfoque del campo de nombre del residuo. Si
+     * el campo está vacío, establece el color del texto en gris y muestra el
+     * valor predeterminado del nombre del residuo.
      */
     private void campoNombreResiduoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreResiduoFocusLost
         if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
@@ -373,10 +385,11 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_campoNombreResiduoFocusLost
 
     /**
-     * Maneja el evento de clic en el botón de agregar químico al componente del residuo.
-     * Intenta agregar el químico seleccionado a la lista de componentes del residuo.
-     * Si no hay químicos disponibles, muestra un mensaje de error.
-     * Actualiza las etiquetas de verificación de cantidad según sea necesario.
+     * Maneja el evento de clic en el botón de agregar químico al componente del
+     * residuo. Intenta agregar el químico seleccionado a la lista de
+     * componentes del residuo. Si no hay químicos disponibles, muestra un
+     * mensaje de error. Actualiza las etiquetas de verificación de cantidad
+     * según sea necesario.
      */
     private void btnAgregarQuimicoComponenteResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarQuimicoComponenteResiduoActionPerformed
         try {
@@ -400,9 +413,10 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
 
     /**
      * Maneja el evento de clic en el botón de eliminar componente del residuo.
-     * Intenta eliminar el químico seleccionado de la lista de componentes del residuo.
-     * Si no hay componentes para eliminar, muestra un mensaje de error.
-     * Actualiza las etiquetas de verificación de cantidad según sea necesario.
+     * Intenta eliminar el químico seleccionado de la lista de componentes del
+     * residuo. Si no hay componentes para eliminar, muestra un mensaje de
+     * error. Actualiza las etiquetas de verificación de cantidad según sea
+     * necesario.
      */
     private void btnEliminarComponenteResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarComponenteResiduoActionPerformed
         try {
@@ -425,8 +439,9 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarComponenteResiduoActionPerformed
 
     /**
-     * Maneja el evento de ganar el enfoque del campo de formato de código del residuo.
-     * Si el campo está vacío, establece el color del texto en negro y borra el contenido del campo.
+     * Maneja el evento de ganar el enfoque del campo de formato de código del
+     * residuo. Si el campo está vacío, establece el color del texto en negro y
+     * borra el contenido del campo.
      */
     private void formatoCodigoResiduoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formatoCodigoResiduoFocusGained
         if (validarFormattFieldVacio(formatoCodigoResiduo, CODIGO_RESIDUO)) {
@@ -436,8 +451,9 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_formatoCodigoResiduoFocusGained
 
     /**
-     * Maneja el evento de clic del mouse en el campo de formato de código del residuo.
-     * Si el campo está vacío, establece el color del texto en negro y borra el contenido del campo.
+     * Maneja el evento de clic del mouse en el campo de formato de código del
+     * residuo. Si el campo está vacío, establece el color del texto en negro y
+     * borra el contenido del campo.
      */
     private void formatoCodigoResiduoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formatoCodigoResiduoMouseClicked
         if (validarFormattFieldVacio(formatoCodigoResiduo, CODIGO_RESIDUO)) {
@@ -447,8 +463,9 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_formatoCodigoResiduoMouseClicked
 
     /**
-     * Maneja el evento de perder el enfoque del campo de formato de código del residuo.
-     * Si el campo está vacío, establece el color del texto en gris y muestra el código de residuo predeterminado.
+     * Maneja el evento de perder el enfoque del campo de formato de código del
+     * residuo. Si el campo está vacío, establece el color del texto en gris y
+     * muestra el código de residuo predeterminado.
      */
     private void formatoCodigoResiduoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formatoCodigoResiduoFocusLost
         if (validarFormattFieldVacio(formatoCodigoResiduo, CODIGO_RESIDUO)) {
@@ -458,16 +475,16 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_formatoCodigoResiduoFocusLost
 
     /**
-     * Maneja el evento de clic en el botón de guardar residuo.
-     * Intenta construir un objeto de residuo y guardarlo.
-     * Muestra un mensaje de éxito si el residuo se guarda correctamente y cierra la ventana actual.
-     * En caso de excepción, muestra un mensaje de error.
+     * Maneja el evento de clic en el botón de guardar residuo. Intenta
+     * construir un objeto de residuo y guardarlo. Muestra un mensaje de éxito
+     * si el residuo se guarda correctamente y cierra la ventana actual. En caso
+     * de excepción, muestra un mensaje de error.
      */
     private void btnGuardarResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarResiduoActionPerformed
         try {
             Residuo residuo = construirResiduo();
             Residuo confirmarResiduo = this.guardarResiduo(residuo);
-            if(confirmarResiduo != null){
+            if (confirmarResiduo != null) {
                 JOptionPane.showMessageDialog(this, "Residuo registrado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 this.cerrarVentana();
             }
@@ -476,26 +493,35 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGuardarResiduoActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        abrirPrincipalForm();
+    }//GEN-LAST:event_formWindowClosed
+
     /**
-     * Guarda el residuo proporcionado llamando al método de negocio correspondiente.
+     * Guarda el residuo proporcionado llamando al método de negocio
+     * correspondiente.
+     *
      * @param residuo El residuo a guardar
-     * @return El residuo confirmado que se ha guardado, o null si ocurre un error.
+     * @return El residuo confirmado que se ha guardado, o null si ocurre un
+     * error.
      */
     private Residuo guardarResiduo(Residuo residuo) {
         return negocio.insertarResiduo(residuo);
     }
 
     /**
-     * Construye un objeto de residuo utilizando los valores ingresados en los campos correspondientes.
+     * Construye un objeto de residuo utilizando los valores ingresados en los
+     * campos correspondientes.
+     *
      * @return El residuo construido.
      */
     private Residuo construirResiduo() {
-        
+
         String codigo = "";
         if (!validarFormattFieldVacio(formatoCodigoResiduo, CODIGO_RESIDUO)) {
             codigo = formatoCodigoResiduo.getText();
         }
-        
+
         String nombre = "";
         if (!validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
             nombre = campoNombreResiduo.getText();
@@ -510,11 +536,16 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         residuo.setProductor(productor);
         return residuo;
     }
+
     /**
-     * Verifica si el campo de formato de texto está vacío o tiene un valor predeterminado.
+     * Verifica si el campo de formato de texto está vacío o tiene un valor
+     * predeterminado.
+     *
      * @param textField El campo de formato de texto a verificar.
-     * @param textoDefault El valor predeterminado del campo de formato de texto.
-     * @return true si el campo está vacío o tiene un valor predeterminado, false de lo contrario.
+     * @param textoDefault El valor predeterminado del campo de formato de
+     * texto.
+     * @return true si el campo está vacío o tiene un valor predeterminado,
+     * false de lo contrario.
      */
     private boolean validarFormattFieldVacio(JFormattedTextField textField, String textoDefault) {
         if (textField.getText().isBlank() || textField.getText().equals(textoDefault) || textField.getText().equals("   -   ")) {
@@ -525,9 +556,11 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
 
     /**
      * Verifica si el campo de texto está vacío o tiene un valor predeterminado.
+     *
      * @param campo El campo de texto a verificar
      * @param nombreCampo El valor predeterminado del campo de texto.
-     * @return true si el campo está vacío o tiene un valor predeterminado, false de lo contrario.
+     * @return true si el campo está vacío o tiene un valor predeterminado,
+     * false de lo contrario.
      */
     private boolean validarCampoTextoVacio(javax.swing.JTextField campo, String nombreCampo) {
         if (campo.getText().isEmpty() || campo.getText().equals(nombreCampo)) {
@@ -535,21 +568,26 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         }
         return false;
     }
+
     /**
      * Cierra la ventana actual.
      */
-    private void cerrarVentana(){
+    private void cerrarVentana() {
         this.setVisible(false);
     }
+
     /**
      * Abre la ventana del formulario principal del productor.
      */
-    private void abrirPrincipalForm(){
+    private void abrirPrincipalForm() {
         PrincipalProductorForm principalProductor = PrincipalProductorForm.getInstance();
+        principalProductor.setProductor(productor);
         principalProductor.iniciarComponentes();
     }
+
     /**
      * Consulta la lista de químicos disponibles a través de la capa de negocio.
+     *
      * @return La lista de químicos disponibles.
      * @throws PresentacionException Si ocurre un error durante la consulta.
      */
@@ -564,7 +602,9 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }
 
     /**
-     * Llena el combo box de químicos disponibles con los elementos de la lista proporcionada.
+     * Llena el combo box de químicos disponibles con los elementos de la lista
+     * proporcionada.
+     *
      * @param listaDisponibles La lista de químicos disponibles.
      * @throws PresentacionException Si ocurre un error al llenar el combo box.
      */
@@ -581,9 +621,11 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     /**
-     * Agrega el químico seleccionado de la lista de químicos disponibles a la lista de componentes del residuo.
-     * Actualiza los combo boxes correspondientes.
+     * Agrega el químico seleccionado de la lista de químicos disponibles a la
+     * lista de componentes del residuo. Actualiza los combo boxes
+     * correspondientes.
      */
     private void agregarQuimicoSeleccionadoListaComponentesResiduo() {
         Quimico quimicoSeleccionado = getQuimicoSeleccionadoListaDisponibles();
@@ -592,9 +634,11 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         List<Quimico> quimicosComponentesResiduo = this.agregarListaComponenteResiduo(quimicoSeleccionado);
         this.llenarComboBoxComponentesResiduo(quimicosComponentesResiduo);
     }
+
     /**
-     * Elimina el químico seleccionado de la lista de componentes del residuo y lo agrega a la lista de químicos disponibles.
-     * Actualiza los combo boxes correspondientes.
+     * Elimina el químico seleccionado de la lista de componentes del residuo y
+     * lo agrega a la lista de químicos disponibles. Actualiza los combo boxes
+     * correspondientes.
      */
     private void eliminarQuimicoSeleccionadoListaComponentesResiduo() {
         Quimico quimicoSeleccionado = getQuimicoSeleccionadoListaComponentesResiduo();
@@ -606,22 +650,27 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
 
     /**
      * Obtiene el químico seleccionado en la lista de químicos disponibles.
+     *
      * @return El químico seleccionado.
      */
     private Quimico getQuimicoSeleccionadoListaDisponibles() {
         Quimico quimico = (Quimico) comboQuimicosDisponibles.getSelectedItem();
         return quimico;
     }
+
     /**
      * Obtiene el químico seleccionado en la lista de componentes del residuo.
+     *
      * @return El químico seleccionado.
      */
     private Quimico getQuimicoSeleccionadoListaComponentesResiduo() {
         Quimico quimico = (Quimico) comboBoxComponenteResiduo.getSelectedItem();
         return quimico;
     }
+
     /**
      * Elimina el químico seleccionado de la lista de químicos disponibles.
+     *
      * @param quimicoSeleccionado El químico seleccionado a eliminar.
      * @return La lista de químicos disponibles actualizada.
      */
@@ -629,9 +678,11 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         listaQuimicosDisponibles.remove(quimicoSeleccionado);
         return listaQuimicosDisponibles;
     }
+
     /**
-     * Agrega el químico seleccionado a la lista de componentes del residuo.
-     * Si la lista de componentes del residuo es nula, se crea una nueva lista.
+     * Agrega el químico seleccionado a la lista de componentes del residuo. Si
+     * la lista de componentes del residuo es nula, se crea una nueva lista.
+     *
      * @param quimicoSeleccionado El químico seleccionado a agregar.
      * @return La lista de componentes del residuo actualizada.
      */
@@ -644,7 +695,9 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }
 
     /**
-     * Llena el combo box de componentes del residuo con los elementos de la lista proporcionada.
+     * Llena el combo box de componentes del residuo con los elementos de la
+     * lista proporcionada.
+     *
      * @param listaComponentesResiduo La lista de componentes del residuo.
      * @throws PresentacionException Si ocurre un error al llenar el combo box.
      */
@@ -661,8 +714,10 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     /**
      * Agrega el químico seleccionado a la lista de químicos disponibles.
+     *
      * @param quimicoSeleccionado El químico seleccionado a agregar.
      * @return La lista de químicos disponibles actualizada.
      */
@@ -670,9 +725,11 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         listaQuimicosDisponibles.add(quimicoSeleccionado);
         return listaQuimicosDisponibles;
     }
+
     /**
      * Elimina el químico seleccionado de la lista de componentes del residuo.
      * Si la lista de componentes del residuo es nula, se crea una nueva lista.
+     *
      * @param quimicoSeleccionado El químico seleccionado a eliminar.
      * @return La lista de componentes del residuo actualizada.
      */
@@ -701,31 +758,38 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     }
 
     /**
-     * Obtiene el objeto Productor asociado a este formulario de registro de residuo.
+     * Obtiene el objeto Productor asociado a este formulario de registro de
+     * residuo.
+     *
      * @return El objeto Productor.
      */
     public Productor getProductor() {
         return productor;
     }
+
     /**
-     * Establece el objeto Productor asociado a este formulario de registro de residuo.
+     * Establece el objeto Productor asociado a este formulario de registro de
+     * residuo.
+     *
      * @param productor El objeto Productor a establecer.
      */
     public void setProductor(Productor productor) {
         this.productor = productor;
     }
+
     /**
-     * Obtiene una instancia del formulario de registro de residuo.
-     * Si no existe una instancia previa, crea una nueva.
+     * Obtiene una instancia del formulario de registro de residuo. Si no existe
+     * una instancia previa, crea una nueva.
+     *
      * @return La instancia del formulario de registro de residuo.
      */
-    public static RegistroResiduoForm getInstance(){
-        if(form == null){
+    public static RegistroResiduoForm getInstance() {
+        if (form == null) {
             form = new RegistroResiduoForm();
         }
         return form;
     }
-    
+
 //    /**
 //     * @param args the command line arguments
 //     */
