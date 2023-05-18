@@ -346,6 +346,7 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -394,7 +395,7 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
     private void btnAgregarQuimicoComponenteResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarQuimicoComponenteResiduoActionPerformed
         try {
             if (comboQuimicosDisponibles.getModel().getSize() == 0) {
-                throw new PresentacionException("No hay componentes que eliminar");
+                throw new PresentacionException("No hay componentes que agregar");
             }
             this.agregarQuimicoSeleccionadoListaComponentesResiduo();
         } catch (PresentacionException e) {
@@ -487,6 +488,7 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
             if (confirmarResiduo != null) {
                 JOptionPane.showMessageDialog(this, "Residuo registrado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 this.cerrarVentana();
+                this.abrirPrincipalForm();
             }
         } catch (NegocioException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());

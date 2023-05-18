@@ -1,5 +1,6 @@
 package org.itson.presentacion.Productor;
 
+import com.dominio.Estado;
 import com.dominio.MedidaResiduo;
 import com.dominio.Productor;
 import java.util.List;
@@ -761,6 +762,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
             solicitud.setProductor(productor);
             solicitud.setResiduos(residuoSeleccionados);
             solicitud.setFecha_Solicitada(obtenerFecha());
+            solicitud.setEstado(Estado.NO_ATENDIDA);
             realizarParticionSolicitud(solicitud);
             negocio.insertarSolicitud(solicitud);
             if (solicitud.getId() != null) {
