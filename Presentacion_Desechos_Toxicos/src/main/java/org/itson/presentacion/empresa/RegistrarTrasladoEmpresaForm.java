@@ -5,7 +5,6 @@
 package org.itson.presentacion.empresa;
 
 import com.dominio.EmpresaTransportista;
-import com.dominio.Estado;
 import com.dominio.Traslado;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,6 +26,8 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
     private static RegistrarTrasladoEmpresaForm form;
     private EmpresaTransportista empresaTransportista;
     
+    private List<Traslado> traslados;
+    
     /**
      * Creates new form RegistrarTrasladoEmpresaForm
      */
@@ -34,7 +35,15 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
         this.negocio = new FachadaNegocio();
         initComponents();
     }
-
+    
+    private void abrirSeleccionarVehiculosForm() {
+        SeleccionarVehiculosForm seleccionarVehiculo = null;
+        seleccionarVehiculo = SeleccionarVehiculosForm.getInstance();
+        seleccionarVehiculo.setEmpresaTransportista(this.empresaTransportista);
+        seleccionarVehiculo.setTraslado(this.obtenerTrasladoSeleccionado());
+        seleccionarVehiculo.iniciarComponentes();
+    }
+            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,11 +81,22 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaTraslados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaTrasladosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaTraslados);
 
         jLabel1.setText("Registrar Traslado:");
 
         registrarBtn.setText("Registrar");
+        registrarBtn.setEnabled(false);
+        registrarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,8 +131,17 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void registrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarBtnActionPerformed
+        this.abrirSeleccionarVehiculosForm();
+        this.setVisible(false);
+    }//GEN-LAST:event_registrarBtnActionPerformed
+
+    private void tablaTrasladosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTrasladosMouseClicked
+        this.registrarBtn.setEnabled(true);
+    }//GEN-LAST:event_tablaTrasladosMouseClicked
+
     public static RegistrarTrasladoEmpresaForm getInstance() {
-        if (form == null){
+        if (form == null) {
             form = new RegistrarTrasladoEmpresaForm();
         }
         
@@ -135,7 +164,9 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
     
     private List<Traslado> consultarListaTraslados() throws PresentacionException {
         try {
-            return this.negocio.consultaTrasladosAsingados(this.empresaTransportista);
+            this.traslados = this.negocio.consultaTrasladosAsingados(this.empresaTransportista);
+            System.out.println(this.traslados.get(0));
+            return this.traslados;
         } catch (NegocioException e) {
             throw new PresentacionException(e.getMessage());
         }
@@ -151,23 +182,27 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
         modeloTabla.setNumRows(0);
         
         try {
-            List<Traslado> traslados = this.consultarListaTraslados();
+            this.traslados = this.consultarListaTraslados();
         
-            for (Traslado traslado : traslados) {
-                if (traslado.getSolicitud().getEstado() == Estado.NO_ATENDIDA) {
-                    Object[] fila = {
-                        this.formatearFecha(traslado.getSolicitud().getFecha_Solicitada()),
-                        traslado.getResiduo().getNombre(),
-                        traslado.getResiduo().getCantidad(),
-                        traslado.getResiduo().getProductor().getNombre()
-                    };
-                    
-                    modeloTabla.addRow(fila);
-                }
+            for (Traslado traslado : this.traslados) {
+                Object[] fila = {
+                    this.formatearFecha(traslado.getSolicitud().getFecha_Solicitada()),
+                    traslado.getResiduo().getNombre(),
+                    traslado.getResiduo().getCantidad(),
+                    traslado.getResiduo().getProductor().getNombre()
+                };
+
+                modeloTabla.addRow(fila);
             }
         } catch (PresentacionException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    private Traslado obtenerTrasladoSeleccionado() {
+        int filaSeleccionada = this.tablaTraslados.getSelectedRow();
+        
+        return this.traslados.get(filaSeleccionada);
     }
     
     /**

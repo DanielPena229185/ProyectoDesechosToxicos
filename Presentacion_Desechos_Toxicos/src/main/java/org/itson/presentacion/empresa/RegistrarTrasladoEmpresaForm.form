@@ -102,6 +102,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaTrasladosMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -113,7 +116,11 @@
     <Component class="javax.swing.JButton" name="registrarBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNombreEmpresa">
     </Component>
