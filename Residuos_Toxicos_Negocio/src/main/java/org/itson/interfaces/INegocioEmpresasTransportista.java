@@ -10,13 +10,13 @@ import java.util.List;
 import org.itson.excepciones.PersistenciaException;
 
 /**
- * Descripción de la interface: 
+ * Descripción de la interface: Define varios métodos relacionados con la gestión de las empresas transportistas en el sistema
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
 public interface INegocioEmpresasTransportista {
     
-        /**
+     /**
      * Recupera todas las empresas transportistas almacenadas en alguna fuente de datos persistente
      * @return una lista de objetos EmpresaTransportista
      * @throws PersistenciaException si hay algún problema al realizar la consulta

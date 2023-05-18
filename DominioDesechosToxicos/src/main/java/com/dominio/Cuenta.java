@@ -116,14 +116,21 @@ public class Cuenta {
         this.contrasena = contrasena;
     }
 
-    
+    /**
+     * Devuelve un valor hash para el objeto actual.
+     * @return el valor hash calculado
+     */
     @Override
     public int hashCode() {
         int hash = 5;
         hash = 29 * hash + Objects.hashCode(this.id);
         return hash;
     }
-
+    /**
+     * Compara el objeto actual con otro objeto para determinar si son iguales. 
+     * @param obj El objeto a comparar con el objeto actual.
+     * @return true si los objetos son iguales, false en caso contrario.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

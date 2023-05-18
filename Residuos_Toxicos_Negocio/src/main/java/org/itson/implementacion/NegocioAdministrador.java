@@ -24,12 +24,19 @@ public class NegocioAdministrador implements INegocioAdministrador {
     IPersistencia persistencia;
 
     /**
-     *
+     * Constructor de la clase NegocioAdministrador.
+     * Inicializa la capa de persistencia creando una instancia de FachadaPersistencia.
      */
     public NegocioAdministrador() {
         persistencia = new FachadaPersistencia();
     }
-
+    /**
+     * Realiza el inicio de sesión de un Administrador en el sistema.
+     * @param correo El correo del Administrador.
+     * @param contrasena La contraseña del Administrador.
+     * @return El Administrador que ha iniciado sesión.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante el inicio de sesión.
+     */
     @Override
     public Administrador loginAdministrador(String correo, String contrasena) throws NegocioException {
 
@@ -43,7 +50,12 @@ public class NegocioAdministrador implements INegocioAdministrador {
             throw new NegocioException(a.getMessage());
         }
     }
-
+    /**
+     * Valida los campos de inicio de sesión de un Administrador.
+     * @param correo El correo del Administrador.
+     * @param contrasena La contraseña del Administrador.
+     * @throws ValidacionException Si algún campo de inicio de sesión es inválido o está vacío.
+     */
     private void validarLogin(String correo, String contrasena) throws ValidacionException {
         List<String> camposError = new LinkedList<>();
         

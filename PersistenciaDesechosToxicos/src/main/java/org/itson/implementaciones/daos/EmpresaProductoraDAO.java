@@ -110,7 +110,7 @@ public class EmpresaProductoraDAO implements IConsultasDAO<Productor> {
     }
     /**
      * Consulta las empresas productoras que cumplen con los criterios dados en el objeto Productor pasado como parametro
-     *  @param parametros un objeto Productor con los criterios de busqueda
+     * @param parametros un objeto Productor con los criterios de busqueda
      * @return una lista de objetos Productor que cumplen con los criterios de busqueda
      * @throws PersistenciaException si se produce un error en la conexion con la base de datos
      */

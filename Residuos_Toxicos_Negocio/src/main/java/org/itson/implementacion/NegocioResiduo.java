@@ -19,7 +19,7 @@ import org.itson.interfaces.INegocioResiduo;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripción de la clase:
+ * Descripción de la clase: Se encarga de manejar las operaciones relacionadas con los residuos en un sistema.
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
@@ -79,7 +79,12 @@ public class NegocioResiduo implements INegocioResiduo {
         }
 
     }
-
+    /**
+     * Consulta los Residuos del sistema aplicando un filtro.
+     * @param residuo el objeto Residuo utilizado como filtro de consulta.
+     * @return una lista de objetos Residuo que cumplen con el filtro.
+     * @throws NegocioException si ocurre un error en la lógica de negocio.
+     */
     @Override
     public List<Residuo> consultarResiduoFiltro(Residuo residuo) throws NegocioException {
         try {
@@ -148,7 +153,11 @@ public class NegocioResiduo implements INegocioResiduo {
         //validaciones
         throw new ValidacionException(camposVacios);
     }
-
+    /**
+     * Valida si un texto contiene únicamente letras y espacios.
+     * @param texto el texto a validar.
+     * @return true si el texto es válido, false de lo contrario.
+     */
     public boolean validarTexto(String texto) {
         // Expresión regular que valida un texto sin números ni caracteres especiales
         String patron = "^[a-zA-Z]+([\\s][a-zA-Z]+)*$";
@@ -245,7 +254,12 @@ public class NegocioResiduo implements INegocioResiduo {
         residuo.setProductor(productor);
         return residuo;
     }
-
+    /**
+     * Convierte un objeto Residuo en un objeto ResiduoDTO.
+     * @param residuo el objeto Residuo a convertir.
+     * @return el objeto ResiduoDTO resultante de la conversión.
+     * @throws ValidacionException si el objeto Residuo no pasa las validaciones.
+     */
     private ResiduoDTO convertirResiduoToDTO(Residuo residuo) throws ValidacionException {
 
         ResiduoDTO residuoDTO = new ResiduoDTO();
@@ -269,7 +283,12 @@ public class NegocioResiduo implements INegocioResiduo {
         }
         return residuoDTO;
     }
-
+    /**
+     * Valida la inexistencia de un objeto Residuo en el sistema.
+     * @param residuo el objeto Residuo a validar.
+     * @return el Residuo validado si no existe en el sistema.
+     * @throws ValidacionException si el objeto Residuo ya existe en el sistema.
+     */
     private Residuo validarInexistenciaResiduo(Residuo residuo) throws ValidacionException {
 
         List<String> campoError = new LinkedList<>();
@@ -305,7 +324,11 @@ public class NegocioResiduo implements INegocioResiduo {
         throw new ValidacionException("Ya existen los siguientes datos: \n"
                 + mensaje);
     }
-
+    /**
+     * Valida si existe un residuo con el mismo código en el sistema.
+     * @param codigo el código a validar.
+     * @return true si existe un residuo con el mismo código, false de lo contrario.
+     */
     private boolean validarCodigoExistenteResiduo(String codigo) {
         Residuo residuo = new Residuo();
         residuo.setCodigo(codigo);
@@ -315,7 +338,11 @@ public class NegocioResiduo implements INegocioResiduo {
         }
         return false;
     }
-
+    /**
+     * Valida si existe un residuo con el mismo nombre en el sistema
+     * @param nombre el nombre a validar.
+     * @return true si existe un residuo con el mismo nombre, false de lo contrario.
+     */
     private boolean validarNombreExistenteResiduo(String nombre) {
         Residuo residuo = new Residuo();
         residuo.setNombre(nombre);
@@ -325,7 +352,11 @@ public class NegocioResiduo implements INegocioResiduo {
         }
         return false;
     }
-
+    /**
+     * Valida si existe un residuo con los mismos químicos en el sistema.
+     * @param quimicos la lista de químicos a validar.
+     * @return true si existe un residuo con los mismos químicos, false de lo contrario.
+     */
     private boolean validarListaQuimicosExistenteResiduo(List<Quimico> quimicos) {
         Residuo residuo = new Residuo();
         residuo.setQuimicos(quimicos);

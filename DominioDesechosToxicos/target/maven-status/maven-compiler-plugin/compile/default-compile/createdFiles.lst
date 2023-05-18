@@ -6,7 +6,6 @@ com\dominio\Estado.class
 com\dominio\Transporte.class
 com\dominio\Tratamiento.class
 com\dominio\Direccion.class
-com\mycompany\dominiodesechostoxicos\DominioDesechosToxicos.class
 com\dominio\Traslado.class
 com\dominio\Residuo.class
 com\dominio\MedidaResiduo.class

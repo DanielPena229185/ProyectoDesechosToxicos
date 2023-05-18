@@ -18,7 +18,7 @@ import org.itson.interfaces.INegocioProductor;
 import org.itson.interfaces.IProductoresDAO;
 
 /**
- * Descripción de la clase:
+ * Descripción de la clase: Se encarga de realizar operaciones relacionadas con productores en un sistema
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
@@ -32,7 +32,12 @@ public class NegocioProductor implements INegocioProductor {
     public NegocioProductor() {
         productoresDAO = DAOFactory.getProductoresDAO();
     }
-
+    /**
+     * Valida y autentica el inicio de sesión de un Productor.
+     * @param productorDTO El objeto ProductorDTO que contiene los datos del productor para el inicio de sesión.
+     * @return El objeto Productor autenticado.
+     * @throws NegocioException Si ocurre un error en el proceso de negocio.
+     */
     @Override
     public Productor loginProductor(ProductorDTO productorDTO) throws NegocioException {
         try {
@@ -53,7 +58,12 @@ public class NegocioProductor implements INegocioProductor {
         }
 
     }
-
+    /**
+     * Valida el formato y la existencia del correo del productor.
+     * @param correo El correo del productor a validar.
+     * @return El correo validado.
+     * @throws ValidacionException Si el correo es inválido.
+     */
     private String validarCorreo(String correo) throws ValidacionException {
 
         List<String> camposError = new LinkedList<>();
@@ -80,7 +90,6 @@ public class NegocioProductor implements INegocioProductor {
 
     /**
      * Valida si el texto está vacío
-     *
      * @param texto Texto que se quiere validar
      * @return True si no cumple, false en caso contrario
      */
@@ -94,7 +103,6 @@ public class NegocioProductor implements INegocioProductor {
 
     /**
      * Contatena todos los elementos de la lista de tipo String
-     *
      * @param listaCampos Lista que quiere concatenar sus elementos
      * @return Cadena concatenada de la lista de elementos
      */
@@ -105,7 +113,11 @@ public class NegocioProductor implements INegocioProductor {
         }
         return mensaje;
     }
-
+    /**
+     * Verifica si un correo electrónico cumple con el formato válido.
+     * @param correo el correo electrónico a validar
+     * @return true si el correo electrónico no cumple con el formato válido, false si cumple con el formato válido
+     */
     public boolean validarCorreoElectronico(String correo) {
         // Expresión regular para validar el formato de un correo electrónico
         String patron = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
@@ -117,7 +129,12 @@ public class NegocioProductor implements INegocioProductor {
         Matcher matcher = pattern.matcher(correo);
         return !matcher.matches();
     }
-
+    /**
+     * Valida la existencia y formato de la contraseña del productor.
+     * @param contrasena La contraseña del productor a validar.
+     * @return La contraseña validada.
+     * @throws ValidacionException Si la contraseña es inválida.
+     */
     public String validarContrasena(String contrasena) throws ValidacionException {
 
         List<String> camposError = new LinkedList<>();
@@ -138,7 +155,12 @@ public class NegocioProductor implements INegocioProductor {
 
         throw new ValidacionException(mensaje);
     }
-
+    /**
+     * Inserta un nuevo productor.
+     * @param productor El objeto Productor a insertar.
+     * @return El objeto Productor insertado.
+     * @throws NegocioException Si ocurre un error en el proceso de negocio.
+     */
     @Override
     public Productor insertarProductor(Productor productor) throws NegocioException {
         try {

@@ -15,7 +15,7 @@ import org.itson.interfaces.INegocioVehiculo;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripción de la clase:
+ * Descripción de la clase: Proporciona la funcionalidad para consultar los vehículos de una empresa transportista
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
@@ -30,7 +30,13 @@ public class NegocioVehiculo implements INegocioVehiculo {
         persistencia = new FachadaPersistencia();
     }
 
-
+    /**
+     * Consulta los vehículos de una empresa transportista.
+     *
+     * @param empresaTransportista La empresa transportista de la cual se desea consultar los vehículos.
+     * @return Una lista de objetos Vehiculo que pertenecen a la empresa transportista especificada.
+     * @throws NegocioException Si ocurre un error en la lógica del negocio durante la consulta.
+     */
     @Override
     public List<Vehiculo> consultaVehiuculoEmpresaTrasnportadora(EmpresaTransportista empresaTransportista) throws NegocioException {
         try {

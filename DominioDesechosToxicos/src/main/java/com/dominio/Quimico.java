@@ -118,7 +118,10 @@ public class Quimico {
         final Quimico other = (Quimico) obj;
         return Objects.equals(this.id, other.id);
     }
-
+    /**
+     * Metodo que devuelve el nombre 
+     * @return 
+     */
     @Override
     public String toString() {
         return nombre;

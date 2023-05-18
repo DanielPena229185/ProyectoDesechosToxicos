@@ -14,7 +14,8 @@ import org.itson.interfaces.INegocioEmpresasTransportista;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripción de la clase:
+ * Descripción de la clase: Esta clase se encarga de realizar operaciones 
+ * relacionadas con empresas transportistas en un sistema.
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
@@ -28,7 +29,11 @@ public class NegocioEmpresaTransportista implements INegocioEmpresasTransportist
     public NegocioEmpresaTransportista() {
         persistencia = new FachadaPersistencia();
     }
-
+    /**
+     * Consulta todas las empresas transportistas registradas en el sistema.
+     * @return Una lista de objetos EmpresaTransportista que representan todas las empresas transportistas.
+     * @throws PersistenciaException Si ocurre un error en la capa de persistencia durante la consulta.
+     */
     @Override
     public List<EmpresaTransportista> consultaTodasEmpresasTransportistas() throws PersistenciaException {
         try {
@@ -37,7 +42,12 @@ public class NegocioEmpresaTransportista implements INegocioEmpresasTransportist
             throw new NegocioException();
         }
     }
-
+    /**
+     * Inserta una empresa transportista en el sistema.
+     * @param o El objeto EmpresaTransportista a insertar.
+     * @return El objeto EmpresaTransportista insertado.
+     * @throws PersistenciaException Si ocurre un error en la capa de persistencia durante la inserción.
+     */
     @Override
     public EmpresaTransportista insertar(EmpresaTransportista o) throws PersistenciaException {
         try {
@@ -46,7 +56,13 @@ public class NegocioEmpresaTransportista implements INegocioEmpresasTransportist
             throw new NegocioException();
         }
     }
-
+    /**
+     * Realiza el inicio de sesión de una empresa transportista en el sistema.
+     * @param correo El correo de la empresa transportista.
+     * @param contrasena La contraseña de la empresa transportista.
+     * @return La empresa transportista que ha iniciado sesión.
+     * @throws PersistenciaException Si ocurre un error en la capa de persistencia durante el inicio de sesión.
+     */
     @Override
     public EmpresaTransportista loginEmpresaTrasnportista(String correo, String contrasena) throws PersistenciaException {
         try {

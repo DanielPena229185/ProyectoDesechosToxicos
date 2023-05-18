@@ -57,7 +57,14 @@ public class AdministradoresDAO implements IAdministradoresDAO {
         }
         return administradoresDAO;
     }
-
+    /**
+     * Realiza el inicio de sesión de un administrador utilizando el correo y la contraseña proporcionados.
+     *
+     * @param correo El correo del administrador.
+     * @param contrasena La contraseña del administrador.
+     * @return El objeto Administrador correspondiente al inicio de sesión exitoso, o null si las credenciales son incorrectas.
+     * @throws PersistenciaException Si se produce un error al intentar iniciar sesion
+     */
     @Override
     public Administrador loginAdministrador(String correo, String contrasena) throws PersistenciaException {
         try {

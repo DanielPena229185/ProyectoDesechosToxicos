@@ -171,7 +171,10 @@ public class Solicitud {
     public void setProductor(Productor productor) {
         this.productor = productor;
     }
-
+    /**
+     * Devuelve una representación en forma de cadena de los residuos contenidos en el objeto actual
+     * @return La representación en forma de cadena de los residuos
+     */
     @Override
     public String toString() {
         String texto = "";

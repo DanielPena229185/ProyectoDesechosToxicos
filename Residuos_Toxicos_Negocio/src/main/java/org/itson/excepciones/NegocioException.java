@@ -19,17 +19,17 @@ public class NegocioException extends RuntimeException{
     }
 
     /**
-     * 
-     * @param message 
+     * Crea una nueva instancia de NegocioException con el mensaje especificado
+     * @param message El mensaje de la excepción
      */
     public NegocioException(String message) {
         super(message);
     }
 
     /**
-     * 
-     * @param message
-     * @param cause 
+     * Crea una nueva instancia de NegocioException con el mensaje y la causa especificados
+     * @param message El mensaje de la excepción
+     * @param cause El mensaje de la excepción
      */
     public NegocioException(String message, Throwable cause) {
         super(message, cause);

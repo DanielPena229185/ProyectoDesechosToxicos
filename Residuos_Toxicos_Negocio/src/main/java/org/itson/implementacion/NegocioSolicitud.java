@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package org.itson.implementacion;
 
 import com.dominio.MedidaResiduo;
@@ -20,61 +17,90 @@ import org.itson.interfaces.INegocioSolicitud;
 import org.itson.interfaces.IPersistencia;
 
 /**
- *
+ * Descripcion de la clase: Esta clase se encarga de manejar las solicitudes relacionadas con el traslado de residuos
  * @author oscar
  */
 public class NegocioSolicitud implements INegocioSolicitud {
 
     IPersistencia persistencia;
-
+    /**
+     * Constructor de la clase NegocioSolicitud.
+     * Inicializa la instancia de FachadaPersistencia.
+     */
     public NegocioSolicitud() {
         this.persistencia = new FachadaPersistencia();
     }
-
+    
+    /**
+     * Valida si la fecha es válida para el traslado de residuos.
+     *
+     * @param fecha La fecha a validar.
+     * @return true si la fecha no es posterior a la fecha actual, false de lo contrario.
+     */
     private Boolean validarFechaParaTrasladoDeResiduos(Date fecha) {
         if (!fecha.after(new Date())) {
             return true;
         }
-
         return false;
     }
-
+    
+    /**
+     * Valida si la lista de residuos contiene al menos un residuo.
+     *
+     * @param residuos La lista de residuos a validar.
+     * @return true si la lista de residuos es nula o está vacía, false de lo contrario.
+     */
     private Boolean validaQueTengaAlmenosUnResiduo(List<Residuo> residuos) {
         if (residuos == null || residuos.isEmpty()) {
             return true;
         }
-
         return false;
     }
-
+    
+    /**
+     * Valida si la unidad de medida de un residuo es válida.
+     *
+     * @param residuo El residuo a validar.
+     * @return true si la unidad de medida del residuo no coincide con ninguna de las unidades válidas, false de lo contrario.
+     */
     private Boolean validaLaUnidadDeMedida(Residuo residuo) {
         for (MedidaResiduo m : MedidaResiduo.values()) {
             if (!m.name().equals(residuo.getMedida_residuo())) {
                 return true;
             }
         }
-
         return false;
     }
-
+    
+    /**
+     * Valida si no se han realizado más de cinco traslados en una fecha determinada.
+     *
+     * @param fecha La fecha a verificar.
+     * @return true si no se han registrado cinco traslados en la fecha dada, lanza una ValidacionException de lo contrario.
+     * @throws ValidacionException Si ya hay cinco traslados registrados en la fecha dada.
+     */
     private Boolean validarNoMasDeCincoTrasladosPorDia(Date fecha) throws ValidacionException {
         SolicitudDTO filtros = new SolicitudDTO();
         filtros.setFechaSolicitada(fecha);
         List<Solicitud> solicitudes = new ArrayList<>();
-
         try {
             solicitudes = this.persistencia.consultarSolicitudFiltro(filtros);
         } catch (PersistenciaException e) {
             throw new ValidacionException("No se encontró ninguna solicitud.", e.getCause());
         }
-
         if (solicitudes.size() >= 5) {
             throw new ValidacionException("Ya hay cinco traslados registrados en esta fecha.");
         }
-
         return true;
     }
 
+    /**
+     * Convierte una instancia de Solicitud a SolicitudDTO.
+     *
+     * @param solicitud La solicitud a convertir.
+     * @return El objeto SolicitudDTO resultante de la conversión.
+     * @throws ValidacionException Si la solicitud es nula.
+     */
     private SolicitudDTO convertirSolicitudToDTO(Solicitud solicitud) throws ValidacionException {
 
         if (solicitud == null) {
@@ -93,7 +119,13 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
         return solicitudDTO;
     }
-
+    /**
+     * Inserta una solicitud en el sistema.
+     *
+     * @param solicitud La solicitud a insertar.
+     * @return La solicitud insertada.
+     * @throws NegocioException Si ocurre un error durante la inserción.
+     */
     @Override
     public Solicitud insertarSolicitud(Solicitud solicitud) throws NegocioException {
         try {
@@ -105,7 +137,12 @@ public class NegocioSolicitud implements INegocioSolicitud {
             throw new NegocioException(a.getMessage());
         }
     }
-
+    /**
+     * Consulta todas las solicitudes no atendidas.
+     *
+     * @return Una lista de solicitudes no atendidas.
+     * @throws NegocioException Si ocurre un error durante la consulta.
+     */
     @Override
     public List<Solicitud> consultaSolicitudesNoAtendidas() throws NegocioException {
         try {
@@ -114,7 +151,13 @@ public class NegocioSolicitud implements INegocioSolicitud {
             throw new NegocioException(e.getMessage());
         }
     }
-
+    /**
+     * Consulta las solicitudes que coinciden con los filtros especificados
+     *
+     * @param residuo Los filtros de la solicitud.
+     * @return Una lista de solicitudes que coinciden con los filtros.
+     * @throws NegocioException Si ocurre un error durante la consulta o los filtros de la solicitud son nulos.
+     */
     @Override
     public List<Solicitud> consultarSolicitudFiltro(Solicitud residuo) throws NegocioException {
         try {
@@ -133,7 +176,13 @@ public class NegocioSolicitud implements INegocioSolicitud {
             throw new NegocioException(a.getMessage());
         }
     }
-
+    /**
+     * Valida una solicitud antes de insertarla.
+     *
+     * @param solicitud La solicitud a validar.
+     * @return La solicitud validada.
+     * @throws ValidacionException Si la solicitud es nula o no cumple con los requisitos de validación.
+     */
     private Solicitud validarSolicitudInsertar(Solicitud solicitud) throws ValidacionException {
 
         List<String> camposError = new LinkedList<>();

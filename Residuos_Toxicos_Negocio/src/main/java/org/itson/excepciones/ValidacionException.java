@@ -13,24 +13,24 @@ package org.itson.excepciones;
 public class ValidacionException extends RuntimeException{
 
     /**
-     *
+     * Crea una nueva instancia de ValidacionException sin un mensaje específico
      */
     public ValidacionException(){
         super();
     }
 
     /**
-     * 
-     * @param message 
+     * Crea una nueva instancia de ValidacionException con el mensaje especificado
+     * @param message El mensaje de la excepción
      */
     public ValidacionException(String message) {
         super(message);
     }
 
     /**
-     * 
-     * @param message
-     * @param cause 
+     * Crea una nueva instancia de ValidacionException con el mensaje y la causa especificados
+     * @param message El mensaje de la excepción
+     * @param cause La causa de la excepción
      */
     public ValidacionException(String message, Throwable cause) {
         super(message, cause);

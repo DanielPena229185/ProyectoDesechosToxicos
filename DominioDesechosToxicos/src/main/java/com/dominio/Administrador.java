@@ -179,13 +179,21 @@ public class Administrador {
         this.cuenta = cuenta;
     }
 
+    /**
+     * Devuelve un valor hash para el objeto actual.
+     * @return el valor hash calculado
+     */
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 11 * hash + Objects.hashCode(this.id);
         return hash;
     }
-
+    /**
+     * Compara el objeto actual con otro objeto para determinar si son iguales. 
+     * @param obj El objeto a comparar con el objeto actual.
+     * @return true si los objetos son iguales, false en caso contrario.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -200,7 +208,10 @@ public class Administrador {
         final Administrador other = (Administrador) obj;
         return Objects.equals(this.id, other.id);
     }
-
+    /**
+     * Devuelve una representación en forma de cadena del objeto actual
+     * @return La representación en forma de cadena del objeto
+     */
     @Override
     public String toString() {
         return "Administrador [" + "nombres: " + nombres + ", apellido_paterno: " + apellido_paterno + ", apellido_materno: " + apellido_materno + ", correo: " + cuenta.getCorreo() + ']';

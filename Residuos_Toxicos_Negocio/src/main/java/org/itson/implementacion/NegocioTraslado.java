@@ -23,7 +23,7 @@ import org.itson.interfaces.INegocioTraslado;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripción de la clase:
+ * Descripción de la clase: Se encarga de manejar los traslados en el sistema.
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
@@ -37,7 +37,13 @@ public class NegocioTraslado implements INegocioTraslado {
     public NegocioTraslado() {
         persistencia = new FachadaPersistencia();
     }
-
+    /**
+     * Inserta un traslado en el sistema
+     *
+     * @param traslado El traslado a insertar.
+     * @return El traslado insertado.
+     * @throws NegocioException Si ocurre un error durante la inserción.
+     */
     @Override
     public Traslado insertarTraslado(Traslado traslado) throws NegocioException {
         try {
@@ -49,7 +55,13 @@ public class NegocioTraslado implements INegocioTraslado {
             throw new NegocioException(a.getMessage());
         }
     }
-
+    /**
+     * Obtiene una lista de traslados asignados a una empresa transportista.
+     *
+     * @param empresaTransportista La empresa transportista para la cual se obtienen los traslados asignados.
+     * @return Una lista de traslados asignados a la empresa transportista.
+     * @throws NegocioException Si ocurre un error durante la consulta.
+     */
     @Override
     public List<Traslado> consultaTrasladosAsingados(EmpresaTransportista empresaTransportista) throws NegocioException {
         try {
@@ -63,7 +75,13 @@ public class NegocioTraslado implements INegocioTraslado {
             throw new NegocioException(a.getMessage());
         }
     }
-
+    /**
+     * Valida un traslado antes de insertarlo.
+     *
+     * @param traslado El traslado a validar.
+     * @return El traslado validado.
+     * @throws ValidacionException Si el traslado es nulo o no cumple con los requisitos de validación.
+     */
     private Traslado validarTrasladoInsertar(Traslado traslado) throws ValidacionException {
 
         List<String> camposError = new LinkedList<>();
@@ -108,7 +126,13 @@ public class NegocioTraslado implements INegocioTraslado {
 
         throw new ValidacionException(mensaje);
     }
-
+    /**
+     * Valida una solicitud antes de insertarla
+     *
+     * @param solicitud La solicitud a validar.
+     * @return La solicitud validada.
+     * @throws ValidacionException Si la solicitud es nula o no cumple con los requisitos de validación.
+     */
     private Solicitud validarSolicitudInsertar(Solicitud solicitud) throws ValidacionException{
         
         List<String> camposError = new LinkedList<>();

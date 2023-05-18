@@ -31,10 +31,10 @@ public class AdministradorNegocio{
     }
 
     /**
-     *
-     * @param elemento
-     * @return
-     * @throws NegocioException
+     * Inserta un objeto Administrador en el sistema.
+     * @param elemento El Administrador a insertar.
+     * @return El Administrador insertado.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante la inserción.
      */
     public Administrador insertar(Administrador elemento) throws NegocioException {
         try {
@@ -48,10 +48,10 @@ public class AdministradorNegocio{
     }
 
     /**
-     *
-     * @param elemento
-     * @return
-     * @throws NegocioException
+     * Elimina un objeto Administrador del sistema.
+     * @param elemento El Administrador a eliminar.
+     * @return El Administrador eliminado.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante la eliminación.
      */
     public Administrador eliminar(Administrador elemento) throws NegocioException {
         try {
@@ -92,10 +92,10 @@ public class AdministradorNegocio{
     }
 
     /**
-     *
-     * @param administrador
-     * @return
-     * @throws ValidacionException
+     * Valida los campos de un objeto Administrador antes de realizar la inserción
+     * @param administrador El Administrador a validar
+     * @return El Administrador validado
+     * @throws ValidacionException Si algún campo del Administrador no cumple con los requisitos de validación
      */
     private Administrador validarAdministradorInsertar(Administrador administrador) throws ValidacionException {
 
@@ -157,7 +157,12 @@ public class AdministradorNegocio{
         throw new ValidacionException(campo);
 
     }
-
+    /**
+     * Valida los campos de un objeto Administrador antes de realizar la eliminación
+     * @param administrador El Administrador a validar
+     * @return El Administrador validado
+     * @throws ValidacionException Si algún campo del Administrador no cumple con los requisitos de validación
+     */
     private Administrador validarAdministradorEliminar(Administrador administrador) throws ValidacionException {
         List<String> camposErroneos = new LinkedList<>();
         if (administrador == null) {
@@ -196,8 +201,8 @@ public class AdministradorNegocio{
     /**
      * Valida que un texto no tenga carácteres especiales
      *
-     * @param texto
-     * @return
+     * @param texto a validar
+     * @return texto valido, de lo contrario null
      */
     public static String validarCaracteresEspeciales(String texto) {
         String patron = "^[a-zA-Z]*$"; // Expresión regular que solo permite letras y números
@@ -210,10 +215,6 @@ public class AdministradorNegocio{
     public Administrador actualizar(Administrador elemento, Administrador elementoE) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    
-
-    
-    
+ 
 
 }

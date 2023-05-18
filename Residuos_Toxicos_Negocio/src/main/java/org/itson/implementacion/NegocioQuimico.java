@@ -14,7 +14,7 @@ import org.itson.interfaces.INegocioQuimico;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripción de la clase:
+ * Descripción de la clase: Se encarga de realizar operaciones relacionadas con químicos en un sistema.
  *
  * @author Daniel Armando Peña Garcia ID:229185
  */
@@ -28,7 +28,12 @@ public class NegocioQuimico implements INegocioQuimico {
     public NegocioQuimico() {
         persistencia = new FachadaPersistencia();
     }
-
+    /**
+     * Inserta un objeto Quimico en el sistema.
+     * @param quimico el objeto Quimico a insertar.
+     * @return el Quimico insertado.
+     * @throws NegocioException si ocurre un error en la lógica de negocio.
+     */
     @Override
     public Quimico insertarQuimico(Quimico quimico) throws NegocioException {
         try {
@@ -38,7 +43,11 @@ public class NegocioQuimico implements INegocioQuimico {
             throw new NegocioException(e.getMessage());
         }
     }
-
+    /**
+     * Consulta todos los Quimicos del sistema.
+     * @return una lista de objetos Quimico que representa todos los Quimicos del sistema. 
+     * @throws NegocioException si ocurre un error en la lógica de negocio.
+     */
     @Override
     public List<Quimico> consultarQuimicos() throws NegocioException {
         try {
@@ -48,7 +57,12 @@ public class NegocioQuimico implements INegocioQuimico {
             throw new NegocioException(e.getMessage());
         }
     }
-    
+    /**
+     * Valida un objeto Quimico antes de ser insertado.
+     * @param quimico el objeto Quimico a validar.
+     * @return el Quimico validado.
+     * @throws ValidacionException si el objeto Quimico no pasa las validaciones.
+     */
     private Quimico validarQuimico(Quimico quimico) throws ValidacionException{
         
         if(quimico == null){
