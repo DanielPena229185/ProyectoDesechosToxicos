@@ -7,6 +7,7 @@ package pruebas;
 import com.dominio.Solicitud;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
 
@@ -21,7 +22,12 @@ public class Pruebas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        INegocio negocio = new FachadaNegocio();
+        Solicitud solicitud = new Solicitud();
+        solicitud.setId(new ObjectId("6464460ce7258b55bcbffe02"));
+        negocio.actualizaEstadoASolicitudAtendida(solicitud);
+        System.out.println(solicitud.getEstado());
+
     }
-    
+
 }

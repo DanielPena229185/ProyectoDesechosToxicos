@@ -28,6 +28,11 @@
             <artifactId>Residuos_Toxicos_Negocio</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.mycompany</groupId>
+            <artifactId>DominioDesechosToxicos</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <name>Residuos_Toxicos_Presentacion</name>
 </project>

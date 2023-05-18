@@ -279,7 +279,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }
     
     private void actualizarEstadoSolicitud(){
-    
+    negocio.actualizaEstadoASolicitudAtendida(solicitud);
     }
 
     /**
@@ -608,6 +608,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         if (tablaResiduosEstaVacia()) {
             this.btnSalir.setEnabled(true);
             this.btnAsignar.setEnabled(false);
+            actualizarEstadoSolicitud();
             
         }
     }//GEN-LAST:event_btnAsignarActionPerformed

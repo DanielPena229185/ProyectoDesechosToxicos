@@ -25,10 +25,8 @@ C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\Persi
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IProductoresDAO.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\SolicitudesDAO.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\bd\DAOFactory.java
-C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\pruebas\Prueba.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\daos\VehiculosDAO.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\ITransporteDAO.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\excepciones\PersistenciaException.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\implementaciones\bd\ConexionBD.java
 C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\interfaces\IPersistencia.java
-C:\Users\edemb\Desktop\GIT\ProyectoFinal_BDA_Mongo\ProyectoDesechosToxicos\PersistenciaDesechosToxicos\src\main\java\org\itson\persistenciadesechostoxicos\PersistenciaDesechosToxicos.java
