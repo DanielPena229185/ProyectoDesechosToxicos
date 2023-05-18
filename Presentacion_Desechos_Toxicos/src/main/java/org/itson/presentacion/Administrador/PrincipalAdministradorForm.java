@@ -9,14 +9,15 @@ import org.itson.presentacion.InicioForm;
  */
 public class PrincipalAdministradorForm extends javax.swing.JFrame {
 
-    static Administrador administrador;
+    private Administrador administrador;
+    
+    private static PrincipalAdministradorForm principalFormAdministrador;
 
     /**
      * Creates new form PrincipalAdministradorForm
      */
-    public PrincipalAdministradorForm() {
+    private PrincipalAdministradorForm() {
         initComponents();
-        this.setVisible(true);
     }
 
     private void cerrarVentanaActual() {
@@ -27,11 +28,23 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         SolicitudesTrasladosForm solicitudesTrasladosForm = new SolicitudesTrasladosForm(administrador);
         cerrarVentanaActual();
     }
+    
+    public void iniciarComponentes(){
+        abrirVentana();
+    }
 
     private void irInicioForm() {
         InicioForm p = new InicioForm();
         p.setVisible(true);
         cerrarVentanaActual();
+    }
+
+    private void abrirVentana(){
+        this.setVisible(true);
+    }
+    
+    private void cerrarVentana(){
+        this.setVisible(false);
     }
 
     /**
@@ -152,6 +165,12 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         this.administrador = administrador;
     }
 
+    public static PrincipalAdministradorForm getInstance(){
+        if(principalFormAdministrador == null){
+            principalFormAdministrador = new PrincipalAdministradorForm();
+        }
+        return principalFormAdministrador;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;

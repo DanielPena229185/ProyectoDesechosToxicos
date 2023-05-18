@@ -12,7 +12,6 @@ import java.awt.Color;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import org.itson.DTO.AdministradorDTO;
 import org.itson.DTO.EmpresaTransportistaDTO;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioException;
@@ -257,7 +256,7 @@ public class LogInForm extends javax.swing.JFrame {
             case ADMINISTRADOR:
                 Administrador adm = null;
                 try {
-
+                    this.iniciarSesionAdministrador();
                 } catch (NegocioException e) {
                     JOptionPane.showMessageDialog(this, e.getMessage());
                 }
@@ -399,6 +398,63 @@ public class LogInForm extends javax.swing.JFrame {
 
         principalProductorForm.setProductor(productor);
         principalProductorForm.iniciarComponentes();
+    }
+    
+    private void iniciarSesionAdministrador() throws PresentacionException{
+
+        List<String> campoError = new LinkedList<>();
+
+        String correo = "";
+
+        if(verificarCampoUsuarioVacio()){
+            campoError.add("- Correo vacío");
+        }else{
+            correo = this.campoUsuario.getText();
+        }
+
+        String contrasena = "";
+
+        if(verificarCampoContrasenaVacio()){
+            campoError.add("- Contraseña vacía");
+        }else{ 
+            contrasena = this.campoContrasena.getText();
+        }
+
+        if (!campoError.isEmpty()) {
+
+            String mensaje = mensajeCampos(campoError);
+
+            throw new PresentacionException(mensaje);
+
+        }
+
+        try {
+            Administrador administrador = consultarAdministrador(correo, contrasena);
+
+            if (administrador == null) {
+                throw new PresentacionException("No hay una cuenta con esos datos");
+            }
+
+            this.abrirPrincipalAdministrador(administrador);
+            this.cerrarVentana();
+        } catch (PresentacionException a) {
+            throw new PresentacionException(a.getMessage());
+        }
+    }
+    
+    private Administrador consultarAdministrador(String correo, String contrasena) throws PresentacionException{
+        try {
+            return negocio.loginAdministrador(correo, contrasena);
+        } catch (NegocioException e) {
+            throw new PresentacionException(e.getMessage());
+        }
+    }
+    
+    private void abrirPrincipalAdministrador(Administrador administrador) throws PresentacionException{
+        PrincipalAdministradorForm principalAdministradorForm;
+        principalAdministradorForm = PrincipalAdministradorForm.getInstance();
+        principalAdministradorForm.setAdministrador(administrador);
+        principalAdministradorForm.iniciarComponentes();
     }
 
     /**
