@@ -227,16 +227,16 @@ public class Residuo {
     @Override
     public String toString() {
         
-        String residuo = "Nombre: " + this.getNombre();
+        String residuo = "[ " + this.getNombre();
         
         if(this.getCantidad() != null){
-            residuo+= ", Cantidad: " + this.getCantidad();
+            residuo+= " | " + this.getCantidad();
         }
         
         if(this.getMedida_residuo() != null){
-            residuo+= ", Unidad Medida: " + this.getMedida_residuo();
+            residuo+= " " + this.getMedida_residuo() + "S";
         }
         
-        return residuo + ".";
+        return residuo + " ]";
     }
 }

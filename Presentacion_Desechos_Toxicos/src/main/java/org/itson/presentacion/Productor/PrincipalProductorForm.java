@@ -153,6 +153,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
 
     private void btnSolicitarTrasladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarTrasladoActionPerformed
         this.abrirSolicitarTrasladoForm();
+        this.cerrarVentana();
     }//GEN-LAST:event_btnSolicitarTrasladoActionPerformed
 
     public void iniciarComponentes(){

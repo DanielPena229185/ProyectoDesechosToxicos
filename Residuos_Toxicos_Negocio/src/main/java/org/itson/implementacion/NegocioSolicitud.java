@@ -1,6 +1,7 @@
 package org.itson.implementacion;
 
 import com.dominio.MedidaResiduo;
+import com.dominio.Productor;
 import com.dominio.Residuo;
 import com.dominio.Solicitud;
 import java.util.ArrayList;
@@ -102,6 +103,34 @@ public class NegocioSolicitud implements INegocioSolicitud {
         return true;
     }
 
+    private Residuo realizarParticionResiduo(Residuo residuo) {
+        residuo.setProductor(null);
+        residuo.setQuimicos(null);
+        return residuo;
+    }
+
+    private Solicitud realizarParticionSolicitud(Solicitud solicitud) {
+        //Particionar productor
+        Productor productorParticionado = solicitud.getProductor();
+        productorParticionado.setCuenta(null);
+        productorParticionado.setDirecciones(null);
+        productorParticionado.setResiduos(null);
+        productorParticionado.setTipo(null);
+        productorParticionado.setSolicitudes(null);
+
+        //Particionar lista de residuos
+        List<Residuo> residuos = solicitud.getResiduos();
+
+        for (Residuo residuo : residuos) {
+            realizarParticionResiduo(residuo);
+        }
+
+        solicitud.setProductor(productorParticionado);
+        solicitud.setResiduos(residuos);
+
+        return solicitud;
+    }
+    
     /**
      * Convierte una instancia de Solicitud a SolicitudDTO.
      *
@@ -114,14 +143,14 @@ public class NegocioSolicitud implements INegocioSolicitud {
         if (solicitud == null) {
             throw new ValidacionException("No hay datos en la solicitud");
         }
+        
+        realizarParticionSolicitud(solicitud);
 
         SolicitudDTO solicitudDTO = new SolicitudDTO();
         //Establece el nombre del productor
         solicitudDTO.setNombreProductor(solicitud.getProductor().getNombre());
         //Establece la fecha en la que se solicitó
         solicitudDTO.setFechaSolicitada(solicitud.getFecha_Solicitada());
-        //Establece el estado de la solicitud
-        solicitudDTO.setEstado(solicitud.getEstado());
         //Establece la lista de residuos
         solicitudDTO.setResiduos(solicitud.getResiduos());
 
@@ -224,7 +253,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
         //Valida que la lista de residuos tenga especificada la unidad de medida
         for (Residuo residuo : residuos) {
-            if (validaLaUnidadDeMedida(residuo)) {
+            if (!validaLaUnidadDeMedida(residuo)) {
                 camposError.add("- El residuo " + residuo.getNombre() + " no tiene unidad de medida\n");
             }
         }
@@ -237,14 +266,15 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
         try {
             solicitudes = consultarSolicitudFiltro(solicitud);
+            if (solicitudes.size() > 5) {
+                throw new ValidacionException("- Ya hay más de 5 solicitudes que cuentan con los mismos datos");
+            }
         } catch (PersistenciaException e) {
             throw new ValidacionException(e.getMessage());
         }
 
         if (camposError.isEmpty()) {
-            if (solicitudes.size() > 5) {
-                throw new ValidacionException("- Ya hay más de 5 solicitudes que cuentan con los mismos datos");
-            }
+            
             return solicitud;
         }
 
@@ -277,6 +307,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
             }
             
             return persistencia.actualizaEstadoASolicitudAtendida(solicitud);
+            
         } catch (PersistenciaException e) {
             throw new NegocioException(e.getMessage());
         }

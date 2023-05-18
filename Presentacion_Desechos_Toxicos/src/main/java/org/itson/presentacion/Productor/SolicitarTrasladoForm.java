@@ -7,12 +7,17 @@ import com.dominio.Residuo;
 import com.dominio.Solicitud;
 import static java.awt.image.ImageObserver.ERROR;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.NumberFormatter;
+import org.itson.excepciones.NegocioException;
+import org.itson.excepciones.PresentacionException;
 import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
 import org.itson.utils.ConfiguracionDePaginado;
@@ -42,7 +47,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     private SolicitarTrasladoForm() {
         negocio = new FachadaNegocio();
         initComponents();
-        
+
     }
 
     public Productor getProductor() {
@@ -53,46 +58,58 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         this.productor = productor;
     }
 
-    private List<Residuo> consultaResiduos() {
-        Residuo residuoFiltro = new Residuo();
-        residuoFiltro.setProductor(productor);
-        List<Residuo> residuos = negocio.consultarResiduoFiltro(residuoFiltro);
-        return residuos;
+    private List<Residuo> consultaResiduos() throws PresentacionException {
+        try {
+            Residuo residuoFiltro = new Residuo();
+            residuoFiltro.setProductor(productor);
+            List<Residuo> residuos = negocio.consultarResiduoFiltro(residuoFiltro);
+            return residuos;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new PresentacionException("No hay ningún residuo seleccionado");
+        }
     }
 
-    private Residuo consultarFilaTblNoSeleccionados(){
-        int seleccionado = this.tblResiduosNoSeleccionados.getSelectedRow();
-        Residuo residuo = (Residuo) this.tblResiduosNoSeleccionados.getValueAt(seleccionado, 0);
-        return residuo;
+    private Residuo consultarFilaTblNoSeleccionados() {
+        try {
+            int seleccionado = this.tblResiduosNoSeleccionados.getSelectedRow();
+            Residuo residuo = (Residuo) this.tblResiduosNoSeleccionados.getValueAt(seleccionado, 0);
+            return residuo;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new PresentacionException("No hay ningún residuo seleccionado");
+        }
     }
-    
-    private Residuo consultarFilaTblSeleccionados(){
-        int seleccionado = this.tblResiduosSeleccionados.getSelectedRow();
-        Residuo residuo = (Residuo) this.tblResiduosSeleccionados.getValueAt(seleccionado, 0);
-        return residuo;
+
+    private Residuo consultarFilaTblSeleccionados() {
+        try {
+            int seleccionado = this.tblResiduosSeleccionados.getSelectedRow();
+            Residuo residuo = (Residuo) this.tblResiduosSeleccionados.getValueAt(seleccionado, 0);
+            return residuo;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new PresentacionException("No hay ningún residuo seleccionado");
+        }
     }
-    
-    private List<Residuo> agregarResiduoListaSeleccionado(Residuo residuo){
+
+    private List<Residuo> agregarResiduoListaSeleccionado(Residuo residuo) {
         residuoSeleccionados.add(residuo);
         return residuoSeleccionados;
     }
-    
-    private List<Residuo> eliminarResiduoListaSeleccionado(Residuo residuo){
+
+    private List<Residuo> eliminarResiduoListaSeleccionado(Residuo residuo) {
         residuoSeleccionados.remove(residuo);
         return residuoSeleccionados;
     }
-    
-    private List<Residuo> eliminarResiduoListaNoSeleccionados(Residuo residuo){
+
+    private List<Residuo> eliminarResiduoListaNoSeleccionados(Residuo residuo) {
         residuosNoSeleccionados.remove(residuo);
         return residuosNoSeleccionados;
     }
-    
-    private List<Residuo> agregarResiduoListaNoSeleccionados(Residuo residuo){
+
+    private List<Residuo> agregarResiduoListaNoSeleccionados(Residuo residuo) {
         residuosNoSeleccionados.add(residuo);
         return residuosNoSeleccionados;
     }
-    
-    public void iniciarComponentes(){
+
+    public void iniciarComponentes() {
         configPaginadoTblNoSeleccionados = new ConfiguracionDePaginado(0, 10);
         configPaginadoTblSeleccionados = new ConfiguracionDePaginado(0, 10);
         this.residuosNoSeleccionados = consultaResiduos();
@@ -101,35 +118,35 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         this.ocultarElementosResiduo();
         this.abrirVentana();
     }
-    
-    private void abrirVentana(){
+
+    private void abrirVentana() {
         this.setVisible(true);
     }
-    
+
     private void avanzarPaginaTblNoSeleccionados() {
         this.configPaginadoTblNoSeleccionados.avanzarPagina();
         ejecucionLlenadoTblNoSeleccionados(residuosNoSeleccionados);
     }
-    
+
     private void retrocederPaginaTblNoSeleccionados() {
         this.configPaginadoTblNoSeleccionados.retrocederPagina();
         ejecucionLlenadoTblNoSeleccionados(residuosNoSeleccionados);
     }
-    
-    private void retrocederPaginaTblSeleccionados(){
+
+    private void retrocederPaginaTblSeleccionados() {
         this.configPaginadoTblSeleccionados.retrocederPagina();
         ejecucionLlenadoTblSeleccionados(residuoSeleccionados);
     }
-    
+
     private void avanzarPaginaTblSeleccionados() {
         this.configPaginadoTblSeleccionados.avanzarPagina();
         ejecucionLlenadoTblSeleccionados(residuoSeleccionados);
     }
-    
-    private void cerrarVentana(){
+
+    private void cerrarVentana() {
         this.setVisible(false);
     }
-    
+
     private void llenadoTablaResiduosNoSeleccionados(List<Residuo> residuos) {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tblResiduosNoSeleccionados.getModel();
         modeloTabla.setRowCount(0);
@@ -139,7 +156,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
         }
     }
-    
+
     private void llenadoTablaResiduosSeleccionados(List<Residuo> residuos) {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tblResiduosSeleccionados.getModel();
         modeloTabla.setRowCount(0);
@@ -148,6 +165,18 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
             modeloTabla.addRow(fila);
 
         }
+    }
+
+    private boolean validarNumeroNegativos() {
+        String cantidadString = formatCantidadResiduo.getText();
+
+        if (cantidadString == null || cantidadString.isBlank()) {
+            throw new PresentacionException("No hay cantidad especificada");
+        }
+
+        float cantidad = Float.valueOf(cantidadString);
+
+        return cantidad < 0;
     }
 
     private List<Residuo> consultaResiduoConConfiguracionTabla(ConfiguracionDePaginado configuracionPaginado, List<Residuo> residuos) {
@@ -171,7 +200,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         }
         return lista;
     }
-    
+
 //    private void retrocederPagina() {
 //        this.configPaginado.retrocederPagina();
 //        ejecucionLlenadoTablaResiduo();
@@ -188,7 +217,6 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 //        llenadoTablaResiduos(filaSeleccionada);
 //
 //    }
-
 //    private void llenadoTablaResiduos(int index) {
 //        DefaultTableModel modeloTabla = (DefaultTableModel) this.tblResiduo.getModel();
 //        modeloTabla.setRowCount(0);
@@ -199,9 +227,8 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 //
 //        this.solicitarTrasloResiduo = ResiduoTablaResiduo.get(index);
 //    }
-
     private Date obetenerFecha() {
-        LocalDate fecha = this.solicitarFecha.getDate();
+        LocalDate fecha = this.fecha.getDate();
         Date fechaResiduo = new Date(fecha.getYear(), fecha.getMonthValue(), fecha.getDayOfMonth());
         return fechaResiduo;
     }
@@ -216,7 +243,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        solicitarFecha = new com.github.lgooddatepicker.components.DatePicker();
+        fecha = new com.github.lgooddatepicker.components.DatePicker();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -238,12 +265,17 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         btnEliminarResiduoSeleccionado = new javax.swing.JButton();
         btnAdelanteTblResiduosSeleccionados = new javax.swing.JButton();
         btnAtrasTblResiduoSeleccionado = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                formComponentHidden(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(solicitarFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        jPanel1.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         jLabel2.setText("Seleccione fecha");
         jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
@@ -284,6 +316,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblResiduosNoSeleccionados.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tblResiduosNoSeleccionados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblResiduosNoSeleccionadosMouseClicked(evt);
@@ -363,6 +396,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblResiduosSeleccionados.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jScrollPane2.setViewportView(tblResiduosSeleccionados);
 
         btnEliminarResiduoSeleccionado.setText("Eliminar");
@@ -386,6 +420,13 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Solicitar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -397,15 +438,17 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(btnEliminarResiduoSeleccionado)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAtrasTblResiduoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnAdelanteTblResiduosSeleccionados, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnEliminarResiduoSeleccionado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAtrasTblResiduoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAdelanteTblResiduosSeleccionados, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -422,7 +465,9 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
                     .addComponent(btnAtrasTblResiduoSeleccionado))
                 .addGap(109, 109, 109)
                 .addComponent(solicitarBtn)
-                .addGap(34, 34, 34))
+                .addGap(1, 1, 1)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 360, 610));
@@ -476,16 +521,32 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasTblResiduosNoSeleccionadoActionPerformed
 
     private void btnEliminarResiduoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarResiduoSeleccionadoActionPerformed
-        Residuo residuo = consultarFilaTblSeleccionados();
-        eliminarResiduoListaResiduosSeleccionados(residuo);
-        agregarResiduoTblResiduosNoSeleccionados(residuo);        
+        try {
+            Residuo residuo = consultarFilaTblSeleccionados();
+            limpiarResiduo(residuo);
+            eliminarResiduoListaResiduosSeleccionados(residuo);
+            agregarResiduoTblResiduosNoSeleccionados(residuo);
+        } catch (PresentacionException e) {
+            JOptionPane.showMessageDialog(this, "No hay ningún residuo seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnEliminarResiduoSeleccionadoActionPerformed
 
+
     private void btnAgregarResiduoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarResiduoSeleccionadoActionPerformed
-        Residuo residuo = consultarFilaTblNoSeleccionados();
-        asignarAtributosResiduo(residuo);
-        agregarResiduoListaResiduosSeleccionados(residuo);
-        eliminarResiduoTblResiduosNoSeleccionados(residuo);
+        try {
+
+            Residuo residuo = consultarFilaTblNoSeleccionados();
+            if (validarNumeroNegativos()) {
+                throw new PresentacionException("La cantidad no puede ser negativa");
+            }
+            asignarAtributosResiduo(residuo);
+            agregarResiduoListaResiduosSeleccionados(residuo);
+            eliminarResiduoTblResiduosNoSeleccionados(residuo);
+            this.ocultarElementosResiduo();
+            this.limpiarCamposResiduo();
+        } catch (PresentacionException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAgregarResiduoSeleccionadoActionPerformed
 
     private void btnAtrasTblResiduoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasTblResiduoSeleccionadoActionPerformed
@@ -493,95 +554,185 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasTblResiduoSeleccionadoActionPerformed
 
     private void btnAdelanteTblResiduosSeleccionadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdelanteTblResiduosSeleccionadosActionPerformed
-       avanzarPaginaTblSeleccionados();
+        avanzarPaginaTblSeleccionados();
     }//GEN-LAST:event_btnAdelanteTblResiduosSeleccionadosActionPerformed
 
     private void tblResiduosNoSeleccionadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblResiduosNoSeleccionadosMouseClicked
-        Residuo residuo = consultarFilaTblNoSeleccionados();
-        if(residuo != null){
-            this.mostrarElementosResiduo();
-        }else{
-            this.ocultarElementosResiduo();
+        try {
+            Residuo residuo = consultarFilaTblNoSeleccionados();
+            if (residuo != null) {
+                this.mostrarElementosResiduo();
+            } else {
+                this.ocultarElementosResiduo();
+            }
+        } catch (PresentacionException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_tblResiduosNoSeleccionadosMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        solicitarTraslado();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
+        iniciarPantallaPrincipalForm();
+    }//GEN-LAST:event_formComponentHidden
+
+    private void iniciarPantallaPrincipalForm(){
+        PrincipalProductorForm principalProductorForm;
+        principalProductorForm = PrincipalProductorForm.getInstance();
+        principalProductorForm.iniciarComponentes();
+    }
     
-    private void agregarResiduoListaResiduosSeleccionados(Residuo residuo){
+    private Residuo limpiarResiduo(Residuo residuo) {
+        residuo.setCantidad(null);
+        residuo.setMedida_residuo(null);
+        return residuo;
+    }
+
+    private void agregarResiduoListaResiduosSeleccionados(Residuo residuo) {
         agregarResiduoListaSeleccionado(residuo);
         llenadoTablaResiduosSeleccionados(residuoSeleccionados);
         ejecucionLlenadoTblSeleccionados(residuoSeleccionados);
     }
-    
-    private void eliminarResiduoListaResiduosSeleccionados(Residuo residuo){
+
+    private void eliminarResiduoListaResiduosSeleccionados(Residuo residuo) {
         eliminarResiduoListaSeleccionado(residuo);
         llenadoTablaResiduosSeleccionados(residuoSeleccionados);
         ejecucionLlenadoTblSeleccionados(residuoSeleccionados);
     }
-    
-    private void agregarResiduoTblResiduosNoSeleccionados(Residuo residuo){
+
+    private void agregarResiduoTblResiduosNoSeleccionados(Residuo residuo) {
         agregarResiduoListaNoSeleccionados(residuo);
         llenadoTablaResiduosNoSeleccionados(residuosNoSeleccionados);
         ejecucionLlenadoTblNoSeleccionados(residuosNoSeleccionados);
     }
-    
-    private void eliminarResiduoTblResiduosNoSeleccionados(Residuo residuo){
+
+    private void eliminarResiduoTblResiduosNoSeleccionados(Residuo residuo) {
         eliminarResiduoListaNoSeleccionados(residuo);
         llenadoTablaResiduosNoSeleccionados(residuosNoSeleccionados);
         ejecucionLlenadoTblNoSeleccionados(residuosNoSeleccionados);
     }
-    
+
     private List<Residuo> ejecucionLlenadoTblNoSeleccionados(List<Residuo> residuos) {
         residuos = consultaResiduoConConfiguracionTabla(configPaginadoTblNoSeleccionados, residuos);
         llenadoTablaResiduosNoSeleccionados(residuos);
         return residuos;
     }
-    
+
     private List<Residuo> ejecucionLlenadoTblSeleccionados(List<Residuo> residuos) {
         residuos = consultaResiduoConConfiguracionTabla(configPaginadoTblSeleccionados, residuos);
         llenadoTablaResiduosSeleccionados(residuos);
         return residuos;
     }
-    
+
     private boolean validarCampoTextoVacio() {
-        return solicitarFecha.getText().isEmpty() || solicitarFecha.getText().equals(ERROR);
+        return fecha.getText().isEmpty() || fecha.getText().equals(ERROR);
     }
-    
-    private void ocultarElementosResiduo(){
+
+    private void limpiarCamposResiduo() {
+        this.formatCantidadResiduo.setText("");
+        this.cbxUnidadMedidaResiduo.setSelectedIndex(0);
+    }
+
+    private void ocultarElementosResiduo() {
         this.lblCantidad.setVisible(false);
         this.lblUnidadMedida.setVisible(false);
         this.cbxUnidadMedidaResiduo.setVisible(false);
         this.formatCantidadResiduo.setVisible(false);
     }
-    
-    private void mostrarElementosResiduo(){
+
+    private void mostrarElementosResiduo() {
         this.lblCantidad.setVisible(true);
         this.lblUnidadMedida.setVisible(true);
         this.cbxUnidadMedidaResiduo.setVisible(true);
         this.formatCantidadResiduo.setVisible(true);
     }
 
-    private Residuo asignarAtributosResiduo(Residuo residuo){
-        
-        float cantidad = Float.valueOf(formatCantidadResiduo.getText());
-        
+    private Residuo asignarAtributosResiduo(Residuo residuo) throws PresentacionException {
+
+        String cantidadString = formatCantidadResiduo.getText();
+
+        if (cantidadString == null || cantidadString.isBlank()) {
+            throw new PresentacionException("No hay cantidad especificada");
+        }
+
+        float cantidad = Float.valueOf(cantidadString);
+
         String unidad_medida = cbxUnidadMedidaResiduo.getSelectedItem().toString();
-        
+
         residuo.setCantidad(cantidad);
-        
-        if(unidad_medida == "LITRO"){
+
+        if (unidad_medida == "LITRO") {
             residuo.setMedida_residuo(MedidaResiduo.LITRO);
-        }else if(unidad_medida == "KILOGRAMO"){
+        } else if (unidad_medida == "KILOGRAMO") {
             residuo.setMedida_residuo(MedidaResiduo.KILOGRAMO);
         }
         return residuo;
     }
-    
+
+    private Residuo realizarParticionResiduo(Residuo residuo) {
+        residuo.setProductor(null);
+        residuo.setQuimicos(null);
+        return residuo;
+    }
+
+    private Solicitud realizarParticionSolicitud(Solicitud solicitud) {
+        //Particionar productor
+        Productor productorParticionado = solicitud.getProductor();
+        productorParticionado.setCuenta(null);
+        productorParticionado.setDirecciones(null);
+        productorParticionado.setResiduos(null);
+        productorParticionado.setTipo(null);
+        productorParticionado.setSolicitudes(null);
+
+        //Particionar lista de residuos
+        List<Residuo> residuos = solicitud.getResiduos();
+
+        for (Residuo residuo : residuos) {
+            realizarParticionResiduo(residuo);
+        }
+
+        solicitud.setProductor(productorParticionado);
+        solicitud.setResiduos(residuos);
+
+        return solicitud;
+    }
+
     private List<String> validarCampoVacio() {
         List<String> campos = new ArrayList<>();
         if (this.validarCampoTextoVacio()) {
             campos.add("- Fecha");
         }
         return campos;
+    }
+
+    private Date obtenerFecha() throws PresentacionException {
+        LocalDate localDate = fecha.getDate(); // Obtener LocalDate
+
+        if (localDate == null) {
+            throw new PresentacionException("No hay una fecha especificada");
+        }
+
+        // Convertir LocalDate a Date
+        Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+        return date;
+    }
+
+    private void solicitarTraslado() {
+        try {
+            Solicitud solicitud = new Solicitud();
+            solicitud.setProductor(productor);
+            solicitud.setResiduos(residuoSeleccionados);
+            solicitud.setFecha_Solicitada(obtenerFecha());
+            realizarParticionSolicitud(solicitud);
+            negocio.insertarSolicitud(solicitud);
+        } catch (NegocioException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (PresentacionException a) {
+            JOptionPane.showMessageDialog(this, a.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     /**
      * @param args the command line arguments //
@@ -628,7 +779,9 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarResiduoSeleccionado;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> cbxUnidadMedidaResiduo;
+    private com.github.lgooddatepicker.components.DatePicker fecha;
     private javax.swing.JFormattedTextField formatCantidadResiduo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -640,7 +793,6 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblCantidad;
     private javax.swing.JLabel lblUnidadMedida;
     private javax.swing.JButton solicitarBtn;
-    private com.github.lgooddatepicker.components.DatePicker solicitarFecha;
     private javax.swing.JTable tblResiduosNoSeleccionados;
     private javax.swing.JTable tblResiduosSeleccionados;
     // End of variables declaration//GEN-END:variables
