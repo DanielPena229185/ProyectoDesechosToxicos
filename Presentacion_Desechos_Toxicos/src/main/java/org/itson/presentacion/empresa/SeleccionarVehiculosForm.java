@@ -1,9 +1,12 @@
 package org.itson.presentacion.empresa;
 
 import com.dominio.EmpresaTransportista;
+import com.dominio.Transporte;
 import com.dominio.Traslado;
 import com.dominio.Vehiculo;
 import com.github.lgooddatepicker.components.DatePicker;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -152,48 +155,97 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
         // Actualizamos los campos con la selección actual
         this.actualizarCampos(seleccionActual);
     }
-    
+
     private boolean comprobarTxtFieldVacio(JTextField e) throws PresentacionException {
         if (e.getText().isEmpty() || e.getText().isBlank()) {
             throw new PresentacionException("Error: campos de texto vacíos.");
         }
-        
+
         return true;
     }
-    
+
     private boolean comprobarTextAreaVacio(JTextArea e) throws PresentacionException {
         if (e.getText().isEmpty() || e.getText().isBlank()) {
             throw new PresentacionException("Error: Cuadro de texto vacío.");
         }
-        
+
         return true;
     }
-    
+
     private boolean comprobarFechaSeleccionad(DatePicker e) throws PresentacionException {
         if (e.getDate() == null) {
             throw new PresentacionException("Error: No hay ninguna fecha seleccionada.");
         }
-        
+
         return true;
     }
-    
+
+    private boolean fechaValida(LocalDate fecha) throws PresentacionException {
+        LocalDate fechaActual = LocalDate.now();
+
+        if (fecha.isAfter(fechaActual)) {
+            throw new PresentacionException("Error: Ingrese una fecha igual o menor a la de hoy.");
+        }
+
+        return true;
+    }
+
+    private boolean validarKilometraje(JTextField e) throws PresentacionException {
+        if (Float.parseFloat(e.getText()) < 1000) {
+            throw new PresentacionException("Error: Ingrese valores mayores a 1000 en el kilometraje.");
+        }
+
+        return true;
+    }
+
+    private boolean validarCostos(JTextField e) throws PresentacionException {
+        if (Float.parseFloat(e.getText()) <= 0) {
+            throw new PresentacionException("Error: Ingrese valores mayores a 0 en el costo..");
+        }
+
+        return true;
+    }
+
     private boolean comprobarTodosLosCampos() throws PresentacionException {
         try {
-            return this.comprobarTxtFieldVacio(this.txtKilometrosRecorridos) &&
-                this.comprobarTxtFieldVacio(this.txtCosto) &&
-                this.comprobarTextAreaVacio(this.textAreaTratamiento) &&
-                this.comprobarFechaSeleccionad(this.datePickerFechaLlegada);
+            return this.comprobarTxtFieldVacio(this.txtKilometrosRecorridos)
+                    && this.comprobarTxtFieldVacio(this.txtCosto)
+                    && this.comprobarTextAreaVacio(this.textAreaTratamiento)
+                    && this.comprobarFechaSeleccionad(this.datePickerFechaLlegada)
+                    && this.fechaValida(this.datePickerFechaLlegada.getDate())
+                    && this.validarKilometraje(this.txtKilometrosRecorridos)
+                    && this.validarCostos(this.txtCosto);
         } catch (PresentacionException e) {
             throw new PresentacionException(e.getLocalizedMessage());
         }
     }
-    
-    private void enviarTraslado() {
+
+    private Transporte obtenerDatosTransporte() throws PresentacionException {
+        Transporte transporte = new Transporte();
+
         try {
-            this.comprobarTodosLosCampos();
-            System.out.println(this.obtenerVehiculoSeleccionado());
+            if (this.comprobarTodosLosCampos()) {
+                transporte.setKilometros(Float.parseFloat(this.txtKilometrosRecorridos.getText()));
+                transporte.setCoste(Float.parseFloat(this.txtCosto.getText()));
+                transporte.setVehiculos(Arrays.asList(this.obtenerVehiculoSeleccionado()));
+                transporte.setEmpresa_transportista(empresa);
+
+                return transporte;
+            }
         } catch (PresentacionException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Campos requeridos", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return null;
+    }
+
+    private void guardarTransporte() throws PresentacionException {
+        try {
+            Transporte transporte = this.obtenerDatosTransporte();
+            this.negocio.insertarTransporte(transporte);
+            JOptionPane.showMessageDialog(this, "Se insertó correctamente el transporte.", "¡ÉXITO!", JOptionPane.OK_OPTION);
+        } catch (NegocioException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -216,6 +268,10 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
      */
     private void abrirVentana() {
         this.setVisible(true);
+    }
+
+    private void volverALaPantallaAnterior() {
+
     }
 
     /**
@@ -387,7 +443,10 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(3, 3, 3)
+                        .addComponent(lblNombreEmpresa))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(1, 1, 1)
@@ -396,8 +455,6 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNombreEmpresa)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -429,7 +486,7 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
      * @param evt El evento de acción.
      */
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        this.enviarTraslado();
+        this.guardarTransporte();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void tablaVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaVehiculosMouseClicked

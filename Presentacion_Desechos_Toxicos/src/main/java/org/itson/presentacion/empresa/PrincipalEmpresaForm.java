@@ -1,9 +1,7 @@
-
 package org.itson.presentacion.empresa;
 
 import com.dominio.EmpresaTransportista;
 import org.itson.presentacion.LogInForm;
-
 
 /**
  * Descripción de la clase: Es el apartado principal de empresa
@@ -18,54 +16,58 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
 
     private EmpresaTransportista empresa;
     private static PrincipalEmpresaForm form;
+
     /**
      * Creates new form PrincipalEmpresa
      */
     PrincipalEmpresaForm() {
         initComponents();
     }
+
     /**
- * Obtiene la instancia única de PrincipalEmpresaForm utilizando el patrón Singleton.
- *
- * @return la instancia única de PrincipalEmpresaForm
- */
-public static PrincipalEmpresaForm getInstance() {
-    if (form == null) {
-        form = new PrincipalEmpresaForm();
+     * Obtiene la instancia única de PrincipalEmpresaForm utilizando el patrón
+     * Singleton.
+     *
+     * @return la instancia única de PrincipalEmpresaForm
+     */
+    public static PrincipalEmpresaForm getInstance() {
+        if (form == null) {
+            form = new PrincipalEmpresaForm();
+        }
+        return form;
     }
-    return form;
-}
 
-/**
- * Inicializa los componentes de la interfaz gráfica.
- */
-public void iniciarComponentes() {
-    this.abrirVentana();
-}
+    /**
+     * Inicializa los componentes de la interfaz gráfica.
+     */
+    public void iniciarComponentes() {
+        this.abrirVentana();
+    }
 
-/**
- * Cierra la ventana de la interfaz gráfica.
- */
-private void cerrarVentana() {
-    this.setVisible(false);
-}
+    /**
+     * Cierra la ventana de la interfaz gráfica.
+     */
+    private void cerrarVentana() {
+        this.setVisible(false);
+    }
 
-/**
- * Abre la ventana de la interfaz gráfica.
- */
-private void abrirVentana() {
-    this.setVisible(true);
-}
+    /**
+     * Abre la ventana de la interfaz gráfica.
+     */
+    private void abrirVentana() {
+        this.setVisible(true);
+    }
 
-/**
- * Abre la ventana de registro de traslado de la empresa.
- * Establece la empresa transportista en el formulario de registro de traslado.
- */
-private void abrirRegistroTraslado() {
-    RegistrarTrasladoEmpresaForm registrarTraslado = RegistrarTrasladoEmpresaForm.getInstance();
-    registrarTraslado.setEmpresaTransportista(empresa);
-    registrarTraslado.iniciarComponentes();
-}
+    /**
+     * Abre la ventana de registro de traslado de la empresa. Establece la
+     * empresa transportista en el formulario de registro de traslado.
+     */
+    private void abrirRegistroTraslado() {
+        RegistrarTrasladoEmpresaForm registrarTraslado = RegistrarTrasladoEmpresaForm.getInstance();
+        registrarTraslado.setEmpresaTransportista(empresa);
+        registrarTraslado.iniciarComponentes();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,7 +79,6 @@ private void abrirRegistroTraslado() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        registarEmpresaBtn = new javax.swing.JButton();
         registrarTrasladoBtn = new javax.swing.JButton();
         regsarBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -92,14 +93,6 @@ private void abrirRegistroTraslado() {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Bienvenido al menu principal de empresa ");
-
-        registarEmpresaBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        registarEmpresaBtn.setText("Registrar Empresa");
-        registarEmpresaBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registarEmpresaBtnActionPerformed(evt);
-            }
-        });
 
         registrarTrasladoBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         registrarTrasladoBtn.setText("Registrar Traslado");
@@ -126,11 +119,6 @@ private void abrirRegistroTraslado() {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(249, 249, 249)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(registrarTrasladoBtn)
-                            .addComponent(registarEmpresaBtn)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(205, 205, 205)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -140,11 +128,16 @@ private void abrirRegistroTraslado() {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel1))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(234, 234, 234))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabel1))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(234, 234, 234))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(registrarTrasladoBtn)
+                        .addGap(230, 230, 230))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,11 +148,9 @@ private void abrirRegistroTraslado() {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(48, 48, 48)
-                .addComponent(registarEmpresaBtn)
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
                 .addComponent(registrarTrasladoBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
                 .addComponent(regsarBtn)
                 .addContainerGap())
         );
@@ -170,54 +161,48 @@ private void abrirRegistroTraslado() {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 /**
- * Maneja el evento de clic en el botón "Registrar Traslado".
- * Abre la ventana de registro de traslado y oculta la ventana actual.
- */
+     * Maneja el evento de clic en el botón "Registrar Traslado". Abre la
+     * ventana de registro de traslado y oculta la ventana actual.
+     */
     private void registrarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarTrasladoBtnActionPerformed
         this.abrirRegistroTraslado();
         this.setVisible(false);
     }//GEN-LAST:event_registrarTrasladoBtnActionPerformed
-/**
- * Maneja el evento de clic en el botón "Registrar Traslado".
- * Abre la ventana de registro de traslado y oculta la ventana actual.
- */
+    /**
+     * Maneja el evento de clic en el botón "Registrar Traslado". Abre la
+     * ventana de registro de traslado y oculta la ventana actual.
+     */
     private void regsarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regsarBtnActionPerformed
-        LogInForm a= new LogInForm();
+        LogInForm a = new LogInForm();
         a.setVisible(true);
         dispose();
     }//GEN-LAST:event_regsarBtnActionPerformed
-/**
- * Maneja el evento de clic en el botón "Registrar Empresa".
- * Abre la ventana de registro de empresa y cierra la ventana actual.
- */
-    private void registarEmpresaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registarEmpresaBtnActionPerformed
-        RegistrarEmpresaForm c  = new RegistrarEmpresaForm();
-        c.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_registarEmpresaBtnActionPerformed
-/**
- * Maneja el evento de clic en el botón "Registrar Empresa".
- * Abre la ventana de registro de empresa y cierra la ventana actual.
- */
+
+    /**
+     * Maneja el evento de clic en el botón "Registrar Empresa".Abre la ventana
+     * de registro de empresa y cierra la ventana actual.
+     *
+     * @return
+     */
     public EmpresaTransportista getEmpresa() {
         return empresa;
     }
-/**
- * Establece la instancia de la empresa transportista asociada a la ventana.
- *
- * @param empresa la instancia de la empresa transportista a establecer
- */
+
+    /**
+     * Establece la instancia de la empresa transportista asociada a la ventana.
+     *
+     * @param empresa la instancia de la empresa transportista a establecer
+     */
     public void setEmpresa(EmpresaTransportista empresa) {
         this.empresa = empresa;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton registarEmpresaBtn;
     private javax.swing.JButton registrarTrasladoBtn;
     private javax.swing.JButton regsarBtn;
     // End of variables declaration//GEN-END:variables

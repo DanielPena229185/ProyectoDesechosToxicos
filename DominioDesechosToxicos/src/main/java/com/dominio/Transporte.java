@@ -40,6 +40,7 @@ public class Transporte {
     /**
      * Empresa Trasnportista que registro el Transporte
      */
+//    private EmpresaTransportista empresa_transportista;
     private EmpresaTransportista empresa_transportista;
 
     /**
@@ -55,14 +56,14 @@ public class Transporte {
      * @param kilometros kilometros a asignar
      * @param coste coste a asignar
      * @param vehiculos Vehiculos a asignar
-     * @param empresaTransportista EmpresaTransportista a asignar
+     * @param empresa_transportista
      */
     public Transporte(ObjectId id, Float kilometros, Float coste, List<Vehiculo> vehiculos, EmpresaTransportista empresa_transportista) {
         this.id = id;
         this.kilometros = kilometros;
         this.coste = coste;
         this.vehiculos = vehiculos;
-        this.empresa_transportista = empresa_transportista;
+//        this.empresa_transportista = empresa_transportista;
     }
 
     /**
@@ -72,13 +73,13 @@ public class Transporte {
      * @param kilometros kilometros a asignar
      * @param coste coste a asignar
      * @param vehiculos Vehiculo a asignar
-     * @param empresaTransportista EmpresaTransportista a asignar
+     * @param empresa_transportista
      */
     public Transporte(Float kilometros, Float coste, List<Vehiculo> vehiculos, EmpresaTransportista empresa_transportista) {
         this.kilometros = kilometros;
         this.coste = coste;
         this.vehiculos = vehiculos;
-        this.empresa_transportista = empresa_transportista;
+//        this.empresa_transportista = empresa_transportista;
     }
 
     /**
@@ -153,22 +154,32 @@ public class Transporte {
         this.vehiculos = vehiculos;
     }
 
-    /**
-     * Regresa la Empresa Transportista del Transporte
-     *
-     * @return Empresa Trasnportista del Transporte
-     */
-    public EmpresaTransportista getEmpresa_Transportista() {
+//    /**
+//     * Regresa la Empresa Transportista del Transporte
+//     *
+//     * @return Empresa Trasnportista del Transporte
+//     */
+//    public EmpresaTransportista getEmpresa_Transportista() {
+//        return empresa_transportista;
+//    }
+//
+//    /**
+//     * Le asigna una EmpresaTrasnportista al Transporte
+//     *
+//     * @param empresaTransportista objeto EmpresaTransportista a asignar
+//     */
+//    public void setEmpresaTransportista(EmpresaTransportista empresa_transportista) {
+//        this.empresa_transportista = empresa_transportista;
+//    }
+
+    public EmpresaTransportista getEmpresa_transportista() {
         return empresa_transportista;
     }
 
-    /**
-     * Le asigna una EmpresaTrasnportista al Transporte
-     *
-     * @param empresaTransportista objeto EmpresaTransportista a asignar
-     */
-    public void setEmpresaTransportista(EmpresaTransportista empresa_transportista) {
+    public void setEmpresa_transportista(EmpresaTransportista empresa_transportista) {
         this.empresa_transportista = empresa_transportista;
     }
+    
+    
 
 }

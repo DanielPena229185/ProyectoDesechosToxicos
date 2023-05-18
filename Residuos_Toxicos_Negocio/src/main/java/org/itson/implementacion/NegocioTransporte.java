@@ -84,12 +84,12 @@ private Transporte validarTransporte(Transporte transporte) throws ValidacionExc
     }
 
     // Valida la empresa transportista
-    EmpresaTransportista empresaTransportista = transporte.getEmpresa_Transportista();
+    EmpresaTransportista empresaTransportista = transporte.getEmpresa_transportista();
     if (empresaTransportista == null) {
         camposError.add("- No hay información de la empresa transportista");
     } else {
         empresaTransportista = particionarEmpresaTransportista(empresaTransportista);
-        transporte.setEmpresaTransportista(empresaTransportista);
+        transporte.setEmpresa_transportista(empresaTransportista);
     }
 
     if (camposError.isEmpty()) {
