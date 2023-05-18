@@ -110,8 +110,8 @@ public class NegocioResiduo implements INegocioResiduo {
         if (this.validarTextoVacio(nombre)) {
             //Si el nombre no está disponible, ya sea que esté vacío o nulo
             camposErroneos.add("- No contiene nombre");
-        }else if (validarTexto(nombre)){
-            camposErroneos.add("- Ingresa un nombre más simple que " + nombre);
+        }else if (!validarTexto(nombre)){
+            camposErroneos.add("- Ingresa un nombre más simple que [" + nombre + ']');
         }
 
         //Validamos el código del residuo
