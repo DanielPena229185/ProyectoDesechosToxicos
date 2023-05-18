@@ -128,7 +128,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     }//GEN-LAST:event_regresarBtnActionPerformed
 
     private void btnRegistrarResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarResiduoActionPerformed
-        abrirLoginForm();
+        abrirRegistroResiduoForm();
     }//GEN-LAST:event_btnRegistrarResiduoActionPerformed
 
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
