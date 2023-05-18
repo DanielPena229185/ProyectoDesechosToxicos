@@ -271,5 +271,14 @@ public class FachadaNegocio implements INegocio {
         }
     }
 
+    @Override
+    public Solicitud actualizaEstadoASolicitudAtendida(Solicitud solicitud) throws NegocioException {
+        try {
+            return negocioSolicitud.actualizaEstadoASolicitudAtendida(solicitud);
+        } catch (NegocioException e) {
+            throw new NegocioException(e.getMessage());
+        }
+    }
+
     
 }

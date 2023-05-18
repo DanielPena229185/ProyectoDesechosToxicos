@@ -145,4 +145,12 @@ public interface INegocio {
      * consulta
      */
     List<EmpresaTransportista> consultaTodasEmpresasTransportistas() throws NegocioException;
+    
+    /**
+     * 
+     * @param solicitud
+     * @return
+     * @throws NegocioException 
+     */
+    Solicitud actualizaEstadoASolicitudAtendida(Solicitud solicitud)throws NegocioException;
 }

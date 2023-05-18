@@ -223,4 +223,20 @@ public class Residuo {
     public void setMedida_residuo(MedidaResiduo medida_residuo) {
         this.medida_residuo = medida_residuo;
     }
+    
+    @Override
+    public String toString() {
+        
+        String residuo = "Nombre: " + this.getNombre();
+        
+        if(this.getCantidad() != null){
+            residuo+= ", Cantidad: " + this.getCantidad();
+        }
+        
+        if(this.getMedida_residuo() != null){
+            residuo+= ", Unidad Medida: " + this.getMedida_residuo();
+        }
+        
+        return residuo + ".";
+    }
 }

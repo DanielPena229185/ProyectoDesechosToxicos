@@ -34,6 +34,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btnRegistrarResiduo = new javax.swing.JButton();
         regresarBtn = new javax.swing.JButton();
+        btnSolicitarTraslado = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 204, 255));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -68,6 +69,16 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
             }
         });
 
+        btnSolicitarTraslado.setBackground(new java.awt.Color(0, 0, 0));
+        btnSolicitarTraslado.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        btnSolicitarTraslado.setForeground(new java.awt.Color(255, 255, 255));
+        btnSolicitarTraslado.setText("Solicitar Traslado");
+        btnSolicitarTraslado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolicitarTrasladoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -85,7 +96,9 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
                         .addComponent(regresarBtn))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(234, 234, 234)
-                        .addComponent(btnRegistrarResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnSolicitarTraslado, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegistrarResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -95,9 +108,11 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addComponent(btnRegistrarResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(218, 218, 218)
+                .addGap(18, 18, 18)
+                .addComponent(btnSolicitarTraslado, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(136, 136, 136)
                 .addComponent(regresarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
         );
@@ -136,8 +151,19 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         this.cerrarVentana();
     }//GEN-LAST:event_formComponentHidden
 
+    private void btnSolicitarTrasladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarTrasladoActionPerformed
+        this.abrirSolicitarTrasladoForm();
+    }//GEN-LAST:event_btnSolicitarTrasladoActionPerformed
+
     public void iniciarComponentes(){
         this.abrirVentana();
+    }
+    
+    private void abrirSolicitarTrasladoForm(){
+        SolicitarTrasladoForm solicitarTrasladoForm;
+        solicitarTrasladoForm = SolicitarTrasladoForm.getInstance();
+        solicitarTrasladoForm.setProductor(productor);
+        solicitarTrasladoForm.iniciarComponentes();
     }
     
     private void abrirRegistroResiduoForm(){
@@ -181,6 +207,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrarResiduo;
+    private javax.swing.JButton btnSolicitarTraslado;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;

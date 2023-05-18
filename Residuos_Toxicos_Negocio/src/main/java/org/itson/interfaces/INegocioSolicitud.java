@@ -9,6 +9,7 @@ import com.dominio.Solicitud;
 import java.util.List;
 import org.itson.DTO.SolicitudDTO;
 import org.itson.excepciones.NegocioException;
+import org.itson.excepciones.PersistenciaException;
 
 /**
  * Descripción de la interface:  Define tres métodos relacionados con la gestión de solicitudes en el sistema 
@@ -43,5 +44,12 @@ public List<Solicitud> consultaSolicitudesNoAtendidas() throws NegocioException;
  */
 public List<Solicitud> consultarSolicitudFiltro(Solicitud solicitud) throws NegocioException;
 
+/**
+ * 
+ * @param solicitud
+ * @return
+ * @throws NegocioException 
+ */
+Solicitud actualizaEstadoASolicitudAtendida(Solicitud solicitud)throws NegocioException;
     
 }

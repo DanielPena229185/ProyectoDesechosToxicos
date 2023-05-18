@@ -1,4 +1,3 @@
-
 package org.itson.implementacion;
 
 import com.dominio.MedidaResiduo;
@@ -17,25 +16,29 @@ import org.itson.interfaces.INegocioSolicitud;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripcion de la clase: Esta clase se encarga de manejar las solicitudes relacionadas con el traslado de residuos
+ * Descripcion de la clase: Esta clase se encarga de manejar las solicitudes
+ * relacionadas con el traslado de residuos
+ *
  * @author oscar
  */
 public class NegocioSolicitud implements INegocioSolicitud {
 
     IPersistencia persistencia;
+
     /**
-     * Constructor de la clase NegocioSolicitud.
-     * Inicializa la instancia de FachadaPersistencia.
+     * Constructor de la clase NegocioSolicitud. Inicializa la instancia de
+     * FachadaPersistencia.
      */
     public NegocioSolicitud() {
         this.persistencia = new FachadaPersistencia();
     }
-    
+
     /**
      * Valida si la fecha es válida para el traslado de residuos.
      *
      * @param fecha La fecha a validar.
-     * @return true si la fecha no es posterior a la fecha actual, false de lo contrario.
+     * @return true si la fecha no es posterior a la fecha actual, false de lo
+     * contrario.
      */
     private Boolean validarFechaParaTrasladoDeResiduos(Date fecha) {
         if (!fecha.after(new Date())) {
@@ -43,12 +46,13 @@ public class NegocioSolicitud implements INegocioSolicitud {
         }
         return false;
     }
-    
+
     /**
      * Valida si la lista de residuos contiene al menos un residuo.
      *
      * @param residuos La lista de residuos a validar.
-     * @return true si la lista de residuos es nula o está vacía, false de lo contrario.
+     * @return true si la lista de residuos es nula o está vacía, false de lo
+     * contrario.
      */
     private Boolean validaQueTengaAlmenosUnResiduo(List<Residuo> residuos) {
         if (residuos == null || residuos.isEmpty()) {
@@ -56,12 +60,13 @@ public class NegocioSolicitud implements INegocioSolicitud {
         }
         return false;
     }
-    
+
     /**
      * Valida si la unidad de medida de un residuo es válida.
      *
      * @param residuo El residuo a validar.
-     * @return true si la unidad de medida del residuo no coincide con ninguna de las unidades válidas, false de lo contrario.
+     * @return true si la unidad de medida del residuo no coincide con ninguna
+     * de las unidades válidas, false de lo contrario.
      */
     private Boolean validaLaUnidadDeMedida(Residuo residuo) {
         for (MedidaResiduo m : MedidaResiduo.values()) {
@@ -71,13 +76,16 @@ public class NegocioSolicitud implements INegocioSolicitud {
         }
         return false;
     }
-    
+
     /**
-     * Valida si no se han realizado más de cinco traslados en una fecha determinada.
+     * Valida si no se han realizado más de cinco traslados en una fecha
+     * determinada.
      *
      * @param fecha La fecha a verificar.
-     * @return true si no se han registrado cinco traslados en la fecha dada, lanza una ValidacionException de lo contrario.
-     * @throws ValidacionException Si ya hay cinco traslados registrados en la fecha dada.
+     * @return true si no se han registrado cinco traslados en la fecha dada,
+     * lanza una ValidacionException de lo contrario.
+     * @throws ValidacionException Si ya hay cinco traslados registrados en la
+     * fecha dada.
      */
     private Boolean validarNoMasDeCincoTrasladosPorDia(Date fecha) throws ValidacionException {
         SolicitudDTO filtros = new SolicitudDTO();
@@ -119,6 +127,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
         return solicitudDTO;
     }
+
     /**
      * Inserta una solicitud en el sistema.
      *
@@ -137,6 +146,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
             throw new NegocioException(a.getMessage());
         }
     }
+
     /**
      * Consulta todas las solicitudes no atendidas.
      *
@@ -151,37 +161,41 @@ public class NegocioSolicitud implements INegocioSolicitud {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Consulta las solicitudes que coinciden con los filtros especificados
      *
      * @param residuo Los filtros de la solicitud.
      * @return Una lista de solicitudes que coinciden con los filtros.
-     * @throws NegocioException Si ocurre un error durante la consulta o los filtros de la solicitud son nulos.
+     * @throws NegocioException Si ocurre un error durante la consulta o los
+     * filtros de la solicitud son nulos.
      */
     @Override
     public List<Solicitud> consultarSolicitudFiltro(Solicitud residuo) throws NegocioException {
         try {
-            
+
             if (residuo == null) {
                 throw new ValidacionException("No hay datos de la solicitud");
             }
-            
+
             SolicitudDTO solicitudDTO = convertirSolicitudToDTO(residuo);
-            
+
             return persistencia.consultarSolicitudFiltro(solicitudDTO);
-            
+
         } catch (PersistenciaException e) {
             throw new NegocioException(e.getMessage());
         } catch (ValidacionException a) {
             throw new NegocioException(a.getMessage());
         }
     }
+
     /**
      * Valida una solicitud antes de insertarla.
      *
      * @param solicitud La solicitud a validar.
      * @return La solicitud validada.
-     * @throws ValidacionException Si la solicitud es nula o no cumple con los requisitos de validación.
+     * @throws ValidacionException Si la solicitud es nula o no cumple con los
+     * requisitos de validación.
      */
     private Solicitud validarSolicitudInsertar(Solicitud solicitud) throws ValidacionException {
 
@@ -252,5 +266,19 @@ public class NegocioSolicitud implements INegocioSolicitud {
             mensaje += campo + "\n";
         }
         return mensaje;
+    }
+
+    @Override
+    public Solicitud actualizaEstadoASolicitudAtendida(Solicitud solicitud) throws NegocioException {
+        try {
+            
+            if(solicitud == null){
+                throw new ValidacionException("No hay información de la solicitud a actualizar");
+            }
+            
+            return persistencia.actualizaEstadoASolicitudAtendida(solicitud);
+        } catch (PersistenciaException e) {
+            throw new NegocioException(e.getMessage());
+        }
     }
 }
