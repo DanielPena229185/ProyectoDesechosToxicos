@@ -5,28 +5,15 @@ import com.dominio.EmpresaTransportista;
 import com.dominio.MedidaResiduo;
 import com.dominio.Residuo;
 import com.dominio.Solicitud;
-import com.dominio.Transporte;
 import com.dominio.Traslado;
-import java.awt.Color;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Iterator;
-import java.util.logging.Level;
 import javax.swing.table.DefaultTableModel;
 import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
-import org.itson.utils.ConfiguracionDePaginado;
 
 /**
  * Descripción de la clase: Se encarga de hacer el proceso de registro de los
@@ -76,25 +63,53 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     private int contadorResiduosTrasladados;
 
     /**
+     * RegistrarTrasladoForm
+     */
+    private static RegistrarTrasladoForm registrarTrasladoForm;
+
+    /**
      * Creates new form RegistrarTrasladoForm
      */
-    public RegistrarTrasladoForm(Solicitud solicitud, Administrador administrador) {
+    private RegistrarTrasladoForm() {
         negocio = new FachadaNegocio();
-        this.administrador = administrador;
-        this.solicitud = solicitud;
-        this.cantidadResiduos = solicitud.getResiduos().size();
         initComponents();
+    }
+
+    public static RegistrarTrasladoForm getInstance() {
+        if (registrarTrasladoForm == null) {
+            registrarTrasladoForm = new RegistrarTrasladoForm();
+        }
+        return registrarTrasladoForm;
+    }
+
+    public void iniciarComponentes() {
+        this.cantidadResiduos = solicitud.getResiduos().size();
         asignaValoresLabels(solicitud);
         llenadoTablaResiduos(solicitud);
         ejecucionLlenadoTablaTransportistas();
-
         this.setVisible(true);
-
     }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+
+    public Solicitud getSolicitud() {
+        return solicitud;
+    }
+
+    public void setSolicitud(Solicitud solicitud) {
+        this.solicitud = solicitud;
+    }
+    
 
     /**
      * Llena la tabla de residuos con los datos de una solicitud.
-     * 
+     *
      * @param solicitud La solicitud de la cual obtener los residuos.
      */
     private void llenadoTablaResiduos(Solicitud solicitud) {
@@ -109,7 +124,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
     /**
      * Asigna los valores de la solicitud a los labels correspondientes.
-     * 
+     *
      * @param solicitud La solicitud de la cual obtener los valores.
      */
     private void asignaValoresLabels(Solicitud solicitud) {
@@ -120,7 +135,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
     /**
      * Consulta las empresas transportistas disponibles.
-     * 
+     *
      * @return Una lista de objetos EmpresaTransportista.
      */
     private List<EmpresaTransportista> consultaTransportistasDisponibles() {
@@ -129,7 +144,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
     /**
      * Llena la tabla de transportistas con los datos de la lista proporcionada.
-     * 
+     *
      * @param transportistas La lista de objetos EmpresaTransportista.
      */
     private void llenarTablaTransportistas(List<EmpresaTransportista> transportistas) {
@@ -143,8 +158,8 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }
 
     /**
-     * Ejecuta el proceso de llenado de la tabla de transportistas.
-     * Consulta las empresas transportistas disponibles, actualiza la lista de transportistas
+     * Ejecuta el proceso de llenado de la tabla de transportistas. Consulta las
+     * empresas transportistas disponibles, actualiza la lista de transportistas
      * y llena la tabla con los datos obtenidos.
      */
     private void ejecucionLlenadoTablaTransportistas() {
@@ -154,9 +169,10 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }
 
     /**
-     * Consulta la empresa transportista seleccionada en la tabla de transportistas.
-     * Remueve la fila seleccionada de la tabla y actualiza la lista de transportistas seleccionadas.
-     * 
+     * Consulta la empresa transportista seleccionada en la tabla de
+     * transportistas. Remueve la fila seleccionada de la tabla y actualiza la
+     * lista de transportistas seleccionadas.
+     *
      * @return La empresa transportista seleccionada.
      */
     private EmpresaTransportista consultaEmpresaSeleccionada() {
@@ -172,9 +188,10 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }
 
     /**
-     * Consulta la empresa transportista a eliminar de la tabla de transportistas seleccionadas.
-     * Remueve la fila seleccionada de la tabla y actualiza la lista de transportistas seleccionadas.
-     * 
+     * Consulta la empresa transportista a eliminar de la tabla de
+     * transportistas seleccionadas. Remueve la fila seleccionada de la tabla y
+     * actualiza la lista de transportistas seleccionadas.
+     *
      * @return La empresa transportista a eliminar.
      */
     private EmpresaTransportista consultaEmpresaEliminarSeleccion() {
@@ -190,8 +207,9 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }
 
     /**
-     * Ingresa una empresa transportista a la tabla de transportistas seleccionadas.
-     * 
+     * Ingresa una empresa transportista a la tabla de transportistas
+     * seleccionadas.
+     *
      * @param empresaTransportista La empresa transportista a agregar.
      */
     private void ingresaTranportistaSeleccionadas(EmpresaTransportista empresaTransportista) {
@@ -202,7 +220,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
     /**
      * Ingresa una empresa transportista removida a la tabla de transportistas.
-     * 
+     *
      * @param empresaTransportista La empresa transportista a agregar.
      */
     private void ingresaTranportistaRemovida(EmpresaTransportista empresaTransportista) {
@@ -213,7 +231,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
     /**
      * Consulta el residuo seleccionado en la tabla de residuos.
-     * 
+     *
      * @return El residuo seleccionado.
      */
     private Residuo consultarResiduoSeleccionado() {
@@ -234,7 +252,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
     /**
      * Llena los labels de residuo con los datos del residuo proporcionado.
-     * 
+     *
      * @param residuo El residuo a utilizar para llenar los labels.
      */
     private void llenarLabelsResiduo(Residuo residuo) {
@@ -244,9 +262,11 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }
 
     /**
-     * Consulta los elementos seleccionados en la tabla de transportistas seleccionados.
-     * 
-     * @return Una lista de nombres de las empresas transportistas seleccionadas.
+     * Consulta los elementos seleccionados en la tabla de transportistas
+     * seleccionados.
+     *
+     * @return Una lista de nombres de las empresas transportistas
+     * seleccionadas.
      */
     private List<String> consultarTablaSeleccionados() {
         List<String> lista = new ArrayList<>();
@@ -257,8 +277,9 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }
 
     /**
-     * Obtiene la lista de empresas transportistas seleccionadas en la tabla de transportistas seleccionadas.
-     * 
+     * Obtiene la lista de empresas transportistas seleccionadas en la tabla de
+     * transportistas seleccionadas.
+     *
      * @return La lista de empresas transportistas seleccionadas.
      */
     private List<EmpresaTransportista> dejarTransportistasSeleccionados() {
@@ -274,19 +295,19 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
             }
         }
         List<EmpresaTransportista> trans = new ArrayList<>();
-        for(EmpresaTransportista i : lista){
+        for (EmpresaTransportista i : lista) {
             EmpresaTransportista et = new EmpresaTransportista();
             et.setId(i.getId());
             et.setNombre(i.getNombre());
             trans.add(et);
         }
-        
+
         return trans;
     }
 
     /**
      * Crea un objeto Traslado con los datos del formulario.
-     * 
+     *
      * @return El objeto Traslado creado.
      */
     private Traslado creaTraslado() {
@@ -319,7 +340,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
     /**
      * Persiste un objeto Traslado en la base de datos.
-     * 
+     *
      * @return El objeto Traslado persistido, o null si no se pudo persistir.
      */
     private Traslado persistirTraslado() {
@@ -344,7 +365,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
     /**
      * Verifica si se ha seleccionado un residuo.
-     * 
+     *
      * @return true si se ha seleccionado un residuo, false de lo contrario.
      */
     private boolean seSeleccionoResiduo() {
@@ -362,7 +383,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
     /**
      * Verifica si la tabla de residuos está vacía.
-     * 
+     *
      * @return true si la tabla de residuos está vacía, false de lo contrario.
      */
     private void quitarResiduoTablaResiduos() {
@@ -403,11 +424,12 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         principalAdministradorForm.setAdministrador(administrador);
         principalAdministradorForm.iniciarComponentes();
     }
+
     /**
      * Actualiza el estado de la solicitud a "Atendida".
      */
-    private void actualizarEstadoSolicitud(){
-    negocio.actualizaEstadoASolicitudAtendida(solicitud);
+    private void actualizarEstadoSolicitud() {
+        negocio.actualizaEstadoASolicitudAtendida(solicitud);
     }
 
     /**
@@ -449,7 +471,13 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrar traslado");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -546,13 +574,13 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
                 btnAsignarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAsignar, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 527, 120, 40));
+        jPanel2.add(btnAsignar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, 90, 40));
 
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel5.setText("asignaras el Traslado:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
-        btnSalir.setText("Salir");
+        btnSalir.setText("Regresar a pantalla principal");
         btnSalir.setEnabled(false);
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -567,7 +595,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 120, 40));
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 210, 40));
 
         lblMensaje.setBackground(new java.awt.Color(255, 255, 255));
         lblMensaje.setForeground(new java.awt.Color(0, 0, 0));
@@ -725,9 +753,11 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     /**
-     * Maneja el evento de acción del botón "Asignar". Persiste el traslado, vacía la tabla de empresas transportistas seleccionadas,
-     * ejecuta el llenado de la tabla de transportistas, quita el residuo de la tabla de residuos y actualiza el estado de la solicitud.
+    /**
+     * Maneja el evento de acción del botón "Asignar". Persiste el traslado,
+     * vacía la tabla de empresas transportistas seleccionadas, ejecuta el
+     * llenado de la tabla de transportistas, quita el residuo de la tabla de
+     * residuos y actualiza el estado de la solicitud.
      *
      * @param evt el evento de acción
      */
@@ -743,12 +773,13 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
             this.btnSalir.setEnabled(true);
             this.btnAsignar.setEnabled(false);
             actualizarEstadoSolicitud();
-            
+
         }
     }//GEN-LAST:event_btnAsignarActionPerformed
 
     /**
-     * Maneja el evento de clic en la tabla de residuos. Consulta y selecciona el residuo correspondiente.
+     * Maneja el evento de clic en la tabla de residuos. Consulta y selecciona
+     * el residuo correspondiente.
      *
      * @param evt el evento de clic del mouse
      */
@@ -758,8 +789,9 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tableResiduosMouseClicked
 
-     /**
-     * Maneja el evento de clic en la tabla de transportistas. Consulta y selecciona la empresa transportista correspondiente.
+    /**
+     * Maneja el evento de clic en la tabla de transportistas. Consulta y
+     * selecciona la empresa transportista correspondiente.
      *
      * @param evt el evento de clic del mouse
      */
@@ -769,7 +801,8 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_tableTransportistasMouseClicked
 
     /**
-     * Maneja el evento de clic en la tabla de transportistas seleccionados. Consulta y elimina la empresa transportista seleccionada.
+     * Maneja el evento de clic en la tabla de transportistas seleccionados.
+     * Consulta y elimina la empresa transportista seleccionada.
      *
      * @param evt el evento de clic del mouse
      */
@@ -780,7 +813,8 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_tableTransportistasSeleccionadosMouseClicked
 
     /**
-     * Maneja el evento cuando el mouse entra en el botón "Salir". Si aún hay residuos en la tabla, muestra un mensaje en el label lblMensaje.
+     * Maneja el evento cuando el mouse entra en el botón "Salir". Si aún hay
+     * residuos en la tabla, muestra un mensaje en el label lblMensaje.
      *
      * @param evt el evento del mouse
      */
@@ -794,7 +828,8 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseEntered
 
     /**
-     * Maneja el evento cuando el mouse sale del botón "Salir". Borra el mensaje del label lblMensaje.
+     * Maneja el evento cuando el mouse sale del botón "Salir". Borra el mensaje
+     * del label lblMensaje.
      *
      * @param evt el evento del mouse
      */
@@ -807,7 +842,8 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseExited
 
     /**
-     * Maneja el evento de acción del botón "Salir". Navega al formulario PrincipalAdministradorForm y cierra la ventana actual.
+     * Maneja el evento de acción del botón "Salir". Navega al formulario
+     * PrincipalAdministradorForm y cierra la ventana actual.
      *
      * @param evt el evento de acción
      */
@@ -816,6 +852,10 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         irPrincipalAdministradorForm();
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        irPrincipalAdministradorForm();
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

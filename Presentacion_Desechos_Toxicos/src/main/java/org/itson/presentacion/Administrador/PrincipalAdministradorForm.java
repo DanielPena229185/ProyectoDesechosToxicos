@@ -46,8 +46,16 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         admin.setNombres(administrador.getNombres());
         admin.setApellido_paterno(administrador.getApellido_paterno());
         admin.setApellido_materno(administrador.getApellido_materno());
-        SolicitudesTrasladosForm solicitudesTrasladosForm = new SolicitudesTrasladosForm(admin);
+        abrirRegistrarSolicitudesTraslado(administrador);
         cerrarVentanaActual();
+    }
+    
+    private void abrirRegistrarSolicitudesTraslado(Administrador administrador){
+        SolicitudesTrasladosForm solicitudesTrasladosForm;
+        solicitudesTrasladosForm = SolicitudesTrasladosForm.getInstance();
+        solicitudesTrasladosForm.setAdministrador(administrador);
+        solicitudesTrasladosForm.iniciarComponentes();
+        
     }
     /**
      * Inicia los componentes de la ventana
@@ -87,7 +95,8 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         solictarTrasladoBtn = new javax.swing.JButton();
         regresarbtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Principal Administrador");
         setPreferredSize(new java.awt.Dimension(720, 531));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

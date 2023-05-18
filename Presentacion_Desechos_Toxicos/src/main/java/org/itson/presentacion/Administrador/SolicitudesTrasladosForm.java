@@ -48,18 +48,34 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
      * La configuración de paginado utilizada para la visualización de las solicitudes en la tabla.
      */
     private ConfiguracionDePaginado configPaginado;
+    
+    /**
+     * Formulario
+     */
+    private static SolicitudesTrasladosForm solicitudesTrasladosForm;
 
     /**
      * Creates new form TrasladoEmpresasForm
      */
-    public SolicitudesTrasladosForm(Administrador administrador) {
+    private SolicitudesTrasladosForm() {
         initComponents();
-        this.administrador = administrador;
+        negocio = new FachadaNegocio();
+    }
+    
+    public static SolicitudesTrasladosForm getInstance(){
+        if(solicitudesTrasladosForm == null){
+            solicitudesTrasladosForm = new SolicitudesTrasladosForm();
+        }
+        return solicitudesTrasladosForm;
+    }
+    
+    public void iniciarComponentes(){
         negocio = new FachadaNegocio();
         configPaginado = new ConfiguracionDePaginado(0, 3);
         ejecucionLlenadoTablaSolicitudes();
         this.setVisible(true);
     }
+    
     /**
      * Obtiene el objeto Administrador asociado a este formulario.
      * @return El objeto Administrador asociado.
@@ -192,8 +208,16 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         productor.setId(this.solicitudSeleccionada.getProductor().getId());
         productor.setNombre(this.solicitudSeleccionada.getProductor().getNombre());
         this.solicitudSeleccionada.setProductor(productor);
-        RegistrarTrasladoForm registrarTrasladoForm = new RegistrarTrasladoForm(this.solicitudSeleccionada, administrador);
+        abrirRegistrarTrasladoForm();
         cerrarVentanaActual();
+    }
+    
+    private void abrirRegistrarTrasladoForm(){
+        RegistrarTrasladoForm registrarTrasladoForm;
+        registrarTrasladoForm = RegistrarTrasladoForm.getInstance();
+        registrarTrasladoForm.setAdministrador(administrador);
+        registrarTrasladoForm.setSolicitud(solicitudSeleccionada);
+        registrarTrasladoForm.iniciarComponentes();
     }
     /**
      * Navega hacia el formulario principal del administrador.
@@ -249,7 +273,13 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         tableResiduos = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Solicitudes Traslado");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         label1.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
@@ -456,6 +486,10 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         irRegistrarTrasladoForm();
     }//GEN-LAST:event_btnAsignarEmpresasActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        irPrincipalAdministradorForm();
+    }//GEN-LAST:event_formWindowClosed
 
    
 

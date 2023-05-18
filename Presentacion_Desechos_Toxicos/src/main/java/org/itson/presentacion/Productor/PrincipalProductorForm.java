@@ -47,10 +47,13 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         regresarBtn = new javax.swing.JButton();
         btnSolicitarTraslado = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Principal Productor");
         setBackground(new java.awt.Color(153, 204, 255));
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentHidden(java.awt.event.ComponentEvent evt) {
-                formComponentHidden(evt);
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -146,6 +149,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -166,15 +170,6 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarResiduoActionPerformed
 
     /**
-     * Evento disparado cuando el componente es ocultado.
-     * Abre el formulario de inicio de sesión y cierra la ventana actual.
-     */
-    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
-        this.abrirLoginForm();
-        this.cerrarVentana();
-    }//GEN-LAST:event_formComponentHidden
-
-    /**
      * Acción realizada al presionar el botón "Solicitar Traslado".
      * Abre el formulario de solicitud de traslado.
      */
@@ -182,6 +177,10 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         this.abrirSolicitarTrasladoForm();
         this.cerrarVentana();
     }//GEN-LAST:event_btnSolicitarTrasladoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        abrirLoginForm();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * Inicializa los componentes del formulario.
