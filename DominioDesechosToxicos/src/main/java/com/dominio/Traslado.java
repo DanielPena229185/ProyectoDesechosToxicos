@@ -36,10 +36,6 @@ public class Traslado {
      */
     private Solicitud solicitud;
     /**
-     * Direccion a la que se dirige el Traslado
-     */
-    private Direccion direccion;
-    /**
      * Empresas transportadoras que se encargaran del Traslado
      */
     private List<EmpresaTransportista> empresas_transportistas;
@@ -60,12 +56,11 @@ public class Traslado {
      * @param direccion Direccion a asignar
      * @param empresas_transportistas
      */
-    public Traslado(ObjectId id, Residuo residuo, Administrador administrador, Solicitud solicitud, Direccion direccion, List<EmpresaTransportista> empresas_transportistas) {    
+    public Traslado(ObjectId id, Residuo residuo, Administrador administrador, Solicitud solicitud, List<EmpresaTransportista> empresas_transportistas) {    
         this.id = id;
         this.residuo = residuo;
         this.administrador = administrador;
         this.solicitud = solicitud;
-        this.direccion = direccion;
         this.empresas_transportistas = empresas_transportistas;
     }
 
@@ -79,11 +74,10 @@ public class Traslado {
      * @param empresas_transportistas a asignar.
      * @param direccion Direccion a asignar
      */
-    public Traslado(Residuo residuo, Administrador administrador, Solicitud solicitud, Direccion direccion, List<EmpresaTransportista> empresas_transportistas) {    
+    public Traslado(Residuo residuo, Administrador administrador, Solicitud solicitud, List<EmpresaTransportista> empresas_transportistas) {    
         this.residuo = residuo;
         this.administrador = administrador;
         this.solicitud = solicitud;
-        this.direccion = direccion;
         this.empresas_transportistas = empresas_transportistas;
     }
 
@@ -157,24 +151,6 @@ public class Traslado {
      */
     public void setSolicitud(Solicitud solicitud) {
         this.solicitud = solicitud;
-    }
-
-    /**
-     * Regresa la Direccion del Traslado
-     *
-     * @return Direccion del Traslado
-     */
-    public Direccion getDireccion() {
-        return direccion;
-    }
-
-    /**
-     * Le asigna una Direccion al Traslado
-     *
-     * @param direccion objeto Direccion a asignar
-     */
-    public void setDireccion(Direccion direccion) {
-        this.direccion = direccion;
     }
 
     /**

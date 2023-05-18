@@ -84,16 +84,6 @@ public class NegocioTraslado implements INegocioTraslado {
             camposError.add("- No se tiene información del administrador");
         }
 
-        //Valida la dirección
-        Direccion direccion = traslado.getDireccion();
-
-        try {
-            validarDireccion(direccion);
-        } catch (ValidacionException e) {
-            camposError.add("Datos inválidos de la dirección:\n"
-                    + e.getMessage());
-        }
-
         //Valida la lista de empresas_transportistas
         List<EmpresaTransportista> empresasTransportistas = traslado.getEmpresas_transportistas();
 
@@ -117,48 +107,6 @@ public class NegocioTraslado implements INegocioTraslado {
         String mensaje = mensajeCampos(camposError);
 
         throw new ValidacionException(mensaje);
-    }
-
-    private Direccion validarDireccion(Direccion direccion) throws ValidacionException {
-
-        List<String> camposError = new LinkedList<>();
-
-        if (direccion == null) {
-            throw new ValidacionException("No hay información de la dirección");
-        }
-
-        //Validar la calle de la dirección
-        String calle = direccion.getCalle();
-        if (validarTextoVacio(calle)) {
-            camposError.add("- No hay una calle especificada");
-        }
-
-        //Validar la colonia
-        String colonia = direccion.getColonia();
-        if (validarTextoVacio(colonia)) {
-            camposError.add("- No hay una colonia especificada");
-        }
-
-        //Validar el número
-        String numero = direccion.getNumero();
-        if (validarTextoVacio(numero)) {
-            camposError.add("- No hay un número especificado");
-        }
-
-        //Validar ciudad
-        String ciudad = direccion.getCiudad();
-        if (validarTextoVacio(ciudad)) {
-            camposError.add("- No hay una ciudad especificada");
-        }
-
-        if (camposError.isEmpty()) {
-            return direccion;
-        }
-
-        String mensaje = mensajeCampos(camposError);
-
-        throw new ValidacionException(mensaje);
-
     }
 
     private Solicitud validarSolicitudInsertar(Solicitud solicitud) throws ValidacionException{
