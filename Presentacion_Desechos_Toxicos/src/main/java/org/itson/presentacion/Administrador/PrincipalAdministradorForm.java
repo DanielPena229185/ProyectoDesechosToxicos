@@ -1,4 +1,3 @@
-
 package org.itson.presentacion.Administrador;
 
 import com.dominio.Administrador;
@@ -9,14 +8,30 @@ import org.itson.presentacion.InicioForm;
  * @author arace
  */
 public class PrincipalAdministradorForm extends javax.swing.JFrame {
+
     static Administrador administrador;
-    private static PrincipalAdministradorForm form;
+
     /**
      * Creates new form PrincipalAdministradorForm
      */
     public PrincipalAdministradorForm() {
         initComponents();
         this.setVisible(true);
+    }
+
+    private void cerrarVentanaActual() {
+        this.dispose();
+    }
+
+    private void irSolicitudesTrasladoForm() {
+        SolicitudesTrasladosForm solicitudesTrasladosForm = new SolicitudesTrasladosForm(administrador);
+        cerrarVentanaActual();
+    }
+
+    private void irInicioForm() {
+        InicioForm p = new InicioForm();
+        p.setVisible(true);
+        cerrarVentanaActual();
     }
 
     /**
@@ -65,24 +80,25 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(167, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(157, 157, 157))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(209, 209, 209))))
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 161, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(157, 157, 157))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(209, 209, 209))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(solictarTrasladoBtn))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(regresarbtn)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(regresarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(234, 234, 234)
+                .addComponent(solictarTrasladoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,11 +107,11 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(solictarTrasladoBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                .addComponent(regresarbtn)
-                .addGap(25, 25, 25))
+                .addGap(18, 18, 18)
+                .addComponent(solictarTrasladoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                .addComponent(regresarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -121,33 +137,21 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void solictarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solictarTrasladoBtnActionPerformed
-        SolicitudesTrasladosForm solicitudesTrasladosForm = new SolicitudesTrasladosForm(administrador);
-//    dispose();
-
+        irSolicitudesTrasladoForm();
     }//GEN-LAST:event_solictarTrasladoBtnActionPerformed
 
     private void regresarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarbtnActionPerformed
-        InicioForm p = new InicioForm();
-        p.setVisible(true);
-        dispose();
+        irInicioForm();
     }//GEN-LAST:event_regresarbtnActionPerformed
 
-    public static PrincipalAdministradorForm getInstance(Administrador administrador){
-        PrincipalAdministradorForm.administrador = administrador;
-        if(form == null){
-            form = new PrincipalAdministradorForm();
-        }
-        return form;
-    }
-    public static Administrador getAdministrador() {
+    public Administrador getAdministrador() {
         return administrador;
     }
 
-    public static void setAdministrador(Administrador administrador) {
-        PrincipalAdministradorForm.administrador = administrador;
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;

@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
@@ -123,11 +124,34 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tableResiduos.getModel();
         modeloTabla.setRowCount(0);
         for (Residuo r : solicitudesTablaSolicitudes.get(index).getResiduos()) {
-            Object[] fila = {r.getNombre(), r.getCantidad(),r.getMedida_residuo().toString()};
+            Object[] fila = {r.getNombre(), r.getCantidad(), r.getMedida_residuo().toString()};
             modeloTabla.addRow(fila);
 
         }
         this.solicitudSeleccionada = solicitudesTablaSolicitudes.get(index);
+    }
+
+    private void irRegistrarTrasladoForm() {
+        if (!seleccionoUnaSolicitud()) {
+            JOptionPane.showMessageDialog(this, "Favor de Seleccionar alguna Solicitude de la Talba de Solicitudes", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        RegistrarTrasladoForm registrarTrasladoForm = new RegistrarTrasladoForm(this.solicitudSeleccionada, administrador);
+        cerrarVentanaActual();
+    }
+
+    private void irPrincipalAdministradorForm() {
+        PrincipalAdministradorForm p = new PrincipalAdministradorForm();
+        p.setAdministrador(administrador);
+        cerrarVentanaActual();
+    }
+    
+    private void cerrarVentanaActual(){
+    this.dispose();
+    }
+    
+    private boolean seleccionoUnaSolicitud(){
+        return this.solicitudSeleccionada != null;
     }
 
     /**
@@ -142,7 +166,6 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         label1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        asignarBtn = new javax.swing.JButton();
         regresarBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableSolicitudes = new javax.swing.JTable();
@@ -152,7 +175,6 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnAsignarEmpresas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        cerrarSesionBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblProductor = new javax.swing.JLabel();
@@ -172,16 +194,6 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 340, 20));
 
-        asignarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        asignarBtn.setText("siguiente");
-        asignarBtn.setContentAreaFilled(false);
-        asignarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                asignarBtnActionPerformed(evt);
-            }
-        });
-        jPanel1.add(asignarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 490, -1, -1));
-
         regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         regresarBtn.setText("Regresar");
         regresarBtn.setContentAreaFilled(false);
@@ -190,7 +202,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
                 regresarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(regresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, -1, -1));
+        jPanel1.add(regresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 458, 140, 50));
 
         tableSolicitudes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -260,12 +272,6 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
 
-        cerrarSesionBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 12)); // NOI18N
-        cerrarSesionBtn.setText("Cerrar Sesion");
-        cerrarSesionBtn.setContentAreaFilled(false);
-        cerrarSesionBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        cerrarSesionBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel1.setText("Productor :");
 
@@ -310,9 +316,6 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(cerrarSesionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,8 +331,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(cerrarSesionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(100, 100, 100)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblProductor)
@@ -349,13 +351,8 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void asignarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarBtnActionPerformed
-    }//GEN-LAST:event_asignarBtnActionPerformed
-
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
-        PrincipalAdministradorForm p = new PrincipalAdministradorForm();
-        p.setVisible(true);
-        dispose();
+        irPrincipalAdministradorForm();
     }//GEN-LAST:event_regresarBtnActionPerformed
 
     private void btnLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeftActionPerformed
@@ -375,7 +372,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 
     private void btnAsignarEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarEmpresasActionPerformed
         // TODO add your handling code here:
-        RegistrarTrasladoForm registrarTrasladoForm = new RegistrarTrasladoForm(this.solicitudSeleccionada,administrador);
+        irRegistrarTrasladoForm();
     }//GEN-LAST:event_btnAsignarEmpresasActionPerformed
 
     /**
@@ -416,11 +413,9 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton asignarBtn;
     private javax.swing.JButton btnAsignarEmpresas;
     private javax.swing.JButton btnLeft;
     private javax.swing.JButton btnRight;
-    private javax.swing.JButton cerrarSesionBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
