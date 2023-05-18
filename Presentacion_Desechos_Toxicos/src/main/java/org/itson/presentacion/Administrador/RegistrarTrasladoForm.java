@@ -2,6 +2,7 @@ package org.itson.presentacion.Administrador;
 
 import com.dominio.Administrador;
 import com.dominio.EmpresaTransportista;
+import com.dominio.MedidaResiduo;
 import com.dominio.Residuo;
 import com.dominio.Solicitud;
 import com.dominio.Transporte;
@@ -140,6 +141,12 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         Residuo residuo = new Residuo();
         residuo.setNombre((String) this.tableResiduos.getValueAt(filaSeleccionada, 0));
         residuo.setCantidad((Float) this.tableResiduos.getValueAt(filaSeleccionada, 1));
+        String medida = (String) this.tableResiduos.getValueAt(filaSeleccionada, 2);
+        if (medida=="KILOGRAMO") {
+            residuo.setMedida_residuo(MedidaResiduo.KILOGRAMO);
+        }else{
+            residuo.setMedida_residuo(MedidaResiduo.LITRO);
+        }
         llenarLabelsResiduo(residuo);
         this.residuo = residuo;
         return residuo;
