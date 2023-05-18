@@ -16,7 +16,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     /**
      * Creates new form PrincipalProductorForm
      */
-    PrincipalProductorForm() {
+    private PrincipalProductorForm() {
         initComponents();
     }
 
@@ -32,7 +32,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        solictarTrasladoBtn = new javax.swing.JButton();
+        btnRegistrarResiduo = new javax.swing.JButton();
         regresarBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 204, 255));
@@ -48,13 +48,13 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
         jLabel2.setText("PRODUCTOR");
 
-        solictarTrasladoBtn.setBackground(new java.awt.Color(0, 0, 0));
-        solictarTrasladoBtn.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
-        solictarTrasladoBtn.setForeground(new java.awt.Color(255, 255, 255));
-        solictarTrasladoBtn.setText("Registrar Residuo");
-        solictarTrasladoBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarResiduo.setBackground(new java.awt.Color(0, 0, 0));
+        btnRegistrarResiduo.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 12)); // NOI18N
+        btnRegistrarResiduo.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarResiduo.setText("Registrar Residuo");
+        btnRegistrarResiduo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                solictarTrasladoBtnActionPerformed(evt);
+                btnRegistrarResiduoActionPerformed(evt);
             }
         });
 
@@ -85,7 +85,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
                         .addComponent(regresarBtn))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(234, 234, 234)
-                        .addComponent(solictarTrasladoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnRegistrarResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -96,7 +96,7 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(solictarTrasladoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegistrarResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(218, 218, 218)
                 .addComponent(regresarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
@@ -127,11 +127,9 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         this.cerrarVentana();
     }//GEN-LAST:event_regresarBtnActionPerformed
 
-    private void solictarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solictarTrasladoBtnActionPerformed
-        SolicitarTrasladoForm a = new SolicitarTrasladoForm();
-        a.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_solictarTrasladoBtnActionPerformed
+    private void btnRegistrarResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarResiduoActionPerformed
+        abrirLoginForm();
+    }//GEN-LAST:event_btnRegistrarResiduoActionPerformed
 
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
         this.abrirLoginForm();
@@ -152,43 +150,6 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     private void abrirVentana(){
         this.setVisible(true);
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new PrincipalProductorForm().setVisible(true);
-            }
-        });
-    }
-    
-    
 
     public static PrincipalProductorForm getInstance() {
         if (form == null) {
@@ -216,13 +177,13 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
     }
 
     private void reiniciarFrame(){
-        form = null;
+        this.productor = null;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegistrarResiduo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton regresarBtn;
-    private javax.swing.JButton solictarTrasladoBtn;
     // End of variables declaration//GEN-END:variables
 }

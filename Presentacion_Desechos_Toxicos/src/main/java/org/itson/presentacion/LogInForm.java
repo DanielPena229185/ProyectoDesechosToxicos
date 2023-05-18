@@ -9,11 +9,14 @@ import com.dominio.Administrador;
 import com.dominio.EmpresaTransportista;
 import com.dominio.Productor;
 import java.awt.Color;
+import java.util.LinkedList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.itson.DTO.AdministradorDTO;
 import org.itson.DTO.EmpresaTransportistaDTO;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioException;
+import org.itson.excepciones.PresentacionException;
 import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
 import org.itson.presentacion.Administrador.PrincipalAdministradorForm;
@@ -44,14 +47,14 @@ public class LogInForm extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    public void iniciarComponentes(){
+    public void iniciarComponentes() {
         this.abrirVentana();
     }
-    
-    private void abrirVentana(){
+
+    private void abrirVentana() {
         this.setVisible(true);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -253,16 +256,10 @@ public class LogInForm extends javax.swing.JFrame {
         switch (selectedItem) {
             case ADMINISTRADOR:
                 Administrador adm = null;
-                try{
-                AdministradorDTO administrador = new AdministradorDTO();
-                administrador.setEmail(this.campoUsuario.getText());
-                administrador.setContrasena(this.campoContrasena.getText());
-                adm = negocio.loginAdministrador(administrador.getEmail(), administrador.getContrasena());
-                PrincipalAdministradorForm.setAdministrador(adm);
-                PrincipalAdministradorForm.getInstance(adm);
-                this.setVisible(false);
-                } catch(NegocioException e){
-                     JOptionPane.showMessageDialog(this, e.getMessage());
+                try {
+
+                } catch (NegocioException e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage());
                 }
                 dispose();
                 break;
@@ -284,21 +281,12 @@ public class LogInForm extends javax.swing.JFrame {
                 this.dispose();
                 break;
             case PRODUCTOR:
-                Productor pro = null;
                 try {
-                    ProductorDTO productor = new ProductorDTO();
-                    productor.setEmail(this.campoUsuario.getText());
-                    productor.setContrasena(this.campoContrasena.getText());
-                    pro = negocio.loginProductor(productor);
-                    PrincipalProductorForm principal;
-                    principal = PrincipalProductorForm.getInstance();
-                    principal.setProductor(pro);
-                    principal.iniciarComponentes();
-                    this.setVisible(false);
-                } catch (NegocioException e) {
-                    JOptionPane.showMessageDialog(this, e.getMessage());
-                }
-                break;
+                this.iniciarSesionProductor();
+            } catch (PresentacionException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+            break;
             default:
                 break;
         }
@@ -346,12 +334,93 @@ public class LogInForm extends javax.swing.JFrame {
         }
     }
 
+    private Productor consultarProductor(String correo, String contrasena) throws PresentacionException {
+        try {
+            ProductorDTO productor = new ProductorDTO();
+            productor.setEmail(correo);
+            productor.setContrasena(contrasena);
+            return negocio.loginProductor(productor);
+        } catch (NegocioException e) {
+            throw new PresentacionException(e.getMessage());
+        }
+    }
+
+    private void iniciarSesionProductor() throws PresentacionException {
+
+        List<String> campoError = new LinkedList<>();
+
+        String correo = "";
+
+        if (verificarCampoUsuarioVacio()) {
+            campoError.add("- Correo vacío");
+        } else {
+            correo = this.campoUsuario.getText();
+        }
+
+        String contrasena = "";
+
+        if (verificarCampoContrasenaVacio()) {
+            campoError.add("- Contraseña vacía");
+        } else {
+            contrasena = this.campoContrasena.getText();
+        }
+
+        if (!campoError.isEmpty()) {
+
+            String mensaje = mensajeCampos(campoError);
+
+            throw new PresentacionException(mensaje);
+
+        }
+
+        try {
+            Productor productor = consultarProductor(correo, contrasena);
+
+            if (productor == null) {
+                throw new PresentacionException("No hay una cuenta con esos datos");
+            }
+
+            this.abrirPrincipalProductor(productor);
+            this.cerrarVentana();
+        } catch (PresentacionException a) {
+            throw new PresentacionException(a.getMessage());
+        }
+
+    }
+
+    private void cerrarVentana() {
+        this.setVisible(false);
+    }
+
+    private void abrirPrincipalProductor(Productor productor) {
+        PrincipalProductorForm principalProductorForm;
+
+        principalProductorForm = PrincipalProductorForm.getInstance();
+
+        principalProductorForm.setProductor(productor);
+        principalProductorForm.iniciarComponentes();
+    }
+
+    /**
+     * Contatena todos los elementos de la lista de tipo String
+     *
+     * @param listaCampos Lista que quiere concatenar sus elementos
+     * @return Cadena concatenada de la lista de elementos
+     */
+    private String mensajeCampos(List<String> listaCampos) {
+        String mensaje = "";
+        for (String campo : listaCampos) {
+            mensaje += campo + "\n";
+        }
+        return mensaje;
+    }
+
     private boolean verificarCampoContrasenaVacio() {
         return this.campoContrasena.getText().isEmpty() || this.campoContrasena.getText().equals(this.CONTRASENA_DEFAULT);
     }
-    
-    public static LogInForm getInstance(){
-        if(LogInForm.login == null){
+
+    public static LogInForm getInstance() {
+        if (LogInForm.login == null) {
             LogInForm.login = new LogInForm();
         }
         return LogInForm.login;
@@ -362,7 +431,6 @@ public class LogInForm extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override

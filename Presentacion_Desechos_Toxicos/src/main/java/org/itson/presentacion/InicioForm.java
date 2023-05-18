@@ -6,9 +6,6 @@
 package org.itson.presentacion;
 
 import javax.swing.JOptionPane;
-import org.itson.presentacion.empresa.RegistrarEmpresaForm;
-import org.itson.presentacion.Productor.RegistrarProductorForm;
-import org.itson.presentacion.Administrador.RegistrarAdministradorForm;
 
 /**
  * Descripción de la clase: 
@@ -147,9 +144,7 @@ public class InicioForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void iniciarSesionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSesionBtnActionPerformed
-       LogInForm a = new LogInForm();
-       a.setVisible(true);
-       dispose();
+       
     }//GEN-LAST:event_iniciarSesionBtnActionPerformed
 
     private void cerrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarBtnActionPerformed

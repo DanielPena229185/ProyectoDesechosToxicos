@@ -77,7 +77,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
-                          <Component id="solictarTrasladoBtn" min="-2" pref="161" max="-2" attributes="0"/>
+                          <Component id="btnRegistrarResiduo" min="-2" pref="161" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="166" max="32767" attributes="0"/>
@@ -92,7 +92,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="11" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="solictarTrasladoBtn" min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="btnRegistrarResiduo" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
                   <Component id="regresarBtn" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
@@ -111,7 +111,7 @@
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
-        <Component class="javax.swing.JButton" name="solictarTrasladoBtn">
+        <Component class="javax.swing.JButton" name="btnRegistrarResiduo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -125,7 +125,7 @@
             <Property name="text" type="java.lang.String" value="Registrar Residuo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="solictarTrasladoBtnActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarResiduoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="regresarBtn">
