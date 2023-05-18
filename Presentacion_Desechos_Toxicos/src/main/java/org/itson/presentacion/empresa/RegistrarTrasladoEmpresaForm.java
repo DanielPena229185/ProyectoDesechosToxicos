@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package org.itson.presentacion.empresa;
 
 import com.dominio.EmpresaTransportista;
@@ -17,15 +14,29 @@ import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
 
 /**
+ * Descripción de la clase:Registro de traslado de empresa
  *
- * @author arace
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID:
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID:229185
  */
 public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
-
+    /**
+     * Objeto negocio
+     */
     private final INegocio negocio;
+    /**
+     * La instancia única del formulario de registro de traslado de la empresa
+     */
     private static RegistrarTrasladoEmpresaForm form;
+    /**
+     * empresa transportista
+     */
     private EmpresaTransportista empresaTransportista;
-    
+    /**
+     * lista de traslados
+     */
     private List<Traslado> traslados;
     
     /**
@@ -35,7 +46,19 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
         this.negocio = new FachadaNegocio();
         initComponents();
     }
-    
+/**
+ * Abre el formulario de selección de vehículos.
+ * 
+ * Este método crea una instancia de la clase {@link SeleccionarVehiculosForm} utilizando el patrón Singleton y realiza algunas configuraciones antes de iniciar los componentes.
+ * 
+ * Se establece la empresa transportista y el traslado seleccionado en el formulario de selección de vehículos.
+ * 
+ * @see SeleccionarVehiculosForm
+ * @see SeleccionarVehiculosForm#getInstance()
+ * @see SeleccionarVehiculosForm#setEmpresaTransportista(EmpresaTransportista)
+ * @see SeleccionarVehiculosForm#setTraslado(Traslado)
+ * @see SeleccionarVehiculosForm#iniciarComponentes()
+ */
     private void abrirSeleccionarVehiculosForm() {
         SeleccionarVehiculosForm seleccionarVehiculo = null;
         seleccionarVehiculo = SeleccionarVehiculosForm.getInstance();
@@ -131,11 +154,24 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+/**
+ * Maneja el evento de acción del botón "Registrar".
+ *
+ * Abre el formulario de selección de vehículos y oculta el formulario actual.
+ *
+ * @param evt El evento de acción.
+ */
     private void registrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarBtnActionPerformed
         this.abrirSeleccionarVehiculosForm();
         this.setVisible(false);
     }//GEN-LAST:event_registrarBtnActionPerformed
-
+/**
+ * Maneja el evento de clic en la tabla de traslados.
+ *
+ * Habilita el botón de registrar.
+ *
+ * @param evt El evento de clic del ratón.
+ */
     private void tablaTrasladosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaTrasladosMouseClicked
         this.registrarBtn.setEnabled(true);
     }//GEN-LAST:event_tablaTrasladosMouseClicked
@@ -147,99 +183,96 @@ public class RegistrarTrasladoEmpresaForm extends javax.swing.JFrame {
         
         return form;
     }
-    
+ /**
+ * Inicializa los componentes del formulario.
+ *
+ * Carga la tabla de traslados, establece el nombre de la empresa transportista y abre la ventana.
+ */   
     public void iniciarComponentes() {
         this.cargarTablaTraslados();
         this.lblNombreEmpresa.setText(this.empresaTransportista.getNombre());
         this.abrirVentana();
     }
-    
-    public void setEmpresaTransportista(EmpresaTransportista empresaTransportista) {
-        this.empresaTransportista = empresaTransportista;
-    }
-    
-    private void abrirVentana() {
-        this.setVisible(true);
-    }
-    
-    private List<Traslado> consultarListaTraslados() throws PresentacionException {
-        try {
-            this.traslados = this.negocio.consultaTrasladosAsingados(this.empresaTransportista);
-            System.out.println(this.traslados.get(0));
-            return this.traslados;
-        } catch (NegocioException e) {
-            throw new PresentacionException(e.getMessage());
-        }
-    }
-    
-    private String formatearFecha(Date fecha) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        return sdf.format(fecha);
-    }
-    
-    private void cargarTablaTraslados() {
-        DefaultTableModel modeloTabla = (DefaultTableModel) this.tablaTraslados.getModel();
-        modeloTabla.setNumRows(0);
-        
-        try {
-            this.traslados = this.consultarListaTraslados();
-        
-            for (Traslado traslado : this.traslados) {
-                Object[] fila = {
-                    this.formatearFecha(traslado.getSolicitud().getFecha_Solicitada()),
-                    traslado.getResiduo().getNombre(),
-                    traslado.getResiduo().getCantidad(),
-                    traslado.getResiduo().getProductor().getNombre()
-                };
+ /**
+ * Establece la empresa transportista para el formulario de registro de traslado de la empresa.
+ *
+ * @param empresaTransportista La empresa transportista a establecer.
+ */
+public void setEmpresaTransportista(EmpresaTransportista empresaTransportista) {
+    this.empresaTransportista = empresaTransportista;
+}
 
-                modeloTabla.addRow(fila);
-            }
-        } catch (PresentacionException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    private Traslado obtenerTrasladoSeleccionado() {
-        int filaSeleccionada = this.tablaTraslados.getSelectedRow();
-        
-        return this.traslados.get(filaSeleccionada);
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTrasladoEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTrasladoEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTrasladoEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarTrasladoEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+/**
+ * Abre la ventana del formulario.
+ */
+private void abrirVentana() {
+    this.setVisible(true);
+}
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new RegistrarTrasladoEmpresaForm().setVisible(true);
-            }
-        });
+/**
+ * Consulta la lista de traslados asignados a la empresa transportista.
+ *
+ * @return La lista de traslados consultada.
+ * @throws PresentacionException Si ocurre un error durante la consulta de los traslados.
+ */
+private List<Traslado> consultarListaTraslados() throws PresentacionException {
+    try {
+        this.traslados = this.negocio.consultaTrasladosAsingados(this.empresaTransportista);
+        System.out.println(this.traslados.get(0));
+        return this.traslados;
+    } catch (NegocioException e) {
+        throw new PresentacionException(e.getMessage());
     }
+}
+
+/**
+ * Formatea una fecha en el formato "dd-MM-yyyy".
+ *
+ * @param fecha La fecha a formatear.
+ * @return La fecha formateada como una cadena.
+ */
+private String formatearFecha(Date fecha) {
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    return sdf.format(fecha);
+}
+
+/**
+ * Carga los traslados en la tabla de traslados del formulario.
+ */
+private void cargarTablaTraslados() {
+    DefaultTableModel modeloTabla = (DefaultTableModel) this.tablaTraslados.getModel();
+    modeloTabla.setNumRows(0);
+    
+    try {
+        this.traslados = this.consultarListaTraslados();
+    
+        for (Traslado traslado : this.traslados) {
+            Object[] fila = {
+                this.formatearFecha(traslado.getSolicitud().getFecha_Solicitada()),
+                traslado.getResiduo().getNombre(),
+                traslado.getResiduo().getCantidad(),
+                traslado.getResiduo().getProductor().getNombre()
+            };
+
+            modeloTabla.addRow(fila);
+        }
+    } catch (PresentacionException e) {
+        JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+/**
+ * Obtiene el traslado seleccionado en la tabla de traslados.
+ *
+ * @return El traslado seleccionado.
+ */
+private Traslado obtenerTrasladoSeleccionado() {
+    int filaSeleccionada = this.tablaTraslados.getSelectedRow();
+    return this.traslados.get(filaSeleccionada);
+}
+
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

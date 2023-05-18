@@ -5,12 +5,23 @@ import org.itson.presentacion.LogInForm;
 import org.itson.presentacion.residuo.RegistroResiduoForm;
 
 /**
+ * Descripción de la clase: Es el apartado principal de productor
  *
- * @author arace
+ *
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID:
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID:229185
  */
 public class PrincipalProductorForm extends javax.swing.JFrame {
 
+    /**
+     * Objeto Productor asociado al formulario
+     */
     private Productor productor;
+    /**
+     * Instancia única del formulario PrincipalProductorForm
+     */
     private static PrincipalProductorForm form;
 
     /**
@@ -137,46 +148,76 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Acción realizada al presionar el botón "Regresar".
+     * Abre el formulario de inicio de sesión y cierra la ventana actual.
+     */
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
         this.abrirLoginForm();
         this.cerrarVentana();
     }//GEN-LAST:event_regresarBtnActionPerformed
 
+    /**
+     * Acción realizada al presionar el botón "Registrar Residuo".
+     * Abre el formulario de registro de residuos.
+     */
     private void btnRegistrarResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarResiduoActionPerformed
         abrirRegistroResiduoForm();
     }//GEN-LAST:event_btnRegistrarResiduoActionPerformed
 
+    /**
+     * Evento disparado cuando el componente es ocultado.
+     * Abre el formulario de inicio de sesión y cierra la ventana actual.
+     */
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
         this.abrirLoginForm();
         this.cerrarVentana();
     }//GEN-LAST:event_formComponentHidden
 
+    /**
+     * Acción realizada al presionar el botón "Solicitar Traslado".
+     * Abre el formulario de solicitud de traslado.
+     */
     private void btnSolicitarTrasladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarTrasladoActionPerformed
         this.abrirSolicitarTrasladoForm();
     }//GEN-LAST:event_btnSolicitarTrasladoActionPerformed
 
+    /**
+     * Inicializa los componentes del formulario.
+     * Abre la ventana.
+     */
     public void iniciarComponentes(){
         this.abrirVentana();
     }
-    
+    /**
+     * Abre el formulario de solicitud de traslado.
+     */
     private void abrirSolicitarTrasladoForm(){
         SolicitarTrasladoForm solicitarTrasladoForm;
         solicitarTrasladoForm = SolicitarTrasladoForm.getInstance();
         solicitarTrasladoForm.setProductor(productor);
         solicitarTrasladoForm.iniciarComponentes();
     }
-    
+    /**
+     * Abre el formulario de solicitud de traslado.
+     */
     private void abrirRegistroResiduoForm(){
         RegistroResiduoForm registroResiduo = null;
         registroResiduo = RegistroResiduoForm.getInstance();
         registroResiduo.setProductor(productor);
         registroResiduo.iniciarComponentes();
     }
-    
+    /**
+     * Abre la ventana.
+     */
     private void abrirVentana(){
         this.setVisible(true);
     }
-
+    /**
+     * Obtiene una instancia del formulario principal del productor.
+     * Si no existe una instancia previa, crea una nueva.
+     * @return La instancia del formulario principal del productor.
+     */
     public static PrincipalProductorForm getInstance() {
         if (form == null) {
             form = new PrincipalProductorForm();
@@ -184,24 +225,40 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         return form;
     }
 
+    /**
+     * Obtiene el productor asociado al formulario principal.
+     * @return El productor asociado al formulario.
+     */
     public Productor getProductor() {
         return productor;
     }
 
+    /**
+     * Establece el productor asociado al formulario principal.
+     * @param productor El productor a establecer.
+     */
     public void setProductor(Productor productor) {
         this.productor = productor;
     }
-    
+    /**
+     * Abre el formulario de inicio de sesión.
+     */
     private void abrirLoginForm(){
         LogInForm login = LogInForm.getInstance();
         login.iniciarComponentes();
     }
 
+    /**
+     * Abre el formulario de inicio de sesión.
+     */
     private void cerrarVentana(){
         this.setVisible(false);
         this.reiniciarFrame();
     }
 
+    /**
+     * Reinicia el estado del formulario.
+     */
     private void reiniciarFrame(){
         this.productor = null;
     }

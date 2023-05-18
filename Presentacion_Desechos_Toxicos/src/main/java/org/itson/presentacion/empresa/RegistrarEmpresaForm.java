@@ -12,19 +12,33 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import org.itson.presentacion.InicioForm;
+
 
 /**
- * Descripción de la clase: 
+ * Descripción de la clase: Registro de empresa
  * 
  * @author Daniel Armando Peña Garcia ID:229185
  */
 public class RegistrarEmpresaForm extends javax.swing.JFrame {
-    
+    /**
+     * empresa transportadora
+     */
     private final String EMPRESA_TRANSPORTADORA = "Transportadora";
+    /**
+     * empresa productora
+     */
     private final String EMPRESA_PRODUCTORA = "Productora";
+   /**
+    * nombre empresa
+    */
     private final String NOMBRE_EMPRESA_DEFAULT = "Empresa";
+    /**
+     * correo 
+     */
     private static final String CORREO_DEFAULT = "info@ejemplo.com";
+    /**
+     * contraseña
+     */
     private static final String CONTRASENA_DEFAULT = "123456789112345";
     
 //    DefaultComboBoxModel<comboTipoEmpresa> model = new DefaultComboBoxModel<comboTipoEmpresa>();
@@ -220,7 +234,10 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Maneja el evento de selección/deselección del check box "Visible Contraseña".
+ * Cambia la visibilidad del campo de contraseña según el estado del check box.
+ */
     private void checkVisibleContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkVisibleContrasenaActionPerformed
         if (this.checkVisibleContrasena.isSelected()) {
             this.campoContrasena.setEchoChar((char) 0);
@@ -228,7 +245,10 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
             this.campoContrasena.setEchoChar('•');
         }
     }//GEN-LAST:event_checkVisibleContrasenaActionPerformed
-
+/**
+ * Maneja el evento de selección/deselección del check box "Visible Contraseña".
+ * Cambia la visibilidad del campo de confirmación de contraseña según el estado del check box.
+ */
     private void checkVisibleContrasena1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkVisibleContrasena1ActionPerformed
         if (this.checkVisibleContrasena.isSelected()) {
             this.campoConfirmarContrasena.setEchoChar((char) 0);
@@ -236,17 +256,23 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
             this.campoConfirmarContrasena.setEchoChar('•');
         }
     }//GEN-LAST:event_checkVisibleContrasena1ActionPerformed
-
+/**
+ * Maneja el evento de acción en el campo de contraseña.
+ * Puede agregar código de manejo específico aquí.
+ */
     private void campoContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoContrasenaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoContrasenaActionPerformed
 
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
-        InicioForm i= new InicioForm();
+        PrincipalEmpresaForm i= new PrincipalEmpresaForm();
         i.setVisible(true);
         dispose();
     }//GEN-LAST:event_regresarBtnActionPerformed
-
+/**
+ * Maneja el evento de clic en el botón "Regresar".
+ * Abre la ventana principal de la empresa y cierra la ventana actual.
+ */
     private void registrarEmpresBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEmpresBtnActionPerformed
         int i = 0;
         if (validarContrasenasVacio()) {
@@ -270,22 +296,31 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
             //Método registrar
             JOptionPane.showMessageDialog(this, "Registro exitoso", "Nuevo Registro", JOptionPane.INFORMATION_MESSAGE);
         }
-        InicioForm b =new InicioForm();
+        PrincipalEmpresaForm b =new PrincipalEmpresaForm();
             b.setVisible(true);
             dispose();
     }//GEN-LAST:event_registrarEmpresBtnActionPerformed
-
+/**
+ * Maneja el evento de selección en el combo box "Tipo Empresa".
+ * Puede agregar código de manejo específico aquí.
+ */
     private void comboTipoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoEmpresaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboTipoEmpresaActionPerformed
-
+/**
+ * Maneja el evento de selección en el combo box "Tipo Empresa".
+ * Puede agregar código de manejo específico aquí.
+ */
     private void campoConfirmarContrasenaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoConfirmarContrasenaFocusGained
         if (validarCampoTextoVacio(campoConfirmarContrasena, CONTRASENA_DEFAULT)) {
             this.campoConfirmarContrasena.setForeground(Color.BLACK);
             this.campoConfirmarContrasena.setText("");
         }
     }//GEN-LAST:event_campoConfirmarContrasenaFocusGained
-
+/**
+ * Maneja el evento de selección en el combo box "Tipo Empresa".
+ * Puede agregar código de manejo específico aquí.
+ */
     private void campoConfirmarContrasenaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoConfirmarContrasenaFocusLost
         if (validarCampoTextoVacio(campoConfirmarContrasena, CONTRASENA_DEFAULT)) {
             this.campoConfirmarContrasena.setForeground(Color.GRAY);
@@ -293,23 +328,39 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
         }
         this.validarContrasenaMostrar();
     }//GEN-LAST:event_campoConfirmarContrasenaFocusLost
-
+/**
+ * Maneja el evento de selección en el combo box "Tipo Empresa".
+ * Puede agregar código de manejo específico aquí.
+ */
     private void campoConfirmarContrasenaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoConfirmarContrasenaMouseClicked
         if (validarCampoTextoVacio(campoConfirmarContrasena, CONTRASENA_DEFAULT)) {
             this.campoConfirmarContrasena.setForeground(Color.BLACK);
             this.campoConfirmarContrasena.setText("");
         }
     }//GEN-LAST:event_campoConfirmarContrasenaMouseClicked
-
+/**
+ * Valida si las contraseñas coinciden.
+ * Compara el valor del campo de contraseña con el valor del campo de confirmación de contraseña.
+ * @return true si las contraseñas coinciden, false en caso contrario.
+ */
     private boolean validarContrasenas() {
         String contrasena = this.campoContrasena.getText();
         String confirmarContrasena = this.campoConfirmarContrasena.getText();
         return contrasena.equals(confirmarContrasena);
     }
-
+/**
+ * Valida si las contraseñas coinciden.
+ * Compara el valor del campo de contraseña con el valor del campo de confirmación de contraseña.
+ * @return true si las contraseñas coinciden, false en caso contrario.
+ */
     private boolean validarCampoTextoVacio(JTextField campoTexto, String textoDefault) {
         return campoTexto.getText().isEmpty() || campoTexto.getText().equals(textoDefault);
     }
+/**
+ * Valida si las contraseñas coinciden.
+ * Compara el valor del campo de contraseña con el valor del campo de confirmación de contraseña.
+ * @return true si las contraseñas coinciden, false en caso contrario.
+ */
     private List<String> validarCamposVacios() {
         List<String> campos = new LinkedList<>();
 //        if (this.validarCampoTextoVacio(comboTipoEmpresa, EMPRESA_TRANSPORTADORA)) {
@@ -333,38 +384,59 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
         
         return campos;
     }
-    private boolean validarContrasenasVacio() {
-        if (this.campoContrasena.getText().isEmpty() || this.campoContrasena.getText().equals(CONTRASENA_DEFAULT)) {
-            return false;
-        }
-        if (this.campoConfirmarContrasena.getText().isEmpty() || this.campoConfirmarContrasena.getText().equals(CONTRASENA_DEFAULT)) {
-            return false;
-        }
-        return true;
+ /**
+ * Valida si los campos de contraseña y confirmación de contraseña no están vacíos.
+ * Comprueba si los campos de contraseña y confirmación de contraseña no están vacíos o si muestran el valor predeterminado.
+ * @return true si los campos de contraseña y confirmación de contraseña no están vacíos, false en caso contrario.
+ */
+private boolean validarContrasenasVacio() {
+    if (this.campoContrasena.getText().isEmpty() || this.campoContrasena.getText().equals(CONTRASENA_DEFAULT)) {
+        return false;
     }
-    private boolean validarContrasenaMostrar() {
-        if (validarContrasenasVacio()) {
-            if (validarContrasenas()) {
-                this.contrasenaValidaLbl.setForeground(Color.GREEN);
-                this.contrasenaValidaLbl.setText("Contraseñas coinciden");
-                return true;
-            } else {
-                this.contrasenaValidaLbl.setForeground(Color.red);
-                this.contrasenaValidaLbl.setText("Contraseñas no coinciden");
-            }
+    if (this.campoConfirmarContrasena.getText().isEmpty() || this.campoConfirmarContrasena.getText().equals(CONTRASENA_DEFAULT)) {
+        return false;
+    }
+    return true;
+}
+
+/**
+ * Valida la coincidencia de las contraseñas y muestra un mensaje de estado.
+ * Comprueba si las contraseñas son válidas y actualiza el texto y el color del JLabel de estado de contraseña en consecuencia.
+ * @return true si las contraseñas coinciden, false en caso contrario.
+ */
+private boolean validarContrasenaMostrar() {
+    if (validarContrasenasVacio()) {
+        if (validarContrasenas()) {
+            this.contrasenaValidaLbl.setForeground(Color.GREEN);
+            this.contrasenaValidaLbl.setText("Contraseñas coinciden");
+            return true;
         } else {
             this.contrasenaValidaLbl.setForeground(Color.red);
             this.contrasenaValidaLbl.setText("Contraseñas no coinciden");
         }
-        return false;
+    } else {
+        this.contrasenaValidaLbl.setForeground(Color.red);
+        this.contrasenaValidaLbl.setText("Contraseñas no coinciden");
     }
+    return false;
+}
+/**
+ * Valida si una cadena de correo electrónico es válida.
+ * Comprueba si la cadena de correo electrónico cumple con el formato de una dirección de correo electrónico válida.
+ * @param correo La cadena de correo electrónico a validar.
+ * @return true si la cadena de correo electrónico es válida, false en caso contrario.
+ */
+public static boolean validarCorreo(String correo) {
+    String expresionRegular = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    return correo.matches(expresionRegular);
+}
 
-    public static boolean validarCorreo(String correo) {
-        String expresionRegular = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-        return correo.matches(expresionRegular);
-    }
-
-    private boolean validarCorreoMostrar() {
+/**
+ * Valida la cadena de correo electrónico y muestra un mensaje de estado.
+ * Comprueba si la cadena de correo electrónico es válida y actualiza el texto y el color del JLabel de estado de correo en consecuencia.
+ * @return true si la cadena de correo electrónico es válida, false en caso contrario.
+ */
+private boolean validarCorreoMostrar() {
     String correo = campoCorreoEmpresa.getText();
 
     if (correo.isEmpty()) {
@@ -380,43 +452,8 @@ public class RegistrarEmpresaForm extends javax.swing.JFrame {
         correoValidoLbl.setText("El correo no es válido");
         return false;
     }
-    }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpresaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+}
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new RegistrarEmpresaForm().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField campoConfirmarContrasena;

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package org.itson.presentacion.empresa;
 
 import com.dominio.EmpresaTransportista;
@@ -16,8 +13,12 @@ import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
 
 /**
+ * Descripción de la clase:Selecciona el vehiculo para transportar
  *
- * @author oscar
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID:
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID:229185
  */
 public class SeleccionarVehiculosForm extends javax.swing.JFrame {
 
@@ -36,28 +37,47 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
     }
-    
+    /**
+     * Devuelve una instancia única de SeleccionarVehiculosForm.
+     *
+     * @return La instancia única de SeleccionarVehiculosForm.
+     */
     public static SeleccionarVehiculosForm getInstance(){
         if (form == null) {
             form = new SeleccionarVehiculosForm();
         }
         return form;
     }
-    
+    /**
+     * Establece la empresa transportista.
+     *
+     * @param empresa La empresa transportista.
+     */
     public void setEmpresaTransportista(EmpresaTransportista empresa) {
         this.empresa = empresa;
     }
-    
+    /**
+     * Establece la empresa transportista.
+     *
+     * @param empresa La empresa transportista.
+     */
     public void setTraslado(Traslado traslado) {
         this.traslado = traslado;
     }
-            
+     /**
+     * Inicia los componentes de la ventana.
+     */       
     public void iniciarComponentes() {
         this.cargarTablaCajasVerificacion();
         this.abrirVentana();
         System.out.println(this.traslado);
     }
-    
+    /**
+     * Carga la lista de vehículos desde el negocio.
+     *
+     * @return La lista de vehículos.
+     * @throws PresentacionException Si ocurre un error durante la consulta.
+     */
     private List<Vehiculo> cargarListaVehiculos() throws PresentacionException {
         try {
             this.vehiculos = this.negocio.consultaVehiuculoEmpresaTrasnportadora(empresa);
@@ -66,7 +86,9 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
             throw new PresentacionException(e.getMessage());
         }
     }
-    
+    /**
+     * Carga la tabla de cajas de verificación con los vehículos.
+     */
     private void cargarTablaCajasVerificacion() {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tablaVehiculos.getModel();
         modeloTabla.setNumRows(0);
@@ -85,13 +107,19 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
             throw new PersistenciaException(e.getMessage());
         }
     }
-    
+   /**
+     * Obtiene el vehículo seleccionado en la tabla.
+     *
+     * @return El vehículo seleccionado.
+     */ 
     private Vehiculo obtenerVehiculoSeleccionado() {
         int filaSeleccionda = this.tablaVehiculos.getSelectedRow();
         
         return this.vehiculos.get(filaSeleccionda);
     }
-    
+ /**
+ * Comprueba la selección de un vehículo en la tabla y actualiza los campos correspondientes.
+ */
     private void comprobarSeleccion() {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tablaVehiculos.getModel();
         int filaSeleccionda = this.tablaVehiculos.getSelectedRow();
@@ -107,7 +135,10 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
         
         this.actualizarCampos(seleccion);
     }
-    
+ /**
+ * Actualiza el estado de los campos en la interfaz gráfica.
+ * @param x true si los campos deben estar habilitados, false si deben estar deshabilitados.
+ */ 
     private void actualizarCampos(boolean x) {
         this.txtKilometrosRecorridos.setEnabled(x);
         this.txtCosto.setEnabled(x);
@@ -115,7 +146,9 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
         this.textAreaTratamiento.setEnabled(x);
         this.btnRegistrar.setEnabled(x);
     }
-
+/**
+ * Abre la ventana actual y la hace visible.
+ */
     private void abrirVentana() {
         this.setVisible(true);
     }
@@ -284,49 +317,24 @@ public class SeleccionarVehiculosForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Método que se ejecuta cuando se hace clic en la tabla de vehículos.
+ * Comprueba la selección de un vehículo en la tabla y actualiza los campos correspondientes.
+ * @param evt El evento de clic del mouse.
+ */
     private void tablaVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaVehiculosMouseClicked
         this.comprobarSeleccion();
     }//GEN-LAST:event_tablaVehiculosMouseClicked
-
+/**
+ * Método que se ejecuta cuando se hace clic en el botón "Registrar".
+ * Obtiene el vehículo seleccionado y realiza alguna acción.
+ * @param evt El evento de acción.
+ */
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         this.obtenerVehiculoSeleccionado();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarVehiculosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarVehiculosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarVehiculosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SeleccionarVehiculosForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SeleccionarVehiculosForm().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;

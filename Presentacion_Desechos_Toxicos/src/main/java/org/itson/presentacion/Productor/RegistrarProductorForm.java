@@ -9,19 +9,40 @@ import javax.swing.JTextField;
 import org.itson.presentacion.LogInForm;
 
 /**
+ * Descripción de la clase: Registra un productor
  *
- * @author arace
+ *
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID:
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID:229185
  */
 public class RegistrarProductorForm extends javax.swing.JFrame {
+    /**
+     * Nombre del productor
+     */
     private final String NOMBRE_PRODUCTOR = "Productor";
+    /**
+     * Correo del productor
+     */
     private static final String CORREO_DEFAULT = "info@ejemplo.com";
+    /**
+     * Contraseña del productor
+     */
     private static final String CONTRASENA_DEFAULT = "123456789112345";
     
 
-    
+    /**
+     * Constructor de la clase RegistrarProductorForm.
+     * Inicializa los componentes del formulario.
+     */
     public RegistrarProductorForm() {
         initComponents();
     }
+    /**
+     * Inicia los componentes del formulario.
+     * Configura el campo de contraseña y confirmación de contraseña para mostrar caracteres ocultos.
+     */
      private void iniciarComponentes() {
         this.campoClaveProductor.setEchoChar('•');
         this.campoConfirmarClaveProductor.setEchoChar('•');
@@ -205,6 +226,11 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Cambia la visibilidad de la contraseña del productor cuando se selecciona el checkbox correspondiente.
+     *
+     * @param evt El evento de acción generado por el checkbox.
+     */
     private void checkVisibleContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkVisibleContrasenaActionPerformed
         if (this.checkVisibleContrasena.isSelected()) {
             this.campoClaveProductor.setEchoChar((char) 0);
@@ -213,6 +239,12 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_checkVisibleContrasenaActionPerformed
 
+    
+/**
+ * Cambia la visibilidad de la confirmación de contraseña del productor cuando se selecciona el checkbox correspondiente.
+ *
+ * @param evt El evento de acción generado por el checkbox.
+ */
     private void checkVisibleContrasena1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkVisibleContrasena1ActionPerformed
          if (this.checkVisibleContrasena.isSelected()) {
             this.campoConfirmarClaveProductor.setEchoChar((char) 0);
@@ -220,14 +252,22 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
             this.campoConfirmarClaveProductor.setEchoChar('•');
         }
     }//GEN-LAST:event_checkVisibleContrasena1ActionPerformed
-
+/**
+ * Maneja el evento de enfoque ganado en el campo de correo del productor.
+ *
+ * @param evt El evento de enfoque ganado.
+ */
     private void campoCorreoProductorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCorreoProductorFocusGained
        if (validarCampoTextoVacio(campoCorreoProductor, CORREO_DEFAULT)) {
             this.campoCorreoProductor.setForeground(Color.BLACK);
             this.campoCorreoProductor.setText("");
         }
     }//GEN-LAST:event_campoCorreoProductorFocusGained
-
+/**
+ * Maneja el evento de enfoque perdido en el campo de correo del productor.
+ *
+ * @param evt El evento de enfoque perdido.
+ */
     private void campoCorreoProductorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCorreoProductorFocusLost
         if (validarCampoTextoVacio(campoCorreoProductor, CORREO_DEFAULT)) {
             this.campoCorreoProductor.setForeground(Color.GRAY);
@@ -235,35 +275,61 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_campoCorreoProductorFocusLost
 
+/**
+ * Maneja el evento de clic en el campo de correo del productor.
+ *
+ * @param evt El evento de clic del mouse.
+ */
     private void campoCorreoProductorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCorreoProductorMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_campoCorreoProductorMouseClicked
 
+/**
+ * Maneja el evento de enfoque ganado en el campo de nombre del productor.
+ *
+ * @param evt El evento de enfoque ganado.
+ */
     private void campoNombreProductorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreProductorFocusGained
         if (validarCampoTextoVacio(campoNombreProductor, NOMBRE_PRODUCTOR)) {
             this.campoNombreProductor.setForeground(Color.BLACK);
             this.campoNombreProductor.setText("");
         }
     }//GEN-LAST:event_campoNombreProductorFocusGained
-
+/**
+ * Maneja el evento de enfoque perdido en el campo de nombre del productor.
+ *
+ * @param evt El evento de enfoque perdido.
+ */
     private void campoNombreProductorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreProductorFocusLost
         if (validarCampoTextoVacio(campoNombreProductor, NOMBRE_PRODUCTOR)) {
             this.campoNombreProductor.setForeground(Color.GRAY);
             this.campoNombreProductor.setText(NOMBRE_PRODUCTOR);
         }
     }//GEN-LAST:event_campoNombreProductorFocusLost
-
+/**
+ * Maneja el evento de clic en el campo de nombre del productor.
+ *
+ * @param evt El evento de clic del mouse.
+ */
     private void campoNombreProductorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNombreProductorMouseClicked
         if (validarCampoTextoVacio(campoNombreProductor, NOMBRE_PRODUCTOR)) {
             this.campoNombreProductor.setForeground(Color.BLACK);
             this.campoNombreProductor.setText("");
         }
     }//GEN-LAST:event_campoNombreProductorMouseClicked
-
+/**
+ * Maneja el evento de acción en el campo de nombre del productor.
+ *
+ * @param evt El evento de acción.
+ */
     private void campoNombreProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreProductorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNombreProductorActionPerformed
-
+/**
+ * Maneja el evento de acción del botón de registro de productor.
+ *
+ * @param evt El evento de acción.
+ */
     private void registrarProductorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarProductorBtnActionPerformed
        int i = 0;
         if (validarContrasenasVacio()) {
@@ -292,13 +358,21 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
             b.setVisible(true);
             dispose();
     }//GEN-LAST:event_registrarProductorBtnActionPerformed
-
+/**
+ * Maneja el evento de acción del botón de regresar.
+ *
+ * @param evt El evento de acción.
+ */
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
       LogInForm i= new LogInForm();
       i.setVisible(true);
       dispose();
     }//GEN-LAST:event_regresarBtnActionPerformed
-
+/**
+ * Valida si las contraseñas coinciden y actualiza la etiqueta correspondiente.
+ *
+ * @return true si las contraseñas coinciden, false de lo contrario.
+ */
     private boolean validarContrasenaMostrar() {
         if (validarContrasenasVacio()) {
             if (validarContrasenas()) {
@@ -315,7 +389,11 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
         }
         return false;
     }
-     
+/**
+ * Valida los campos vacíos y devuelve una lista de los campos faltantes.
+ *
+ * @return Una lista de campos vacíos.
+ */ 
     private List<String> validarCamposVacios() {
         List<String> campos = new LinkedList<>();
         if (this.validarCampoTextoVacio(campoClaveProductor, NOMBRE_PRODUCTOR)) {
@@ -332,19 +410,42 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
         }
         return campos;
     }
+/**
+ * Valida si el campo de texto está vacío o contiene el texto por defecto.
+ *
+ * @param campoTexto    El campo de texto a validar.
+ * @param textoDefault  El texto por defecto que se compara con el contenido del campo de texto.
+ * @return true si el campo de texto está vacío o contiene el texto por defecto, false de lo contrario.
+ */
     private boolean validarCampoTextoVacio(JTextField campoTexto, String textoDefault) {
         return campoTexto.getText().isEmpty() || campoTexto.getText().equals(textoDefault);
     }
+/**
+ * Valida si una cadena de texto cumple con el formato de correo electrónico.
+ *
+ * @param correo La cadena de texto a validar.
+ * @return true si la cadena de texto cumple con el formato de correo electrónico, false de lo contrario.
+ */
     public static boolean validarCorreo(String correo) {
         String expresionRegular = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
         return correo.matches(expresionRegular);
     }
-   
+
+/**
+ * Valida si las contraseñas coinciden.
+ *
+ * @return true si las contraseñas coinciden, false de lo contrario.
+ */
     private boolean validarContrasenas() {
         String contrasena = this.campoClaveProductor.getText();
         String confirmarContrasena = this.campoClaveProductor.getText();
         return contrasena.equals(confirmarContrasena);
     }
+/**
+ * Valida si los campos de contraseñas están vacíos.
+ *
+ * @return true si los campos de contraseñas no están vacíos, false de lo contrario.
+ */
     private boolean validarContrasenasVacio() {
         if (this.campoClaveProductor.getText().isEmpty() || this.campoClaveProductor.getText().equals(CONTRASENA_DEFAULT)) {
             return false;
@@ -354,7 +455,11 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
         }
         return true;
     }
-
+/**
+ * Valida el campo de correo y actualiza la etiqueta correspondiente.
+ *
+ * @return true si el correo es válido, false de lo contrario.
+ */
     private boolean validarCorreoMostrar() {
     String correo = campoCorreoProductor.getText();
 
@@ -373,41 +478,41 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
     }
 
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new RegistrarProductorForm().setVisible(true);
-            }
-        });
-    }
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(RegistrarProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(RegistrarProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(RegistrarProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(RegistrarProductorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                new RegistrarProductorForm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField campoClaveProductor;

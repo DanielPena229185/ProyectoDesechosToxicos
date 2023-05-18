@@ -7,7 +7,6 @@ import com.dominio.Residuo;
 import com.dominio.Solicitud;
 import com.dominio.Transporte;
 import com.dominio.Traslado;
-import org.itson.presentacion.empresa.SolictudTrasladoForm;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

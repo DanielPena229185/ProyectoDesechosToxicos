@@ -1,15 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package org.itson.presentacion.empresa;
 
 import com.dominio.EmpresaTransportista;
-import org.itson.presentacion.InicioForm;
+import org.itson.presentacion.LogInForm;
+
 
 /**
+ * Descripción de la clase: Es el apartado principal de empresa
  *
- * @author arace
+ *
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID:
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID:229185
  */
 public class PrincipalEmpresaForm extends javax.swing.JFrame {
 
@@ -18,37 +21,51 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
     /**
      * Creates new form PrincipalEmpresa
      */
-    private PrincipalEmpresaForm() {
+    PrincipalEmpresaForm() {
         initComponents();
     }
-    
-    public static PrincipalEmpresaForm getInstance(){
-        if(form == null){
-            form = new PrincipalEmpresaForm();
-        }
-        
-        return form;
+    /**
+ * Obtiene la instancia única de PrincipalEmpresaForm utilizando el patrón Singleton.
+ *
+ * @return la instancia única de PrincipalEmpresaForm
+ */
+public static PrincipalEmpresaForm getInstance() {
+    if (form == null) {
+        form = new PrincipalEmpresaForm();
     }
-    
-    public void iniciarComponentes(){
-        this.abrirVentana();
-    }
-    
-    private void cerrarVentana(){
-        this.setVisible(false);
-    }
-    
-    private void abrirVentana(){
-        this.setVisible(true);
-    }
-    
-    private void abrirRegistroTraslado() {
-        RegistrarTrasladoEmpresaForm registrarTraslado = null;
-        registrarTraslado = RegistrarTrasladoEmpresaForm.getInstance();
-        registrarTraslado.setEmpresaTransportista(empresa);
-        registrarTraslado.iniciarComponentes();
-    }
+    return form;
+}
 
+/**
+ * Inicializa los componentes de la interfaz gráfica.
+ */
+public void iniciarComponentes() {
+    this.abrirVentana();
+}
+
+/**
+ * Cierra la ventana de la interfaz gráfica.
+ */
+private void cerrarVentana() {
+    this.setVisible(false);
+}
+
+/**
+ * Abre la ventana de la interfaz gráfica.
+ */
+private void abrirVentana() {
+    this.setVisible(true);
+}
+
+/**
+ * Abre la ventana de registro de traslado de la empresa.
+ * Establece la empresa transportista en el formulario de registro de traslado.
+ */
+private void abrirRegistroTraslado() {
+    RegistrarTrasladoEmpresaForm registrarTraslado = RegistrarTrasladoEmpresaForm.getInstance();
+    registrarTraslado.setEmpresaTransportista(empresa);
+    registrarTraslado.iniciarComponentes();
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -152,28 +169,44 @@ public class PrincipalEmpresaForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Maneja el evento de clic en el botón "Registrar Traslado".
+ * Abre la ventana de registro de traslado y oculta la ventana actual.
+ */
     private void registrarTrasladoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarTrasladoBtnActionPerformed
         this.abrirRegistroTraslado();
         this.setVisible(false);
     }//GEN-LAST:event_registrarTrasladoBtnActionPerformed
-
+/**
+ * Maneja el evento de clic en el botón "Registrar Traslado".
+ * Abre la ventana de registro de traslado y oculta la ventana actual.
+ */
     private void regsarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regsarBtnActionPerformed
-        InicioForm a= new InicioForm();
+        LogInForm a= new LogInForm();
         a.setVisible(true);
         dispose();
     }//GEN-LAST:event_regsarBtnActionPerformed
-
+/**
+ * Maneja el evento de clic en el botón "Registrar Empresa".
+ * Abre la ventana de registro de empresa y cierra la ventana actual.
+ */
     private void registarEmpresaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registarEmpresaBtnActionPerformed
         RegistrarEmpresaForm c  = new RegistrarEmpresaForm();
         c.setVisible(true);
         dispose();
     }//GEN-LAST:event_registarEmpresaBtnActionPerformed
-
+/**
+ * Maneja el evento de clic en el botón "Registrar Empresa".
+ * Abre la ventana de registro de empresa y cierra la ventana actual.
+ */
     public EmpresaTransportista getEmpresa() {
         return empresa;
     }
-
+/**
+ * Establece la instancia de la empresa transportista asociada a la ventana.
+ *
+ * @param empresa la instancia de la empresa transportista a establecer
+ */
     public void setEmpresa(EmpresaTransportista empresa) {
         this.empresa = empresa;
     }

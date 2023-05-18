@@ -26,15 +26,41 @@ import org.itson.utils.ConfiguracionDePaginado;
  * @author Daniel Armando Peña Garcia ID:229185
  */
 public class SolicitarTrasladoForm extends javax.swing.JFrame {
+/**
+ * Lista de residuos no seleccionados.
+ */
+List<Residuo> residuosNoSeleccionados = new LinkedList<>();
 
-    List<Residuo> residuosNoSeleccionados = new LinkedList<>();
-    List<Residuo> residuoSeleccionados = new LinkedList<>();
-    private Productor productor;
-    private INegocio negocio;
-    private ConfiguracionDePaginado configPaginadoTblNoSeleccionados;
-    private ConfiguracionDePaginado configPaginadoTblSeleccionados;
+/**
+ * Lista de residuos seleccionados.
+ */
+List<Residuo> residuoSeleccionados = new LinkedList<>();
 
-    private static SolicitarTrasladoForm solicitarTrasladoForm;
+/**
+ * Objeto de tipo Productor.
+ */
+private Productor productor;
+
+/**
+ * Objeto que representa el negocio o empresa asociada.
+ */
+private INegocio negocio;
+
+/**
+ * Configuración de paginado para la tabla de residuos no seleccionados.
+ */
+private ConfiguracionDePaginado configPaginadoTblNoSeleccionados;
+
+/**
+ * Configuración de paginado para la tabla de residuos seleccionados.
+ */
+private ConfiguracionDePaginado configPaginadoTblSeleccionados;
+
+/**
+ * Instancia de la clase SolicitarTrasladoForm.
+ */
+private static SolicitarTrasladoForm solicitarTrasladoForm;
+
 
     /**
      * Creates new form SolicitarTrasladoForm
@@ -44,54 +70,99 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         initComponents();
         
     }
-
+/**
+ * Obtiene el objeto Productor asociado.
+ *
+ * @return El objeto Productor asociado.
+ */
     public Productor getProductor() {
         return productor;
     }
-
+/**
+ * Obtiene el objeto Productor asociado.
+ *
+ * @return El objeto Productor asociado.
+ */
     public void setProductor(Productor productor) {
         this.productor = productor;
     }
-
+/**
+ * Obtiene el objeto Productor asociado.
+ *
+ * @return El objeto Productor asociado.
+ */
     private List<Residuo> consultaResiduos() {
         Residuo residuoFiltro = new Residuo();
         residuoFiltro.setProductor(productor);
         List<Residuo> residuos = negocio.consultarResiduoFiltro(residuoFiltro);
         return residuos;
     }
-
+/**
+ * Obtiene el objeto Productor asociado.
+ *
+ * @return El objeto Productor asociado.
+ */
     private Residuo consultarFilaTblNoSeleccionados(){
         int seleccionado = this.tblResiduosNoSeleccionados.getSelectedRow();
         Residuo residuo = (Residuo) this.tblResiduosNoSeleccionados.getValueAt(seleccionado, 0);
         return residuo;
     }
-    
+ /**
+ * Obtiene el objeto Productor asociado.
+ *
+ * @return El objeto Productor asociado.
+ */   
     private Residuo consultarFilaTblSeleccionados(){
         int seleccionado = this.tblResiduosSeleccionados.getSelectedRow();
         Residuo residuo = (Residuo) this.tblResiduosSeleccionados.getValueAt(seleccionado, 0);
         return residuo;
     }
-    
+ /**
+ * Agrega un Residuo a la lista de residuos seleccionados.
+ *
+ * @param residuo El Residuo a agregar a la lista de residuos seleccionados.
+ * @return La lista de residuos seleccionados después de agregar el residuo.
+ */   
     private List<Residuo> agregarResiduoListaSeleccionado(Residuo residuo){
         residuoSeleccionados.add(residuo);
         return residuoSeleccionados;
     }
-    
+/**
+ * Elimina un Residuo de la lista de residuos seleccionados.
+ *
+ * @param residuo El Residuo a eliminar de la lista de residuos seleccionados.
+ * @return La lista de residuos seleccionados después de eliminar el residuo.
+ */
     private List<Residuo> eliminarResiduoListaSeleccionado(Residuo residuo){
         residuoSeleccionados.remove(residuo);
         return residuoSeleccionados;
     }
-    
+ /**
+ * Elimina un Residuo de la lista de residuos no seleccionados.
+ *
+ * @param residuo El Residuo a eliminar de la lista de residuos no seleccionados.
+ * @return La lista de residuos no seleccionados después de eliminar el residuo.
+ */   
     private List<Residuo> eliminarResiduoListaNoSeleccionados(Residuo residuo){
         residuosNoSeleccionados.remove(residuo);
         return residuosNoSeleccionados;
     }
-    
+ /**
+ * Agrega un Residuo a la lista de residuos no seleccionados.
+ *
+ * @param residuo El Residuo a agregar a la lista de residuos no seleccionados.
+ * @return La lista de residuos no seleccionados después de agregar el residuo.
+ */  
     private List<Residuo> agregarResiduoListaNoSeleccionados(Residuo residuo){
         residuosNoSeleccionados.add(residuo);
         return residuosNoSeleccionados;
     }
-    
+ /**
+ * Inicializa los componentes de la ventana.
+ * Realiza la configuración del paginado, consulta los residuos, y llena las tablas correspondientes.
+ * Oculta los elementos de residuo.
+ * Abre la ventana haciendo que sea visible.
+ */
     public void iniciarComponentes(){
         configPaginadoTblNoSeleccionados = new ConfiguracionDePaginado(0, 10);
         configPaginadoTblSeleccionados = new ConfiguracionDePaginado(0, 10);
@@ -101,35 +172,51 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         this.ocultarElementosResiduo();
         this.abrirVentana();
     }
-    
+/**
+ * Abre la ventana haciendo que sea visible.
+ */  
     private void abrirVentana(){
         this.setVisible(true);
     }
-    
+ /**
+ * Abre la ventana haciendo que sea visible.
+ */
     private void avanzarPaginaTblNoSeleccionados() {
         this.configPaginadoTblNoSeleccionados.avanzarPagina();
         ejecucionLlenadoTblNoSeleccionados(residuosNoSeleccionados);
     }
-    
+/**
+ * Retrocede a la página anterior de la tabla de residuos no seleccionados.
+ */ 
     private void retrocederPaginaTblNoSeleccionados() {
         this.configPaginadoTblNoSeleccionados.retrocederPagina();
         ejecucionLlenadoTblNoSeleccionados(residuosNoSeleccionados);
     }
-    
+/**
+ * Retrocede a la página anterior de la tabla de residuos seleccionados.
+ */    
     private void retrocederPaginaTblSeleccionados(){
         this.configPaginadoTblSeleccionados.retrocederPagina();
         ejecucionLlenadoTblSeleccionados(residuoSeleccionados);
     }
-    
+/**
+ * Avanza a la siguiente página de la tabla de residuos seleccionados.
+ */  
     private void avanzarPaginaTblSeleccionados() {
         this.configPaginadoTblSeleccionados.avanzarPagina();
         ejecucionLlenadoTblSeleccionados(residuoSeleccionados);
     }
-    
+/**
+ * Cierra la ventana haciendo que sea invisible.
+ */  
     private void cerrarVentana(){
         this.setVisible(false);
     }
-    
+/**
+ * Llena la tabla de residuos no seleccionados con los residuos proporcionados.
+ *
+ * @param residuos La lista de residuos a mostrar en la tabla de residuos no seleccionados.
+ */  
     private void llenadoTablaResiduosNoSeleccionados(List<Residuo> residuos) {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tblResiduosNoSeleccionados.getModel();
         modeloTabla.setRowCount(0);
@@ -139,7 +226,11 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
         }
     }
-    
+/**
+ * Llena la tabla de residuos seleccionados con los residuos proporcionados.
+ *
+ * @param residuos La lista de residuos a mostrar en la tabla de residuos seleccionados.
+ */  
     private void llenadoTablaResiduosSeleccionados(List<Residuo> residuos) {
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tblResiduosSeleccionados.getModel();
         modeloTabla.setRowCount(0);
@@ -149,7 +240,13 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
         }
     }
-
+/**
+ * Consulta una lista de residuos con la configuración de paginado especificada.
+ *
+ * @param configuracionPaginado La configuración de paginado para la consulta.
+ * @param residuos La lista de residuos completa.
+ * @return La lista de residuos paginada según la configuración especificada.
+ */
     private List<Residuo> consultaResiduoConConfiguracionTabla(ConfiguracionDePaginado configuracionPaginado, List<Residuo> residuos) {
         int offset = configuracionPaginado.getElementoASaltar();
         int limit = configuracionPaginado.getElementosPorPagina();
@@ -199,7 +296,11 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 //
 //        this.solicitarTrasloResiduo = ResiduoTablaResiduo.get(index);
 //    }
-
+/**
+ * Obtiene la fecha seleccionada del componente de fecha.
+ *
+ * @return La fecha seleccionada como un objeto Date.
+ */
     private Date obetenerFecha() {
         LocalDate fecha = this.solicitarFecha.getDate();
         Date fechaResiduo = new Date(fecha.getYear(), fecha.getMonthValue(), fecha.getDayOfMonth());
@@ -429,7 +530,11 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón de solicitar.
+ *
+ * @param evt el evento de acción generado por el botón
+ */
     private void solicitarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarBtnActionPerformed
         int i = 0;
         if (!validarCampoTextoVacio()) {
@@ -453,48 +558,86 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_solicitarBtnActionPerformed
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón de solicitar.
+ *
+ * @param evt el evento de acción generado por el botón
+ */
     public static SolicitarTrasladoForm getInstance() {
         if (solicitarTrasladoForm == null) {
             solicitarTrasladoForm = new SolicitarTrasladoForm();
         }
         return solicitarTrasladoForm;
     }
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón "Regresar".
+ *
+ * @param evt el evento de acción generado por el botón
+ */
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         //PrincipalProductorForm a = new PrincipalProductorForm();
 //        a.setVisible(true);
 //        dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón "Adelante" en la tabla de residuos no seleccionados.
+ *
+ * @param evt el evento de acción generado por el botón
+ */
     private void btnAdelanteTblResiduosNoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdelanteTblResiduosNoSeleccionadoActionPerformed
         this.avanzarPaginaTblNoSeleccionados();
     }//GEN-LAST:event_btnAdelanteTblResiduosNoSeleccionadoActionPerformed
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón "Atrás" en la tabla de residuos no seleccionados.
+ *
+ * @param evt el evento de acción generado por el botón
+ */
     private void btnAtrasTblResiduosNoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasTblResiduosNoSeleccionadoActionPerformed
         this.retrocederPaginaTblNoSeleccionados();
     }//GEN-LAST:event_btnAtrasTblResiduosNoSeleccionadoActionPerformed
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón "Eliminar Residuo Seleccionado".
+ *
+ * @param evt el evento de acción generado por el botón
+ */
     private void btnEliminarResiduoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarResiduoSeleccionadoActionPerformed
         Residuo residuo = consultarFilaTblSeleccionados();
         eliminarResiduoListaResiduosSeleccionados(residuo);
         agregarResiduoTblResiduosNoSeleccionados(residuo);        
     }//GEN-LAST:event_btnEliminarResiduoSeleccionadoActionPerformed
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón "Eliminar Residuo Seleccionado".
+ *
+ * @param evt el evento de acción generado por el botón
+ */
     private void btnAgregarResiduoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarResiduoSeleccionadoActionPerformed
         Residuo residuo = consultarFilaTblNoSeleccionados();
         asignarAtributosResiduo(residuo);
         agregarResiduoListaResiduosSeleccionados(residuo);
         eliminarResiduoTblResiduosNoSeleccionados(residuo);
     }//GEN-LAST:event_btnAgregarResiduoSeleccionadoActionPerformed
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón "Atrás" en la tabla de residuos seleccionados.
+ *
+ * @param evt el evento de acción generado por el botón
+ */
     private void btnAtrasTblResiduoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasTblResiduoSeleccionadoActionPerformed
         retrocederPaginaTblSeleccionados();
     }//GEN-LAST:event_btnAtrasTblResiduoSeleccionadoActionPerformed
-
+/**
+ * Este método se ejecuta cuando se hace clic en el botón "Adelante" en la tabla de residuos seleccionados.
+ *
+ * @param evt el evento de acción generado por el botón
+ */
     private void btnAdelanteTblResiduosSeleccionadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdelanteTblResiduosSeleccionadosActionPerformed
        avanzarPaginaTblSeleccionados();
     }//GEN-LAST:event_btnAdelanteTblResiduosSeleccionadosActionPerformed
+/**
+ * Este método se ejecuta cuando se hace clic en una fila de la tabla de residuos no seleccionados.
+ * Consulta la fila seleccionada y muestra u oculta los elementos del residuo correspondiente.
+ *
+ * @param evt el evento de mouse generado por la tabla
+ */
 
     private void tblResiduosNoSeleccionadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblResiduosNoSeleccionadosMouseClicked
         Residuo residuo = consultarFilaTblNoSeleccionados();
@@ -505,61 +648,105 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblResiduosNoSeleccionadosMouseClicked
 
-    
+/**
+ * Agrega un residuo a la lista de residuos seleccionados y actualiza la tabla de residuos seleccionados.
+ *
+ * @param residuo el residuo a agregar
+ */ 
     private void agregarResiduoListaResiduosSeleccionados(Residuo residuo){
         agregarResiduoListaSeleccionado(residuo);
         llenadoTablaResiduosSeleccionados(residuoSeleccionados);
         ejecucionLlenadoTblSeleccionados(residuoSeleccionados);
     }
-    
+/**
+ * Elimina un residuo de la lista de residuos seleccionados y actualiza la tabla de residuos seleccionados.
+ *
+ * @param residuo el residuo a eliminar
+ */ 
     private void eliminarResiduoListaResiduosSeleccionados(Residuo residuo){
         eliminarResiduoListaSeleccionado(residuo);
         llenadoTablaResiduosSeleccionados(residuoSeleccionados);
         ejecucionLlenadoTblSeleccionados(residuoSeleccionados);
     }
-    
+/**
+ * Elimina un residuo de la lista de residuos seleccionados y actualiza la tabla de residuos seleccionados.
+ *
+ * @param residuo el residuo a eliminar
+ */ 
     private void agregarResiduoTblResiduosNoSeleccionados(Residuo residuo){
         agregarResiduoListaNoSeleccionados(residuo);
         llenadoTablaResiduosNoSeleccionados(residuosNoSeleccionados);
         ejecucionLlenadoTblNoSeleccionados(residuosNoSeleccionados);
     }
-    
+  
+/**
+ * Elimina un residuo de la tabla de residuos no seleccionados y actualiza la tabla correspondiente.
+ *
+ * @param residuo el residuo a eliminar
+ */  
     private void eliminarResiduoTblResiduosNoSeleccionados(Residuo residuo){
         eliminarResiduoListaNoSeleccionados(residuo);
         llenadoTablaResiduosNoSeleccionados(residuosNoSeleccionados);
         ejecucionLlenadoTblNoSeleccionados(residuosNoSeleccionados);
     }
-    
+    /**
+ * Ejecuta el llenado de la tabla de residuos no seleccionados con la configuración de paginado y los residuos proporcionados.
+ * Realiza una consulta de residuos con la configuración de tabla y actualiza la tabla de residuos no seleccionados.
+ *
+ * @param residuos los residuos a mostrar en la tabla
+ * @return la lista de residuos actualizada después del llenado de la tabla
+ */
     private List<Residuo> ejecucionLlenadoTblNoSeleccionados(List<Residuo> residuos) {
         residuos = consultaResiduoConConfiguracionTabla(configPaginadoTblNoSeleccionados, residuos);
         llenadoTablaResiduosNoSeleccionados(residuos);
         return residuos;
     }
-    
+ /**
+ * Ejecuta el llenado de la tabla de residuos no seleccionados con la configuración de paginado y los residuos proporcionados.
+ * Realiza una consulta de residuos con la configuración de tabla y actualiza la tabla de residuos no seleccionados.
+ *
+ * @param residuos los residuos a mostrar en la tabla
+ * @return la lista de residuos actualizada después del llenado de la tabla
+ */   
     private List<Residuo> ejecucionLlenadoTblSeleccionados(List<Residuo> residuos) {
         residuos = consultaResiduoConConfiguracionTabla(configPaginadoTblSeleccionados, residuos);
         llenadoTablaResiduosSeleccionados(residuos);
         return residuos;
     }
-    
+ /**
+ * Ejecuta el llenado de la tabla de residuos no seleccionados con la configuración de paginado y los residuos proporcionados.
+ * Realiza una consulta de residuos con la configuración de tabla y actualiza la tabla de residuos no seleccionados.
+ *
+ * @param residuos los residuos a mostrar en la tabla
+ * @return la lista de residuos actualizada después del llenado de la tabla
+ */   
     private boolean validarCampoTextoVacio() {
         return solicitarFecha.getText().isEmpty() || solicitarFecha.getText().equals(ERROR);
     }
-    
+  /**
+ * Oculta los elementos relacionados con el residuo en la interfaz gráfica.
+ */  
     private void ocultarElementosResiduo(){
         this.lblCantidad.setVisible(false);
         this.lblUnidadMedida.setVisible(false);
         this.cbxUnidadMedidaResiduo.setVisible(false);
         this.formatCantidadResiduo.setVisible(false);
     }
-    
+ /**
+ * Muestra los elementos relacionados con el residuo en la interfaz gráfica.
+ */   
     private void mostrarElementosResiduo(){
         this.lblCantidad.setVisible(true);
         this.lblUnidadMedida.setVisible(true);
         this.cbxUnidadMedidaResiduo.setVisible(true);
         this.formatCantidadResiduo.setVisible(true);
     }
-
+/**
+ * Asigna los atributos de cantidad y unidad de medida al objeto residuo a partir de los valores de los componentes de la interfaz gráfica.
+ *
+ * @param residuo el residuo al que se le asignarán los atributos
+ * @return el residuo con los atributos asignados
+ */
     private Residuo asignarAtributosResiduo(Residuo residuo){
         
         float cantidad = Float.valueOf(formatCantidadResiduo.getText());
@@ -575,7 +762,11 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         }
         return residuo;
     }
-    
+/**
+ * Valida si el campo de texto de fecha está vacío.
+ *
+ * @return una lista de campos vacíos, en este caso, solo el campo de fecha
+ */ 
     private List<String> validarCampoVacio() {
         List<String> campos = new ArrayList<>();
         if (this.validarCampoTextoVacio()) {

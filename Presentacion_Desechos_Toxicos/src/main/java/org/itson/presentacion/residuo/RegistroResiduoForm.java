@@ -25,40 +25,35 @@ import org.itson.presentacion.Productor.PrincipalProductorForm;
  */
 public class RegistroResiduoForm extends javax.swing.JFrame {
 
- /**
- * Formulario de registro de residuo.
- */
+    /**
+     * Formulario de registro de residuo.
+     */
     private static RegistroResiduoForm form;
+    /**
+     * Nombre del residuo
+     */
+    private final String NOMBRE_RESIDUO = "Residuo";
+    /**
+     * Codigo del residuo
+     */
+    private final String CODIGO_RESIDUO = "ABC-123";
     
- /**
- * Nombre del residuo.
- */
-private final String NOMBRE_RESIDUO = "Residuo";
-
-/**
- * Código del residuo.
- */
-private final String CODIGO_RESIDUO = "ABC-123";
-
-/**
- * Objeto de negocio utilizado para realizar operaciones relacionadas con el residuo.
- */
-INegocio negocio;
-
-/**
- * Lista de químicos disponibles.
- */
-List<Quimico> listaQuimicosDisponibles;
-
-/**
- * Lista de químicos asociados al componente del residuo.
- */
-List<Quimico> listaQuimicosComponenteResiduo;
-
-/**
- * Objeto productor asociado al registro de residuo.
- */
-Productor productor;
+    /**
+     * Objeto de negocio utilizado para realizar operaciones relacionadas con el residuo
+     */
+    INegocio negocio;
+    /**
+     * Lista de químicos disponibles
+     */
+    List<Quimico> listaQuimicosDisponibles;
+    /**
+     * Lista de químicos asociados al componente del residuo
+     */
+    List<Quimico> listaQuimicosComponenteResiduo;
+    /**
+     * Objeto productor asociado al registro de residuo
+     */
+    Productor productor;
 
     /**
      * Creates new form RegistroResiduoForm
@@ -70,6 +65,10 @@ Productor productor;
         llenarComboBoxListaDisponibles(listaQuimicosDisponibles);
     }
 
+    /**
+     * Inicializa los componentes del formulario de registro de residuo.
+     * Establece el nombre del productor en la etiqueta correspondiente y hace visible el formulario.
+     */
     public void iniciarComponentes(){
         this.lblNombreProductor.setText(productor.getNombre());
         this.setVisible(true);
@@ -340,6 +339,10 @@ Productor productor;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Maneja el evento de clic del mouse en el campo de nombre del residuo.
+     * Si el campo está vacío, establece el color del texto en negro y borra el contenido del campo.
+     */
     private void campoNombreResiduoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNombreResiduoMouseClicked
         if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
             this.campoNombreResiduo.setForeground(Color.BLACK);
@@ -347,6 +350,10 @@ Productor productor;
         }
     }//GEN-LAST:event_campoNombreResiduoMouseClicked
 
+    /**
+     * Maneja el evento de ganar el enfoque del campo de nombre del residuo.
+     * Si el campo está vacío, establece el color del texto en negro y borra el contenido del campo.
+     */
     private void campoNombreResiduoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreResiduoFocusGained
         if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
             this.campoNombreResiduo.setForeground(Color.BLACK);
@@ -354,6 +361,10 @@ Productor productor;
         }
     }//GEN-LAST:event_campoNombreResiduoFocusGained
 
+    /**
+     * Maneja el evento de perder el enfoque del campo de nombre del residuo.
+     * Si el campo está vacío, establece el color del texto en gris y muestra el valor predeterminado del nombre del residuo.
+     */
     private void campoNombreResiduoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoNombreResiduoFocusLost
         if (validarCampoTextoVacio(campoNombreResiduo, NOMBRE_RESIDUO)) {
             this.campoNombreResiduo.setForeground(Color.GRAY);
@@ -361,6 +372,12 @@ Productor productor;
         }
     }//GEN-LAST:event_campoNombreResiduoFocusLost
 
+    /**
+     * Maneja el evento de clic en el botón de agregar químico al componente del residuo.
+     * Intenta agregar el químico seleccionado a la lista de componentes del residuo.
+     * Si no hay químicos disponibles, muestra un mensaje de error.
+     * Actualiza las etiquetas de verificación de cantidad según sea necesario.
+     */
     private void btnAgregarQuimicoComponenteResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarQuimicoComponenteResiduoActionPerformed
         try {
             if (comboQuimicosDisponibles.getModel().getSize() == 0) {
@@ -381,6 +398,12 @@ Productor productor;
         }
     }//GEN-LAST:event_btnAgregarQuimicoComponenteResiduoActionPerformed
 
+    /**
+     * Maneja el evento de clic en el botón de eliminar componente del residuo.
+     * Intenta eliminar el químico seleccionado de la lista de componentes del residuo.
+     * Si no hay componentes para eliminar, muestra un mensaje de error.
+     * Actualiza las etiquetas de verificación de cantidad según sea necesario.
+     */
     private void btnEliminarComponenteResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarComponenteResiduoActionPerformed
         try {
             if (comboBoxComponenteResiduo.getModel().getSize() == 0) {
@@ -401,6 +424,10 @@ Productor productor;
         }
     }//GEN-LAST:event_btnEliminarComponenteResiduoActionPerformed
 
+    /**
+     * Maneja el evento de ganar el enfoque del campo de formato de código del residuo.
+     * Si el campo está vacío, establece el color del texto en negro y borra el contenido del campo.
+     */
     private void formatoCodigoResiduoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formatoCodigoResiduoFocusGained
         if (validarFormattFieldVacio(formatoCodigoResiduo, CODIGO_RESIDUO)) {
             formatoCodigoResiduo.setForeground(Color.BLACK);
@@ -408,6 +435,10 @@ Productor productor;
         }
     }//GEN-LAST:event_formatoCodigoResiduoFocusGained
 
+    /**
+     * Maneja el evento de clic del mouse en el campo de formato de código del residuo.
+     * Si el campo está vacío, establece el color del texto en negro y borra el contenido del campo.
+     */
     private void formatoCodigoResiduoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formatoCodigoResiduoMouseClicked
         if (validarFormattFieldVacio(formatoCodigoResiduo, CODIGO_RESIDUO)) {
             formatoCodigoResiduo.setForeground(Color.BLACK);
@@ -415,6 +446,10 @@ Productor productor;
         }
     }//GEN-LAST:event_formatoCodigoResiduoMouseClicked
 
+    /**
+     * Maneja el evento de perder el enfoque del campo de formato de código del residuo.
+     * Si el campo está vacío, establece el color del texto en gris y muestra el código de residuo predeterminado.
+     */
     private void formatoCodigoResiduoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formatoCodigoResiduoFocusLost
         if (validarFormattFieldVacio(formatoCodigoResiduo, CODIGO_RESIDUO)) {
             formatoCodigoResiduo.setForeground(Color.GRAY);
@@ -422,6 +457,12 @@ Productor productor;
         }
     }//GEN-LAST:event_formatoCodigoResiduoFocusLost
 
+    /**
+     * Maneja el evento de clic en el botón de guardar residuo.
+     * Intenta construir un objeto de residuo y guardarlo.
+     * Muestra un mensaje de éxito si el residuo se guarda correctamente y cierra la ventana actual.
+     * En caso de excepción, muestra un mensaje de error.
+     */
     private void btnGuardarResiduoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarResiduoActionPerformed
         try {
             Residuo residuo = construirResiduo();
@@ -435,10 +476,19 @@ Productor productor;
         }
     }//GEN-LAST:event_btnGuardarResiduoActionPerformed
 
+    /**
+     * Guarda el residuo proporcionado llamando al método de negocio correspondiente.
+     * @param residuo El residuo a guardar
+     * @return El residuo confirmado que se ha guardado, o null si ocurre un error.
+     */
     private Residuo guardarResiduo(Residuo residuo) {
         return negocio.insertarResiduo(residuo);
     }
 
+    /**
+     * Construye un objeto de residuo utilizando los valores ingresados en los campos correspondientes.
+     * @return El residuo construido.
+     */
     private Residuo construirResiduo() {
         
         String codigo = "";
@@ -460,7 +510,12 @@ Productor productor;
         residuo.setProductor(productor);
         return residuo;
     }
-
+    /**
+     * Verifica si el campo de formato de texto está vacío o tiene un valor predeterminado.
+     * @param textField El campo de formato de texto a verificar.
+     * @param textoDefault El valor predeterminado del campo de formato de texto.
+     * @return true si el campo está vacío o tiene un valor predeterminado, false de lo contrario.
+     */
     private boolean validarFormattFieldVacio(JFormattedTextField textField, String textoDefault) {
         if (textField.getText().isBlank() || textField.getText().equals(textoDefault) || textField.getText().equals("   -   ")) {
             return true;
@@ -468,22 +523,36 @@ Productor productor;
         return false;
     }
 
+    /**
+     * Verifica si el campo de texto está vacío o tiene un valor predeterminado.
+     * @param campo El campo de texto a verificar
+     * @param nombreCampo El valor predeterminado del campo de texto.
+     * @return true si el campo está vacío o tiene un valor predeterminado, false de lo contrario.
+     */
     private boolean validarCampoTextoVacio(javax.swing.JTextField campo, String nombreCampo) {
         if (campo.getText().isEmpty() || campo.getText().equals(nombreCampo)) {
             return true;
         }
         return false;
     }
-
+    /**
+     * Cierra la ventana actual.
+     */
     private void cerrarVentana(){
         this.setVisible(false);
     }
-    
+    /**
+     * Abre la ventana del formulario principal del productor.
+     */
     private void abrirPrincipalForm(){
         PrincipalProductorForm principalProductor = PrincipalProductorForm.getInstance();
         principalProductor.iniciarComponentes();
     }
-    
+    /**
+     * Consulta la lista de químicos disponibles a través de la capa de negocio.
+     * @return La lista de químicos disponibles.
+     * @throws PresentacionException Si ocurre un error durante la consulta.
+     */
     private List<Quimico> consultarListaQuimicosDisponibles() throws PresentacionException {
         try {
             List<Quimico> listaQuimicos = new LinkedList<>();
@@ -494,6 +563,11 @@ Productor productor;
         }
     }
 
+    /**
+     * Llena el combo box de químicos disponibles con los elementos de la lista proporcionada.
+     * @param listaDisponibles La lista de químicos disponibles.
+     * @throws PresentacionException Si ocurre un error al llenar el combo box.
+     */
     private void llenarComboBoxListaDisponibles(List<Quimico> listaDisponibles) throws PresentacionException {
         try {
             this.comboQuimicosDisponibles.removeAllItems();
@@ -507,7 +581,10 @@ Productor productor;
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    /**
+     * Agrega el químico seleccionado de la lista de químicos disponibles a la lista de componentes del residuo.
+     * Actualiza los combo boxes correspondientes.
+     */
     private void agregarQuimicoSeleccionadoListaComponentesResiduo() {
         Quimico quimicoSeleccionado = getQuimicoSeleccionadoListaDisponibles();
         List<Quimico> quimicosSeleccionados = this.eliminarQuimicoListaDisponibles(quimicoSeleccionado);
@@ -515,7 +592,10 @@ Productor productor;
         List<Quimico> quimicosComponentesResiduo = this.agregarListaComponenteResiduo(quimicoSeleccionado);
         this.llenarComboBoxComponentesResiduo(quimicosComponentesResiduo);
     }
-
+    /**
+     * Elimina el químico seleccionado de la lista de componentes del residuo y lo agrega a la lista de químicos disponibles.
+     * Actualiza los combo boxes correspondientes.
+     */
     private void eliminarQuimicoSeleccionadoListaComponentesResiduo() {
         Quimico quimicoSeleccionado = getQuimicoSeleccionadoListaComponentesResiduo();
         List<Quimico> quimicosSeleccionados = this.agregarQuimicoListaDisponibles(quimicoSeleccionado);
@@ -524,21 +604,37 @@ Productor productor;
         this.llenarComboBoxComponentesResiduo(quimicosComponentesResiduo);
     }
 
+    /**
+     * Obtiene el químico seleccionado en la lista de químicos disponibles.
+     * @return El químico seleccionado.
+     */
     private Quimico getQuimicoSeleccionadoListaDisponibles() {
         Quimico quimico = (Quimico) comboQuimicosDisponibles.getSelectedItem();
         return quimico;
     }
-
+    /**
+     * Obtiene el químico seleccionado en la lista de componentes del residuo.
+     * @return El químico seleccionado.
+     */
     private Quimico getQuimicoSeleccionadoListaComponentesResiduo() {
         Quimico quimico = (Quimico) comboBoxComponenteResiduo.getSelectedItem();
         return quimico;
     }
-
+    /**
+     * Elimina el químico seleccionado de la lista de químicos disponibles.
+     * @param quimicoSeleccionado El químico seleccionado a eliminar.
+     * @return La lista de químicos disponibles actualizada.
+     */
     private List<Quimico> eliminarQuimicoListaDisponibles(Quimico quimicoSeleccionado) {
         listaQuimicosDisponibles.remove(quimicoSeleccionado);
         return listaQuimicosDisponibles;
     }
-
+    /**
+     * Agrega el químico seleccionado a la lista de componentes del residuo.
+     * Si la lista de componentes del residuo es nula, se crea una nueva lista.
+     * @param quimicoSeleccionado El químico seleccionado a agregar.
+     * @return La lista de componentes del residuo actualizada.
+     */
     private List<Quimico> agregarListaComponenteResiduo(Quimico quimicoSeleccionado) {
         if (listaQuimicosComponenteResiduo == null) {
             listaQuimicosComponenteResiduo = new LinkedList<>();
@@ -547,6 +643,11 @@ Productor productor;
         return listaQuimicosComponenteResiduo;
     }
 
+    /**
+     * Llena el combo box de componentes del residuo con los elementos de la lista proporcionada.
+     * @param listaComponentesResiduo La lista de componentes del residuo.
+     * @throws PresentacionException Si ocurre un error al llenar el combo box.
+     */
     private void llenarComboBoxComponentesResiduo(List<Quimico> listaComponentesResiduo) {
         try {
             this.comboBoxComponenteResiduo.removeAllItems();
@@ -560,12 +661,21 @@ Productor productor;
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    /**
+     * Agrega el químico seleccionado a la lista de químicos disponibles.
+     * @param quimicoSeleccionado El químico seleccionado a agregar.
+     * @return La lista de químicos disponibles actualizada.
+     */
     private List<Quimico> agregarQuimicoListaDisponibles(Quimico quimicoSeleccionado) {
         listaQuimicosDisponibles.add(quimicoSeleccionado);
         return listaQuimicosDisponibles;
     }
-
+    /**
+     * Elimina el químico seleccionado de la lista de componentes del residuo.
+     * Si la lista de componentes del residuo es nula, se crea una nueva lista.
+     * @param quimicoSeleccionado El químico seleccionado a eliminar.
+     * @return La lista de componentes del residuo actualizada.
+     */
     private List<Quimico> eliminarListaComponenteResiduo(Quimico quimicoSeleccionado) {
         if (listaQuimicosComponenteResiduo == null) {
             listaQuimicosComponenteResiduo = new LinkedList<>();
@@ -590,14 +700,25 @@ Productor productor;
         return false;
     }
 
+    /**
+     * Obtiene el objeto Productor asociado a este formulario de registro de residuo.
+     * @return El objeto Productor.
+     */
     public Productor getProductor() {
         return productor;
     }
-
+    /**
+     * Establece el objeto Productor asociado a este formulario de registro de residuo.
+     * @param productor El objeto Productor a establecer.
+     */
     public void setProductor(Productor productor) {
         this.productor = productor;
     }
-    
+    /**
+     * Obtiene una instancia del formulario de registro de residuo.
+     * Si no existe una instancia previa, crea una nueva.
+     * @return La instancia del formulario de registro de residuo.
+     */
     public static RegistroResiduoForm getInstance(){
         if(form == null){
             form = new RegistroResiduoForm();
@@ -605,40 +726,40 @@ Productor productor;
         return form;
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroResiduoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroResiduoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroResiduoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroResiduoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistroResiduoForm().setVisible(true);
-            }
-        });
-    }
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(RegistroResiduoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(RegistroResiduoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(RegistroResiduoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(RegistroResiduoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new RegistroResiduoForm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAgregarQuimicoComponenteResiduo;

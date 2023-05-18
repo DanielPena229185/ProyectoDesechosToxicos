@@ -7,7 +7,7 @@ package org.itson.sistema;
 import org.itson.presentacion.LogInForm;
 
 /**
- * Descripción de la clase:
+ * 
  *
  * @author Aracely Campa Quintana ID: 233215
  * @author Edgar Emir Borbon Jimenez ID:
