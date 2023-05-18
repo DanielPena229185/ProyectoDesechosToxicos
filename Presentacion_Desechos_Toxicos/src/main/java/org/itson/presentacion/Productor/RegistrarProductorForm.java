@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import org.itson.presentacion.InicioForm;
+import org.itson.presentacion.LogInForm;
 
 /**
  *
@@ -288,13 +288,13 @@ public class RegistrarProductorForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Registro exitoso", "Nuevo Registro", JOptionPane.INFORMATION_MESSAGE);
             
         }
-        InicioForm b =new InicioForm();
+        LogInForm b =new LogInForm();
             b.setVisible(true);
             dispose();
     }//GEN-LAST:event_registrarProductorBtnActionPerformed
 
     private void regresarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarBtnActionPerformed
-      InicioForm i= new InicioForm();
+      LogInForm i= new LogInForm();
       i.setVisible(true);
       dispose();
     }//GEN-LAST:event_regresarBtnActionPerformed

@@ -1,7 +1,7 @@
 package org.itson.presentacion.Administrador;
 
 import com.dominio.Administrador;
-import org.itson.presentacion.InicioForm;
+
 import org.itson.presentacion.LogInForm;
 
 /**

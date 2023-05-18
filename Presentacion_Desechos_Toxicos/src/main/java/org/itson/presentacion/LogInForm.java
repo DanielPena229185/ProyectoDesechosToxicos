@@ -48,7 +48,7 @@ public class LogInForm extends javax.swing.JFrame {
     /**
      * Creates new form LogInForm
      */
-    private LogInForm() {
+    public LogInForm() {
         negocio = new FachadaNegocio();
         initComponents();
         this.setVisible(true);

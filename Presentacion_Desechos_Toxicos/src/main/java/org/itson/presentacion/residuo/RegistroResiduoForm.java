@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package org.itson.presentacion.residuo;
 
 import com.dominio.Productor;
@@ -17,21 +14,51 @@ import org.itson.excepciones.PresentacionException;
 import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
 import org.itson.presentacion.Productor.PrincipalProductorForm;
-
 /**
+ * Descripción de la clase: Aqui se registra todos los registros
  *
- * @author arace
+ *
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID:
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID:229185
  */
 public class RegistroResiduoForm extends javax.swing.JFrame {
 
+ /**
+ * Formulario de registro de residuo.
+ */
     private static RegistroResiduoForm form;
     
-    private final String NOMBRE_RESIDUO = "Residuo";
-    private final String CODIGO_RESIDUO = "ABC-123";
-    INegocio negocio;
-    List<Quimico> listaQuimicosDisponibles;
-    List<Quimico> listaQuimicosComponenteResiduo;
-    Productor productor;
+ /**
+ * Nombre del residuo.
+ */
+private final String NOMBRE_RESIDUO = "Residuo";
+
+/**
+ * Código del residuo.
+ */
+private final String CODIGO_RESIDUO = "ABC-123";
+
+/**
+ * Objeto de negocio utilizado para realizar operaciones relacionadas con el residuo.
+ */
+INegocio negocio;
+
+/**
+ * Lista de químicos disponibles.
+ */
+List<Quimico> listaQuimicosDisponibles;
+
+/**
+ * Lista de químicos asociados al componente del residuo.
+ */
+List<Quimico> listaQuimicosComponenteResiduo;
+
+/**
+ * Objeto productor asociado al registro de residuo.
+ */
+Productor productor;
 
     /**
      * Creates new form RegistroResiduoForm
