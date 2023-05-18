@@ -136,6 +136,10 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Favor de Seleccionar alguna Solicitude de la Talba de Solicitudes", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        Productor productor = new Productor();
+        productor.setId(this.solicitudSeleccionada.getProductor().getId());
+        productor.setNombre(this.solicitudSeleccionada.getProductor().getNombre());
+        this.solicitudSeleccionada.setProductor(productor);
         RegistrarTrasladoForm registrarTrasladoForm = new RegistrarTrasladoForm(this.solicitudSeleccionada, administrador);
         cerrarVentanaActual();
     }

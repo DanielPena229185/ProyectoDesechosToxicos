@@ -47,6 +47,8 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     private Residuo residuo;
     private Administrador administrador;
     private Solicitud solicitud;
+    private int cantidadResiduos;
+    private int contadorResiduosTrasladados = 0;
 
     /**
      * Creates new form RegistrarTrasladoForm
@@ -55,6 +57,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         negocio = new FachadaNegocio();
         this.administrador = administrador;
         this.solicitud = solicitud;
+        this.cantidadResiduos = solicitud.getResiduos().size();
         initComponents();
         asignaValoresLabels(solicitud);
         llenadoTablaResiduos(solicitud);
@@ -142,9 +145,9 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         residuo.setNombre((String) this.tableResiduos.getValueAt(filaSeleccionada, 0));
         residuo.setCantidad((Float) this.tableResiduos.getValueAt(filaSeleccionada, 1));
         String medida = (String) this.tableResiduos.getValueAt(filaSeleccionada, 2);
-        if (medida=="KILOGRAMO") {
+        if (medida == "KILOGRAMO") {
             residuo.setMedida_residuo(MedidaResiduo.KILOGRAMO);
-        }else{
+        } else {
             residuo.setMedida_residuo(MedidaResiduo.LITRO);
         }
         llenarLabelsResiduo(residuo);
@@ -178,7 +181,15 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
                 }
             }
         }
-        return lista;
+        List<EmpresaTransportista> trans = new ArrayList<>();
+        for(EmpresaTransportista i : lista){
+            EmpresaTransportista et = new EmpresaTransportista();
+            et.setId(i.getId());
+            et.setNombre(i.getNombre());
+            trans.add(et);
+        }
+        
+        return trans;
     }
 
     private Traslado creaTraslado() {
@@ -188,6 +199,11 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
         String nombre = this.residuo.getNombre();
         List<EmpresaTransportista> empresas = dejarTransportistasSeleccionados();
+        System.out.println("Se seleccionaron # :" + empresas.size());
+        if (empresas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Favor de seleccionar minimo una empresa transportista", "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
         Residuo residuo = new Residuo();
         Solicitud solicitud = this.solicitud;
         residuo.setNombre(nombre);
@@ -209,12 +225,11 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Favor de seleccionar un residuo de la lista de residuos", "Error", JOptionPane.ERROR_MESSAGE);
             return null;
         }
+
         Traslado traslado = creaTraslado();
-        if (!hayEmpresasSeleccionadas()) {
-            JOptionPane.showMessageDialog(this, "Favor de seleccionar minimo una empresa transportista", "Error", JOptionPane.ERROR_MESSAGE);
+        if (traslado == null) {
             return null;
         }
-
         traslado = negocio.insertarTraslado(traslado);
         if (traslado.getId() == null) {
             JOptionPane.showMessageDialog(this, "Hubo un error no se pudo asignar el traslado", "Error", JOptionPane.ERROR_MESSAGE);
@@ -229,14 +244,42 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         return residuo != null;
     }
 
-    private boolean hayEmpresasSeleccionadas() {
-        return !transportistas.isEmpty();
+    private void vaciarLabes() {
+        this.lblResiduoSeleccionado.setText("...");
+        this.lblMedicion.setText("...");
+        this.lblCuenta.setText("...");
     }
 
     private void quitarResiduoTablaResiduos() {
+        this.residuo = null;
+        vaciarLabes();
         int filaSeleccionada = this.tableResiduos.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) tableResiduos.getModel();
         modelo.removeRow(filaSeleccionada);
+        contadorResiduosTrasladados++;
+    }
+
+    private boolean tablaResiduosEstaVacia() {
+        if (this.tableResiduos.getRowCount() == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private void vaciarTablaEmpresasSeleccionadas() {
+        DefaultTableModel modelo = (DefaultTableModel) this.tableTransportistasSeleccionados.getModel();
+        modelo.setRowCount(0);
+    }
+
+    private void irPrincipalAdministradorForm() {
+        PrincipalAdministradorForm principalAdministradorForm;
+        principalAdministradorForm = PrincipalAdministradorForm.getInstance();
+        principalAdministradorForm.setAdministrador(administrador);
+        principalAdministradorForm.iniciarComponentes();
+    }
+    
+    private void actualizarEstadoSolicitud(){
+    
     }
 
     /**
@@ -259,8 +302,10 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tableTransportistasSeleccionados = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        seleccionarBtn = new javax.swing.JButton();
+        btnAsignar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
+        lblMensaje = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         lblProductor = new javax.swing.JLabel();
@@ -365,19 +410,40 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 230, -1));
 
-        seleccionarBtn.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
-        seleccionarBtn.setText("Asignar");
-        seleccionarBtn.setContentAreaFilled(false);
-        seleccionarBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnAsignar.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
+        btnAsignar.setText("Asignar");
+        btnAsignar.setContentAreaFilled(false);
+        btnAsignar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                seleccionarBtnActionPerformed(evt);
+                btnAsignarActionPerformed(evt);
             }
         });
-        jPanel2.add(seleccionarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 527, 120, 40));
+        jPanel2.add(btnAsignar, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 527, 120, 40));
 
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         jLabel5.setText("asignaras el Traslado:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+
+        btnSalir.setText("Salir");
+        btnSalir.setEnabled(false);
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 120, 40));
+
+        lblMensaje.setBackground(new java.awt.Color(255, 255, 255));
+        lblMensaje.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(lblMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 140, 20));
 
         lblProductor.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         lblProductor.setText("...");
@@ -460,13 +526,13 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
+                            .addComponent(lblResiduoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(52, 52, 52)
-                                .addComponent(lblMedicion, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblResiduoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lblMedicion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -501,15 +567,15 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
                 .addComponent(lblResiduoSeleccionado)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(lblMedicion)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCuenta)
-                        .addGap(17, 17, 17))))
+                        .addGap(17, 17, 17))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(lblMedicion)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -531,14 +597,20 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void seleccionarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarBtnActionPerformed
+    private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
         if (persistirTraslado() == null) {
             return;
         }
+        vaciarTablaEmpresasSeleccionadas();
+        ejecucionLlenadoTablaTransportistas();
         quitarResiduoTablaResiduos();
-
-
-    }//GEN-LAST:event_seleccionarBtnActionPerformed
+        tablaResiduosEstaVacia();
+        if (tablaResiduosEstaVacia()) {
+            this.btnSalir.setEnabled(true);
+            this.btnAsignar.setEnabled(false);
+            
+        }
+    }//GEN-LAST:event_btnAsignarActionPerformed
 
     private void tableResiduosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableResiduosMouseClicked
         // TODO add your handling code here:
@@ -557,6 +629,29 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tableTransportistasSeleccionadosMouseClicked
 
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        // TODO add your handling code here:
+        if (!tablaResiduosEstaVacia()) {
+            this.lblMensaje.setText("Aun hay residuos");
+
+        }
+
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        // TODO add your handling code here:
+
+        this.lblMensaje.setText("");
+
+
+    }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        irPrincipalAdministradorForm();
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
 //    /**
 //     * @param args the command line arguments
 //     */
@@ -571,6 +666,8 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAsignar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel fechaLbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -590,11 +687,11 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblCuenta;
     private javax.swing.JLabel lblFechaSol;
     private javax.swing.JLabel lblMedicion;
+    private javax.swing.JLabel lblMensaje;
     private javax.swing.JLabel lblProductor;
     private javax.swing.JLabel lblResiduoSeleccionado;
     private javax.swing.JLabel productorLbl;
     private javax.swing.JLabel registrarTrasladoLbl;
-    private javax.swing.JButton seleccionarBtn;
     private javax.swing.JTable tableResiduos;
     private javax.swing.JTable tableTransportistas;
     private javax.swing.JTable tableTransportistasSeleccionados;

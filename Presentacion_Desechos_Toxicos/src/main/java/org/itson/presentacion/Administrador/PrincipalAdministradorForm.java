@@ -2,6 +2,7 @@ package org.itson.presentacion.Administrador;
 
 import com.dominio.Administrador;
 import org.itson.presentacion.InicioForm;
+import org.itson.presentacion.LogInForm;
 
 /**
  *
@@ -25,7 +26,12 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
     }
 
     private void irSolicitudesTrasladoForm() {
-        SolicitudesTrasladosForm solicitudesTrasladosForm = new SolicitudesTrasladosForm(administrador);
+        Administrador admin = new Administrador();
+        admin.setId(administrador.getId());
+        admin.setNombres(administrador.getNombres());
+        admin.setApellido_paterno(administrador.getApellido_paterno());
+        admin.setApellido_materno(administrador.getApellido_materno());
+        SolicitudesTrasladosForm solicitudesTrasladosForm = new SolicitudesTrasladosForm(admin);
         cerrarVentanaActual();
     }
     
@@ -33,18 +39,15 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
         abrirVentana();
     }
 
-    private void irInicioForm() {
-        InicioForm p = new InicioForm();
-        p.setVisible(true);
-        cerrarVentanaActual();
+    private void irLoginForm() {
+
+        LogInForm logInForm;
+        logInForm = LogInForm.getInstance();
+        logInForm.iniciarComponentes();
     }
 
     private void abrirVentana(){
         this.setVisible(true);
-    }
-    
-    private void cerrarVentana(){
-        this.setVisible(false);
     }
 
     /**
@@ -154,7 +157,8 @@ public class PrincipalAdministradorForm extends javax.swing.JFrame {
     }//GEN-LAST:event_solictarTrasladoBtnActionPerformed
 
     private void regresarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarbtnActionPerformed
-        irInicioForm();
+        irLoginForm();
+        cerrarVentanaActual();
     }//GEN-LAST:event_regresarbtnActionPerformed
 
     public Administrador getAdministrador() {
