@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.itson.implementaciones.daos;
 
 import com.dominio.Quimico;
@@ -19,7 +15,8 @@ import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.interfaces.IResiduosDAO;
 
 /**
- * Descripcion de la clase: Clase que implementa todas las operaciones de Residuo
+ * Descripcion de la clase: Clase que implementa todas las operaciones de
+ * Residuo
  *
  * @author Aracely Campa Quintana ID: 233215
  * @author Edgar Emir Borbon Jimenez ID: 233184
@@ -76,9 +73,9 @@ public class ResiduosDAO implements IResiduosDAO {
         }
     }
 
-    
     /**
-     * Consulta si existen Reiduos coincidentes con los datos que contiene ResiduoDTO
+     * Consulta si existen Reiduos coincidentes con los datos que contiene
+     * ResiduoDTO
      *
      * @param filtro Redisuo a buscar similitudes de informacion
      * @return Una lista de Residuos
@@ -87,19 +84,19 @@ public class ResiduosDAO implements IResiduosDAO {
     @Override
     public List<Residuo> consultar(ResiduoDTO filtro) throws PersistenciaException {
         if (filtro == null) {
-           throw new PersistenciaException("No se obtuvieron parámetros válidos.");
+            throw new PersistenciaException("No se obtuvieron parámetros válidos.");
         }
-        
+
         try {
             List<Document> filter = new ArrayList<>();
             List<Residuo> residuos = new ArrayList<>();
 
-            if (filtro.getId_EmpresaProductora()!= null || filtro.getNombreEmpresaProductora()!=null) {
+            if (filtro.getId_EmpresaProductora() != null || filtro.getNombreEmpresaProductora() != null) {
                 filter.add(new Document("productor.tipo", Tipo.PRODUCTO.toString()));
             }
-            
+
             if (filtro.getId_EmpresaProductora() != null) {
-                filter.add(new Document("productor._id",filtro.getId_EmpresaProductora()));
+                filter.add(new Document("productor._id", filtro.getId_EmpresaProductora()));
             }
 
             if (filtro.getNombreEmpresaProductora() != null) {
@@ -110,23 +107,23 @@ public class ResiduosDAO implements IResiduosDAO {
                 filter.add(new Document("nombre", filtro.getNombre()));
 
             }
-            
+
             if (filtro.getClave() != null) {
                 filter.add(new Document("codigo", filtro.getClave()));
             }
-            
+
             if (filtro.getQuimicos() != null) {
                 List<ObjectId> lista = new ArrayList<>();
-                
-                for(Quimico q : filtro.getQuimicos()){
+
+                for (Quimico q : filtro.getQuimicos()) {
                     lista.add(q.getId());
                 }
-                
+
                 filter.add(new Document("quimicos._id", new Document("$all", lista)));
             }
 
             COLECCION.find(new Document("$and", filter)).into(residuos);
-            
+
             return residuos;
         } catch (MongoException e) {
             throw new PersistenciaException("Error no se pudo consultar los quimicos: " + e.getMessage());

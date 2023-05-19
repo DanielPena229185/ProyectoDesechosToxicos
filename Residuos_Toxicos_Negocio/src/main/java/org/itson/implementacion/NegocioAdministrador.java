@@ -15,27 +15,35 @@ import org.itson.interfaces.INegocioAdministrador;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripción de la clase:
+ * Descripción de la clase: Clase que actúa como puente para realizar las
+ * operaciones en el sistema de persistencia, pero antes realizar operaciones
+ * para comprobar que el traslado de datos sea correcto
  *
- * @author Daniel Armando Peña Garcia ID:229185
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class NegocioAdministrador implements INegocioAdministrador {
 
     IPersistencia persistencia;
 
     /**
-     * Constructor de la clase NegocioAdministrador.
-     * Inicializa la capa de persistencia creando una instancia de FachadaPersistencia.
+     * Constructor de la clase NegocioAdministrador. Inicializa la capa de
+     * persistencia creando una instancia de FachadaPersistencia.
      */
     public NegocioAdministrador() {
         persistencia = new FachadaPersistencia();
     }
+
     /**
      * Realiza el inicio de sesión de un Administrador en el sistema.
+     *
      * @param correo El correo del Administrador.
      * @param contrasena La contraseña del Administrador.
      * @return El Administrador que ha iniciado sesión.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante el inicio de sesión.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * el inicio de sesión.
      */
     @Override
     public Administrador loginAdministrador(String correo, String contrasena) throws NegocioException {
@@ -50,15 +58,18 @@ public class NegocioAdministrador implements INegocioAdministrador {
             throw new NegocioException(a.getMessage());
         }
     }
+
     /**
      * Valida los campos de inicio de sesión de un Administrador.
+     *
      * @param correo El correo del Administrador.
      * @param contrasena La contraseña del Administrador.
-     * @throws ValidacionException Si algún campo de inicio de sesión es inválido o está vacío.
+     * @throws ValidacionException Si algún campo de inicio de sesión es
+     * inválido o está vacío.
      */
     private void validarLogin(String correo, String contrasena) throws ValidacionException {
         List<String> camposError = new LinkedList<>();
-        
+
         if (validarTextoVacio(correo)) {
             camposError.add("- No indica el correo");
         }
@@ -67,12 +78,12 @@ public class NegocioAdministrador implements INegocioAdministrador {
             camposError.add("- No indica el contraseña");
         }
 
-        if(camposError.isEmpty()){
+        if (camposError.isEmpty()) {
             return;
         }
-        
+
         String mensaje = mensajeCampos(camposError);
-        
+
         throw new ValidacionException(mensaje);
     }
 

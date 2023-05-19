@@ -23,7 +23,10 @@ import org.itson.excepciones.PersistenciaException;
  * consultar objetos de diferentes tipos como Quimico, Residuo, Productor,
  * Solicitud y Traslado, en alguna fuente de datos persistente
  *
- * @author Daniel Armando Peña Garcia ID:229185
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public interface IPersistencia {
 
@@ -197,20 +200,23 @@ public interface IPersistencia {
     EmpresaTransportista loginEmpresaTrasnportista(String correo, String contrasena) throws PersistenciaException;
 
     /**
-     * 
+     *
      * @param correo
      * @param contrasena
      * @return
-     * @throws PersistenciaException 
+     * @throws PersistenciaException
      */
     Administrador loginAdministrador(String correo, String contrasena) throws PersistenciaException;
 
     /**
      * Inserta un nuevo transporte en la base de datos
-     * @param transporte el objeto Transporte que se desea insertar en la base de datos
+     *
+     * @param transporte el objeto Transporte que se desea insertar en la base
+     * de datos
      * @return el objeto Transporte insertado en la base de datos
-     * @throws PersistenciaException si ocurre un error al intentar insertar el Transporte en la base de datos
+     * @throws PersistenciaException si ocurre un error al intentar insertar el
+     * Transporte en la base de datos
      */
     Transporte insertarTrasnporte(Transporte transporte) throws PersistenciaException;
-    
+
 }

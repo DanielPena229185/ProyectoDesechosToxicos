@@ -1,11 +1,17 @@
-
 package org.itson.DTO;
 
 /**
+ * Descripción de la clase: Esta clase representa una Empresa Transportiste pero
+ * con datos especificos para desenvolver los datos que se requieren para
+ * ciertas acciones u operaciones
  *
- * @author arace
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class EmpresaTransportistaDTO {
+
     /**
      * Email de productor
      */
@@ -14,35 +20,43 @@ public class EmpresaTransportistaDTO {
      * Contrasena de productor
      */
     private String contrasena;
+
     /**
-     * Constructor vacio 
+     * Constructor vacio
      */
-    public EmpresaTransportistaDTO() {    
+    public EmpresaTransportistaDTO() {
     }
 
     /**
      * Obtiene el email del Productor
+     *
      * @return el email del productor
      */
     public String getEmail() {
         return email;
     }
+
     /**
      * Establece el email del Productor
+     *
      * @param email del Productor
      */
     public void setEmail(String email) {
         this.email = email;
     }
+
     /**
      * Obtiene la contraseña del Productor.
+     *
      * @return la contraseña del Productor.
      */
     public String getContrasena() {
         return contrasena;
     }
+
     /**
      * Establece la contraseña del Productor.
+     *
      * @param contrasena la contraseña del Productor.
      */
     public void setContrasena(String contrasena) {

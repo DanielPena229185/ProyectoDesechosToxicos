@@ -1,19 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.itson.implementaciones.daos;
 
 import com.dominio.Administrador;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
-import java.util.ArrayList;
-import java.util.List;
 import org.bson.Document;
-import org.bson.conversions.Bson;
-import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.interfaces.IAdministradoresDAO;

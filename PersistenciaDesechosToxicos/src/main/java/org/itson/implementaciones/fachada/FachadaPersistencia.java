@@ -40,7 +40,10 @@ import org.itson.interfaces.IVehiculosDAO;
  * sistema lanzara una excepcion del tipo PersistenciaExcepcion indicando dicho
  * error
  *
- * @author Daniel Armando Peña Garcia ID:229185
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class FachadaPersistencia implements IPersistencia {
 
@@ -96,7 +99,6 @@ public class FachadaPersistencia implements IPersistencia {
      * @return una lista de objeto de los quimicos
      * @throws PersistenciaException si ocurre un error durante la ejecucion
      */
-
     @Override
     public List<Quimico> consultarTodosLosQuimicos() throws PersistenciaException {
         try {
@@ -264,11 +266,15 @@ public class FachadaPersistencia implements IPersistencia {
             throw new PersistenciaException(e.getMessage());
         }
     }
+
     /**
      * Consulta los vehículos asociados a una empresa transportista
-     * @param empresaTransportista La empresa transportista de la cual se desean consultar los vehículos
+     *
+     * @param empresaTransportista La empresa transportista de la cual se desean
+     * consultar los vehículos
      * @ Una lista de objetos Vehiculo asociados a la empresa transportista
-     * @throws PersistenciaException Si se produce un error al intentar realizar la consulta
+     * @throws PersistenciaException Si se produce un error al intentar realizar
+     * la consulta
      */
     @Override
     public List<Vehiculo> consultarVehiculosEmpresaTrasnportadora(EmpresaTransportista empresaTransportista) throws PersistenciaException {
@@ -278,10 +284,14 @@ public class FachadaPersistencia implements IPersistencia {
             throw new PersistenciaException(e.getMessage());
         }
     }
+
     /**
      * Consulta todas las empresas transportistas registradas en el sistema
-     * @return Una lista de objetos EmpresaTransportista que representan todas las empresas transportistas registradas
-     * @throws PersistenciaException Si se produce un error al intentar realizar la consulta
+     *
+     * @return Una lista de objetos EmpresaTransportista que representan todas
+     * las empresas transportistas registradas
+     * @throws PersistenciaException Si se produce un error al intentar realizar
+     * la consulta
      */
     @Override
     public List<EmpresaTransportista> consultaTodasEmpresasTransportistas() throws PersistenciaException {
@@ -291,11 +301,14 @@ public class FachadaPersistencia implements IPersistencia {
             throw new PersistenciaException(e.getMessage());
         }
     }
+
     /**
      * Inserta una nueva empresa transportista en el sistema
+     *
      * @param o El objeto EmpresaTransportista que se desea insertar
      * @return El objeto EmpresaTransportista insertado en el sistema
-     * @throws PersistenciaException Si se produce un error al intentar realizar la inserción
+     * @throws PersistenciaException Si se produce un error al intentar realizar
+     * la inserción
      */
     @Override
     public EmpresaTransportista insertar(EmpresaTransportista o) throws PersistenciaException {
@@ -305,12 +318,15 @@ public class FachadaPersistencia implements IPersistencia {
             throw new PersistenciaException(e.getMessage());
         }
     }
+
     /**
      * Inicia sesión de una empresa transportista
-     *  @param correo      Correo electrónico de la empresa transportista.
-     * @param contrasena  Contraseña de la empresa transportista.
-     * @return            La empresa transportista que ha iniciado sesión.
-     * @throws PersistenciaException Si ocurre un error en la capa de persistencia.
+     *
+     * @param correo Correo electrónico de la empresa transportista.
+     * @param contrasena Contraseña de la empresa transportista.
+     * @return La empresa transportista que ha iniciado sesión.
+     * @throws PersistenciaException Si ocurre un error en la capa de
+     * persistencia.
      */
     @Override
     public EmpresaTransportista loginEmpresaTrasnportista(String correo, String contrasena) throws PersistenciaException {
@@ -320,11 +336,14 @@ public class FachadaPersistencia implements IPersistencia {
             throw new PersistenciaException(e.getMessage());
         }
     }
+
     /**
      * Actualiza el estado de una solicitud a "atendida"
+     *
      * @param solicitud La solicitud a actualizar
-     * @return  La solicitud actualizada
-     * @throws PersistenciaException Si ocurre un error en la capa de persistencia
+     * @return La solicitud actualizada
+     * @throws PersistenciaException Si ocurre un error en la capa de
+     * persistencia
      */
     @Override
     public Solicitud actualizaEstadoASolicitudAtendida(Solicitud solicitud) throws PersistenciaException {
@@ -336,12 +355,14 @@ public class FachadaPersistencia implements IPersistencia {
         }
 
     }
+
     /**
      * Inicia sesión de un administrador
+     *
      * @param correo Correo electrónico del administrador
      * @param contrasena
      * @return
-     * @throws PersistenciaException 
+     * @throws PersistenciaException
      */
     @Override
     public Administrador loginAdministrador(String correo, String contrasena) throws PersistenciaException {
@@ -351,11 +372,14 @@ public class FachadaPersistencia implements IPersistencia {
             throw new PersistenciaException(e.getMessage());
         }
     }
+
     /**
      * Inserta un transporte en el sistema
+     *
      * @param transporte El transporte a insertar
      * @return El transporte insertado
-     * @throws PersistenciaException Si ocurre un error en la capa de persistencia
+     * @throws PersistenciaException Si ocurre un error en la capa de
+     * persistencia
      */
     @Override
     public Transporte insertarTrasnporte(Transporte transporte) throws PersistenciaException {

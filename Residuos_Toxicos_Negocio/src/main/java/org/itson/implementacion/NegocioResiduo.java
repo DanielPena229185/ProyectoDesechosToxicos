@@ -9,7 +9,6 @@ import com.dominio.Quimico;
 import com.dominio.Residuo;
 import java.util.LinkedList;
 import java.util.List;
-import org.bson.types.ObjectId;
 import org.itson.DTO.ResiduoDTO;
 import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PersistenciaException;
@@ -19,9 +18,14 @@ import org.itson.interfaces.INegocioResiduo;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripción de la clase: Se encarga de manejar las operaciones relacionadas con los residuos en un sistema.
+ * Descripción de la clase: Clase que actúa como puente para realizar las
+ * operaciones en el sistema de persistencia, pero antes realizar operaciones
+ * para comprobar que el traslado de datos sea correcto
  *
- * @author Daniel Armando Peña Garcia ID:229185
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class NegocioResiduo implements INegocioResiduo {
 
@@ -79,8 +83,10 @@ public class NegocioResiduo implements INegocioResiduo {
         }
 
     }
+
     /**
      * Consulta los Residuos del sistema aplicando un filtro.
+     *
      * @param residuo el objeto Residuo utilizado como filtro de consulta.
      * @return una lista de objetos Residuo que cumplen con el filtro.
      * @throws NegocioException si ocurre un error en la lógica de negocio.
@@ -115,7 +121,7 @@ public class NegocioResiduo implements INegocioResiduo {
         if (this.validarTextoVacio(nombre)) {
             //Si el nombre no está disponible, ya sea que esté vacío o nulo
             camposErroneos.add("- No contiene nombre");
-        }else if (!validarTexto(nombre)){
+        } else if (!validarTexto(nombre)) {
             camposErroneos.add("- Ingresa un nombre más simple que [" + nombre + ']');
         }
 
@@ -153,8 +159,10 @@ public class NegocioResiduo implements INegocioResiduo {
         //validaciones
         throw new ValidacionException(camposVacios);
     }
+
     /**
      * Valida si un texto contiene únicamente letras y espacios.
+     *
      * @param texto el texto a validar.
      * @return true si el texto es válido, false de lo contrario.
      */
@@ -254,11 +262,14 @@ public class NegocioResiduo implements INegocioResiduo {
         residuo.setProductor(productor);
         return residuo;
     }
+
     /**
      * Convierte un objeto Residuo en un objeto ResiduoDTO.
+     *
      * @param residuo el objeto Residuo a convertir.
      * @return el objeto ResiduoDTO resultante de la conversión.
-     * @throws ValidacionException si el objeto Residuo no pasa las validaciones.
+     * @throws ValidacionException si el objeto Residuo no pasa las
+     * validaciones.
      */
     private ResiduoDTO convertirResiduoToDTO(Residuo residuo) throws ValidacionException {
 
@@ -283,8 +294,10 @@ public class NegocioResiduo implements INegocioResiduo {
         }
         return residuoDTO;
     }
+
     /**
      * Valida la inexistencia de un objeto Residuo en el sistema.
+     *
      * @param residuo el objeto Residuo a validar.
      * @return el Residuo validado si no existe en el sistema.
      * @throws ValidacionException si el objeto Residuo ya existe en el sistema.
@@ -324,10 +337,13 @@ public class NegocioResiduo implements INegocioResiduo {
         throw new ValidacionException("Ya existen los siguientes datos: \n"
                 + mensaje);
     }
+
     /**
      * Valida si existe un residuo con el mismo código en el sistema.
+     *
      * @param codigo el código a validar.
-     * @return true si existe un residuo con el mismo código, false de lo contrario.
+     * @return true si existe un residuo con el mismo código, false de lo
+     * contrario.
      */
     private boolean validarCodigoExistenteResiduo(String codigo) {
         Residuo residuo = new Residuo();
@@ -338,10 +354,13 @@ public class NegocioResiduo implements INegocioResiduo {
         }
         return false;
     }
+
     /**
      * Valida si existe un residuo con el mismo nombre en el sistema
+     *
      * @param nombre el nombre a validar.
-     * @return true si existe un residuo con el mismo nombre, false de lo contrario.
+     * @return true si existe un residuo con el mismo nombre, false de lo
+     * contrario.
      */
     private boolean validarNombreExistenteResiduo(String nombre) {
         Residuo residuo = new Residuo();
@@ -352,10 +371,13 @@ public class NegocioResiduo implements INegocioResiduo {
         }
         return false;
     }
+
     /**
      * Valida si existe un residuo con los mismos químicos en el sistema.
+     *
      * @param quimicos la lista de químicos a validar.
-     * @return true si existe un residuo con los mismos químicos, false de lo contrario.
+     * @return true si existe un residuo con los mismos químicos, false de lo
+     * contrario.
      */
     private boolean validarListaQuimicosExistenteResiduo(List<Quimico> quimicos) {
         Residuo residuo = new Residuo();

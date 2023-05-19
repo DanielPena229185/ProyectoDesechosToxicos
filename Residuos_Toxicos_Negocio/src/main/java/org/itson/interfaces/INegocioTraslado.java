@@ -11,9 +11,13 @@ import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PersistenciaException;
 
 /**
- * Descripción de la interface: Define métodos relacionados con la gestión de traslados en el sistema
+ * Descripción de la clase: interfaz que contiene los métodos definidos para
+ * realizar las operaciones en las clases que la implementen
  *
- * @author Daniel Armando Peña Garcia ID:229185
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public interface INegocioTraslado {
 

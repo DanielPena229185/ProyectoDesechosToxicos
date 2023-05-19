@@ -791,29 +791,101 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * Botón adelante tabla residuos no seleccionados
+     */
     private javax.swing.JButton btnAdelanteTblResiduosNoSeleccionado;
+    /**
+     * Botón adelante tabla residuos seleccionados
+     */
     private javax.swing.JButton btnAdelanteTblResiduosSeleccionados;
+    /**
+     * Botón agregar residuo seleccionado
+     */
     private javax.swing.JButton btnAgregarResiduoSeleccionado;
+    /**
+     * Botón atras residuos seleccionados
+     */
     private javax.swing.JButton btnAtrasTblResiduoSeleccionado;
+    /**
+     * Botón atras residuos no seleccionados
+     */
     private javax.swing.JButton btnAtrasTblResiduosNoSeleccionado;
+    /**
+     * Botón eliminar residuos seleccionados
+     */
     private javax.swing.JButton btnEliminarResiduoSeleccionado;
+    /**
+     * Botón regresar
+     */
     private javax.swing.JButton btnRegresar;
+    /**
+     * Botón solicitar
+     */
     private javax.swing.JButton btnSolicitar;
+    /**
+     * ComboBox Unidad de medida
+     */
     private javax.swing.JComboBox<String> cbxUnidadMedidaResiduo;
+    /**
+     * Date picker
+     */
     private com.github.lgooddatepicker.components.DatePicker fecha;
+    /**
+     * Formato de cantidad del residuo
+     */
     private javax.swing.JFormattedTextField formatCantidadResiduo;
+    /**
+     * Label 1
+     */
     private javax.swing.JLabel jLabel1;
+    /**
+     * Label 1
+     */
     private javax.swing.JLabel jLabel2;
+    /**
+     * Label 1
+     */
     private javax.swing.JLabel jLabel3;
+    /**
+     * Label 1
+     */
     private javax.swing.JLabel jLabel4;
+    /**
+     * Label 1
+     */
     private javax.swing.JPanel jPanel1;
+    /**
+     * Label 1
+     */
     private javax.swing.JPanel jPanel2;
+    /**
+     * Scroll pane 1
+     */
     private javax.swing.JScrollPane jScrollPane1;
+    /**
+     * Scroll pane 1
+     */
     private javax.swing.JScrollPane jScrollPane2;
+    /**
+     * Label cantidad
+     */
     private javax.swing.JLabel lblCantidad;
+    /**
+     * Label unidad medida
+     */
     private javax.swing.JLabel lblUnidadMedida;
+    /**
+     * Botón solicitar
+     */
     private javax.swing.JButton solicitarBtn;
+    /**
+     * Tabla residuo no seleccionados
+     */
     private javax.swing.JTable tblResiduosNoSeleccionados;
+    /**
+     * Tabla residuos seleccionados
+     */
     private javax.swing.JTable tblResiduosSeleccionados;
     // End of variables declaration//GEN-END:variables
 

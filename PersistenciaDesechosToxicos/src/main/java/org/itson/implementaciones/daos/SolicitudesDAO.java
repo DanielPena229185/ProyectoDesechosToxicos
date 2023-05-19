@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.itson.implementaciones.daos;
 
 import com.dominio.Estado;
@@ -23,8 +19,11 @@ import org.itson.interfaces.ISolicitudesDAO;
  * solicitudes no atendidas, consultar solicitudes por filtro y para insertar
  * una solicitud. Estos metodos manejan excepciones y proporcionan información
  * detallada sobre los errores, como el mensaje de error y la causa del error
- *
- * @author oscar
+ * 
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class SolicitudesDAO implements ISolicitudesDAO {
 

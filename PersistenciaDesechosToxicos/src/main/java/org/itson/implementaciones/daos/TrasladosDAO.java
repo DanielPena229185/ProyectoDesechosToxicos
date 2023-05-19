@@ -1,4 +1,3 @@
-
 package org.itson.implementaciones.daos;
 
 import com.dominio.EmpresaTransportista;
@@ -13,9 +12,13 @@ import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.interfaces.ITrasladosDAO;
 
 /**
- * Descripción de la clase: La clase realiza operaciones como insertar un traslado 
- * o consultar los traslados asignados a una empresa transportista 
- * @author edemb
+ * Descripción de la clase: La clase realiza operaciones como insertar un
+ * traslado o consultar los traslados asignados a una empresa transportista
+ *
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class TrasladosDAO implements ITrasladosDAO {
 

@@ -16,7 +16,6 @@ import com.dominio.Vehiculo;
 import java.util.List;
 import org.itson.DTO.ProductorDTO;
 import org.itson.excepciones.NegocioException;
-import org.itson.excepciones.PersistenciaException;
 import org.itson.interfaces.INegocio;
 import org.itson.interfaces.INegocioAdministrador;
 import org.itson.interfaces.INegocioEmpresasTransportista;
@@ -29,9 +28,14 @@ import org.itson.interfaces.INegocioTraslado;
 import org.itson.interfaces.INegocioVehiculo;
 
 /**
- * Descripción de la clase:
+ * Descripción de la clase: Clase que actúa como puente para realizar las
+ * operaciones en el sistema de persistencia, pero antes realizar operaciones
+ * para comprobar que el traslado de datos sea correcto
  *
- * @author Daniel Armando Peña Garcia ID:229185
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class FachadaNegocio implements INegocio {
 
@@ -62,9 +66,11 @@ public class FachadaNegocio implements INegocio {
 
     /**
      * Inserta un objeto Productor en el sistema.
+     *
      * @param productor El Productor a insertar.
      * @return El Productor insertado.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la inserción.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la inserción.
      */
     @Override
     public Productor insertarProductor(Productor productor) {
@@ -74,11 +80,15 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Inicia sesión de un Productor en el sistema.
-     * @param productor El ProductorDTO que contiene los datos de inicio de sesión.
+     *
+     * @param productor El ProductorDTO que contiene los datos de inicio de
+     * sesión.
      * @return El Productor que ha iniciado sesión
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante el inicio de sesión.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * el inicio de sesión.
      */
     @Override
     public Productor loginProductor(ProductorDTO productor) throws NegocioException {
@@ -91,8 +101,10 @@ public class FachadaNegocio implements INegocio {
 
     /**
      * Consulta la lista de Químicos en el sistema.
+     *
      * @return La lista de Químicos.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la consulta.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la consulta.
      */
     @Override
     public List<Quimico> consultarQuimicos() throws NegocioException {
@@ -102,11 +114,14 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Inserta un objeto Residuo en el sistema.
+     *
      * @param residuo El Residuo a insertar.
      * @return El Residuo insertado.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la inserción.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la inserción.
      */
     @Override
     public Residuo insertarResiduo(Residuo residuo) throws NegocioException {
@@ -116,12 +131,15 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Consulta una lista de Residuos en el sistema basada en un filtro.
+     *
      * @param residuo El Residuo utilizado como filtro.
      * @return La lista de Residuos que cumplen con el filtro.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la consulta.
-    */
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la consulta.
+     */
     @Override
     public List<Residuo> consultarResiduosFiltro(Residuo residuo) throws NegocioException {
         try {
@@ -130,11 +148,14 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Inserta una Solicitud en el sistema.
+     *
      * @param solicitud La Solicitud a insertar.
      * @return La Solicitud insertada.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la inserción.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la inserción.
      */
     @Override
     public Solicitud insertarSolicitud(Solicitud solicitud) throws NegocioException {
@@ -144,10 +165,13 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Consulta una lista de Solicitudes no atendidas en el sistema.
+     *
      * @return La lista de Solicitudes no atendidas.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la consulta.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la consulta.
      */
     @Override
     public List<Solicitud> consultaSolicitudesNoAtendidas() throws NegocioException {
@@ -157,11 +181,14 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Consulta una lista de Solicitudes en el sistema basada en un filtro.
+     *
      * @param solicitud La Solicitud utilizada como filtro.
      * @return La lista de Solicitudes que cumplen con el filtro.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la consulta.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la consulta.
      */
     @Override
     public List<Solicitud> consultarSolicitudFiltro(Solicitud solicitud) throws NegocioException {
@@ -171,11 +198,14 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Inserta un objeto Transporte en el sistema.
+     *
      * @param transporte El Transporte a insertar.
      * @return El Transporte insertado.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la inserción.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la inserción.
      */
     @Override
     public Transporte insertarTransporte(Transporte transporte) throws NegocioException {
@@ -185,11 +215,14 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Inserta un objeto Traslado en el sistema
+     *
      * @param traslado El Traslado a insertar.
      * @return El Traslado insertado.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la inserción.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la inserción.
      */
     @Override
     public Traslado insertarTraslado(Traslado traslado) throws NegocioException {
@@ -199,11 +232,16 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
-     * Consulta una lista de Traslados asignados a una Empresa Transportista en el sistema.
-     * @param empresaTransportista La Empresa Transportista para la cual se consultan los Traslados asignados.
+     * Consulta una lista de Traslados asignados a una Empresa Transportista en
+     * el sistema.
+     *
+     * @param empresaTransportista La Empresa Transportista para la cual se
+     * consultan los Traslados asignados.
      * @return La lista de Traslados asignados a la Empresa Transportista.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la consulta.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la consulta.
      */
     @Override
     public List<Traslado> consultaTrasladosAsingados(EmpresaTransportista empresaTransportista) throws NegocioException {
@@ -213,11 +251,16 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
-     * Consulta una lista de Vehículos pertenecientes a una Empresa Transportista en el sistema.
-     * @param empresaTransportista La Empresa Transportista para la cual se consultan los Vehículos.
+     * Consulta una lista de Vehículos pertenecientes a una Empresa
+     * Transportista en el sistema.
+     *
+     * @param empresaTransportista La Empresa Transportista para la cual se
+     * consultan los Vehículos.
      * @return La lista de Vehículos pertenecientes a la Empresa Transportista.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la consulta.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la consulta.
      */
     @Override
     public List<Vehiculo> consultaVehiuculoEmpresaTrasnportadora(EmpresaTransportista empresaTransportista) throws NegocioException {
@@ -227,12 +270,15 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Realiza el inicio de sesión de un Administrador en el sistema.
+     *
      * @param correo El correo del Administrador.
      * @param contrasena La contraseña del Administrador.
      * @return El Administrador que ha iniciado sesión.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante el inicio de sesión.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * el inicio de sesión.
      */
     @Override
     public Administrador loginAdministrador(String correo, String contrasena) throws NegocioException {
@@ -242,12 +288,15 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Realiza el inicio de sesión de una Empresa Transportista en el sistema.
+     *
      * @param correo El correo de la Empresa Transportista.
      * @param contrasena La contraseña de la Empresa Transportista.
      * @return La Empresa Transportista que ha iniciado sesión.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante el inicio de sesión.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * el inicio de sesión.
      */
     @Override
     public EmpresaTransportista loginEmpresaTrasnportista(String correo, String contrasena) throws NegocioException {
@@ -257,11 +306,15 @@ public class FachadaNegocio implements INegocio {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
-    * Consulta una lista de todas las Empresas Transportistas registradas en el sistema
-    * @return La lista de todas las Empresas Transportistas registradas.
-    * @throws NegocioException Si ocurre un error en la capa de negocio durante la consulta.
-    */
+     * Consulta una lista de todas las Empresas Transportistas registradas en el
+     * sistema
+     *
+     * @return La lista de todas las Empresas Transportistas registradas.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la consulta.
+     */
     @Override
     public List<EmpresaTransportista> consultaTodasEmpresasTransportistas() throws NegocioException {
         try {
@@ -280,5 +333,4 @@ public class FachadaNegocio implements INegocio {
         }
     }
 
-    
 }

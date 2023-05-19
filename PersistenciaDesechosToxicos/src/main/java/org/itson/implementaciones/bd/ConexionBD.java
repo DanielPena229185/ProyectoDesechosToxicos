@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.itson.implementaciones.bd;
 
 import com.mongodb.MongoClientSettings;
@@ -12,12 +8,15 @@ import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
-import org.itson.interfaces.IConexionBD;
 
 /**
- * Descripción de la clase: Clase que se va a encargar de conectar el sistema a la base de datos.
+ * Descripción de la clase: Clase que se va a encargar de conectar el sistema a
+ * la base de datos.
  *
- * @author oscar
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class ConexionBD {
 

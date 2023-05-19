@@ -5,7 +5,6 @@
 package org.itson.implementacion;
 
 import com.dominio.Administrador;
-import com.dominio.Direccion;
 import com.dominio.EmpresaTransportista;
 import com.dominio.Estado;
 import com.dominio.Productor;
@@ -23,9 +22,14 @@ import org.itson.interfaces.INegocioTraslado;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripción de la clase: Se encarga de manejar los traslados en el sistema.
+ * Descripción de la clase: Clase que actúa como puente para realizar las
+ * operaciones en el sistema de persistencia, pero antes realizar operaciones
+ * para comprobar que el traslado de datos sea correcto
  *
- * @author Daniel Armando Peña Garcia ID:229185
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class NegocioTraslado implements INegocioTraslado {
 
@@ -37,6 +41,7 @@ public class NegocioTraslado implements INegocioTraslado {
     public NegocioTraslado() {
         persistencia = new FachadaPersistencia();
     }
+
     /**
      * Inserta un traslado en el sistema
      *
@@ -55,17 +60,19 @@ public class NegocioTraslado implements INegocioTraslado {
             throw new NegocioException(a.getMessage());
         }
     }
+
     /**
      * Obtiene una lista de traslados asignados a una empresa transportista.
      *
-     * @param empresaTransportista La empresa transportista para la cual se obtienen los traslados asignados.
+     * @param empresaTransportista La empresa transportista para la cual se
+     * obtienen los traslados asignados.
      * @return Una lista de traslados asignados a la empresa transportista.
      * @throws NegocioException Si ocurre un error durante la consulta.
      */
     @Override
     public List<Traslado> consultaTrasladosAsingados(EmpresaTransportista empresaTransportista) throws NegocioException {
         try {
-            if(empresaTransportista == null){
+            if (empresaTransportista == null) {
                 throw new ValidacionException("No hay información de la empresa transportista");
             }
             return persistencia.consultaTrasladosAsingados(empresaTransportista);
@@ -75,12 +82,14 @@ public class NegocioTraslado implements INegocioTraslado {
             throw new NegocioException(a.getMessage());
         }
     }
+
     /**
      * Valida un traslado antes de insertarlo.
      *
      * @param traslado El traslado a validar.
      * @return El traslado validado.
-     * @throws ValidacionException Si el traslado es nulo o no cumple con los requisitos de validación.
+     * @throws ValidacionException Si el traslado es nulo o no cumple con los
+     * requisitos de validación.
      */
     private Traslado validarTrasladoInsertar(Traslado traslado) throws ValidacionException {
 
@@ -117,7 +126,7 @@ public class NegocioTraslado implements INegocioTraslado {
             camposError.add("Error en la información de solicitud\n"
                     + e.getMessage());
         }
-        
+
         if (camposError.isEmpty()) {
             return traslado;
         }
@@ -126,51 +135,53 @@ public class NegocioTraslado implements INegocioTraslado {
 
         throw new ValidacionException(mensaje);
     }
+
     /**
      * Valida una solicitud antes de insertarla
      *
      * @param solicitud La solicitud a validar.
      * @return La solicitud validada.
-     * @throws ValidacionException Si la solicitud es nula o no cumple con los requisitos de validación.
+     * @throws ValidacionException Si la solicitud es nula o no cumple con los
+     * requisitos de validación.
      */
-    private Solicitud validarSolicitudInsertar(Solicitud solicitud) throws ValidacionException{
-        
+    private Solicitud validarSolicitudInsertar(Solicitud solicitud) throws ValidacionException {
+
         List<String> camposError = new LinkedList<>();
-        
-        if(solicitud == null){
+
+        if (solicitud == null) {
             throw new ValidacionException("No hay información de la solicitud");
         }
-        
+
         // Validar estado
         Estado estado = solicitud.getEstado();
-        if(estado != null){
+        if (estado != null) {
             if (validarTextoVacio(estado.toString())) {
                 camposError.add("- No hay estado");
             }
         }
-        
+
         //Validar fecha solicitada
         Date fecha_solicitada = solicitud.getFecha_Solicitada();
-        if(fecha_solicitada == null){
+        if (fecha_solicitada == null) {
             camposError.add("- No hay fecha en que solicitó");
         }
-        
+
         //Validar productor
         Productor productor = solicitud.getProductor();
-        if(productor == null){
+        if (productor == null) {
             camposError.add("- No hay información del productor");
         }
-        
-        if(camposError.isEmpty()){
-           return solicitud;
+
+        if (camposError.isEmpty()) {
+            return solicitud;
         }
-        
+
         String mensaje = mensajeCampos(camposError);
-        
+
         throw new ValidacionException(mensaje);
-        
+
     }
-    
+
     /**
      * Contatena todos los elementos de la lista de tipo String
      *
@@ -214,5 +225,5 @@ public class NegocioTraslado implements INegocioTraslado {
         //Lista no está vacía
         return false;
     }
-    
+
 }

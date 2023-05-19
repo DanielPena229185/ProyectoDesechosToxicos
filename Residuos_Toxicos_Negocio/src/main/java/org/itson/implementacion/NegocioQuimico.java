@@ -14,9 +14,14 @@ import org.itson.interfaces.INegocioQuimico;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripción de la clase: Se encarga de realizar operaciones relacionadas con químicos en un sistema.
+ * Descripción de la clase: Clase que actúa como puente para realizar las
+ * operaciones en el sistema de persistencia, pero antes realizar operaciones
+ * para comprobar que el traslado de datos sea correcto
  *
- * @author Daniel Armando Peña Garcia ID:229185
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class NegocioQuimico implements INegocioQuimico {
 
@@ -28,8 +33,10 @@ public class NegocioQuimico implements INegocioQuimico {
     public NegocioQuimico() {
         persistencia = new FachadaPersistencia();
     }
+
     /**
      * Inserta un objeto Quimico en el sistema.
+     *
      * @param quimico el objeto Quimico a insertar.
      * @return el Quimico insertado.
      * @throws NegocioException si ocurre un error en la lógica de negocio.
@@ -43,9 +50,12 @@ public class NegocioQuimico implements INegocioQuimico {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Consulta todos los Quimicos del sistema.
-     * @return una lista de objetos Quimico que representa todos los Quimicos del sistema. 
+     *
+     * @return una lista de objetos Quimico que representa todos los Quimicos
+     * del sistema.
      * @throws NegocioException si ocurre un error en la lógica de negocio.
      */
     @Override
@@ -57,26 +67,29 @@ public class NegocioQuimico implements INegocioQuimico {
             throw new NegocioException(e.getMessage());
         }
     }
+
     /**
      * Valida un objeto Quimico antes de ser insertado.
+     *
      * @param quimico el objeto Quimico a validar.
      * @return el Quimico validado.
-     * @throws ValidacionException si el objeto Quimico no pasa las validaciones.
+     * @throws ValidacionException si el objeto Quimico no pasa las
+     * validaciones.
      */
-    private Quimico validarQuimico(Quimico quimico) throws ValidacionException{
-        
-        if(quimico == null){
+    private Quimico validarQuimico(Quimico quimico) throws ValidacionException {
+
+        if (quimico == null) {
             throw new ValidacionException("No hay información del químico");
         }
-        
+
         String nombreQuimico = quimico.getNombre();
-        if(validarTextoVacio(nombreQuimico)){
+        if (validarTextoVacio(nombreQuimico)) {
             throw new ValidacionException("No hay nombre del químico");
         }
-        
+
         return quimico;
     }
-    
+
     /**
      * Valida si el texto está vacío
      *

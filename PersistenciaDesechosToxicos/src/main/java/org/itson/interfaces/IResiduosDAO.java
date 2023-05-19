@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package org.itson.interfaces;
 
 import com.dominio.Residuo;
@@ -27,7 +23,7 @@ public interface IResiduosDAO {
      * @throws PersistenciaException en caso de algun error
      */
     Residuo insertar(Residuo o) throws PersistenciaException;
-    
+
     /**
      * Implementacion de consultar Residuos
      *

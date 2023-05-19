@@ -75,6 +75,10 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         initComponents();
     }
 
+    /**
+     * Instancia del formulario
+     * @return instancia del formulario
+     */
     public static RegistrarTrasladoForm getInstance() {
         if (registrarTrasladoForm == null) {
             registrarTrasladoForm = new RegistrarTrasladoForm();
@@ -82,6 +86,9 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         return registrarTrasladoForm;
     }
 
+    /**
+     * Inicia componentes personalizados
+     */
     public void iniciarComponentes() {
         this.cantidadResiduos = solicitud.getResiduos().size();
         asignaValoresLabels(solicitud);
@@ -90,18 +97,34 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
+    /**
+     * Obtener administrador
+     * @return administrador
+     */
     public Administrador getAdministrador() {
         return administrador;
     }
 
+    /**
+     * Establece el administrador
+     * @param administrador administrador a asignar
+     */
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
     }
 
+    /**
+     * Obtener la solicitud
+     * @return Solicitud
+     */
     public Solicitud getSolicitud() {
         return solicitud;
     }
 
+    /**
+     * Establece la solicitud
+     * @param solicitud solicitud a asignar
+     */
     public void setSolicitud(Solicitud solicitud) {
         this.solicitud = solicitud;
     }
@@ -441,19 +464,19 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelIzq = new javax.swing.JPanel();
         productorLbl = new javax.swing.JLabel();
         fechaLbl = new javax.swing.JLabel();
         registrarTrasladoLbl = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        panelDer = new javax.swing.JPanel();
+        tblNombreEmpresaTransportista = new javax.swing.JScrollPane();
         tableTransportistas = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        lblEmpresaTransportista = new javax.swing.JLabel();
+        tblEmpresaTransportistaSeleccionada = new javax.swing.JScrollPane();
         tableTransportistasSeleccionados = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        lblEmpresas = new javax.swing.JLabel();
         btnAsignar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        lblAsignarTraslado = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         lblMensaje = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -461,14 +484,14 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         lblProductor = new javax.swing.JLabel();
         lblFechaSol = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        tblSeleccionarResiduo = new javax.swing.JScrollPane();
         tableResiduos = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        residuoSeleccionado = new javax.swing.JLabel();
         lblResiduoSeleccionado = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblCantidad = new javax.swing.JLabel();
         lblCuenta = new javax.swing.JLabel();
         lblMedicion = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblSeleccionaResiduo = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -479,7 +502,7 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        panelIzq.setBackground(new java.awt.Color(255, 255, 255));
 
         productorLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         productorLbl.setText("Productor:");
@@ -490,8 +513,8 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         registrarTrasladoLbl.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 30)); // NOI18N
         registrarTrasladoLbl.setText("Solicitud Traslado");
 
-        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelDer.setBackground(new java.awt.Color(102, 153, 255));
+        panelDer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tableTransportistas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -521,13 +544,13 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
                 tableTransportistasMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tableTransportistas);
+        tblNombreEmpresaTransportista.setViewportView(tableTransportistas);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 300, 180));
+        panelDer.add(tblNombreEmpresaTransportista, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 300, 180));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        jLabel1.setText("Empresas Transportistas  Disponibles:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        lblEmpresaTransportista.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        lblEmpresaTransportista.setText("Empresas Transportistas  Disponibles:");
+        panelDer.add(lblEmpresaTransportista, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         tableTransportistasSeleccionados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -557,14 +580,14 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
                 tableTransportistasSeleccionadosMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tableTransportistasSeleccionados);
+        tblEmpresaTransportistaSeleccionada.setViewportView(tableTransportistasSeleccionados);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 300, 170));
+        panelDer.add(tblEmpresaTransportistaSeleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 300, 170));
 
-        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        jLabel2.setText("Empresas a las que se les ");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 230, -1));
+        lblEmpresas.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        lblEmpresas.setText("Empresas a las que se les ");
+        lblEmpresas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelDer.add(lblEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 230, -1));
 
         btnAsignar.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
         btnAsignar.setText("Asignar");
@@ -574,11 +597,11 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
                 btnAsignarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAsignar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, 90, 40));
+        panelDer.add(btnAsignar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, 90, 40));
 
-        jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        jLabel5.setText("asignaras el Traslado:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        lblAsignarTraslado.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        lblAsignarTraslado.setText("asignaras el Traslado:");
+        panelDer.add(lblAsignarTraslado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         btnSalir.setText("Regresar a pantalla principal");
         btnSalir.setEnabled(false);
@@ -595,11 +618,11 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 210, 40));
+        panelDer.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 210, 40));
 
         lblMensaje.setBackground(new java.awt.Color(255, 255, 255));
         lblMensaje.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(lblMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 140, 20));
+        panelDer.add(lblMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 140, 20));
 
         lblProductor.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         lblProductor.setText("...");
@@ -635,17 +658,17 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
                 tableResiduosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableResiduos);
+        tblSeleccionarResiduo.setViewportView(tableResiduos);
 
-        jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        jLabel3.setText("Residuo Seleccionado :");
+        residuoSeleccionado.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        residuoSeleccionado.setText("Residuo Seleccionado :");
 
         lblResiduoSeleccionado.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         lblResiduoSeleccionado.setText("...");
 
-        jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        jLabel4.setText("Cantidad :");
-        jLabel4.setToolTipText("");
+        lblCantidad.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        lblCantidad.setText("Cantidad :");
+        lblCantidad.setToolTipText("");
 
         lblCuenta.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         lblCuenta.setText("...");
@@ -653,48 +676,48 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         lblMedicion.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         lblMedicion.setText("...");
 
-        jLabel6.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        jLabel6.setText("Selecciona un residuo :");
+        lblSeleccionaResiduo.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        lblSeleccionaResiduo.setText("Selecciona un residuo :");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelIzqLayout = new javax.swing.GroupLayout(panelIzq);
+        panelIzq.setLayout(panelIzqLayout);
+        panelIzqLayout.setHorizontalGroup(
+            panelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelIzqLayout.createSequentialGroup()
+                .addGroup(panelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelIzqLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(productorLbl)
                                 .addComponent(registrarTrasladoLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(fechaLbl)
                                 .addComponent(jSeparator2))
                             .addComponent(lblProductor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(panelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblFechaSol, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(lblSeleccionaResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelIzqLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
+                        .addGroup(panelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tblSeleccionarResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(residuoSeleccionado)
                             .addComponent(lblResiduoSeleccionado, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelIzqLayout.createSequentialGroup()
+                                .addGroup(panelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(52, 52, 52)
                                 .addComponent(lblMedicion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelDer, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelIzqLayout.setVerticalGroup(
+            panelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelIzqLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(registrarTrasladoLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -712,28 +735,28 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(lblSeleccionaResiduo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tblSeleccionarResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(residuoSeleccionado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblResiduoSeleccionado)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(panelIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelIzqLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
+                        .addComponent(lblCantidad)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCuenta)
                         .addGap(17, 17, 17))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelIzqLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(lblMedicion)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelIzqLayout.createSequentialGroup()
+                .addComponent(panelDer, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -742,12 +765,12 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelIzq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelIzq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -859,35 +882,122 @@ public class RegistrarTrasladoForm extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * Botón asignar
+     */
     private javax.swing.JButton btnAsignar;
+    /**
+     * Botón salir
+     */
     private javax.swing.JButton btnSalir;
+    /**
+     * Label de fecha
+     */
     private javax.swing.JLabel fechaLbl;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    /**
+     * Renglon 1
+     */
     private javax.swing.JSeparator jSeparator1;
+    /**
+     * Renglon 2
+     */
     private javax.swing.JSeparator jSeparator2;
+    /**
+     * Renglon 3
+     */
     private javax.swing.JSeparator jSeparator3;
+    /**
+     * Renglon 4
+     */
     private javax.swing.JSeparator jSeparator4;
+    /**
+     * Label asignar traslado
+     */
+    private javax.swing.JLabel lblAsignarTraslado;
+    /**
+     * Label de cantidad
+     */
+    private javax.swing.JLabel lblCantidad;
+    /**
+     * Label cuenta
+     */
     private javax.swing.JLabel lblCuenta;
+    /**
+     * Label empresa transportista
+     */
+    private javax.swing.JLabel lblEmpresaTransportista;
+    /**
+     * Label empresa
+     */
+    private javax.swing.JLabel lblEmpresas;
+    /**
+     * Label fecha solicitada
+     */
     private javax.swing.JLabel lblFechaSol;
+    /**
+     * Label medición
+     */
     private javax.swing.JLabel lblMedicion;
+    /**
+     * Label mensaje
+     */
     private javax.swing.JLabel lblMensaje;
+    /**
+     * Label productor
+     */
     private javax.swing.JLabel lblProductor;
+    /**
+     * Label residuo seleccionado
+     */
     private javax.swing.JLabel lblResiduoSeleccionado;
+    /**
+     * Label selecciona residuo
+     */
+    private javax.swing.JLabel lblSeleccionaResiduo;
+    /**
+     * Panel derecho
+     */
+    private javax.swing.JPanel panelDer;
+    /**
+     * Panel izquierdo
+     */
+    private javax.swing.JPanel panelIzq;
+    /**
+     * Label Productor 
+     */
     private javax.swing.JLabel productorLbl;
+    /**
+     * Label registrar traslado
+     */
     private javax.swing.JLabel registrarTrasladoLbl;
+    /**
+     * Label residuo seleccionado
+     */
+    private javax.swing.JLabel residuoSeleccionado;
+    /**
+     * Tabla residuos
+     */
     private javax.swing.JTable tableResiduos;
+    /**
+     * Tabla empresa transportistas no seleccionados
+     */
     private javax.swing.JTable tableTransportistas;
+    /**
+     * Tabla empresa transportistas seleccionados
+     */
     private javax.swing.JTable tableTransportistasSeleccionados;
+    /**
+     * Scroll pane de la tabla empresa transportistas seleccionados
+     */
+    private javax.swing.JScrollPane tblEmpresaTransportistaSeleccionada;
+    /**
+     * Scroll pane de la tabla empresa transportistas no seleccionados
+     */
+    private javax.swing.JScrollPane tblNombreEmpresaTransportista;
+    /**
+     * Scroll pane de la tabla residuos seleccionados
+     */
+    private javax.swing.JScrollPane tblSeleccionarResiduo;
     // End of variables declaration//GEN-END:variables
 
 }

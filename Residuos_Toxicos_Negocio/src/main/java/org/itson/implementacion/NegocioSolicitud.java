@@ -17,10 +17,14 @@ import org.itson.interfaces.INegocioSolicitud;
 import org.itson.interfaces.IPersistencia;
 
 /**
- * Descripcion de la clase: Esta clase se encarga de manejar las solicitudes
- * relacionadas con el traslado de residuos
+ * Descripción de la clase: Clase que actúa como puente para realizar las
+ * operaciones en el sistema de persistencia, pero antes realizar operaciones
+ * para comprobar que el traslado de datos sea correcto
  *
- * @author oscar
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class NegocioSolicitud implements INegocioSolicitud {
 
@@ -130,7 +134,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
         return solicitud;
     }
-    
+
     /**
      * Convierte una instancia de Solicitud a SolicitudDTO.
      *
@@ -143,7 +147,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
         if (solicitud == null) {
             throw new ValidacionException("No hay datos en la solicitud");
         }
-        
+
         realizarParticionSolicitud(solicitud);
 
         SolicitudDTO solicitudDTO = new SolicitudDTO();
@@ -266,7 +270,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
         try {
             solicitudes = consultarSolicitudFiltro(solicitud);
-            List<Solicitud> solicitudesFiltradas =filtrarListaPorFecha(solicitudes, solicitud.getFecha_Solicitada());
+            List<Solicitud> solicitudesFiltradas = filtrarListaPorFecha(solicitudes, solicitud.getFecha_Solicitada());
             if (solicitudesFiltradas.size() > 5) {
                 throw new ValidacionException("- Ya hay más de 5 solicitudes que cuentan con los mismos datos");
             }
@@ -275,7 +279,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
         }
 
         if (camposError.isEmpty()) {
-            
+
             return solicitud;
         }
 
@@ -302,28 +306,28 @@ public class NegocioSolicitud implements INegocioSolicitud {
     @Override
     public Solicitud actualizaEstadoASolicitudAtendida(Solicitud solicitud) throws NegocioException {
         try {
-            
-            if(solicitud == null){
+
+            if (solicitud == null) {
                 throw new ValidacionException("No hay información de la solicitud a actualizar");
             }
-            
+
             return persistencia.actualizaEstadoASolicitudAtendida(solicitud);
-            
+
         } catch (PersistenciaException e) {
             throw new NegocioException(e.getMessage());
         }
     }
-    
-    private List<Solicitud> filtrarListaPorFecha(List<Solicitud> lista, Date date){
-        
+
+    private List<Solicitud> filtrarListaPorFecha(List<Solicitud> lista, Date date) {
+
         List<Solicitud> listaSolicitud = new LinkedList<>();
-        
+
         for (Solicitud solicitud : lista) {
-            if(solicitud.getFecha_Solicitada().equals(date)){
+            if (solicitud.getFecha_Solicitada().equals(date)) {
                 listaSolicitud.add(solicitud);
             }
         }
-        
+
         return listaSolicitud;
     }
 }

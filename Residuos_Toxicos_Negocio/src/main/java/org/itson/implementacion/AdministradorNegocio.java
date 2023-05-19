@@ -8,20 +8,21 @@ import com.dominio.Administrador;
 import java.util.LinkedList;
 import java.util.List;
 import org.bson.types.ObjectId;
-import org.itson.DTO.AdministradorDTO;
 import org.itson.excepciones.NegocioException;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.excepciones.ValidacionException;
-import org.itson.implementaciones.bd.DAOFactory;
-import org.itson.implementaciones.daos.AdministradoresDAO;
 
 /**
- * Descripción de la clase:
+ * Descripción de la clase: Clase que actúa como puente para realizar las
+ * operaciones en el sistema de persistencia, pero antes realizar operaciones
+ * para comprobar que el traslado de datos sea correcto
  *
- * @author Daniel Armando Peña Garcia ID:229185
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
-public class AdministradorNegocio{
-
+public class AdministradorNegocio {
 
     /**
      *
@@ -31,9 +32,11 @@ public class AdministradorNegocio{
 
     /**
      * Inserta un objeto Administrador en el sistema.
+     *
      * @param elemento El Administrador a insertar.
      * @return El Administrador insertado.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la inserción.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la inserción.
      */
     public Administrador insertar(Administrador elemento) throws NegocioException {
         try {
@@ -48,9 +51,11 @@ public class AdministradorNegocio{
 
     /**
      * Elimina un objeto Administrador del sistema.
+     *
      * @param elemento El Administrador a eliminar.
      * @return El Administrador eliminado.
-     * @throws NegocioException Si ocurre un error en la capa de negocio durante la eliminación.
+     * @throws NegocioException Si ocurre un error en la capa de negocio durante
+     * la eliminación.
      */
     public Administrador eliminar(Administrador elemento) throws NegocioException {
         try {
@@ -63,8 +68,7 @@ public class AdministradorNegocio{
 
     /**
      *
-     * @return 
-     * @throws NegocioException
+     * @return @throws NegocioException
      */
     public List<Administrador> consultar() throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -77,7 +81,7 @@ public class AdministradorNegocio{
      * @throws NegocioException
      */
     public List<Administrador> consultar(Administrador elemento) throws NegocioException {
-       throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -87,14 +91,17 @@ public class AdministradorNegocio{
      * @throws NegocioException
      */
     public List<Administrador> consultar(ObjectId id) throws NegocioException {
-       throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody  
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody  
     }
 
     /**
-     * Valida los campos de un objeto Administrador antes de realizar la inserción
+     * Valida los campos de un objeto Administrador antes de realizar la
+     * inserción
+     *
      * @param administrador El Administrador a validar
      * @return El Administrador validado
-     * @throws ValidacionException Si algún campo del Administrador no cumple con los requisitos de validación
+     * @throws ValidacionException Si algún campo del Administrador no cumple
+     * con los requisitos de validación
      */
     private Administrador validarAdministradorInsertar(Administrador administrador) throws ValidacionException {
 
@@ -117,8 +124,8 @@ public class AdministradorNegocio{
         if (validarTextoVacio(apellidoPaterno) == null) {
             camposErroneos.add("- Apellido Paterno");
         } else if (validarCaracteresEspeciales(apellidoPaterno) == null) {
-                camposErroneos.add("- Apellido Paterno con carácteres especiales");
-            
+            camposErroneos.add("- Apellido Paterno con carácteres especiales");
+
         }
         //Validar apellido materno  
         String apellidoMaterno = administrador.getApellido_materno();
@@ -156,11 +163,15 @@ public class AdministradorNegocio{
         throw new ValidacionException(campo);
 
     }
+
     /**
-     * Valida los campos de un objeto Administrador antes de realizar la eliminación
+     * Valida los campos de un objeto Administrador antes de realizar la
+     * eliminación
+     *
      * @param administrador El Administrador a validar
      * @return El Administrador validado
-     * @throws ValidacionException Si algún campo del Administrador no cumple con los requisitos de validación
+     * @throws ValidacionException Si algún campo del Administrador no cumple
+     * con los requisitos de validación
      */
     private Administrador validarAdministradorEliminar(Administrador administrador) throws ValidacionException {
         List<String> camposErroneos = new LinkedList<>();
@@ -214,6 +225,5 @@ public class AdministradorNegocio{
     public Administrador actualizar(Administrador elemento, Administrador elementoE) throws NegocioException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
- 
 
 }

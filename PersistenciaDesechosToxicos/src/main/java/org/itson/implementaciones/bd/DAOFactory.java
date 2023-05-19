@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.itson.implementaciones.bd;
 
-import com.mongodb.client.MongoDatabase;
 import org.itson.implementaciones.daos.AdministradoresDAO;
 import org.itson.implementaciones.daos.EmpresasTransportistasDAO;
 import org.itson.implementaciones.daos.ProductoresDAO;
@@ -29,7 +24,10 @@ import org.itson.interfaces.IVehiculosDAO;
  * diferentes de los objetos DAO en el sistema mediante los metodos estaticos
  * correpondientes a un tipo de obejto negocio
  *
- * @author oscar
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class DAOFactory {
 

@@ -1,21 +1,17 @@
 package org.itson.presentacion.Administrador;
 
 import com.dominio.Administrador;
-import com.dominio.Estado;
 import com.dominio.Productor;
 import com.dominio.Residuo;
 import com.dominio.Solicitud;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.itson.implementacion.FachadaNegocio;
 import org.itson.interfaces.INegocio;
-import org.itson.presentacion.Administrador.PrincipalAdministradorForm;
 import org.itson.utils.ConfiguracionDePaginado;
 
 /**
@@ -62,6 +58,10 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         negocio = new FachadaNegocio();
     }
     
+    /**
+     * Instancia de la clase
+     * @return instancia de la clase
+     */
     public static SolicitudesTrasladosForm getInstance(){
         if(solicitudesTrasladosForm == null){
             solicitudesTrasladosForm = new SolicitudesTrasladosForm();
@@ -69,6 +69,9 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         return solicitudesTrasladosForm;
     }
     
+    /**
+     * Iniciar componentes
+     */
     public void iniciarComponentes(){
         negocio = new FachadaNegocio();
         configPaginado = new ConfiguracionDePaginado(0, 3);
@@ -212,6 +215,9 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         cerrarVentanaActual();
     }
     
+    /**
+     * Abre el registrar traslado
+     */
     private void abrirRegistrarTrasladoForm(){
         RegistrarTrasladoForm registrarTrasladoForm;
         registrarTrasladoForm = RegistrarTrasladoForm.getInstance();
@@ -253,25 +259,25 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        label1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        lblSolicitudesTraslado = new javax.swing.JLabel();
+        panelIzq = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         regresarBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableSolicitudes = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        lblSesionAdmin = new javax.swing.JLabel();
         btnLeft = new javax.swing.JButton();
         btnRight = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblSolicitudes = new javax.swing.JLabel();
         btnAsignarEmpresas = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        panelDer = new javax.swing.JPanel();
+        lblProductorVacio = new javax.swing.JLabel();
+        lblFechaSolicitada = new javax.swing.JLabel();
         lblProductor = new javax.swing.JLabel();
         lblFechaSol = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableResiduos = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
+        lblResiduos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Solicitudes Traslado");
@@ -282,13 +288,13 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        label1.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
-        label1.setText("Solicitudes de traslados");
-        getContentPane().add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        lblSolicitudesTraslado.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 30)); // NOI18N
+        lblSolicitudesTraslado.setText("Solicitudes de traslados");
+        getContentPane().add(lblSolicitudesTraslado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 340, 20));
+        panelIzq.setBackground(new java.awt.Color(255, 255, 255));
+        panelIzq.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelIzq.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 340, 20));
 
         regresarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         regresarBtn.setText("Regresar");
@@ -298,7 +304,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
                 regresarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(regresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 458, 140, 50));
+        panelIzq.add(regresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 458, 140, 50));
 
         tableSolicitudes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -330,11 +336,11 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tableSolicitudes);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 530, 120));
+        panelIzq.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 530, 120));
 
-        jLabel3.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
-        jLabel3.setText("Sesion: Administrador");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        lblSesionAdmin.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 14)); // NOI18N
+        lblSesionAdmin.setText("Sesion: Administrador");
+        panelIzq.add(lblSesionAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         btnLeft.setText("<");
         btnLeft.addActionListener(new java.awt.event.ActionListener() {
@@ -342,7 +348,7 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
                 btnLeftActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 60, -1));
+        panelIzq.add(btnLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 60, -1));
 
         btnRight.setText(">");
         btnRight.addActionListener(new java.awt.event.ActionListener() {
@@ -350,11 +356,11 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
                 btnRightActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 60, -1));
+        panelIzq.add(btnRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 60, -1));
 
-        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        jLabel2.setText("Solicitudes de traslados: No atendidas");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        lblSolicitudes.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        lblSolicitudes.setText("Solicitudes de traslados: No atendidas");
+        panelIzq.add(lblSolicitudes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         btnAsignarEmpresas.setText("Asignar Empresas");
         btnAsignarEmpresas.addActionListener(new java.awt.event.ActionListener() {
@@ -362,17 +368,17 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
                 btnAsignarEmpresasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAsignarEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 150, 40));
+        panelIzq.add(btnAsignarEmpresas, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 150, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 530));
+        getContentPane().add(panelIzq, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 530));
 
-        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
+        panelDer.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        jLabel1.setText("Productor :");
+        lblProductorVacio.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        lblProductorVacio.setText("Productor :");
 
-        jLabel4.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        jLabel4.setText("Fecha Solicitada :");
+        lblFechaSolicitada.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        lblFechaSolicitada.setText("Fecha Solicitada :");
 
         lblProductor.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
         lblProductor.setText("...");
@@ -405,44 +411,44 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tableResiduos);
 
-        jLabel7.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
-        jLabel7.setText("Residuos :");
+        lblResiduos.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 18)); // NOI18N
+        lblResiduos.setText("Residuos :");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelDerLayout = new javax.swing.GroupLayout(panelDer);
+        panelDer.setLayout(panelDerLayout);
+        panelDerLayout.setHorizontalGroup(
+            panelDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addGroup(panelDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblProductorVacio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblFechaSolicitada, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                         .addComponent(lblProductor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblFechaSol, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblResiduos, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelDerLayout.setVerticalGroup(
+            panelDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDerLayout.createSequentialGroup()
                 .addGap(100, 100, 100)
-                .addComponent(jLabel1)
+                .addComponent(lblProductorVacio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblProductor)
                 .addGap(24, 24, 24)
-                .addComponent(jLabel4)
+                .addComponent(lblFechaSolicitada)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblFechaSol)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(lblResiduos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(73, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 340, 530));
+        getContentPane().add(panelDer, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 340, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -494,24 +500,81 @@ public class SolicitudesTrasladosForm extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * Botón asignar empresas
+     */
     private javax.swing.JButton btnAsignarEmpresas;
+    /**
+     * Botón izquierda
+     */
     private javax.swing.JButton btnLeft;
+    /**
+     * Botón derecha
+     */
     private javax.swing.JButton btnRight;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    /**
+     * ScrollPane de tabla de solicitudes
+     */
     private javax.swing.JScrollPane jScrollPane1;
+    /**
+     * ScrollPane de tabla de residuos
+     */
     private javax.swing.JScrollPane jScrollPane2;
+    /**
+     * Separador
+     */
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel label1;
+    /**
+     * Label fecha solicitada
+     */
     private javax.swing.JLabel lblFechaSol;
+    /**
+     * Label fecha solicitada
+     */
+    private javax.swing.JLabel lblFechaSolicitada;
+    /**
+     * Label fecha productor
+     */
     private javax.swing.JLabel lblProductor;
+    /**
+     * Label productor vacio
+     */
+    private javax.swing.JLabel lblProductorVacio;
+    /**
+     * Label residuos
+     */
+    private javax.swing.JLabel lblResiduos;
+    /**
+     * Label sesion administración
+     */
+    private javax.swing.JLabel lblSesionAdmin;
+    /**
+     * Label solicitudes
+     */
+    private javax.swing.JLabel lblSolicitudes;
+    /**
+     * Label solicitudes traslado
+     */
+    private javax.swing.JLabel lblSolicitudesTraslado;
+    /**
+     * Panel derecho
+     */
+    private javax.swing.JPanel panelDer;
+    /**
+     * Panel izquierdo
+     */
+    private javax.swing.JPanel panelIzq;
+    /**
+     * Botón regresar
+     */
     private javax.swing.JButton regresarBtn;
+    /**
+     * Tabla residuos
+     */
     private javax.swing.JTable tableResiduos;
+    /**
+     * Tabla solicitudes
+     */
     private javax.swing.JTable tableSolicitudes;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,11 +16,17 @@ import org.itson.implementaciones.bd.ConexionBD;
 import org.itson.interfaces.IVehiculosDAO;
 
 /**
- * Descripción de la clase: Clase que almacena y recupera información sobre vehiculos y sus propietarios, 
- * que son empresas de transporte. Contiene metodos para insertar vehículos en la base de datos y 
- * para consultar los vehiculos asociados a una empresa de transporte en particular 
- * Utiliza un patrón de diseño Singleton para garantizar que solo exista una instancia de la clase en todo momento. 
- * @author edemb
+ * Descripción de la clase: Clase que almacena y recupera información sobre
+ * vehiculos y sus propietarios, que son empresas de transporte. Contiene
+ * metodos para insertar vehículos en la base de datos y para consultar los
+ * vehiculos asociados a una empresa de transporte en particular Utiliza un
+ * patrón de diseño Singleton para garantizar que solo exista una instancia de
+ * la clase en todo momento.
+ *
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class VehiculosDAO implements IVehiculosDAO {
 

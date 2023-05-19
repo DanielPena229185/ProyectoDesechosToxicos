@@ -264,11 +264,29 @@ public class PrincipalProductorForm extends javax.swing.JFrame {
         this.productor = null;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * Boton registrar residuo
+     */
     private javax.swing.JButton btnRegistrarResiduo;
+    /**
+     * Boton solicitar traslado
+     */
     private javax.swing.JButton btnSolicitarTraslado;
+    /**
+     * Label productor
+     */
     private javax.swing.JLabel jLabel2;
+    /**
+     * Panel secundario
+     */
     private javax.swing.JPanel jPanel2;
+    /**
+     * Separador
+     */
     private javax.swing.JSeparator jSeparator1;
+    /**
+     * Botón regresar
+     */
     private javax.swing.JButton regresarBtn;
     // End of variables declaration//GEN-END:variables
 }

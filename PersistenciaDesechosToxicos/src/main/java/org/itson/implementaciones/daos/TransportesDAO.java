@@ -12,7 +12,11 @@ import org.itson.interfaces.ITransporteDAO;
  * Descripción de la clase: Clase que implementa la interfaz ITransporteDAO, 
  * contiene una instancia estatica de si misma y una instancia estatica de la coleccion de transportes
  * con el fin de insertar un transporte
- * @author edemb
+ * 
+ * @author Aracely Campa Quintana ID: 233215
+ * @author Edgar Emir Borbon Jimenez ID: 233184
+ * @author Oscar Minjarez Zavala ID: 231503
+ * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class TransportesDAO implements ITransporteDAO {
 

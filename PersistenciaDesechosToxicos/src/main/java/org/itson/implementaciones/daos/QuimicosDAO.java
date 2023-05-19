@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.itson.implementaciones.daos;
 
 import com.dominio.Quimico;
@@ -21,6 +17,7 @@ import org.itson.interfaces.IQuimicosDAO;
  * @author Daniel Armando Peña Garcia ID: 229185
  */
 public class QuimicosDAO implements IQuimicosDAO {
+
     /**
      * Coleccion de mongoBD que contiene los datos de quimico
      */
@@ -29,31 +26,37 @@ public class QuimicosDAO implements IQuimicosDAO {
      * Instancia unica de QuimicosDAO
      */
     private static QuimicosDAO instanceQuimicosDAO;
+
     /**
      * Método constructor que inicializa la clase para empezar con las
      * operaciones.
-     * @param BASE_DATOS Base de datos a la que se conecta.
      */
     public QuimicosDAO() {
         if (COLECCION == null) {
             COLECCION = ConexionBD.getBaseDatos().getCollection("quimicos", Quimico.class);
         }
     }
+
     /**
-     * Devuelve una instancia unica de QuimicosDAO, en caso de no existir se crea una nueva
+     * Devuelve una instancia unica de QuimicosDAO, en caso de no existir se
+     * crea una nueva
+     *
      * @return la instancia única de QuimicosDAO.
-     */ 
+     */
     public static QuimicosDAO getInstanceQuimicosDAO() {
         if (instanceQuimicosDAO == null) {
             instanceQuimicosDAO = new QuimicosDAO();
         }
         return instanceQuimicosDAO;
     }
+
     /**
      * Inserta un objeto de tipo Quimico en la coleccion de la base de datos
+     *
      * @param o el objeto Quimico a insertar
      * @return el objeto Quimico insertado
-     * @throws PersistenciaException si ocurre un error al insertar el objeto Quimico en la base de datos
+     * @throws PersistenciaException si ocurre un error al insertar el objeto
+     * Quimico en la base de datos
      */
     public Quimico insertar(Quimico o) throws PersistenciaException {
         try {
@@ -63,7 +66,6 @@ public class QuimicosDAO implements IQuimicosDAO {
             throw new PersistenciaException("Error no se pudo insertar el quimico: " + e.getMessage());
         }
     }
-
 
     /**
      * Consulta todos los Quimicos
