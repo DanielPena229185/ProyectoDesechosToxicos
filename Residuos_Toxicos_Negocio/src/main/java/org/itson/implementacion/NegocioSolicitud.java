@@ -41,7 +41,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
      * @return true si la fecha no es posterior a la fecha actual, false de lo
      * contrario.
      */
-    private Boolean validarFechaParaTrasladoDeResiduos(Date fecha) {
+    private Boolean validarFechaNoMayorActual(Date fecha) {
         if (!fecha.after(new Date())) {
             return true;
         }
@@ -240,7 +240,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
         if (fecha_solicitada == null) {
             camposError.add("- No hay ningúna fecha especificada");
-        } else if (validarFechaParaTrasladoDeResiduos(fecha_solicitada)) {
+        } else if (validarFechaNoMayorActual(fecha_solicitada)) {
             camposError.add("- La fecha no es mayor a la actual");
         }
 
@@ -266,7 +266,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
 
         try {
             solicitudes = consultarSolicitudFiltro(solicitud);
-            List<Solicitud> solicitudesFiltradas =listaFecha(solicitudes, solicitud.getFecha_Solicitada());
+            List<Solicitud> solicitudesFiltradas =filtrarListaPorFecha(solicitudes, solicitud.getFecha_Solicitada());
             if (solicitudesFiltradas.size() > 5) {
                 throw new ValidacionException("- Ya hay más de 5 solicitudes que cuentan con los mismos datos");
             }
@@ -314,7 +314,7 @@ public class NegocioSolicitud implements INegocioSolicitud {
         }
     }
     
-    private List<Solicitud> listaFecha(List<Solicitud> lista, Date date){
+    private List<Solicitud> filtrarListaPorFecha(List<Solicitud> lista, Date date){
         
         List<Solicitud> listaSolicitud = new LinkedList<>();
         

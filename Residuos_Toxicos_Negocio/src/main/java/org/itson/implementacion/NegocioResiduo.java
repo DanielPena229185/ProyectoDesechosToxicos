@@ -86,7 +86,7 @@ public class NegocioResiduo implements INegocioResiduo {
      * @throws NegocioException si ocurre un error en la lógica de negocio.
      */
     @Override
-    public List<Residuo> consultarResiduoFiltro(Residuo residuo) throws NegocioException {
+    public List<Residuo> consultarResiduosFiltro(Residuo residuo) throws NegocioException {
         try {
             ResiduoDTO residuoDTO = convertirResiduoToDTO(residuo);
             return persistencia.consultarResiduoFiltro(residuoDTO);
@@ -332,7 +332,7 @@ public class NegocioResiduo implements INegocioResiduo {
     private boolean validarCodigoExistenteResiduo(String codigo) {
         Residuo residuo = new Residuo();
         residuo.setCodigo(codigo);
-        int elementos = this.consultarResiduoFiltro(residuo).size();
+        int elementos = this.consultarResiduosFiltro(residuo).size();
         if (elementos > 0) {
             return true;
         }
@@ -346,7 +346,7 @@ public class NegocioResiduo implements INegocioResiduo {
     private boolean validarNombreExistenteResiduo(String nombre) {
         Residuo residuo = new Residuo();
         residuo.setNombre(nombre);
-        int elementos = this.consultarResiduoFiltro(residuo).size();
+        int elementos = this.consultarResiduosFiltro(residuo).size();
         if (elementos > 0) {
             return true;
         }
@@ -360,7 +360,7 @@ public class NegocioResiduo implements INegocioResiduo {
     private boolean validarListaQuimicosExistenteResiduo(List<Quimico> quimicos) {
         Residuo residuo = new Residuo();
         residuo.setQuimicos(quimicos);
-        int elementos = this.consultarResiduoFiltro(residuo).size();
+        int elementos = this.consultarResiduosFiltro(residuo).size();
         if (elementos > 0) {
             return true;
         }

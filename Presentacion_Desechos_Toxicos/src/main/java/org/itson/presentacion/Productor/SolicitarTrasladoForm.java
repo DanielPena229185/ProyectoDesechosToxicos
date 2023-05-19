@@ -63,7 +63,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         try {
             Residuo residuoFiltro = new Residuo();
             residuoFiltro.setProductor(productor);
-            List<Residuo> residuos = negocio.consultarResiduoFiltro(residuoFiltro);
+            List<Residuo> residuos = negocio.consultarResiduosFiltro(residuoFiltro);
             return residuos;
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new PresentacionException("No hay ningÃºn residuo seleccionado");
@@ -266,7 +266,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         btnEliminarResiduoSeleccionado = new javax.swing.JButton();
         btnAdelanteTblResiduosSeleccionados = new javax.swing.JButton();
         btnAtrasTblResiduoSeleccionado = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnSolicitar = new javax.swing.JButton();
 
         setTitle("Solicitar traslado");
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -422,10 +422,10 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Solicitar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSolicitar.setText("Solicitar");
+        btnSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSolicitarActionPerformed(evt);
             }
         });
 
@@ -442,7 +442,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1)
+                        .addComponent(btnSolicitar)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(btnEliminarResiduoSeleccionado)
@@ -468,7 +468,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
                 .addGap(109, 109, 109)
                 .addComponent(solicitarBtn)
                 .addGap(1, 1, 1)
-                .addComponent(jButton1)
+                .addComponent(btnSolicitar)
                 .addContainerGap())
         );
 
@@ -541,7 +541,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
             Residuo residuo = consultarFilaTblSeleccionados();
             limpiarResiduo(residuo);
             eliminarResiduoListaResiduosSeleccionados(residuo);
-            agregarResiduoTblResiduosNoSeleccionados(residuo);
+            agregarResiduoListaResiduosNoSeleccionados(residuo);
         } catch (PresentacionException e) {
             JOptionPane.showMessageDialog(this, "No hay ningÃºn residuo seleccionado", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -550,14 +550,13 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
     private void btnAgregarResiduoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarResiduoSeleccionadoActionPerformed
         try {
-
             Residuo residuo = consultarFilaTblNoSeleccionados();
             if (validarNumeroNegativos()) {
                 throw new PresentacionException("La cantidad no puede ser negativa");
             }
             asignarAtributosResiduo(residuo);
             agregarResiduoListaResiduosSeleccionados(residuo);
-            eliminarResiduoTblResiduosNoSeleccionados(residuo);
+            eliminarResiduoListaResiduosNoSeleccionados(residuo);
             this.ocultarElementosResiduo();
             this.limpiarCamposResiduo();
         } catch (PresentacionException e) {
@@ -586,21 +585,21 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblResiduosNoSeleccionadosMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarActionPerformed
         solicitarTraslado();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSolicitarActionPerformed
 
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
         iniciarPantallaPrincipalForm();
         reiniciarFormulario();
     }//GEN-LAST:event_formComponentHidden
 
-    private void reiniciarFormulario(){
+    private void reiniciarFormulario() {
         this.fecha.setText("");
         this.residuoSeleccionados.clear();
         limpiarCamposResiduo();
     }
-    
+
     private void iniciarPantallaPrincipalForm() {
         PrincipalProductorForm principalProductorForm;
         principalProductorForm = PrincipalProductorForm.getInstance();
@@ -626,13 +625,13 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         ejecucionLlenadoTblSeleccionados(residuoSeleccionados);
     }
 
-    private void agregarResiduoTblResiduosNoSeleccionados(Residuo residuo) {
+    private void agregarResiduoListaResiduosNoSeleccionados(Residuo residuo) {
         agregarResiduoListaNoSeleccionados(residuo);
         llenadoTablaResiduosNoSeleccionados(residuosNoSeleccionados);
         ejecucionLlenadoTblNoSeleccionados(residuosNoSeleccionados);
     }
 
-    private void eliminarResiduoTblResiduosNoSeleccionados(Residuo residuo) {
+    private void eliminarResiduoListaResiduosNoSeleccionados(Residuo residuo) {
         eliminarResiduoListaNoSeleccionados(residuo);
         llenadoTablaResiduosNoSeleccionados(residuosNoSeleccionados);
         ejecucionLlenadoTblNoSeleccionados(residuosNoSeleccionados);
@@ -756,14 +755,19 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         return fecha;
     }
 
+    private Solicitud crearSolicitud() {
+        Solicitud solicitud = new Solicitud();
+        solicitud.setProductor(productor);
+        solicitud.setResiduos(residuoSeleccionados);
+        solicitud.setFecha_Solicitada(obtenerFecha());
+        solicitud.setEstado(Estado.NO_ATENDIDA);
+        realizarParticionSolicitud(solicitud);
+        return solicitud;
+    }
+
     private void solicitarTraslado() {
         try {
-            Solicitud solicitud = new Solicitud();
-            solicitud.setProductor(productor);
-            solicitud.setResiduos(residuoSeleccionados);
-            solicitud.setFecha_Solicitada(obtenerFecha());
-            solicitud.setEstado(Estado.NO_ATENDIDA);
-            realizarParticionSolicitud(solicitud);
+            Solicitud solicitud = crearSolicitud();
             negocio.insertarSolicitud(solicitud);
             if (solicitud.getId() != null) {
                 JOptionPane.showMessageDialog(this, "Solicitud con éxito", "Registrar solicitud", JOptionPane.INFORMATION_MESSAGE);
@@ -819,10 +823,10 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
     private javax.swing.JButton btnAtrasTblResiduosNoSeleccionado;
     private javax.swing.JButton btnEliminarResiduoSeleccionado;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnSolicitar;
     private javax.swing.JComboBox<String> cbxUnidadMedidaResiduo;
     private com.github.lgooddatepicker.components.DatePicker fecha;
     private javax.swing.JFormattedTextField formatCantidadResiduo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

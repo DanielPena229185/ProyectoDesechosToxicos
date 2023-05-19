@@ -123,9 +123,9 @@ public class FachadaNegocio implements INegocio {
      * @throws NegocioException Si ocurre un error en la capa de negocio durante la consulta.
     */
     @Override
-    public List<Residuo> consultarResiduoFiltro(Residuo residuo) throws NegocioException {
+    public List<Residuo> consultarResiduosFiltro(Residuo residuo) throws NegocioException {
         try {
-            return negocioResiduo.consultarResiduoFiltro(residuo);
+            return negocioResiduo.consultarResiduosFiltro(residuo);
         } catch (NegocioException e) {
             throw new NegocioException(e.getMessage());
         }

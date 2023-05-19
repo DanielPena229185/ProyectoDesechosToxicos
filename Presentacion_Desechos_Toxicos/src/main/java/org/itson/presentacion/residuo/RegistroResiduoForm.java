@@ -61,9 +61,10 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
      */
     private RegistroResiduoForm() {
         negocio = new FachadaNegocio();
-        initComponents();
         listaQuimicosDisponibles = consultarListaQuimicosDisponibles();
         llenarComboBoxListaDisponibles(listaQuimicosDisponibles);
+        initComponents();
+
     }
 
     /**
@@ -72,10 +73,15 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
      * visible el formulario.
      */
     public void iniciarComponentes() {
+
         this.lblNombreProductor.setText(productor.getNombre());
-        this.setVisible(true);
+        abrirVentana();
     }
 
+    private void abrirVentana(){
+        this.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,14 +136,14 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        registroResiduoLbl.setText("Registro Residuo");
         registroResiduoLbl.setFont(new java.awt.Font("Microsoft JhengHei Light", 0, 30)); // NOI18N
         registroResiduoLbl.setForeground(new java.awt.Color(0, 0, 0));
-        registroResiduoLbl.setText("Registro Residuo");
 
-        campoNombreResiduo.setBackground(new java.awt.Color(255, 255, 255));
-        campoNombreResiduo.setForeground(Color.GRAY);
         campoNombreResiduo.setText(this.NOMBRE_RESIDUO);
+        campoNombreResiduo.setBackground(new java.awt.Color(255, 255, 255));
         campoNombreResiduo.setBorder(null);
+        campoNombreResiduo.setForeground(Color.GRAY);
         campoNombreResiduo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoNombreResiduoFocusGained(evt);
@@ -152,15 +158,15 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
             }
         });
 
+        tipoLbl.setText("Composicion quimica:");
         tipoLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         tipoLbl.setForeground(new java.awt.Color(0, 0, 0));
-        tipoLbl.setText("Composicion quimica:");
 
         jPanel3.setBackground(new java.awt.Color(153, 204, 255));
 
+        nombreLbl.setText("Químicos disponibles");
         nombreLbl.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         nombreLbl.setForeground(new java.awt.Color(0, 0, 0));
-        nombreLbl.setText("Químicos disponibles");
 
         btnAgregarQuimicoComponenteResiduo.setText("Agregar");
         btnAgregarQuimicoComponenteResiduo.addActionListener(new java.awt.event.ActionListener() {
@@ -169,8 +175,8 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
             }
         });
 
-        lblVerificarCantidadQuimicosSeleccionados.setForeground(new java.awt.Color(255, 0, 0));
         lblVerificarCantidadQuimicosSeleccionados.setText("No hay químicos");
+        lblVerificarCantidadQuimicosSeleccionados.setForeground(new java.awt.Color(255, 0, 0));
 
         lblVerificarCantidadQuimicosSeleccionados.setVisible(false);
 
@@ -203,9 +209,9 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
                 .addContainerGap(380, Short.MAX_VALUE))
         );
 
+        nombreLbl1.setText("Nombre:");
         nombreLbl1.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         nombreLbl1.setForeground(new java.awt.Color(0, 0, 0));
-        nombreLbl1.setText("Nombre:");
 
         btnEliminarComponenteResiduo.setText("Eliminar");
         btnEliminarComponenteResiduo.addActionListener(new java.awt.event.ActionListener() {
@@ -214,22 +220,22 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
             }
         });
 
-        lblVerificarCantidadComponentesResiduo.setForeground(new java.awt.Color(255, 0, 0));
         lblVerificarCantidadComponentesResiduo.setText("No hay químicos");
+        lblVerificarCantidadComponentesResiduo.setForeground(new java.awt.Color(255, 0, 0));
 
+        nombreLbl2.setText("Código:");
         nombreLbl2.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         nombreLbl2.setForeground(new java.awt.Color(0, 0, 0));
-        nombreLbl2.setText("Código:");
 
-        formatoCodigoResiduo.setBackground(new java.awt.Color(255, 255, 255));
-        formatoCodigoResiduo.setBorder(null);
-        formatoCodigoResiduo.setForeground(Color.GRAY);
         try {
             formatoCodigoResiduo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("UUU-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         formatoCodigoResiduo.setText("ABC-123");
+        formatoCodigoResiduo.setBackground(new java.awt.Color(255, 255, 255));
+        formatoCodigoResiduo.setBorder(null);
+        formatoCodigoResiduo.setForeground(Color.GRAY);
         formatoCodigoResiduo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formatoCodigoResiduoFocusGained(evt);
@@ -251,9 +257,9 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
             }
         });
 
+        nombreLbl3.setText("Nombre del Productor:");
         nombreLbl3.setFont(new java.awt.Font("Microsoft JhengHei UI", 0, 18)); // NOI18N
         nombreLbl3.setForeground(new java.awt.Color(0, 0, 0));
-        nombreLbl3.setText("Nombre del Productor:");
 
         lblNombreProductor.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -263,10 +269,6 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGuardarResiduo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,46 +293,49 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
                                             .addComponent(formatoCodigoResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGap(108, 108, 108)))
                             .addComponent(lblNombreProductor))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGuardarResiduo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(registroResiduoLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separadorRegistroResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreLbl3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblNombreProductor)
-                .addGap(34, 34, 34)
-                .addComponent(nombreLbl1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNombreResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(separadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(nombreLbl2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(formatoCodigoResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separadorTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(tipoLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(comboBoxComponenteResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminarComponenteResiduo)
-                    .addComponent(lblVerificarCantidadComponentesResiduo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGuardarResiduo)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(registroResiduoLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(separadorRegistroResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombreLbl3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblNombreProductor)
+                        .addGap(34, 34, 34)
+                        .addComponent(nombreLbl1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoNombreResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(separadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)
+                        .addComponent(nombreLbl2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(formatoCodigoResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(separadorTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
+                        .addComponent(tipoLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(comboBoxComponenteResiduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEliminarComponenteResiduo)
+                            .addComponent(lblVerificarCantidadComponentesResiduo))
+                        .addGap(221, 221, 221)
+                        .addComponent(btnGuardarResiduo))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

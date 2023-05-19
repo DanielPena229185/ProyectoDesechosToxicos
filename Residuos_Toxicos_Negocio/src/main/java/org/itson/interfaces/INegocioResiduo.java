@@ -32,6 +32,6 @@ public Residuo insertarResiduo(Residuo residuo) throws NegocioException;
  * @return Una lista de objetos Residuo que cumplen con los criterios de filtrado.
  * @throws NegocioException Si ocurre un error en la lógica del negocio durante la consulta.
  */
-public List<Residuo> consultarResiduoFiltro(Residuo residuo) throws NegocioException;
+public List<Residuo> consultarResiduosFiltro(Residuo residuo) throws NegocioException;
     
 }
