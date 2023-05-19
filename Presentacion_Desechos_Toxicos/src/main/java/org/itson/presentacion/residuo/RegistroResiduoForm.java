@@ -61,10 +61,9 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
      */
     private RegistroResiduoForm() {
         negocio = new FachadaNegocio();
+        initComponents();
         listaQuimicosDisponibles = consultarListaQuimicosDisponibles();
         llenarComboBoxListaDisponibles(listaQuimicosDisponibles);
-        initComponents();
-
     }
 
     /**
@@ -78,10 +77,10 @@ public class RegistroResiduoForm extends javax.swing.JFrame {
         abrirVentana();
     }
 
-    private void abrirVentana(){
+    private void abrirVentana() {
         this.setVisible(true);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
