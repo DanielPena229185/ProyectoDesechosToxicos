@@ -691,17 +691,53 @@ public class LogInForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    /**
+     * Campo de contraseña
+     */
     private javax.swing.JPasswordField campoContrasena;
+    /**
+     * Campo de usuario
+     */
     private javax.swing.JTextField campoUsuario;
+    /**
+     * Check de visibilidad de contraseña
+     */
     private javax.swing.JCheckBox checkVisible;
+    /**
+     * Combo Box de seleccionar el tipo de cuenta
+     */
     private javax.swing.JComboBox<String> comboBoxOpcionLogin;
+    /**
+     * Label contraseña
+     */
     private javax.swing.JLabel contrasenaLbl;
+    /**
+     * Botón iniciar sesión
+     */
     private javax.swing.JButton iniciarSesionBtn;
+    /**
+     * Label iniciar sesión
+     */
     private javax.swing.JLabel iniciarSesionComoLabel;
+    /**
+     * Panel fondo
+     */
     private javax.swing.JPanel panelFondo;
+    /**
+     * Panel información
+     */
     private javax.swing.JPanel panelInformacion;
+    /**
+     * Renglón de la contraseña
+     */
     private javax.swing.JSeparator renglonContrasena;
+    /**
+     * Renglón del usuario
+     */
     private javax.swing.JSeparator renglonUsuario;
+    /**
+     * Label usuario
+     */
     private javax.swing.JLabel usuarioLbl;
     // End of variables declaration//GEN-END:variables
 
