@@ -10,7 +10,13 @@ package org.itson.utils;
  */
 public class ConfiguracionDePaginado {
     
+    /**
+     * Numero de paginas
+     */
     private int numeroPagina;
+    /**
+     * Elementos que habran por pagina
+     */
     private int elementosPorPagina;
 
     /**

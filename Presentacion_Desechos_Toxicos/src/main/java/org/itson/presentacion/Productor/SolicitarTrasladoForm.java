@@ -33,13 +33,34 @@ import org.itson.utils.ConfiguracionDePaginado;
  */
 public class SolicitarTrasladoForm extends javax.swing.JFrame {
 
+    /**
+     * La lista de los residuos no seleccinados
+     */
     List<Residuo> residuosNoSeleccionados = new LinkedList<>();
+    /**
+     * Lista de los residuos seleccionados
+     */
     List<Residuo> residuoSeleccionados = new LinkedList<>();
+    /**
+     * Productor con el que se esta haciendo las operaciones
+     */
     private Productor productor;
+    /**
+     * Fachada del negocio
+     */
     private INegocio negocio;
+    /**
+     * Consfiguracion de paginado de los no seleccionados
+     */
     private ConfiguracionDePaginado configPaginadoTblNoSeleccionados;
+    /**
+     * Configuracion de paginado de los seleccionados
+     */
     private ConfiguracionDePaginado configPaginadoTblSeleccionados;
 
+    /**
+     * Instancia del formulario de solicitar traslado
+     */
     private static SolicitarTrasladoForm solicitarTrasladoForm;
 
     /**
