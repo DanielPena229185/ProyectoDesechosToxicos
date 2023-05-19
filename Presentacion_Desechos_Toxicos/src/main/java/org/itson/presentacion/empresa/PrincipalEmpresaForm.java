@@ -14,7 +14,13 @@ import org.itson.presentacion.LogInForm;
  */
 public class PrincipalEmpresaForm extends javax.swing.JFrame {
 
+    /**
+     * Empresa con la que se inicio sesion
+     */
     private EmpresaTransportista empresa;
+    /**
+     * Instancia del formulario PrincipalEmpresa
+     */
     private static PrincipalEmpresaForm form;
 
     /**

@@ -28,9 +28,21 @@ import org.itson.interfaces.INegocio;
  */
 public class SeleccionarVehiculosForm extends javax.swing.JFrame {
 
+    /**
+     * Fachada del negocio
+     */
     private final INegocio negocio;
+    /**
+     * Empresa con la que se inisio sesion
+     */
     private EmpresaTransportista empresa;
+    /**
+     * Traslado que se utilizara
+     */
     private Traslado traslado;
+    /**
+     * Instancia del formulario de SeleccionarVehiculos
+     */
     private static SeleccionarVehiculosForm form;
 
     private List<Vehiculo> vehiculos;
