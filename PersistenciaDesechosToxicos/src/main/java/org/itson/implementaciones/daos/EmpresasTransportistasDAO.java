@@ -17,7 +17,6 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.itson.excepciones.PersistenciaException;
 import org.itson.implementaciones.bd.ConexionBD;
-import org.itson.interfaces.IConsultasDAO;
 import org.itson.interfaces.IEmpresasTrasnportistasDAO;
 
 /**
@@ -75,128 +74,6 @@ public class EmpresasTransportistasDAO implements IEmpresasTrasnportistasDAO {
 
         return o;
     }
-//
-//    /**
-//     * Método que actualiza una Empresa transportista de la base de datos.
-//     *
-//     * @param o Empresa transportista a actualizar.
-//     * @param s Empresa transportista con los datos actualizados.
-//     * @return Empresa transportista actualizado.
-//     * @throws PersistenciaException En dado caso de que no se pueda actualizar
-//     * la Empresa transportista en la base de datos.
-//     */
-//    @Override
-//    public EmpresaTransportista actualizar(EmpresaTransportista o, EmpresaTransportista s) throws PersistenciaException {
-//        try {
-//            this.COLECCION.updateOne(Filters.eq(o.getId()), new Document("$set", s));
-//        } catch (PersistenciaException e) {
-//            throw new PersistenciaException("No se pudo actualizar la empresa transportista.\n" + e.getMessage());
-//        }
-//
-//        return o;
-//    }
-//
-//    /**
-//     * Método que elimina a una Empresa transportista de la base de datos.
-//     *
-//     * @param o Empresa transportista a eliminar.
-//     * @return Empresa transportista eliminado.
-//     * @throws PersistenciaException En dado caso de que no se pueda eliminar la
-//     * Empresa transportista de la base de datos.
-//     */
-//    @Override
-//    public EmpresaTransportista eliminar(EmpresaTransportista o) throws PersistenciaException {
-//        try {
-//            this.COLECCION.deleteOne(Filters.eq(o.getId()));
-//        } catch (PersistenciaException e) {
-//            throw new PersistenciaException("No se pudo eliminar la empresa transportista." + e.getMessage());
-//        }
-//
-//        return o;
-//    }
-//
-//    /**
-//     * Método que consulta a todas las Empresas transportistas de la base de
-//     * datos.
-//     *
-//     * @return Lista de todas las Empresas transportistas.
-//     * @throws PersistenciaException Si no se encuentra a ninguna Empresa
-//     * transportista. en la base de datos.
-//     */
-//    @Override
-//    public List<EmpresaTransportista> consultar() throws PersistenciaException {
-//        List<EmpresaTransportista> empresasTransportistas = new ArrayList<>();
-//        this.COLECCION.find().into(empresasTransportistas);
-//
-//        if (empresasTransportistas.size() <= 0) {
-//            throw new PersistenciaException("No hay empresas transportistas registradas.");
-//        }
-//
-//        return empresasTransportistas;
-//    }
-//
-//    /**
-//     * Método que busca a una Empresa transportista por Id.
-//     *
-//     * @param id id a buscar.
-//     * @return Empresa transportista encontrada.
-//     * @throws PersistenciaException Se genera una excepción si no existe la
-//     * Empresa transportista a buscar.
-//     */
-//    @Override
-//    public EmpresaTransportista consultar(ObjectId id) throws PersistenciaException {
-//        List<EmpresaTransportista> empresasTransportistas = new ArrayList<>();
-//        this.COLECCION.find(Filters.eq(id)).into(empresasTransportistas);
-//
-//        if (empresasTransportistas.size() <= 0) {
-//            throw new PersistenciaException("No existe la empresa transportista a buscar.");
-//        }
-//
-//        return empresasTransportistas.get(0);
-//    }
-//
-//    /**
-//     * Método que consulta a todas las Empresas transportistas que coincidan con
-//     * los parámetros dados.
-//     *
-//     * @param parametros Empresa transportista con los parámetros especificados.
-//     * @return Lista de Empresas transportistas que coincidan.
-//     * @throws PersistenciaException Si no se encuentra ninguna coincidencia en
-//     * la base de datos.
-//     */
-//    @Override
-//    public List<EmpresaTransportista> consultar(EmpresaTransportista parametros) throws PersistenciaException {
-//        List<EmpresaTransportista> empresasTransportistas = new ArrayList<>();
-//        List<Bson> filtros = new ArrayList<>();
-//
-//        if (parametros.getNombre() != null) {
-//            filtros.add(Filters.regex("nombre", ".*" + parametros.getNombre() + ".*", "i"));
-//        }
-//
-//        if (parametros.getTipo() != null) {
-//            filtros.add(Filters.eq("tipo", parametros.getTipo()));
-//        }
-//
-//        if (parametros.getDirecciones() != null) {
-//            filtros.add(Filters.eq("direcciones", parametros.getDirecciones()));
-//        }
-//
-//        if (parametros.getTransportes() != null) {
-//            filtros.add(Filters.eq("transportes", parametros.getTransportes()));
-//        }
-//
-//        if (parametros.getVehiculos() != null) {
-//            filtros.add(Filters.eq("vehiculos", parametros.getVehiculos()));
-//        }
-//
-//        this.COLECCION.find(Filters.and(filtros)).into(empresasTransportistas);
-//
-//        if (empresasTransportistas.size() <= 0) {
-//            throw new PersistenciaException("No se pudieron encontrar empresas transportistas con los parámetros dados.");
-//        }
-//
-//        return empresasTransportistas;
-//    }
     /**
      * Consulta todas las empresas transportistas registradas en la base de datos
      * @return una lista de objetos EmpresaTransportista

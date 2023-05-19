@@ -6,7 +6,6 @@ package org.itson.implementaciones.bd;
 
 import com.mongodb.client.MongoDatabase;
 import org.itson.implementaciones.daos.AdministradoresDAO;
-import org.itson.implementaciones.daos.CuentasDAO;
 import org.itson.implementaciones.daos.EmpresasTransportistasDAO;
 import org.itson.implementaciones.daos.ProductoresDAO;
 import org.itson.implementaciones.daos.QuimicosDAO;
@@ -16,7 +15,6 @@ import org.itson.implementaciones.daos.TransportesDAO;
 import org.itson.implementaciones.daos.TrasladosDAO;
 import org.itson.implementaciones.daos.VehiculosDAO;
 import org.itson.interfaces.IAdministradoresDAO;
-import org.itson.interfaces.IConsultasDAO;
 import org.itson.interfaces.IEmpresasTrasnportistasDAO;
 import org.itson.interfaces.IProductoresDAO;
 import org.itson.interfaces.IQuimicosDAO;

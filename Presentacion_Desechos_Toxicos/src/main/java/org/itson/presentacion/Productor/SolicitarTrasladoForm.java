@@ -202,32 +202,7 @@ public class SolicitarTrasladoForm extends javax.swing.JFrame {
         return lista;
     }
 
-//    private void retrocederPagina() {
-//        this.configPaginado.retrocederPagina();
-//        ejecucionLlenadoTablaResiduo();
-//    }
-//
-//    private void avanzarPagina() {
-//        this.configPaginado.avanzarPagina();
-//        ejecucionLlenadoTablaResiduo();
-//    }
-//    private void consultaFilaSeleccionadaResiduo() {
-//        int filaSeleccionada = this.tblResiduo.getSelectedRow();
-//        this.lblProductor.setText((String) this.tblResiduo.getValueAt(filaSeleccionada, 0));
-//        this.lblFechaSol.setText((String) this.tblResiduo.getValueAt(filaSeleccionada, 1));
-//        llenadoTablaResiduos(filaSeleccionada);
-//
-//    }
-//    private void llenadoTablaResiduos(int index) {
-//        DefaultTableModel modeloTabla = (DefaultTableModel) this.tblResiduo.getModel();
-//        modeloTabla.setRowCount(0);
-//        for (Residuo r : ResiduoTablaResiduo) {
-//            Object[] fila = {r.getNombre(), r.getCantidad(), r.getMedida_residuo()};
-//            modeloTabla.addRow(fila);
-//        }
-//
-//        this.solicitarTrasloResiduo = ResiduoTablaResiduo.get(index);
-//    }
+
     private Date obetenerFecha() {
         LocalDate fecha = this.fecha.getDate();
         Date fechaResiduo = new Date(fecha.getYear(), fecha.getMonthValue(), fecha.getDayOfMonth());

@@ -14,7 +14,6 @@ import org.itson.excepciones.PersistenciaException;
 import org.itson.excepciones.ValidacionException;
 import org.itson.implementaciones.bd.DAOFactory;
 import org.itson.implementaciones.daos.AdministradoresDAO;
-import org.itson.interfaces.IConsultasDAO;
 
 /**
  * Descripción de la clase:

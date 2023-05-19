@@ -76,44 +76,6 @@ public class ResiduosDAO implements IResiduosDAO {
         }
     }
 
-    /*
-    public Residuo actualizar(Residuo o, Residuo s) throws PersistenciaException {
-        try {
-            COLECCION.updateOne(Filters.eq(o.getId()), new Document("$set", s));
-            return s;
-        } catch (PersistenciaException e) {
-            throw new PersistenciaException("Error no se pudo actualizar el Residuo: " + e.getMessage());
-        }
-    }
-
-    public Residuo eliminar(Residuo o) throws PersistenciaException {
-        try {
-            COLECCION.deleteOne(new Document("id", o.getId()));
-            return o;
-        } catch (PersistenciaException e) {
-            throw new PersistenciaException("Error no se pudo eliminar el residuo: " + e.getMessage());
-        }
-    }
-
-    public List<Residuo> consultar() throws PersistenciaException {
-        try {
-            List<Residuo> residuos = new ArrayList<>();
-            COLECCION.find().into(residuos);
-            return residuos;
-        } catch (PersistenciaException e) {
-            throw new PersistenciaException("Error no se pudieron consultar los quimicos: " + e.getMessage());
-        }
-    }
-
-    public Residuo consultar(ObjectId id) throws PersistenciaException {
-        try {
-            Residuo residuo = COLECCION.find(Filters.eq("id", id)).first();
-            return residuo;
-        } catch (PersistenciaException e) {
-            throw new PersistenciaException("Error no se pudo consultar el Residuo: " + e.getMessage());
-        }
-    }
-     */
     
     /**
      * Consulta si existen Reiduos coincidentes con los datos que contiene ResiduoDTO
