@@ -269,7 +269,7 @@ private void cargarTablaTraslados() {
                     this.formatearFecha(traslado.getSolicitud().getFecha_Solicitada()),
                     traslado.getResiduo().getNombre(),
                     traslado.getResiduo().getCantidad(),
-                    traslado.getResiduo().getProductor().getNombre()
+                    traslado.getSolicitud().getProductor().getNombre()
                 };
 
                 modeloTabla.addRow(fila);
